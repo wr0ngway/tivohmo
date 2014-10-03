@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+require 'bundler'
+require 'logger'
+
+Bundler.require(:default, :development)
+
+console_logger = ::Logger.new(STDOUT)
+console_logger.formatter = ->(s, t, p, m) { "#{m}\n" }
+GemLogger.default_logger = console_logger
+GemLogger.logger_concern = GemLogger::BasicLogger
+
+require 'tivohmo/cli'
+TivoHMO::CLI.run

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+Launchd (OS X) configuration for TivoHMO
+Copy to ~/Library/LaunchAgents and edit as desired
+Then to start the server, run: launchd load ~/Library/LaunchAgents/tivohmo.plist
+-->
+
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+        <key>Label</key>
+        <string>TivoHMO</string>
+        <key>ProgramArguments</key>
+        <array>
+                <string>tivohmo</string>
+                <string>/usr/local/pytivo/pyTivo.py</string>
+        </array>
+        <key>RunAtLoad</key>
+        <true/>
+</dict>
+</plist>
