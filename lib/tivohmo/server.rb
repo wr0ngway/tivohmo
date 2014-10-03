@@ -17,21 +17,20 @@ module TivoHMO
     set :reload_templates, true
     set :builder, :content_type => 'text/xml'
 
-    def self.start(app, port)
-      server = new(app)
-      Rack::Handler.default.run server, Port: port
+    def self.start(server, port)
+      Rack::Handler.default.run new(server), Port: port
     end
 
-    def initialize(app)
-      @app = app
+    def initialize(server)
+      @server = server
       super
     end
 
     helpers do
       include Rack::Utils
 
-      def app
-        @app
+      def server
+        @server
       end
 
       def unsupported
@@ -155,7 +154,7 @@ module TivoHMO
     # end
 
     # before do
-    #   if app.tsns && ! app.tsns.include?(tsn)
+    #   if server.tsns && ! server.tsns.include?(tsn)
     #     msg = "TSN not allowed access: #{tsn}"
     #     logger.warn msg
     #     halt 403, msg
@@ -210,14 +209,14 @@ module TivoHMO
 
         when 'QueryContainer' then
 
-          container = app.find(container_path)
+          container = server.find(container_path)
           halt 404, "No container found for #{container_path}" unless container
           children = container.children
 
           children = sort(children, sort_order) if sort_order
 
           if anchor_item
-            anchor = app.find(anchor_item)
+            anchor = server.find(anchor_item)
             if anchor
               idx = children.index(anchor)
               if idx
@@ -242,7 +241,7 @@ module TivoHMO
           item_title = params['File']
           path = [container_path, item_title].join('/')
 
-          item = app.find(path)
+          item = server.find(path)
           halt 404, "No item found for #{path}" unless item
 
           builder :item_details, layout: true, locals: locals.merge(item: item)
@@ -283,7 +282,7 @@ module TivoHMO
 
       title_path = params[:splat].join('/')
       format = params['Format']
-      item = app.find(title_path)
+      item = server.find(title_path)
       halt 404, "No item found for #{title_path}" unless item && item.is_a?(TivoHMO::API::Item)
 
       status 206

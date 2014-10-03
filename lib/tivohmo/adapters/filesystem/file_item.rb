@@ -5,7 +5,8 @@ module TivoHMO
     module Filesystem
 
       # An Item based on a filesystem file
-      class FileItem < TivoHMO::API::Item
+      class FileItem
+        include TivoHMO::API::Item
         include GemLogger::LoggerSupport
 
         def initialize(identifier)

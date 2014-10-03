@@ -1,11 +1,9 @@
-#require 'streamio-ffmpeg'
-
 module TivoHMO
   module Adapters
     module Plex
 
-      # An Item based on a filesystem file
-      class Season < TivoHMO::API::Container
+      class Season
+        include TivoHMO::API::Container
         include GemLogger::LoggerSupport
         include MonitorMixin
 

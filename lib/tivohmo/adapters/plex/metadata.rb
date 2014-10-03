@@ -2,8 +2,8 @@ module TivoHMO
   module Adapters
     module Plex
 
-      # Extracts some basic metadata using the streamio gem
-      class Metadata < TivoHMO::API::Metadata
+      class Metadata
+        include TivoHMO::API::Metadata
         include GemLogger::LoggerSupport
 
         def initialize(item)

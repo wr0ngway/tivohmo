@@ -2,7 +2,8 @@ module TivoHMO
   module Adapters
     module Plex
 
-      class Transcoder < TivoHMO::API::Transcoder
+      class Transcoder
+        include TivoHMO::API::Transcoder
         include GemLogger::LoggerSupport
 
         def transcode(writeable_io)

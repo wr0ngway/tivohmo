@@ -3,7 +3,8 @@ module TivoHMO
     module StreamIO
 
       # Extracts some basic metadata using the streamio gem
-      class Metadata < TivoHMO::API::Metadata
+      class Metadata
+        include TivoHMO::API::Metadata
         include GemLogger::LoggerSupport
 
         attr_accessor :movie

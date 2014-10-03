@@ -2,8 +2,10 @@ module TivoHMO
   module Adapters
     module StreamIO
 
+
       # Transcodes video to tivo format using the streamio gem (ffmpeg)
-      class Transcoder < TivoHMO::API::Transcoder
+      class Transcoder
+        include TivoHMO::API::Transcoder
         include GemLogger::LoggerSupport
 
         # TODO: add ability to pass through data (copy codec)
@@ -31,25 +33,11 @@ module TivoHMO
           nil
         end
 
-        private
-
-        def run_transcode(output_filename)
-          movie = FFMPEG::Movie.new(item.identifier)
-          movie.width
-          movie.height
-          movie.frame_rate
-          movie.video_stream
-          movie.video_codec
-          movie.video_bitrate
-          movie.audio_stream
-          movie.audio_codec
-          movie.audio_bitrate
-          movie.audio_sample_rate
-          movie.container
-
-          opts = {
+        def transcoder_options(video_info)
+          {
               frame_rate: 29.97,
               resolution: "1920x1080",
+              preserve_aspect_ratio: :width,
 
               video_codec: "mpeg2video",
               video_bitrate: 16384,
@@ -70,10 +58,82 @@ module TivoHMO
               # audio_channels: 1,
               # threads: 2,
           }
+        end
 
-          t_opts = {
-              preserve_aspect_ratio: :width
+        def wip_transcoder_options(video_info)
+          opts = {
+              video_bitrate: 16384,
+              video_max_bitrate: 30000,
+              buffer_size: 4096,
+              audio_bitrate: 448,
+              custom: "-f vob"
           }
+
+          if ! VIDEO_FRAME_RATES.find(video_info[:height])
+            opts[:frame_rate] = 29.97
+          end
+
+          opts[:width] = VIDEO_WIDTHS.find_with_index do |width, i|
+            width =  width.to_i
+            video_width  = video_info[:width].to_i
+            next_video_width = VIDEO_WIDTHS[i+1].to_i
+            width == video_width || (video_width < width && video_width > next_video_width)
+          end
+
+          opts[:height] = VIDEO_HEIGHTS.find_with_index do |height, i|
+            height =  w.to_i
+            video_height  = video_info[:height].to_i
+            next_video_height = VIDEO_heightS[i+1].to_i
+            height == video_height || (video_height < height && video_height > next_video_height)
+          end
+
+          opts[:preserve_aspect_ratio] = :width
+
+          if VIDEO_CODECS.find(video_info[:video_codec])
+            opts[:video_codec] =  'copy -bsf h264_mp4toannexb'
+          else
+            opts[:video_codec] = 'mpeg2video'
+          end
+
+          if AUDIO_CODECS.find(video_info[:audio_codec])
+            opts[:audio_codec] =  'copy'
+          else
+            opts[:audio_codec] = 'ac3'
+          end
+
+          if ! AUDIO_SAMPLE_RATES.find(video_info[:audio_sample_rate])
+            opts[:audio_sample_rate] = 48000
+          end
+
+          opts
+       end
+
+        protected
+
+        def run_transcode(output_filename)
+          movie = FFMPEG::Movie.new(item.identifier)
+
+          info_attrs = %w[
+            path duration time bitrate rotation creation_time
+            video_stream video_codec video_bitrate colorspace resolution dar
+            audio_stream audio_codec audio_bitrate audio_sample_rate
+            calculated_aspect_ratio size audio_channels frame_rate container
+          ]
+          video_info = Hash[info_attrs.collect {|attr| [attr.to_sym, movie.send(attr)] }]
+
+          logger.debug "Movie Info: " +
+                          video_info.collect {|k, v| "#{k}='#{v}'"}.join(' ')
+
+          opts = transcoder_options(video_info)
+
+          logger.debug "Transcoding options: " +
+                           opts.collect {|k, v| "#{k}='#{v}'"}.join(' ')
+
+
+          aspect_opt = opts.delete(:preserve_aspect_ratio)
+          t_opts = {}
+          t_opts[:preserve_aspect_ratio] = aspect_opt if aspect_opt
+
 
           transcode_thread = Thread.new do
             begin
@@ -111,7 +171,7 @@ module TivoHMO
               # wasteful tight loop when transcoding is really slow
               sleep 0.2
 
-              while data = file.read(4096)
+              while data = file.read(4096) && data.size > 0
                 writeable_io << data
                 bytes_copied += data.size
               end

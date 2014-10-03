@@ -1,11 +1,9 @@
-require 'active_support/core_ext/string/inflections'
-
 module TivoHMO
   module Adapters
     module Plex
 
-      # A Container based on a filesystem folder
-      class Application < TivoHMO::API::Application
+      class Application
+        include TivoHMO::API::Application
         include GemLogger::LoggerSupport
         include MonitorMixin
 
@@ -15,15 +13,26 @@ module TivoHMO
           host, port = identifier.to_s.split(':')
           host ||= 'localhost'
           port ||= 32400
-          super
+          super("Plex[#{host}:#{port}]")
 
-          self.container_class = TivoHMO::Adapters::Plex::Section
           self.metadata_class = TivoHMO::Adapters::Plex::Metadata
           self.transcoder_class = TivoHMO::Adapters::Plex::Transcoder
           self.content_type = "x-container/tivo-videos"
+          self.title = self.identifier
 
           @server = ::Plex::Server.new(host, port)
-          add_child(Library.new(server.library))
+        end
+
+        def children
+          synchronize do
+            if super.blank?
+              Array(server.library.sections).each do |section|
+                add_child(Section.new(section))
+              end
+            end
+          end
+
+          super
         end
 
       end

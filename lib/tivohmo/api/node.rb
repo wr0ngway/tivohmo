@@ -3,7 +3,8 @@ module TivoHMO
 
     # A tree node.  Nodes have a parent, children and a root, with the tree
     # itself representing the app/container/items heirarchy
-    class Node
+    module Node
+      extend ActiveSupport::Concern
       # We could have used https://github.com/evolve75/RubyTree here instead of
       # hand coding a tree, but since this is part of the 'api' I figured it
       # was better not to have any external dependencies
@@ -14,32 +15,23 @@ module TivoHMO
                     :parent,
                     :children,
                     :root,
+                    :app,
                     :title,
                     :content_type,
                     :source_format,
                     :modified_at,
                     :created_at
 
-      alias app root
-
-      def initialize(identifier, parent: nil)
-        raise ArgumentError, "Not a node: #{parent}" unless parent.nil? || parent.is_a?(Node)
-
+      def initialize(identifier)
         self.identifier = identifier
-        self.title = identifier
-        self.parent = parent
         @children = []
-        if parent.nil?
-          self.root = self
-        else
-          parent.add_child(self)
-        end
       end
 
       def add_child(child)
         raise ArgumentError, "Not a node: #{child}" unless child.is_a?(Node)
         child.parent = self
-        child.root = self.root
+        child.root = self.root if self.root
+        child.app = self.app if self.app
         @children << child
         child
       end

@@ -5,7 +5,10 @@ require 'logger'
 Bundler.require(:default, :development)
 
 console_logger = ::Logger.new(STDOUT)
-console_logger.formatter = ->(s, t, p, m) { "#{m}\n" }
+console_logger.formatter = lambda do |severity, datetime, progname, msg|
+  "#{"%-5s" % severity} #{datetime.strftime('[%d/%m/%Y %H:%M:%S]')} #{msg}\n"
+end
+
 GemLogger.default_logger = console_logger
 GemLogger.logger_concern = GemLogger::BasicLogger
 

@@ -3,10 +3,16 @@ module TivoHMO
 
     # Represents the tivo concept of an Item (i.e. a file that can be
     # displayed), and is always a leaf node in the tree.
-    class Item < Node
+    module Item
+      extend ActiveSupport::Concern
+      include Node
       include GemLogger::LoggerSupport
 
       attr_accessor :source_size
+
+      def initialize(identifier)
+        super(identifier)
+      end
 
       def metadata
         @metadata ||= app.metadata_for(self)

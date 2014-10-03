@@ -2,7 +2,8 @@ module TivoHMO
   module API
 
     # Metadata abstraction for containing and displaying supplemental info about an Item
-    class Metadata
+    module Metadata
+      extend ActiveSupport::Concern
       include GemLogger::LoggerSupport
 
       attr_accessor :item,

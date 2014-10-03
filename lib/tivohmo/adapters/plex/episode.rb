@@ -1,11 +1,9 @@
-#require 'streamio-ffmpeg'
-
 module TivoHMO
   module Adapters
     module Plex
 
-      # An Item based on a filesystem file
-      class Episode < TivoHMO::API::Item
+      class Episode
+        include TivoHMO::API::Item
         include GemLogger::LoggerSupport
 
         attr_reader :delegate

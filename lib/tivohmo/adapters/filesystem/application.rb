@@ -6,12 +6,13 @@ module TivoHMO
     module Filesystem
 
       # An Application based on a filesystem
-      class Application < TivoHMO::API::Application
+      class Application < FolderContainer
+        include TivoHMO::API::Application
         include GemLogger::LoggerSupport
+        include MonitorMixin
 
         def initialize(identifier)
-          super
-          self.container_class = TivoHMO::Adapters::Filesystem::FolderContainer
+          super(identifier)
           self.metadata_class = TivoHMO::Adapters::StreamIO::Metadata
           self.transcoder_class = TivoHMO::Adapters::StreamIO::Transcoder
           self.content_type = "x-container/tivo-videos"

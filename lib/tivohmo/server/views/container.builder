@@ -8,14 +8,6 @@ xml.TiVoContainer do
     xml.TotalItems children.size
   end
 
-  # if locals[:show_genres]
-  #   xml.Genres do
-  #     app.genres.each do |genre|
-  #       xml.Genre genre
-  #     end
-  #   end
-  # end
-
   paginated_children = children[item_start, item_count]
   paginated_children.each do |child|
     if child.is_a?(TivoHMO::API::Container)

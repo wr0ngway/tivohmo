@@ -11,16 +11,34 @@ module TivoHMO
     include GemLogger::LoggerSupport
 
     def self.description
-      "Runs a HMO server"
+      desc = <<-DESC
+        Runs a HMO server.  Specify one or more applications to show up as top level
+        shares in the TiVo Now Playing view.  The application, identifier,
+        transcoder, metadata options can be given in groups to apply the transcoder
+        and metadata to each application - uses the application's default if not given
+
+        e.g.
+
+        tivohmo -a TivoHMO::Adapters::Filesystem::Application -i ~/Video/Movies \\
+                -a TivoHMO::Adapters::Filesystem::Application -i ~/Video/TV
+
+        to run two top level filesystem video serving apps for different dirs,
+        or
+
+        tivohmo -i "My Videos@~/Video"
+
+        to run the single default filesystem app with a custom title
+      DESC
+      desc.split("\n").collect(&:strip).join("\n")
     end
 
     option ["-d", "--debug"],
            :flag, "debug output\n",
-           :default => false
+           default: false
 
     option ["-p", "--port"],
            "PORT", "run server using PORT\n",
-           :default => 9032 do |s|
+           default: 9032 do |s|
       Integer(s)
     end
 
@@ -29,27 +47,26 @@ module TivoHMO
 
     option ["-a", "--application"],
            "CLASSNAME", "use the given application class\n",
-           default: "TivoHMO::Adapters::Filesystem::Application"
-
-    option ["-i", "--identifier"],
-           "IDENTIFIER", "use the given application identifier\n"
-
-    option ["-r", "--root"],
-           "ROOT", "adds a container root via the application\n",
+           default: ["TivoHMO::Adapters::Filesystem::Application"],
            multivalued: true
 
-    option ["-c", "--container"],
-           "CLASSNAME", "override the application's container class\n"
+    option ["-i", "--identifier"],
+           "IDENTIFIER", "use the given application identifier\n" +
+           "a string that has meaning to the application\n" +
+           "give an optional title like <title>@<ident>\n",
+           multivalued: true
 
     option ["-t", "--transcoder"],
-           "CLASSNAME", "override the application's transcoder class\n"
+           "CLASSNAME", "override the application's transcoder class\n",
+           multivalued: true
 
     option ["-m", "--metadata"],
-           "CLASSNAME", "override the application's metadata class\n"
+           "CLASSNAME", "override the application's metadata class\n",
+           multivalued: true
 
     option ["-s", "--tsn"],
            "TSN", "Only serve to given TSN\n",
-           :multivalued => true
+           multivalued: true
 
     def execute
       GemLogger.default_logger.level = debug? ? Logger::DEBUG : Logger::INFO
@@ -59,39 +76,43 @@ module TivoHMO
 
         # allow cli option to override config file
         set_if_default(:port, config['port'].to_i)
-        set_if_default(:application, config['application_class'])
-        set_if_default(:container, config['container_class'])
-        set_if_default(:transcoder, config['transcoder_class'])
-        set_if_default(:metadata, config['metadata_class'])
-        set_if_default(:tsn_list, config['tsns'])
-        set_if_default(:root_list, config['containers'])
       end
 
-      [application, container, transcoder, metadata].each do |c|
+      (application_list + transcoder_list + metadata_list).each do |c|
         if c && c.starts_with?('TivoHMO::Adapters::')
           path = c.downcase.split('::')[0..-2].join('/')
           require path
         end
       end
 
-      app_class = application.constantize
-      app = app_class.new(identifier)
+      server = TivoHMO::API::Server.new
 
-      app.container_class = container.constantize if container
-      app.transcoder_class = transcoder.constantize if transcoder
-      app.metadata_class = metadata.constantize if metadata
-      app.tsns = tsn_list if tsn_list.present?
+      apps_with_config = application_list.zip(identifier_list,
+                                              transcoder_list,
+                                              metadata_list)
 
-      root_list.each do |root|
-        ident, title = root.split('@')
-        container = app.add_container(ident)
-        container.title = title if title.present?
+      apps_with_config.each do |app_classname, identifier, transcoder, metadata|
+        title, ident = identifier.split("@")
+        ident, title = title, nil unless ident
+
+        app_class = app_classname.constantize
+        app = app_class.new(ident)
+
+        if title
+          app.title = title
+        else
+          app.title = "#{app.title} on #{server.title}"
+        end
+
+        app.transcoder_class = transcoder.constantize if transcoder
+        app.metadata_class = metadata.constantize if metadata
+        server.add_child(app)
       end
 
       beacon = TivoHMO::Beacon.new(port)
       beacon.start
 
-      TivoHMO::Server.start(app, port)
+      TivoHMO::Server.start(server, port)
     end
   end
 

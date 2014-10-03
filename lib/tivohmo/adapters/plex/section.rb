@@ -1,12 +1,9 @@
-require 'active_support/core_ext/string/inflections'
-require 'listen'
-
 module TivoHMO
   module Adapters
     module Plex
 
-      # A Container based on a filesystem folder
-      class Section < TivoHMO::API::Container
+      class Section
+        include TivoHMO::API::Container
         include GemLogger::LoggerSupport
         include MonitorMixin
 
@@ -26,6 +23,15 @@ module TivoHMO
 
         def children
           synchronize do
+
+            delegate.refresh
+            new_modified_at = delegate.updated_at.to_i
+            if new_modified_at > modified_at.to_i
+              logger.info "Plex section was updated, refreshing"
+              self.modified_at = Time.at(new_modified_at)
+              super.clear
+            end
+
             if super.blank?
               Array(delegate.all).each do |media|
                 if media.is_a?(::Plex::Movie)
