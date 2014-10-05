@@ -68,6 +68,9 @@ module TivoHMO
            "TSN", "Only serve to given TSN\n",
            multivalued: true
 
+    option ["-b", "--beacon"],
+           "LIMIT:INTERVAL", "configure beacon limit and/or interval\n"
+
     def execute
       GemLogger.default_logger.level = debug? ? Logger::DEBUG : Logger::INFO
 
@@ -109,10 +112,13 @@ module TivoHMO
         server.add_child(app)
       end
 
-      beacon = TivoHMO::Beacon.new(port)
-      beacon.start
-
-      TivoHMO::Server.start(server, port)
+      TivoHMO::Server.start(server, port) do |s|
+        limit, interval = beacon.split(":")
+        opts = {}
+        opts[:limit] = limit.to_i if limit.present?
+        opts[:interval] = interval.to_i if interval.present?
+        TivoHMO::Beacon.new(port, **opts).start
+      end
     end
   end
 

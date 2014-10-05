@@ -7,7 +7,7 @@ module TivoHMO
   class Beacon
     include GemLogger::LoggerSupport
 
-    def initialize(service_port, interval: 10, limit: -1)
+    def initialize(service_port, limit: -1, interval: 60)
       @interval = interval
       @limit = limit
       @uid = SecureRandom.uuid
@@ -18,7 +18,7 @@ module TivoHMO
 
     def start
       if ! @running
-        logger.info "Starting beacon for #{@services.inspect}"
+        logger.info "Starting beacon(limit=#@limit, interval=#@interval) for #{@services.inspect}"
         @running = true
         @broadcast_thread = Thread.new do
           while @running
@@ -27,6 +27,7 @@ module TivoHMO
             @limit = @limit - 1
             break if @limit == 0
           end
+          @running = false
           logger.info "Beacon thread exiting"
         end
       end
