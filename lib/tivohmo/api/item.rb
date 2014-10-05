@@ -12,6 +12,8 @@ module TivoHMO
 
       def initialize(identifier)
         super(identifier)
+        self.content_type = "video/x-tivo-mpeg"
+        self.source_format = "video/x-tivo-mpeg"
       end
 
       def metadata

@@ -19,9 +19,9 @@ xml.TvBusMarshalledStruct :TvBusEnvelope,
 
   md = item.metadata
 
+  xml.recordedDuration format_iso_duration(md.duration)
   xml.vActualShowing md.actual_showing
   xml.vBookmark md.bookmark
-  xml.recordedDuration format_iso_duration(md.duration)
   xml.recordingQuality md.recording_quality[:name], :value => md.recording_quality[:value]
 
   xml.showing do
@@ -36,33 +36,13 @@ xml.TvBusMarshalledStruct :TvBusEnvelope,
 
     xml.program do
 
-      xml.title md.series_title ? md.series_title : (md.title || item.title)
-      xml.description md.description
-      xml.originalAirDate format_iso_date(md.original_air_date)
-      xml.movieYear md.movie_year if md.movie_year
-      xml.vAdvisory md.advisory
-
-      xml.colorCode md.color_code.try(:[], :name),
-                    :value => md.color_code.try(:[], :value)
-
-      xml.showType md.show_type.try(:[], :name),
-                    :value => md.show_type.try(:[], :value)
-
-      if md.mpaa_rating
-        xml.mpaaRating md.mpaa_rating[:name], :value => md.mpaa_rating[:value]
-      end
-
-      if md.star_rating
-        xml.starRating md.star_rating[:name], :value => md.star_rating[:value]
-      end
-
-      xml.uniqueId md.program_id if md.program_id
-
       xml.vActor do
         Array(md.actors).each do |actor|
           xml.element actor
         end
       end
+
+      xml.vAdvisory md.advisory
 
       xml.vChoreographer do
         Array(md.choreographers).each do |choreographer|
@@ -70,39 +50,22 @@ xml.TvBusMarshalledStruct :TvBusEnvelope,
         end
       end
 
+      xml.colorCode md.color_code.try(:[], :name),
+                    :value => md.color_code.try(:[], :value)
+      xml.description md.description
+
       xml.vDirector do
         Array(md.directors).each do |director|
           xml.element director
         end
       end
 
-      xml.vProducer do
-        Array(md.producers).each do |producer|
-          xml.element producer
-        end
-      end
+      xml.episodeNumber md.episode_number if md.episode_number
+      xml.episodeTitle md.episode_title if md.is_episode && md.episode_title
 
       xml.vExecProducer do
         Array(md.executive_producers).each do |executive_producer|
           xml.element executive_producer
-        end
-      end
-
-      xml.vWriter do
-        Array(md.writers).each do |writer|
-          xml.element writer
-        end
-      end
-
-      xml.vHost do
-        Array(md.hosts).each do |host|
-          xml.element host
-        end
-      end
-
-      xml.vGuestStar do
-        Array(md.guest_stars).each do |guest_star|
-          xml.element guest_star
         end
       end
 
@@ -112,9 +75,35 @@ xml.TvBusMarshalledStruct :TvBusEnvelope,
         end
       end
 
+      xml.vGuestStar do
+        Array(md.guest_stars).each do |guest_star|
+          xml.element guest_star
+        end
+      end
+
+      xml.vHost do
+        Array(md.hosts).each do |host|
+          xml.element host
+        end
+      end
+
       xml.isEpisode md.is_episode
-      xml.episodeNumber md.episode_number if md.episode_number
-      xml.episodeTitle md.episode_title if md.is_episode && md.episode_title
+
+      if md.movie_year
+        xml.movieYear md.movie_year
+      else
+        xml.originalAirDate format_iso_date(md.original_air_date || md.time)
+      end
+
+      if md.mpaa_rating
+        xml.mpaaRating md.mpaa_rating[:name], :value => md.mpaa_rating[:value]
+      end
+
+      xml.vProducer do
+        Array(md.producers).each do |producer|
+          xml.element producer
+        end
+      end
 
       xml.series do
         xml.isEpisodic md.is_episode
@@ -126,6 +115,23 @@ xml.TvBusMarshalledStruct :TvBusEnvelope,
         xml.seriesTitle md.series_title
         xml.uniqueId md.series_id if md.series_id
       end
+
+      xml.showType md.show_type.try(:[], :name),
+                    :value => md.show_type.try(:[], :value)
+
+      if md.star_rating
+        xml.starRating md.star_rating[:name], :value => md.star_rating[:value]
+      end
+
+      xml.title md.series_title ? md.series_title : (md.title || item.title)
+
+      xml.vWriter do
+        Array(md.writers).each do |writer|
+          xml.element writer
+        end
+      end
+
+      xml.uniqueId md.program_id if md.program_id
 
     end
 
@@ -141,7 +147,7 @@ xml.TvBusMarshalledStruct :TvBusEnvelope,
 
   end
 
-  xml.startTime md.start_time
-  xml.stopTime md.stop_time
+  xml.startTime format_iso_date(md.start_time)
+  xml.stopTime format_iso_date(md.stop_time)
 
 end

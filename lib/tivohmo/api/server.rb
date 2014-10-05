@@ -14,6 +14,7 @@ module TivoHMO
         self.root = self
         self.title = Socket.gethostname.split('.').first
         self.content_type = "x-container/tivo-server"
+        self.source_format = "x-container/folder"
       end
 
     end

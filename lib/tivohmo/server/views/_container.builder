@@ -12,13 +12,7 @@ xml.Item do
   xml.Links do
     xml.Content do
       xml.Url container_url(container)
-      xml.ContentType container.content_type
-    end
-
-    xml.CustomIcon do
-      xml.Url "urn:tivo:image:save-until-i-delete-recording"
-      xml.ContentType "image/*"
-      xml.AcceptsParams "No"
+      xml.ContentType "x-tivo-container/folder"
     end
   end
 

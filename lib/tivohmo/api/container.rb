@@ -16,7 +16,9 @@ module TivoHMO
       def initialize(identifier)
         super(identifier)
         self.uuid = SecureRandom.uuid
-        self.source_format = "x-container/folder"
+
+        self.content_type = "x-tivo-container/tivo-videos"
+        self.source_format = "x-tivo-container/folder"
       end
 
       def refresh

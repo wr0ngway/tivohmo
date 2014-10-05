@@ -7,16 +7,15 @@ xml.Item do
     xml.ContentType item.content_type
     xml.SourceFormat item.source_format
     xml.SourceSize item.source_size if item.source_size
-    xml.CaptureDate format_date(item.created_at) if item.created_at
 
     if md
+      xml.Duration md.duration.to_i * 1000 if md.duration
       xml.Description md.description if md.description
-      xml.Duration md.duration if md.duration
 
       xml.SourceChannel md.channel[:major_number] if md.channel
       xml.SourceStation md.channel[:callsign] if md.channel
 
-      xml.SeriesId md.series_id if md.series_id
+      xml.SeriesId md.series_id
       xml.ShowingBits md.showing_bits if md.showing_bits
       # xml.CopyProtected 'Yes' if md.valid?
 
@@ -28,25 +27,28 @@ xml.Item do
       xml.TvRating md.tv_rating[:name] if md.tv_rating
       xml.MpaaRating md.mpaa_rating[:name] if md.mpaa_rating
     end
+
+    xml.CaptureDate format_date(item.created_at) if item.created_at
+
   end
 
   xml.Links do
     xml.Content do
-      xml.Url item_url(item)
       xml.ContentType item.content_type
+      xml.Url item_url(item)
     end
 
     xml.CustomIcon do
-      xml.Url "urn:tivo:image:save-until-i-delete-recording"
       xml.ContentType "image/*"
       xml.AcceptsParams "No"
+      xml.Url "urn:tivo:image:save-until-i-delete-recording"
     end
 
     if md
       xml.TiVoVideoDetails do
-        xml.Url item_detail_url(item)
         xml.ContentType "text/xml"
         xml.AcceptsParams "No"
+        xml.Url item_detail_url(item)
       end
     end
 

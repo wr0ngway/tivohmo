@@ -25,7 +25,6 @@ module TivoHMO
           self.allowed_item_extensions = %w[avi mp4 mpg mkv]
 
           self.title = File.basename(self.identifier)
-          self.content_type = "x-container/tivo-videos"
           self.modified_at = File.mtime(self.identifier)
           self.created_at = File.ctime(self.identifier)
 

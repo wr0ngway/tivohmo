@@ -17,7 +17,6 @@ module TivoHMO
 
           self.metadata_class = TivoHMO::Adapters::Plex::Metadata
           self.transcoder_class = TivoHMO::Adapters::Plex::Transcoder
-          self.content_type = "x-container/tivo-videos"
           self.title = self.identifier
 
           @server = ::Plex::Server.new(host, port)

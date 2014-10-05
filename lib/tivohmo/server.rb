@@ -17,8 +17,8 @@ module TivoHMO
     set :reload_templates, true
     set :builder, :content_type => 'text/xml'
 
-    def self.start(server, port)
-      Rack::Handler.default.run new(server), Port: port
+    def self.start(server, port, &block)
+      Rack::Handler.default.run new(server), Port: port, &block
     end
 
     def initialize(server)
@@ -75,16 +75,17 @@ module TivoHMO
       end
 
       def item_url(item)
-        item.title_path
+        "/#{item.title_path}"
       end
 
       def item_detail_url(item)
-        # "/TiVoConnect?Command=TVBusQuery&amp;Container=Movies%20on%20Matts%20Laptop&amp;File=/Adult%20Movies/X-Men%20Days%20of%20Future%20Past%20%282014%29.mkv"
         url = "/TiVoConnect"
+        container = item.app.title
+        file = item.title_path.sub(container, '')
         params = {
             Command: 'TVBusQuery',
-            Container: item.parent.title_path,
-            File: item.title
+            Container: container,
+            File: file
         }
         url << "?" << build_query(params)
       end
@@ -101,7 +102,7 @@ module TivoHMO
 
       def format_iso_date(time)
         return "" unless time
-        time.iso8601
+        time.utc.strftime("%FT%T.%6N")
       end
 
       def format_iso_duration(duration)
@@ -112,6 +113,12 @@ module TivoHMO
         'P%sDT%sH%sM%sS' % [0, hours, minutes, seconds]
       end
 
+      def pad(length, align)
+        extra = length % align
+        extra = align - extra if extra > 0
+        extra
+      end
+
       def tivo_header(item, mime)
         if mime == 'video/x-tivo-mpeg-ts'
           flag = 45
@@ -120,24 +127,18 @@ module TivoHMO
         end
 
         item_details_xml = builder :item_details, layout: true, locals: {item: item}
-        ld = item_details_xml.size
-        chunk_length = ld * 2 + 44
-        padding = 2048 - (chunk_length % 1024)
+        ld = item_details_xml.bytesize
+        chunk = item_details_xml + '\0' * (pad(ld, 4) + 4)
+        lc = chunk.bytesize
+        blocklen = lc * 2 + 40
+        padding = pad(blocklen, 1024)
 
-        # python: https://docs.python.org/2/library/struct.html
-        # ruby: http://www.ruby-doc.org/core-2.1.3/Array.html#method-i-pack
-        #
-        # > big endian, standard size, none alignment for rest of format string
-        # H in python, unsigned short 2 bytes - n in ruby
-        # L in python, unsigned long 4 bytes - N in ruby
-        #
         data = 'TiVo'
-        data << [4, flag, 0, padding + chunk_length, 2].pack('nnnNn') # python '>HHHLH'
-        data << [ld + 16, ld, 1, 0].pack('NNnn') # python '>LLHH'
-        data << item_details_xml
-        data << "\0" * 4
-        data << [ld + 19, ld, 2, 0].pack('NNnn') # python '>LLHH'
-        data << item_details_xml
+        data << [4, flag, 0, padding + blocklen, 2].pack('nnnNn')
+        data << [lc + 12, ld, 1, 0].pack('NNnn')
+        data << chunk
+        data << [lc + 12, ld, 2, 0].pack('NNnn')
+        data << chunk
         data << "\0" * padding
 
         data
@@ -164,7 +165,7 @@ module TivoHMO
     after do
       if logger.level == Logger::DEBUG
         logger.debug "Response to #{request.ip} for #{request.url} [#{response.status}]:"
-        logger.debug response.body.join("\n")
+        logger.debug response.body.join("\n") unless response.body.is_a?(Sinatra::Helpers::Stream)
       end
     end
 
@@ -211,8 +212,8 @@ module TivoHMO
 
           container = server.find(container_path)
           halt 404, "No container found for #{container_path}" unless container
-          children = container.children
 
+          children = container.children
           children = sort(children, sort_order) if sort_order
 
           if anchor_item
@@ -234,12 +235,19 @@ module TivoHMO
             end
           end
 
-          builder :container, layout: true, locals: locals.merge(container: container, children: children)
+          if container.root?
+            builder :server, layout: true,
+                    locals: locals.merge(container: container, children: children)
+          else
+            builder :container, layout: true,
+                    locals: locals.merge(container: container, children: children)
+          end
+
 
         when 'TVBusQuery' then
-          container_path = params['Container'] || '/'
+          container_path = params['Container']
           item_title = params['File']
-          path = [container_path, item_title].join('/')
+          path = "#{container_path}#{item_title}"
 
           item = server.find(path)
           halt 404, "No item found for #{path}" unless item
@@ -277,6 +285,81 @@ module TivoHMO
 
     end
 
+    class BufferedIO
+      def initialize(delegate, write_buf_size)
+        @delegate = delegate
+        @write_buf_size = write_buf_size
+        @buf = "".b
+      end
+
+      def read(*args)
+        @delegate.read(*args)
+      end
+
+      def write(data)
+        @buf << data
+        if @buf.size >= @write_buf_size
+          flush
+        end
+      end
+
+      alias << write
+
+      def flush
+        @delegate.write(@buf)
+        @delegate.flush
+        @buf.clear
+      end
+
+      def close
+        flush
+        @delegate.close
+      end
+
+    end
+
+    class ChunkedHttpIO
+      include GemLogger::LoggerSupport
+
+      def initialize(delegate, write_buf_size)
+        @delegate = delegate
+        @write_buf_size = write_buf_size
+        @buf = "".b
+      end
+
+      def read(*args)
+        @delegate.read(*args)
+      end
+
+      def write(data)
+        logger.debug "Buffering #{data.size}"
+        @buf << data
+        if @buf.size >= @write_buf_size
+          flush
+        end
+      end
+
+      alias << write
+
+      def flush
+        logger.debug "Flushing buffer header #{@buf.size}"
+        @delegate.write("%x\r\n" % @buf.size)
+        logger.debug "Flushing buffer"
+        @delegate.write(@buf)
+        logger.debug "Flushing buffer terminator"
+        @delegate.write("\r\n")
+        logger.debug "Flush"
+        @delegate.flush
+        logger.debug "Flushed"
+        @buf.clear
+      end
+
+      def close
+        flush
+        @delegate.close
+      end
+    end
+
     get '/*' do
       logger.info "Tivo Requesting Item: #{request.url}"
 
@@ -291,10 +374,56 @@ module TivoHMO
       stream do |out|
         out << tivo_header(item, format)
         item.transcoder.transcode(out)
-        # out << "0\r\n\r\n"
       end
 
     end
+
+    # get '/*' do
+    #   logger.info "Tivo Requesting Item: #{request.url}"
+    #
+    #   title_path = params[:splat].join('/')
+    #   format = params['Format']
+    #   item = server.find(title_path)
+    #   halt 404, "No item found for #{title_path}" unless item && item.is_a?(TivoHMO::API::Item)
+    #
+    #
+    #   env['rack.hijack'].call
+    #   io = env['rack.hijack_io']
+    #
+    #   begin
+    #     io = BufferedIO.new(io, 0x10000)
+    #
+    #     logger.debug "Sending http header"
+    #     io << "HTTP/1.1 206 Partial Content\r\n"
+    #     io << "Server: TivoHMO/1.0\r\n"
+    #     io << "Date: #{Time.now.utc.strftime('%a, %d %b %Y %H:%M:%S GMT')}\r\n"
+    #     io << "Transfer-Encoding: chunked\r\n"
+    #     io << "Content-Type: #{format}\r\n"
+    #     io << "\r\n"
+    #
+    #     # logger.debug "Flushing headers"
+    #     # io.flush
+    #
+    #     io = ChunkedHttpIO.new(io, 512*1024)
+    #     logger.debug "Sending tivo header"
+    #     io << tivo_header(item, format)
+    #
+    #     # logger.debug "Flushing tivo headers"
+    #     # io.flush
+    #
+    #     logger.debug "Sending transcoded data"
+    #     item.transcoder.transcode(io)
+    #
+    #     io << "0\r\n\r\n"
+    #     io.flush
+    #   rescue Exception => e
+    #       logger.error "Failed transfer: #{e}"
+    #       logger.error(e)
+    #       raise
+    #   ensure
+    #     io.close if io
+    #   end
+    # end
 
   end
 end

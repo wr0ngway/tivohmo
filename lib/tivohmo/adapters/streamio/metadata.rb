@@ -13,7 +13,7 @@ module TivoHMO
           super(item)
           begin
             self.movie = FFMPEG::Movie.new(item.identifier)
-            self.duration = movie.duration
+            self.duration = movie.duration.to_i
           rescue => e
             logger.error "Failed to read movie metadata: #{e}"
           end

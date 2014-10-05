@@ -36,6 +36,14 @@ module TivoHMO
         child
       end
 
+      def root?
+        self == self.root
+      end
+
+      def app?
+        self == self.app
+      end
+
       def find(title_path)
 
         unless title_path.is_a?(Array)
@@ -62,14 +70,10 @@ module TivoHMO
       end
 
       def title_path
-        if self == root
-          "/"
+        if parent.root?
+          self.title
         else
-          if parent == root
-            "#{parent.title_path}#{self.title}"
-          else
-            "#{parent.title_path}/#{self.title}"
-          end
+          "#{parent.title_path}/#{self.title}"
         end
       end
 

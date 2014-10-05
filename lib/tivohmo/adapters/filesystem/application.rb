@@ -15,7 +15,6 @@ module TivoHMO
           super(identifier)
           self.metadata_class = TivoHMO::Adapters::StreamIO::Metadata
           self.transcoder_class = TivoHMO::Adapters::StreamIO::Transcoder
-          self.content_type = "x-container/tivo-videos"
         end
       end
 
