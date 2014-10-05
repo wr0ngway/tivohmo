@@ -36,8 +36,9 @@ module TivoHMO
         def transcoder_options(video_info)
           {
               frame_rate: 29.97,
-              resolution: "1920x1080",
-              preserve_aspect_ratio: :width,
+              resolution: "1280x720",
+              #resolution: "1920x1080",
+              preserve_aspect_ratio: :height,
 
               video_codec: "mpeg2video",
               video_bitrate: 16384,
@@ -110,7 +111,28 @@ module TivoHMO
 
         protected
 
+        require 'shellwords'
+
         def run_transcode(output_filename)
+
+          transcode_thread = Thread.new do
+            begin
+              logger.info "Starting transcode to: #{output_filename}"
+              # DEBUG:pyTivo.video.transcode:/usr/local/bin/ffmpeg -i /Users/mconway/Movies/Adult TV Shows/The Big Bang Theory/Season 8/The.Big.Bang.Theory.S08E01.720p.HDTV.X264-DIMENSION.mkv -vcodec mpeg2video -pix_fmt yuv420p -b 16384k -maxrate 30000k -bufsize 4096k -ab 448k -ar 48000 -acodec copy -copyts -map 0:0 -map 0:1 -f vob -
+              options = "-vcodec mpeg2video -pix_fmt yuv420p -b 16384k -maxrate 30000k -bufsize 4096k -ab 448k -ar 48000 -acodec copy -copyts -map 0:0 -map 0:1 -f vob"
+              cmd = "/usr/local/bin/ffmpeg -y -i #{Shellwords.escape(item.identifier)} #{options} #{Shellwords.escape(output_filename)}"
+              logger.info "Transcode command: #{cmd}"
+              system(cmd)
+              logger.info "Transcoding completed, transcoded file size: #{File.size(output_filename)}"
+            rescue => e
+              logger.error ("Transcode failed: #{e}")
+            end
+          end
+
+          return transcode_thread
+        end
+
+        def xrun_transcode(output_filename)
           movie = FFMPEG::Movie.new(item.identifier)
 
           info_attrs = %w[
@@ -171,11 +193,12 @@ module TivoHMO
               # wasteful tight loop when transcoding is really slow
               sleep 0.2
 
-              while data = file.read(4096) && data.size > 0
+              while data = file.read(4096)
+                break unless data.size > 0
                 writeable_io << data
                 bytes_copied += data.size
+                end
               end
-            end
 
             logger.info "Stream copy completed, #{bytes_copied} bytes copied"
           rescue => e
