@@ -1,13 +1,15 @@
+require 'tivohmo/adapters/streamio'
+
 module TivoHMO
   module Adapters
     module Plex
 
-      class Transcoder
-        include TivoHMO::API::Transcoder
+      class Transcoder < TivoHMO::Adapters::StreamIO::Transcoder
         include GemLogger::LoggerSupport
 
-        def transcode(writeable_io)
-          raise NotImplementedError
+        def initialize(item)
+          super(item)
+          self.source_filename = item.delegate.media.first.parts.first.file
         end
 
       end
