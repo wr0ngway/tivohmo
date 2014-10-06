@@ -6,9 +6,9 @@ xml.Item do
     xml.Title item.title
     xml.ContentType item.content_type
     xml.SourceFormat item.source_format
-    xml.SourceSize item.source_size if item.source_size
 
     if md
+      xml.SourceSize md.source_size if md.source_size
       xml.Duration md.duration.to_i * 1000 if md.duration
       xml.Description md.description if md.description
 

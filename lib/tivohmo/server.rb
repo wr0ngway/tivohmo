@@ -285,82 +285,8 @@ module TivoHMO
 
     end
 
-    class BufferedIO
-      def initialize(delegate, write_buf_size)
-        @delegate = delegate
-        @write_buf_size = write_buf_size
-        @buf = "".b
-      end
-
-      def read(*args)
-        @delegate.read(*args)
-      end
-
-      def write(data)
-        @buf << data
-        if @buf.size >= @write_buf_size
-          flush
-        end
-      end
-
-      alias << write
-
-      def flush
-        @delegate.write(@buf)
-        @delegate.flush
-        @buf.clear
-      end
-
-      def close
-        flush
-        @delegate.close
-      end
-
-    end
-
-    class ChunkedHttpIO
-      include GemLogger::LoggerSupport
-
-      def initialize(delegate, write_buf_size)
-        @delegate = delegate
-        @write_buf_size = write_buf_size
-        @buf = "".b
-      end
-
-      def read(*args)
-        @delegate.read(*args)
-      end
-
-      def write(data)
-        logger.debug "Buffering #{data.size}"
-        @buf << data
-        if @buf.size >= @write_buf_size
-          flush
-        end
-      end
-
-      alias << write
-
-      def flush
-        logger.debug "Flushing buffer header #{@buf.size}"
-        @delegate.write("%x\r\n" % @buf.size)
-        logger.debug "Flushing buffer"
-        @delegate.write(@buf)
-        logger.debug "Flushing buffer terminator"
-        @delegate.write("\r\n")
-        logger.debug "Flush"
-        @delegate.flush
-        logger.debug "Flushed"
-        @buf.clear
-      end
-
-      def close
-        flush
-        @delegate.close
-      end
-    end
-
     get '/*' do
+
       logger.info "Tivo Requesting Item: #{request.url}"
 
       title_path = params[:splat].join('/')
@@ -377,53 +303,6 @@ module TivoHMO
       end
 
     end
-
-    # get '/*' do
-    #   logger.info "Tivo Requesting Item: #{request.url}"
-    #
-    #   title_path = params[:splat].join('/')
-    #   format = params['Format']
-    #   item = server.find(title_path)
-    #   halt 404, "No item found for #{title_path}" unless item && item.is_a?(TivoHMO::API::Item)
-    #
-    #
-    #   env['rack.hijack'].call
-    #   io = env['rack.hijack_io']
-    #
-    #   begin
-    #     io = BufferedIO.new(io, 0x10000)
-    #
-    #     logger.debug "Sending http header"
-    #     io << "HTTP/1.1 206 Partial Content\r\n"
-    #     io << "Server: TivoHMO/1.0\r\n"
-    #     io << "Date: #{Time.now.utc.strftime('%a, %d %b %Y %H:%M:%S GMT')}\r\n"
-    #     io << "Transfer-Encoding: chunked\r\n"
-    #     io << "Content-Type: #{format}\r\n"
-    #     io << "\r\n"
-    #
-    #     # logger.debug "Flushing headers"
-    #     # io.flush
-    #
-    #     io = ChunkedHttpIO.new(io, 512*1024)
-    #     logger.debug "Sending tivo header"
-    #     io << tivo_header(item, format)
-    #
-    #     # logger.debug "Flushing tivo headers"
-    #     # io.flush
-    #
-    #     logger.debug "Sending transcoded data"
-    #     item.transcoder.transcode(io)
-    #
-    #     io << "0\r\n\r\n"
-    #     io.flush
-    #   rescue Exception => e
-    #       logger.error "Failed transfer: #{e}"
-    #       logger.error(e)
-    #       raise
-    #   ensure
-    #     io.close if io
-    #   end
-    # end
 
   end
 end

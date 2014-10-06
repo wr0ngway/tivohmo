@@ -8,8 +8,6 @@ module TivoHMO
       include Node
       include GemLogger::LoggerSupport
 
-      attr_accessor :source_size
-
       def initialize(identifier)
         super(identifier)
         self.content_type = "video/x-tivo-mpeg"

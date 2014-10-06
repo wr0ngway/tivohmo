@@ -26,8 +26,8 @@ module TivoHMO
 
             run_copy(tmpfile.path, writeable_io, transcode_thread)
           ensure
-            # tmpfile.close
-            # tmpfile.unlink
+            tmpfile.close
+            tmpfile.unlink
           end
 
           nil
@@ -67,7 +67,7 @@ module TivoHMO
               video_max_bitrate: 30000,
               buffer_size: 4096,
               audio_bitrate: 448,
-              custom: "-f vob"
+              custom: "-copyts -f vob"
           }
 
           if ! VIDEO_FRAME_RATES.find(video_info[:height])
@@ -93,11 +93,11 @@ module TivoHMO
           if VIDEO_CODECS.find(video_info[:video_codec])
             opts[:video_codec] =  'copy -bsf h264_mp4toannexb'
           else
-            opts[:video_codec] = 'mpeg2video'
+            opts[:video_codec] = 'mpeg2video -pix_fmt yuv420p'
           end
 
           if AUDIO_CODECS.find(video_info[:audio_codec])
-            opts[:audio_codec] =  'copy'
+            opts[:audio_codec] = 'copy'
           else
             opts[:audio_codec] = 'ac3'
           end
@@ -111,29 +111,8 @@ module TivoHMO
 
         protected
 
-        require 'shellwords'
-
         def run_transcode(output_filename)
-
-          transcode_thread = Thread.new do
-            begin
-              logger.info "Starting transcode to: #{output_filename}"
-              # DEBUG:pyTivo.video.transcode:/usr/local/bin/ffmpeg -i /Users/mconway/Movies/Adult TV Shows/The Big Bang Theory/Season 8/The.Big.Bang.Theory.S08E01.720p.HDTV.X264-DIMENSION.mkv -vcodec mpeg2video -pix_fmt yuv420p -b 16384k -maxrate 30000k -bufsize 4096k -ab 448k -ar 48000 -acodec copy -copyts -map 0:0 -map 0:1 -f vob -
-              options = "-vcodec mpeg2video -pix_fmt yuv420p -b 16384k -maxrate 30000k -bufsize 4096k -ab 448k -ar 48000 -acodec copy -copyts -map 0:0 -map 0:1 -f vob"
-              cmd = "/usr/local/bin/ffmpeg -y -i #{Shellwords.escape(item.identifier)} #{options} #{Shellwords.escape(output_filename)}"
-              logger.info "Transcode command: #{cmd}"
-              system(cmd)
-              logger.info "Transcoding completed, transcoded file size: #{File.size(output_filename)}"
-            rescue => e
-              logger.error ("Transcode failed: #{e}")
-            end
-          end
-
-          return transcode_thread
-        end
-
-        def xrun_transcode(output_filename)
-          movie = FFMPEG::Movie.new(item.identifier)
+          movie = FFMPEG::Movie.new(source_filename)
 
           info_attrs = %w[
             path duration time bitrate rotation creation_time

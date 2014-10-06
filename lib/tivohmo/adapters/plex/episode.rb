@@ -9,12 +9,12 @@ module TivoHMO
         attr_reader :delegate
 
         def initialize(delegate)
+          # delegate is a Plex::Episode
           @delegate = delegate
 
           super(delegate.key)
 
           self.title = delegate.title
-          self.source_size = delegate.duration.to_i
           self.modified_at = Time.at(delegate.updated_at.to_i)
           self.created_at = Time.at(delegate.added_at.to_i)
         end

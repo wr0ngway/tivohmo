@@ -17,10 +17,12 @@ module TivoHMO
       AUDIO_CODECS = %w[ac3 liba52 mp2]
       AUDIO_SAMPLE_RATES = %w[44100 48000]
 
-      attr_accessor :item
+      attr_accessor :item,
+                    :source_filename
 
       def initialize(item)
         self.item = item
+        self.source_filename = item.identifier
       end
 
       def transcode(writeable_io)

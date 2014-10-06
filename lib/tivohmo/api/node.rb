@@ -24,6 +24,7 @@ module TivoHMO
 
       def initialize(identifier)
         self.identifier = identifier
+        self.title = identifier
         @children = []
       end
 
@@ -70,7 +71,7 @@ module TivoHMO
       end
 
       def title_path
-        if parent.root?
+        if parent.nil? || parent.root?
           self.title
         else
           "#{parent.title_path}/#{self.title}"

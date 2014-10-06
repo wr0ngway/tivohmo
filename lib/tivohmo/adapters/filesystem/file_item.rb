@@ -16,7 +16,6 @@ module TivoHMO
           super(full_path)
 
           self.title = File.basename(self.identifier)
-          self.source_size = File.size(self.identifier)
           self.modified_at = File.mtime(self.identifier)
           self.created_at = File.ctime(self.identifier)
         end
