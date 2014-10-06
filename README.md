@@ -4,11 +4,13 @@ This gem provides a Ruby SDK for authoring and running Tivo Home Media Option ap
 
 This is based on the excellent work done in the [pyTivo](http://pytivo.sourceforge.net/wiki/index.php/PyTivo) project, but written from the ground up in ruby with a full test suite and more separation of concerns between http server, data model, metadata provider and transcoder.
 
+In order to reduce some of the code burden, this project only supports HD tivos, and since I only have a Roamio Pro, you can assume that is all it works on for now.  If you are an end user looking for something that just works, you will be better off with pyTivo as it supports more functionality across a wider range of devices.
+
 A basic Directory/File implementation is provided to allow one to point the server at a directory tree containing videos and be able to browse those videos using the Tivo HMO browsing available in 'My Shows', with transcoding and transfer to the Tivo for viewing.
 
-This project only supports serving of video resources (for now) as that fills my need.
+A Plex adapter is also available with similar functionality.  The transcoding only works if the TivoHMO server is on the same machine as Plex because it just reads from the underlying file that Plex references.  Future work will include the ability to use the Plex transcoder, or at the very least stream the video data from Plex to TivoHMO for transcoding before sending to tivo (less efficient).
 
-Given that one can't beat the Tivo UI and Remote for watching video, the eventual goal is to integrate this project plus [tivohme](http://github.com/wr0ngway/tivohme) into a third, [tivohub](http://github.com/wr0ngway/tivohub), for multiplexing multiple sources (specifically [plex](https://plex.tv/)) into the multiple sinks available in the Tivo UI (hmo, hme, possibly opera apps).
+This project only supports serving of video resources (for now) as that fills my need.
 
 ## Installation
 
