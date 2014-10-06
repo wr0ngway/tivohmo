@@ -10,6 +10,7 @@ module TivoHMO
         attr_reader :delegate
 
         def initialize(delegate)
+          # delegate is a Plex::Season
           @delegate = delegate
 
           super(delegate.key)

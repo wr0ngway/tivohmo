@@ -10,7 +10,7 @@ module TivoHMO
         attr_reader :delegate
 
         def initialize(delegate)
-          # TODO: handle string for section for adding roots from CLI
+          # delegate is a Plex::Section
           @delegate = delegate
 
           super(delegate.key)
@@ -22,25 +22,19 @@ module TivoHMO
 
         def children
           synchronize do
-
-            delegate.refresh
-            new_modified_at = delegate.updated_at.to_i
-            if new_modified_at > modified_at.to_i
-              logger.info "Plex section was updated, refreshing"
-              self.modified_at = Time.at(new_modified_at)
-              super.clear
-            end
-
             if super.blank?
-              Array(delegate.all).each do |media|
-                if media.is_a?(::Plex::Movie)
-                  add_child(Movie.new(media))
-                elsif media.is_a?(::Plex::Show)
-                  add_child(Show.new(media))
-                else
-                  logger.error "Unknown type for #{media} in #{self}"
-                end
-              end
+              add_child(Category.new(delegate, :recently_added))
+              add_child(Category.new(delegate, :unwatched))
+              add_child(Category.new(delegate, :newest))
+              add_child(Category.new(delegate, :on_deck))
+              add_child(Category.new(delegate, :recently_viewed))
+              add_child(Category.new(delegate, :all))
+              add_child(QualifiedCategory.new(delegate, :by_genre, :genres))
+              add_child(QualifiedCategory.new(delegate, :by_year, :years))
+              add_child(QualifiedCategory.new(delegate, :by_first_character, :first_characters))
+              add_child(QualifiedCategory.new(delegate, :by_collection, :collections))
+              add_child(QualifiedCategory.new(delegate, :by_folder, :folders))
+              add_child(QualifiedCategory.new(delegate, :by_content_rating, :content_ratings))
             end
           end
 

@@ -10,8 +10,8 @@ module TivoHMO
           super
 
           begin
-            self.duration = item.delegate.duration.to_i
             self.description = item.delegate.summary
+            self.duration = item.delegate.duration.to_i
           rescue => e
             logger.error "Failed to read plex metadata: #{e}"
           end
