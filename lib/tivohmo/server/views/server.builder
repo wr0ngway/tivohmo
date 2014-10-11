@@ -9,13 +9,7 @@ xml.TiVoContainer do
 
   paginated_children = children[item_start, item_count]
   paginated_children.each do |child|
-    if child.is_a?(TivoHMO::API::Container)
-      builder :_container, layout: false, locals: { xml: xml, container: child }
-    elsif child.is_a?(TivoHMO::API::Item)
-      builder :_item, layout: false, locals: { xml: xml, item: child }
-    else
-      raise "Invalid child, needs to be item or container"
-    end
+    builder :_container, layout: false, locals: { xml: xml, container: child }
   end
 
   xml.ItemStart item_start

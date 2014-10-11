@@ -19,7 +19,6 @@ module TivoHMO
         self.app = self
         self.content_type = "x-container/tivo-videos"
         self.source_format = "x-container/folder"
-
       end
 
       def metadata_for(item)

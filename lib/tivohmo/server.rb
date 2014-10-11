@@ -12,10 +12,25 @@ module TivoHMO
   class Server < Sinatra::Base
     include GemLogger::LoggerSupport
 
-    enable :logging
+    disable :logging
     set :root, File.expand_path("../server", __FILE__)
     set :reload_templates, true
     set :builder, :content_type => 'text/xml'
+
+    before do
+      logger.info "Request from #{request.ip} \"#{request.request_method} #{request.url}\""
+      logger.debug "Headers: #{headers.inspect}"
+    end
+
+    after do
+      logger.info "Response to #{request.ip} for \"#{request.request_method} #{request.url}\" [#{response.status}]"
+      logger.debug "Headers: #{response.header}"
+      if ! response.body.is_a?(Sinatra::Helpers::Stream)
+        logger.debug "Body:\n"
+        logger.debug response.body.join("\n")
+      end
+    end
+
 
     def self.start(server, port, &block)
       Rack::Handler.default.run new(server), Port: port, &block
@@ -26,8 +41,12 @@ module TivoHMO
       super
     end
 
-    helpers do
+    module Helpers
       include Rack::Utils
+
+      def logger
+        Server.logger
+      end
 
       def server
         @server
@@ -75,13 +94,13 @@ module TivoHMO
       end
 
       def item_url(item)
-        "/#{item.title_path}"
+        item.title_path
       end
 
       def item_detail_url(item)
         url = "/TiVoConnect"
         container = item.app.title
-        file = item.title_path.sub(container, '')
+        file = item.title_path.sub("/#{container}/", '')
         params = {
             Command: 'TVBusQuery',
             Container: container,
@@ -109,8 +128,9 @@ module TivoHMO
         return "" unless duration
         seconds = duration % 60
         minutes = (duration / 60) % 60
-        hours = duration / (60 * 60)
-        'P%sDT%sH%sM%sS' % [0, hours, minutes, seconds]
+        hours = (duration / (60 * 60)) % 24
+        days = (duration / (60 * 60 * 24)).to_i
+        'P%sDT%sH%sM%sS' % [days, hours, minutes, seconds]
       end
 
       def pad(length, align)
@@ -146,32 +166,12 @@ module TivoHMO
 
     end
 
-    # before do
-    #   if request.ip != '192.168.1.12'
-    #     puts "#{request.ip} halted"
-    #     halt 403
-    #   end
-    #   puts "#{request.ip} ok"
-    # end
-
-    # before do
-    #   if server.tsns && ! server.tsns.include?(tsn)
-    #     msg = "TSN not allowed access: #{tsn}"
-    #     logger.warn msg
-    #     halt 403, msg
-    #   end
-    # end
-
-    after do
-      if logger.level == Logger::DEBUG
-        logger.debug "Response to #{request.ip} for #{request.url} [#{response.status}]:"
-        logger.debug response.body.join("\n") unless response.body.is_a?(Sinatra::Helpers::Stream)
-      end
+    helpers do
+      include Helpers
     end
 
     # Get the xml doc describing the active HME applications
     get '/TiVoConnect' do
-      logger.info "Tivo Connected: #{request.url}"
       command = params['Command']
 
       # pagination
@@ -247,8 +247,9 @@ module TivoHMO
         when 'TVBusQuery' then
           container_path = params['Container']
           item_title = params['File']
-          path = "#{container_path}#{item_title}"
+          halt 404, "Need Container and File params" unless container_path && item_title
 
+          path = "#{container_path}/#{item_title}"
           item = server.find(path)
           halt 404, "No item found for #{path}" unless item
 
@@ -256,7 +257,7 @@ module TivoHMO
 
         when 'QueryFormats' then
           sf = params['SourceFormat']
-          if sf.start_with?('video')
+          if sf.to_s.start_with?('video')
             formats = ["video/x-tivo-mpeg"]
             formats << "video/x-tivo-mpeg-ts" # if is_ts_capable(tsn)
             builder :video_formats, layout: true, locals: locals.merge(formats: formats)
@@ -286,10 +287,7 @@ module TivoHMO
     end
 
     get '/*' do
-
-      logger.info "Tivo Requesting Item: #{request.url}"
-
-      title_path = params[:splat].join('/')
+      title_path = params[:splat].first
       format = params['Format']
       item = server.find(title_path)
       halt 404, "No item found for #{title_path}" unless item && item.is_a?(TivoHMO::API::Item)

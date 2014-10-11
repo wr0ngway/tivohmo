@@ -14,6 +14,10 @@ module TivoHMO
         # tivo serial->allowed_formats
         # https://code.google.com/p/streambaby/wiki/video_compatibility
 
+        def initialize(item)
+          super(item)
+        end
+
         def transcode(writeable_io)
           tmpfile = Tempfile.new('tivohmo_transcode')
           begin
@@ -33,7 +37,7 @@ module TivoHMO
           nil
         end
 
-        def transcoder_options(video_info)
+        def transcoder_options
           {
               frame_rate: 29.97,
               resolution: "1280x720",
@@ -61,7 +65,7 @@ module TivoHMO
           }
         end
 
-        def wip_transcoder_options(video_info)
+        def wip_transcoder_options
           opts = {
               video_bitrate: 16384,
               video_max_bitrate: 30000,
@@ -107,25 +111,32 @@ module TivoHMO
           end
 
           opts
-       end
+        end
 
         protected
 
-        def run_transcode(output_filename)
-          movie = FFMPEG::Movie.new(source_filename)
+        def movie
+          @movie ||= FFMPEG::Movie.new(source_filename)
+        end
 
-          info_attrs = %w[
-            path duration time bitrate rotation creation_time
-            video_stream video_codec video_bitrate colorspace resolution dar
-            audio_stream audio_codec audio_bitrate audio_sample_rate
-            calculated_aspect_ratio size audio_channels frame_rate container
-          ]
-          video_info = Hash[info_attrs.collect {|attr| [attr.to_sym, movie.send(attr)] }]
+        def video_info
+          @video_info ||= begin
+            info_attrs = %w[
+              path duration time bitrate rotation creation_time
+              video_stream video_codec video_bitrate colorspace resolution dar
+              audio_stream audio_codec audio_bitrate audio_sample_rate
+              calculated_aspect_ratio size audio_channels frame_rate container
+            ]
+            Hash[info_attrs.collect {|attr| [attr.to_sym, movie.send(attr)] }]
+          end
+        end
+
+        def run_transcode(output_filename)
 
           logger.debug "Movie Info: " +
                           video_info.collect {|k, v| "#{k}='#{v}'"}.join(' ')
 
-          opts = transcoder_options(video_info)
+          opts = transcoder_options
 
           logger.debug "Transcoding options: " +
                            opts.collect {|k, v| "#{k}='#{v}'"}.join(' ')

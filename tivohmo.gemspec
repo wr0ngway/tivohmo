@@ -24,10 +24,12 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry-byebug"
   spec.add_development_dependency "awesome_print"
   spec.add_development_dependency "rspec"
+  spec.add_development_dependency "nokogiri"
 
   # core dependencies
   spec.add_dependency "activesupport"
   spec.add_dependency "gem_logger"
+  spec.add_dependency "logging"
   spec.add_dependency "sigdump"
   spec.add_dependency "clamp"
   spec.add_dependency "sinatra"

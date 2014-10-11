@@ -11,15 +11,15 @@ module TivoHMO
                     :title,
                     :description,
 
-                    :time,
-                    :start_time,
-                    :stop_time,
-                    :source_size,
+                    :time, # Time
+                    :start_time, # Time
+                    :stop_time, # Time
+                    :source_size, # int, bytes
 
                     :actual_showing,
                     :bookmark,
                     :recording_quality, # hash of :name, :value
-                    :duration,
+                    :duration, # int, seconds
 
                     :showing_bits,
                     :part_count,
@@ -58,13 +58,13 @@ module TivoHMO
 
       def initialize(item)
         self.item = item
+        self.duration = 0
         self.showing_bits = 4096
         self.is_episode = true
         self.recording_quality = {name: "HIGH", value: "75"}
         self.color_code = {name: 'COLOR', value: '4'}
         self.show_type = {name: 'SERIES', value: '5'}
         self.channel = {major_number: '0', minor_number: '0', callsign: ''}
-        self.source_size = estimate_source_size
       end
 
       def time
@@ -79,13 +79,17 @@ module TivoHMO
         @stop_time ||= time + duration
       end
 
+      def source_size
+        @source_size ||= estimate_source_size
+      end
+
       def estimate_source_size
         # This is needed so that we can give tivo an estimate of transcoded size
         # so transfer doesn't abort half way through.  Using the max audio and
         # video bit rates for a max estimate
         opts = item.transcoder.transcoder_options
-        vbr = (opts[:video_bitrate] || opts[:video_max_bitrate]) * 1000
-        abr = (opts[:audio_bitrate]) * 1000
+        vbr = (opts[:video_bitrate] || opts[:video_max_bitrate] || 30000) * 1000
+        abr = (opts[:audio_bitrate] || 448) * 1000
         (self.duration * ((abr + vbr) * 1.02 / 8)).to_i
       end
     end

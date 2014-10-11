@@ -11,7 +11,7 @@ module TivoHMO
 
           begin
             self.description = item.delegate.summary
-            self.duration = item.delegate.duration.to_i
+            self.duration = (item.delegate.duration.to_i / 1000).to_i
           rescue => e
             logger.error "Failed to read plex metadata: #{e}"
           end

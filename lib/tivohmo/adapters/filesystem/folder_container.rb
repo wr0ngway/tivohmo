@@ -11,20 +11,32 @@ module TivoHMO
         include GemLogger::LoggerSupport
         include MonitorMixin
 
-        attr_accessor :full_path,
-                      :allowed_item_types,
+        VIDEO_EXTENSIONS = %w[
+          tivo mpg avi wmv mov flv f4v vob mp4 m4v mkv
+          ts tp trp 3g2 3gp 3gp2 3gpp amv asf avs bik bix box bsf
+          dat dif divx dmb dpg dv dvr-ms evo eye flc fli flx gvi ivf
+          m1v m21 m2t m2ts m2v m2p m4e mjp mjpeg mod moov movie mp21
+          mpe mpeg mpv mpv2 mqv mts mvb nsv nuv nut ogm qt rm rmvb
+          rts scm smv ssm svi vdo vfw vid viv vivo vp6 vp7 vro webm
+          wm wmd wtv yuv
+        ]
+
+        attr_reader :full_path
+
+        attr_accessor :allowed_item_types,
                       :allowed_item_extensions
 
         def initialize(identifier)
-          self.full_path = File.expand_path(identifier)
-          raise ArgumentError, "Must provide an existing directory: #{full_path}" unless File.directory?(full_path)
+          @full_path = File.expand_path(identifier)
+          raise ArgumentError,
+                "Must provide an existing directory: #{full_path}" unless File.directory?(full_path)
 
           super(full_path)
 
           self.allowed_item_types = %i[file dir]
-          self.allowed_item_extensions = %w[avi mp4 mpg mkv]
+          self.allowed_item_extensions = VIDEO_EXTENSIONS
 
-          self.title = File.basename(self.identifier)
+          self.title = File.basename(self.identifier).titleize
           self.modified_at = File.mtime(self.identifier)
           self.created_at = File.ctime(self.identifier)
 
@@ -58,11 +70,11 @@ module TivoHMO
 
         def setup_change_listener
           logger.debug "Setting up change listener on #{identifier}"
-          @listener = Listen.to(identifier) do |modified, added, removed|
+          @listener = Listen.to(identifier, ignore: /\//) do |modified, added, removed|
             logger.debug "Detected filesystem change on #{identifier}"
-            logger.debug "modified absolute path: #{modified}"
-            logger.debug "added absolute path: #{added}"
-            logger.debug "removed absolute path: #{removed}"
+            logger.debug "modified: #{modified}"
+            logger.debug "added: #{added}"
+            logger.debug "removed: #{removed}"
 
             # TODO: be more intelligent instead of just wiping children to cause the refresh
             self.refresh
@@ -71,11 +83,8 @@ module TivoHMO
             # if self is removed from the parent
             @listener.stop unless root.find(title_path)
             logger.debug "Completed filesystem refresh on #{identifier}"
-
           end
-          logger.debug "Starting change listener on #{identifier}"
           @listener.start
-          logger.debug "Change listener started on #{identifier}"
         end
 
         def allowed_container?(path)

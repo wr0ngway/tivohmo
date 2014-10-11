@@ -24,7 +24,9 @@ module TivoHMO
 
       def initialize(identifier)
         self.identifier = identifier
-        self.title = identifier
+        self.title = identifier.to_s
+        self.created_at = Time.now
+        self.modified_at = Time.now
         @children = []
       end
 
@@ -36,6 +38,8 @@ module TivoHMO
         @children << child
         child
       end
+
+      alias << add_child
 
       def root?
         self == self.root
@@ -71,11 +75,34 @@ module TivoHMO
       end
 
       def title_path
-        if parent.nil? || parent.root?
-          self.title
+        if self == root
+          "/"
         else
-          "#{parent.title_path}/#{self.title}"
+          if parent == root
+            "/#{self.title}"
+          else
+            "#{parent.title_path}/#{self.title}"
+          end
         end
+      end
+
+      def tree_string
+        result = ""
+        if self.root
+          n = root
+        else
+          result << "(no root)\n"
+          n = self
+        end
+        queue = [n]
+        queue.each do |node|
+          ident = node.title_path
+          result << ident << "\n"
+          if node.children.present?
+            queue.concat(node.children)
+          end
+        end
+        result
       end
 
       def to_s

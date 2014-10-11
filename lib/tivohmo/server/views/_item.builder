@@ -9,7 +9,7 @@ xml.Item do
 
     if md
       xml.SourceSize md.source_size if md.source_size
-      xml.Duration md.duration.to_i * 1000 if md.duration
+      xml.Duration md.duration.to_i if md.duration
       xml.Description md.description if md.description
 
       xml.SourceChannel md.channel[:major_number] if md.channel

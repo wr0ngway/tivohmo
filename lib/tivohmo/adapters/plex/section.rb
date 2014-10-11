@@ -24,7 +24,7 @@ module TivoHMO
           synchronize do
             if super.blank?
               add_child(Category.new(delegate, :recently_added))
-              add_child(Category.new(delegate, :unwatched))
+              #add_child(Category.new(delegate, :unwatched))
               add_child(Category.new(delegate, :newest))
               add_child(Category.new(delegate, :on_deck))
               add_child(Category.new(delegate, :recently_viewed))

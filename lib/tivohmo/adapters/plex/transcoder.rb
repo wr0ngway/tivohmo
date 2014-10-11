@@ -9,7 +9,7 @@ module TivoHMO
 
         def initialize(item)
           super(item)
-          self.source_filename = item.delegate.media.first.parts.first.file
+          self.source_filename = item.delegate.medias.first.parts.first.file
         end
 
       end

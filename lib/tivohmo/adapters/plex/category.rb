@@ -51,10 +51,12 @@ module TivoHMO
               Array(listing).each do |media|
                 if media.is_a?(::Plex::Movie)
                   add_child(Movie.new(media))
+                elsif media.is_a?(::Plex::Episode)
+                  add_child(Episode.new(media))
                 elsif media.is_a?(::Plex::Show)
                   add_child(Show.new(media))
                 else
-                  logger.error "Unknown type for #{media} in #{self}"
+                  logger.error "Unknown type for #{media.class} in #{self.title}"
                 end
               end
             end

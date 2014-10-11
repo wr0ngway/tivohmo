@@ -29,7 +29,7 @@ module TivoHMO
         raise NotImplementedError
       end
 
-      def transcoder_options(video_info)
+      def transcoder_options
         raise NotImplementedError
       end
     end

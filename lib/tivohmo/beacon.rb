@@ -14,6 +14,7 @@ module TivoHMO
       @socket = UDPSocket.new(Socket::AF_INET)
       @socket.setsockopt(Socket::SOL_SOCKET, Socket::SO_BROADCAST, true)
       @services = ['TiVoMediaServer:%s/http' % service_port]
+      @running = false
     end
 
     def start
@@ -36,6 +37,10 @@ module TivoHMO
     def stop
       logger.info "Stopping beacon"
       @running = false
+    end
+
+    def join
+      @broadcast_thread.join
     end
 
     def beacon_data(method)
