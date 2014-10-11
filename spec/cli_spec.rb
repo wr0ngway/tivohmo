@@ -42,13 +42,27 @@ describe TivoHMO::CLI do
   describe "--debug" do
 
     it "defaults to info log level" do
+      expect(Logging.logger.root).to receive(:level=).with(:debug).never
       cli.run(argv(minimal_args))
-      expect(Logging.logger.root.level).to eq(Logging::level_num(:info))
     end
 
     it "sets log level to debug" do
+      expect(Logging.logger.root).to receive(:level=).with(:debug)
       cli.run(argv(minimal_args) + ['--debug'])
-      expect(Logging.logger.root.level).to eq(Logging::level_num(:debug))
+    end
+
+  end
+
+  describe "--preload" do
+
+    it "defaults to not preloading" do
+      expect(cli).to receive(:preload_containers).never
+      cli.run(argv(minimal_args))
+    end
+
+    it "preloads all containers" do
+      expect(cli).to receive(:preload_containers).once.and_call_original
+      cli.run(argv(minimal_args) + ['--preload'])
     end
 
   end

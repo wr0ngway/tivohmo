@@ -26,15 +26,19 @@ module TivoHMO
         to run two top level filesystem video serving apps for different dirs,
         or
 
-        tivohmo -i "My Videos@~/Video"
+        tivohmo -a TivoHMO::Adapters::Filesystem::Application -t Vids -i ~/Video
 
-        to run the single default filesystem app with a custom title
+        to run the single filesystem app with a custom title
       DESC
       desc.split("\n").collect(&:strip).join("\n")
     end
 
     option ["-d", "--debug"],
            :flag, "debug output\n",
+           default: false
+
+    option ["-r", "--preload"],
+           :flag, "Preloads all lazy container listings\n",
            default: false
 
     option ["-l", "--logfile"],
@@ -116,6 +120,8 @@ module TivoHMO
         server.add_child(app)
       end
 
+      preload_containers(server) if preload?
+
       opts = {}
       if beacon.present?
         limit, interval = beacon.split(":")
@@ -132,7 +138,7 @@ module TivoHMO
     private
 
     def setup_logging
-      Logging.logger.root.level = debug? ? :debug : :info
+      Logging.logger.root.level = :debug if debug?
 
       if logfile.present?
         Logging.logger.root.appenders = Logging.appenders.file(
@@ -146,6 +152,16 @@ module TivoHMO
 
     def set_if_default(attr, new_value)
       self.send("#{attr}=", new_value) if self.send(attr) == self.send("default_#{attr}")
+    end
+
+    def preload_containers(server)
+      logger.info "Preloading lazily cached containers"
+      queue = server.children.dup
+      queue.each do |i|
+        logger.debug("Loading children for #{i.title_path}")
+        queue.concat(i.children)
+      end
+      logger.info "Preload complete"
     end
 
     def wait_for_server
