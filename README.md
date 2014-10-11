@@ -35,7 +35,7 @@ Run the 'tivohmo' binary for usage:
 
 ## Developing
 
-Use the classes in TivoHMO::API to create your tree of data (Application -> Container(s) -> Items), then serve them with TivoHMO::Server.  See TivoHMO::BasicAdapter for a sample implementation based on folders/files/ffmpeg
+Use the classes in TivoHMO::API to create your tree of data (Application -> Container(s) -> Items), then serve them with TivoHMO::Server.  See TivoHMO::Adapters::Filesystem for a sample implementation based on folders/files/ffmpeg
 
 
 ## Contributing
