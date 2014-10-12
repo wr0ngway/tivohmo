@@ -1,8 +1,5 @@
 #!/usr/bin/env ruby
 
-require 'bundler'
-Bundler.setup(:default, :development)
-
 require 'tivohmo/logging'
 require 'tivohmo/cli'
 TivoHMO::CLI.run
