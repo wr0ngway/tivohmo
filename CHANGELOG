@@ -1,3 +1,8 @@
+0.1.4 (10/12/2014)
+------------------
+
+tweak transcoder to only use video_bitrate, not plain bitrate <776757c> [Matt Conway]
+
 0.1.3 (10/12/2014)
 ------------------
 
