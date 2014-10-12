@@ -1,5 +1,8 @@
 # TivoHMO
 
+[![Build Status](https://travis-ci.org/wr0ngway/tivohmo.svg?branch=master)](https://travis-ci.org/wr0ngway/tivohmo)
+[![Coverage Status](https://img.shields.io/coveralls/wr0ngway/tivohmo.svg)](https://coveralls.io/r/wr0ngway/tivohmo?branch=master)
+
 This gem provides a Ruby SDK for authoring and running Tivo Home Media Option applications.
 
 This is based on the excellent work done in the [pyTivo](http://pytivo.sourceforge.net/wiki/index.php/PyTivo) project, but written from the ground up in ruby with a full test suite and more separation of concerns between http server, data model, metadata provider and transcoder.
