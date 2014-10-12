@@ -3,8 +3,8 @@ require 'rspec'
 RSpec.configure do |config|
 end
 
-# require 'coveralls'
-# Coveralls.wear!
+require 'coveralls'
+Coveralls.wear!
 
 require 'tivohmo/logging'
 Logging.logger.root.level = :error
