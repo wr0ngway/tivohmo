@@ -112,7 +112,7 @@ module TivoHMO
 
         def select_video_bitrate(opts)
 
-          vbr = video_info[:video_bitrate] || video_info[:bitrate]
+          vbr = video_info[:video_bitrate]
 
           if vbr && vbr > 0
             if vbr >= opts[:video_max_bitrate]
