@@ -50,7 +50,8 @@ module TivoHMO
           opts = select_audio_sample_rate(opts)
           opts = select_container(opts)
 
-          opts[:custom] = opts[:custom].join(" ") if opts[:custom]
+          custom = opts.delete(:custom)
+          opts[:custom] = custom.join(" ") if custom
           opts.delete(:format)
 
           opts
@@ -110,9 +111,19 @@ module TivoHMO
         end
 
         def select_video_bitrate(opts)
-          if video_info[:video_bitrate].to_i >= opts[:video_max_bitrate]
-            opts[:video_bitrate] = (video_info[:video_max_bitrate] * 0.95).to_i
+
+          vbr = video_info[:video_bitrate] || video_info[:bitrate]
+
+          if vbr && vbr > 0
+            if vbr >= opts[:video_max_bitrate]
+              opts[:video_bitrate] = (video_info[:video_max_bitrate] * 0.95).to_i
+            else
+              opts[:video_bitrate] = vbr
+            end
           end
+
+          opts[:video_bitrate] ||= 16384
+
           opts
         end
 
@@ -158,16 +169,24 @@ module TivoHMO
         end
 
         def select_video_frame_rate(opts)
-          if !VIDEO_FRAME_RATES.include?(video_info[:frame_rate])
-            opts[:frame_rate] = 29.97
+
+          frame_rate = video_info[:frame_rate].to_f
+          VIDEO_FRAME_RATES.each do |r|
+            if frame_rate >= r.to_f
+              opts[:frame_rate] = r
+              break
+            end
           end
+
+          opts[:frame_rate] ||= 29.97
+
           opts
         end
 
         def run_transcode(output_filename, format)
 
           logger.debug "Movie Info: " +
-                          video_info.collect {|k, v| "#{k}='#{v}'"}.join(' ')
+                          video_info.collect {|k, v| "#{k}=#{v.inspect}"}.join(' ')
 
           opts = transcoder_options(format)
 
@@ -182,9 +201,9 @@ module TivoHMO
 
           transcode_thread = Thread.new do
             begin
-              logger.info "Starting transcode to: #{output_filename}"
+              logger.info "Starting transcode of '#{movie.path}' to '#{output_filename}'"
               transcoded_movie = movie.transcode(output_filename, opts, t_opts) do |progress|
-                logger.info "Transcoding #{movie.path}: #{progress}"
+                logger.info ("[%3i%%] Transcoding #{File.basename(movie.path)}" % (progress * 100).to_i)
                 raise "Halted" if Thread.current[:halt]
               end
               logger.info "Transcoding completed, transcoded file size: #{File.size(output_filename)}"

@@ -9,8 +9,7 @@ module TivoHMO
       include GemLogger::LoggerSupport
 
       # https://code.google.com/p/streambaby/wiki/video_compatibility
-      VIDEO_FRAME_RATES = %w[23.98 24.00 25.00 29.97
-                             30.00 50.00 59.94 60.00]
+      VIDEO_FRAME_RATES = %w[60.00 59.94 50.00 30.00 29.97 25.00 24.00 23.98]
       VIDEO_CODECS = %w[mpeg2video] # h264 only for push?
       VIDEO_WIDTHS = %w[1920 1440 1280 720 704 544 480 352]
       VIDEO_HEIGHTS = %w[1080 720 480 240]

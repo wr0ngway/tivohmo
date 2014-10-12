@@ -13,6 +13,8 @@ module TivoHMO
 
     def self.description
       desc = <<-DESC
+        TivoHMO version #{TivoHMO::VERSION}
+
         Runs a HMO server.  Specify one or more applications to show up as top level
         shares in the TiVo Now Playing view.  The application, identifier,
         transcoder, metadata options can be given in groups to apply the transcoder
@@ -23,12 +25,15 @@ module TivoHMO
         tivohmo -a TivoHMO::Adapters::Filesystem::Application -i ~/Video/Movies \\
                 -a TivoHMO::Adapters::Filesystem::Application -i ~/Video/TV
 
-        to run two top level filesystem video serving apps for different dirs,
-        or
+        to run two top level filesystem video serving apps for different dirs, or
 
         tivohmo -a TivoHMO::Adapters::Filesystem::Application -t Vids -i ~/Video
 
-        to run the single filesystem app with a custom title
+        to run the single filesystem app with a custom title, or
+
+        tivohmo -a TivoHMO::Adapters::Plex::Application -t PlexVideo -i localhost
+
+        to run the single plex app with a custom title
       DESC
       desc.split("\n").collect(&:strip).join("\n")
     end
