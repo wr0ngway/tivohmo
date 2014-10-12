@@ -160,13 +160,15 @@ module TivoHMO
     end
 
     def preload_containers(server)
-      logger.info "Preloading lazily cached containers"
-      queue = server.children.dup
-      queue.each do |i|
-        logger.debug("Loading children for #{i.title_path}")
-        queue.concat(i.children)
+      Thread.new do
+        logger.info "Preloading lazily cached containers"
+        queue = server.children.dup
+        queue.each do |i|
+          logger.debug("Loading children for #{i.title_path}")
+          queue.concat(i.children)
+        end
+        logger.info "Preload complete"
       end
-      logger.info "Preload complete"
     end
 
     def wait_for_server
