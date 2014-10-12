@@ -14,7 +14,8 @@ require 'open-uri'
 
 def video_fixture(name)
   fixture_names = {
-      tiny: 'MPEG4 by philips.mp4'
+      tiny: 'MPEG4 by philips.mp4',
+      with_audio: 'test_qcif_200_aac_64.mp4'
   }
 
   file_name = fixture_names[name]
@@ -56,7 +57,7 @@ module TestAPI
   class Transcoder
     include TivoHMO::API::Transcoder
     def transcoder_options; {}; end
-    def transcode(io); io << item.title_path.upcase; end
+    def transcode(io, format); io << item.title_path.upcase; end
   end
 end
 

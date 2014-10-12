@@ -22,8 +22,6 @@ describe TivoHMO::Adapters::StreamIO::Transcoder do
     it "returns a hash" do
       opts = subject.transcoder_options
       expect(opts).to be_instance_of(Hash)
-      expect(opts[:video_bitrate]).to_not be_nil
-      expect(opts[:audio_bitrate]).to_not be_nil
     end
 
   end

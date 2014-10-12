@@ -297,7 +297,7 @@ module TivoHMO
 
       stream do |out|
         out << tivo_header(item, format)
-        item.transcoder.transcode(out)
+        item.transcoder.transcode(out, format)
       end
 
     end

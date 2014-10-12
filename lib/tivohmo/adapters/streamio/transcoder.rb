@@ -14,14 +14,10 @@ module TivoHMO
         # tivo serial->allowed_formats
         # https://code.google.com/p/streambaby/wiki/video_compatibility
 
-        def initialize(item)
-          super(item)
-        end
-
-        def transcode(writeable_io)
+        def transcode(writeable_io, format="video/x-tivo-mpeg")
           tmpfile = Tempfile.new('tivohmo_transcode')
           begin
-            transcode_thread = run_transcode(tmpfile.path)
+            transcode_thread = run_transcode(tmpfile.path, format)
 
             # give the transcode thread a chance to start up before we
             # start copying from it.  Not strictly necessary, but makes
@@ -37,78 +33,25 @@ module TivoHMO
           nil
         end
 
-        def transcoder_options
-          {
-              frame_rate: 29.97,
-              resolution: "1280x720",
-              #resolution: "1920x1080",
-              preserve_aspect_ratio: :height,
-
-              video_codec: "mpeg2video",
-              video_bitrate: 16384,
-              video_max_bitrate: 30000,
-              buffer_size: 4096,
-
-              audio_codec: "ac3",
-              audio_bitrate: 448,
-              audio_sample_rate: 48000,
-
-              custom: "-f vob"
-              # video_min_bitrate: 600,
-              # video_bitrate_tolerance: 100,
-              # aspect: 1.333333,
-              # keyframe_interval: 90,
-              # x264_vprofile: "high",
-              # x264_preset: "slow",
-              # audio_channels: 1,
-              # threads: 2,
-          }
-        end
-
-        def wip_transcoder_options
+        def transcoder_options(format="video/x-tivo-mpeg")
           opts = {
-              video_bitrate: 16384,
               video_max_bitrate: 30000,
               buffer_size: 4096,
               audio_bitrate: 448,
-              custom: "-copyts -f vob"
+              format: format,
+              custom: []
           }
 
-          if ! VIDEO_FRAME_RATES.find(video_info[:height])
-            opts[:frame_rate] = 29.97
-          end
+          opts = select_video_frame_rate(opts)
+          opts = select_video_dimensions(opts)
+          opts = select_video_codec(opts)
+          opts = select_video_bitrate(opts)
+          opts = select_audio_codec(opts)
+          opts = select_audio_sample_rate(opts)
+          opts = select_container(opts)
 
-          opts[:width] = VIDEO_WIDTHS.find_with_index do |width, i|
-            width =  width.to_i
-            video_width  = video_info[:width].to_i
-            next_video_width = VIDEO_WIDTHS[i+1].to_i
-            width == video_width || (video_width < width && video_width > next_video_width)
-          end
-
-          opts[:height] = VIDEO_HEIGHTS.find_with_index do |height, i|
-            height =  w.to_i
-            video_height  = video_info[:height].to_i
-            next_video_height = VIDEO_heightS[i+1].to_i
-            height == video_height || (video_height < height && video_height > next_video_height)
-          end
-
-          opts[:preserve_aspect_ratio] = :width
-
-          if VIDEO_CODECS.find(video_info[:video_codec])
-            opts[:video_codec] =  'copy -bsf h264_mp4toannexb'
-          else
-            opts[:video_codec] = 'mpeg2video -pix_fmt yuv420p'
-          end
-
-          if AUDIO_CODECS.find(video_info[:audio_codec])
-            opts[:audio_codec] = 'copy'
-          else
-            opts[:audio_codec] = 'ac3'
-          end
-
-          if ! AUDIO_SAMPLE_RATES.find(video_info[:audio_sample_rate])
-            opts[:audio_sample_rate] = 48000
-          end
+          opts[:custom] = opts[:custom].join(" ") if opts[:custom]
+          opts.delete(:format)
 
           opts
         end
@@ -123,20 +66,110 @@ module TivoHMO
           @video_info ||= begin
             info_attrs = %w[
               path duration time bitrate rotation creation_time
-              video_stream video_codec video_bitrate colorspace resolution dar
+              video_stream video_codec video_bitrate colorspace dar
               audio_stream audio_codec audio_bitrate audio_sample_rate
               calculated_aspect_ratio size audio_channels frame_rate container
+              resolution width height
             ]
             Hash[info_attrs.collect {|attr| [attr.to_sym, movie.send(attr)] }]
           end
         end
 
-        def run_transcode(output_filename)
+        def select_container(opts)
+          if opts[:format] == 'video/x-tivo-mpeg-ts'
+            opts[:custom] << "-f mpegts"
+          else
+            opts[:custom] << "-f vob"
+          end
+          opts
+        end
+
+        def select_audio_sample_rate(opts)
+          if video_info[:audio_sample_rate]
+            if AUDIO_SAMPLE_RATES.include?(video_info[:audio_sample_rate])
+              opts[:audio_sample_rate] = video_info[:audio_sample_rate]
+            else
+              opts[:audio_sample_rate] = 48000
+            end
+          end
+          opts
+        end
+
+        def select_audio_codec(opts)
+          if video_info[:audio_codec]
+            if AUDIO_CODECS.any? { |ac| video_info[:audio_codec] =~ /#{ac}/ }
+              opts[:audio_codec] = 'copy'
+              if video_info[:video_codec] =~ /mpeg2video/
+                opts[:custom] << "-copyts"
+              end
+            else
+              opts[:audio_codec] = 'ac3'
+            end
+          end
+          opts
+        end
+
+        def select_video_bitrate(opts)
+          if video_info[:video_bitrate].to_i >= opts[:video_max_bitrate]
+            opts[:video_bitrate] = (video_info[:video_max_bitrate] * 0.95).to_i
+          end
+          opts
+        end
+
+        def select_video_codec(opts)
+          if VIDEO_CODECS.any? { |vc| video_info[:video_codec] =~ /#{vc}/ }
+            opts[:video_codec] = 'copy'
+            if video_info[:video_codec] =~ /h264/
+              opts[:custom] << "-bsf h264_mp4toannexb"
+            end
+          else
+            opts[:video_codec] = 'mpeg2video'
+            opts[:custom] << "-pix_fmt yuv420p"
+          end
+          opts
+        end
+
+        def select_video_dimensions(opts)
+          preserve_aspect = nil
+          video_width = video_info[:width].to_i
+          VIDEO_WIDTHS.each do |w|
+            w = w.to_i
+            if video_width >= w
+              video_width = w
+              opts[:preserve_aspect_ratio] = :width
+              break
+            end
+          end
+          video_width = VIDEO_WIDTHS.last.to_i unless video_width
+
+          video_height = video_info[:height].to_i
+          VIDEO_WIDTHS.each do |h|
+            h = h.to_i
+            if video_height >= h
+              video_height = h
+              opts[:preserve_aspect_ratio] = :height
+              break
+            end
+          end
+          video_height = VIDEO_HEIGHTS.last.to_i unless video_height
+          opts[:resolution] = "#{video_width}x#{video_height}"
+          opts[:preserve_aspect_ratio] = :height unless opts[:preserve_aspect_ratio]
+          opts
+        end
+
+        def select_video_frame_rate(opts)
+          if !VIDEO_FRAME_RATES.include?(video_info[:frame_rate])
+            opts[:frame_rate] = 29.97
+          end
+          opts
+        end
+
+        def run_transcode(output_filename, format)
 
           logger.debug "Movie Info: " +
                           video_info.collect {|k, v| "#{k}='#{v}'"}.join(' ')
 
-          opts = transcoder_options
+          opts = transcoder_options(format)
 
           logger.debug "Transcoding options: " +
                            opts.collect {|k, v| "#{k}='#{v}'"}.join(' ')
