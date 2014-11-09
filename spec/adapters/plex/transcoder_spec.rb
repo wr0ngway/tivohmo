@@ -9,7 +9,7 @@ describe TivoHMO::Adapters::Plex::Transcoder do
                                   duration: 10000,
                                   medias: [double('media',
                                                  parts: [double('part',
-                                                                file: '/foo')])])}
+                                                                file: '/foo%20bar')])])}
 
   let(:item) { double('item', identifier: plex_delegate.key, delegate: plex_delegate)}
 
@@ -19,7 +19,7 @@ describe TivoHMO::Adapters::Plex::Transcoder do
       trans = described_class.new(item)
       expect(trans).to be_a described_class
       expect(trans).to be_a TivoHMO::API::Transcoder
-      expect(trans.source_filename).to eq '/foo'
+      expect(trans.source_filename).to eq '/foo bar'
     end
 
   end
