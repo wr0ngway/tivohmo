@@ -3,7 +3,7 @@
 <!--
 Launchd (OS X) configuration for TivoHMO
 Copy to ~/Library/LaunchAgents and edit as desired
-Then to start the server, run: launchd load ~/Library/LaunchAgents/tivohmo.plist
+Then to start the server, run: launchctl load ~/Library/LaunchAgents/tivohmo.plist
 -->
 
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -13,10 +13,14 @@ Then to start the server, run: launchd load ~/Library/LaunchAgents/tivohmo.plist
         <string>TivoHMO</string>
         <key>ProgramArguments</key>
         <array>
-                <string>tivohmo</string>
-                <string>/usr/local/pytivo/pyTivo.py</string>
+                <string>bash</string>
+                <string>-l</string>
+                <string>-c</string>
+                <string>tivohmo -p 9033 -l ~/Library/Logs/tivohmo.log -a TivoHMO::Adapters::Plex::Application -i localhost -t 'Plex Videos'</string>
         </array>
         <key>RunAtLoad</key>
+        <true/>
+        <key>KeepAlive</key>
         <true/>
 </dict>
 </plist>
