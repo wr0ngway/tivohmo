@@ -39,6 +39,16 @@ describe TivoHMO::CLI do
 
   end
 
+  describe "--version" do
+
+    it "produces version text under standard width" do
+      expect(cli).to receive(:setup_logging).never
+      expect($stdout).to receive(:puts).with(/#{TivoHMO::VERSION}/)
+      cli.run(["--version"])
+    end
+
+  end
+
   describe "--debug" do
 
     it "defaults to info log level" do

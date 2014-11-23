@@ -42,6 +42,10 @@ module TivoHMO
            :flag, "debug output\n",
            default: false
 
+    option ["-v", "--version"],
+           :flag, "print version and exit\n",
+           default: false
+
     option ["-r", "--preload"],
            :flag, "Preloads all lazy container listings\n",
            default: false
@@ -83,7 +87,14 @@ module TivoHMO
            "LIMIT:INTERVAL", "configure beacon limit and/or interval\n"
 
     def execute
+      if version?
+        puts "TivoHMO Version #{TivoHMO::VERSION}"
+        return
+      end
+
       setup_logging
+
+      logger.info "TivoHMO #{TivoHMO::VERSION} starting up"
 
       if configuration
         config = YAML.load_file(configuration)
@@ -146,12 +157,21 @@ module TivoHMO
       Logging.logger.root.level = :debug if debug?
 
       if logfile.present?
-        Logging.logger.root.appenders = Logging.appenders.file(
+        appender = Logging.appenders.rolling_file(
             logfile,
+            truncate: true,
+            age: 'daily',
+            keep: 3,
             layout: Logging.layouts.pattern(
                 pattern: Logging.appenders.stdout.layout.pattern
             )
         )
+
+        # hack to assign stdout/err to logfile if logging to file
+        io = appender.instance_variable_get(:@io)
+        $stdout = $stderr = io
+
+        Logging.logger.root.appenders = appender
       end
     end
 
