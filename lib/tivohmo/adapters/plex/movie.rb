@@ -21,12 +21,19 @@ module TivoHMO
 
         def metadata
           md = super
-          md.movie_year = Time.parse(delegate.originally_available_at).year rescue nil
 
-          rating_name = delegate.content_rating.upcase
-          rating_value = TivoHMO::API::Metadata::MPAA_RATINGS[rating_name]
-          if rating_value
-            md.mpaa_rating = {name: rating_name, value: rating_value}
+          begin
+
+            md.movie_year = Time.parse(delegate.originally_available_at).year rescue nil
+
+            rating_name = delegate.content_rating.upcase
+            rating_value = TivoHMO::API::Metadata::MPAA_RATINGS[rating_name]
+            if rating_value
+              md.mpaa_rating = {name: rating_name, value: rating_value}
+            end
+
+          rescue => e
+            logger.log_exception e, "Failed to read plex metadata for #{self}"
           end
 
           md
