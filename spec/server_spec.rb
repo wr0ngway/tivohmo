@@ -385,6 +385,22 @@ describe TivoHMO::Server do
           expect(child_titles).to match_array(["i1", "i2", "i3"])
         end
 
+        it "honors negative ItemCount (jump to last page)" do
+          get "/TiVoConnect?Command=QueryContainer&Container=/a1/c1&ItemCount=-3"
+          expect(last_response.status).to eq(200)
+          doc = Nokogiri::XML(last_response.body)
+
+          expect(doc.at_xpath("/TiVoContainer/ItemStart").content).to eq("17")
+          expect(doc.at_xpath("/TiVoContainer/ItemCount").content).to eq("3")
+
+          expect(doc.at_xpath("/TiVoContainer/Details/TotalItems").content).to eq("20")
+
+          expect(doc.xpath("/TiVoContainer/Item").size).to eq (3)
+
+          child_titles = doc.xpath("/TiVoContainer/Item/Details/Title").collect(&:content)
+          expect(child_titles).to match_array(["i18", "i19", "i20"])
+        end
+
         it "displays page 2" do
           get "/TiVoConnect?Command=QueryContainer&Container=/a1/c1&ItemStart=7"
           expect(last_response.status).to eq(200)

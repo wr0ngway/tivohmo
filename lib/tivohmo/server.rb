@@ -147,6 +147,8 @@ module TivoHMO
         end
 
         item_details_xml = builder :item_details, layout: true, locals: {item: item}
+        item_details_xml.force_encoding('ascii-8bit')
+
         ld = item_details_xml.bytesize
         chunk = item_details_xml + '\0' * (pad(ld, 4) + 4)
         lc = chunk.bytesize
@@ -232,6 +234,11 @@ module TivoHMO
               end
             else
               logger.warn "Anchor not found: #{anchor_item}"
+            end
+          else
+            if item_count < 0
+              locals[:item_start] = children.size + item_count
+              locals[:item_count] = - item_count
             end
           end
 
