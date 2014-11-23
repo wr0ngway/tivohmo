@@ -1,3 +1,14 @@
+0.2.0 (11/23/2014)
+------------------
+
+add more metadata from plex <d048373> [Matt Conway]
+add version as option and to normal startup messaging Capture stdout/err to logfile when provided <dd4bae7> [Matt Conway]
+force encoding for detail xml in tivo_header handle negative ItemCount for tivo jump to end of list command <8229e22> [Matt Conway]
+more function launchagent script <51e62de> [Matt Conway]
+refactor plex metadata <76825e7> [Matt Conway]
+unescape filename from plex <0502964> [Matt Conway]
+use forked streamio-ffmpeg (due to lack of maintenance) to allow use with ffmpeg 2.4.x <c7e16e1> [Matt Conway]
+
 0.1.4 (10/12/2014)
 ------------------
 
