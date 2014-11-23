@@ -5,7 +5,8 @@ describe TivoHMO::Adapters::Plex::Metadata do
 
   let(:plex_delegate) { plex_stub(::Plex::Movie,
                                   summary: 'Summary',
-                                  duration: 10000) }
+                                  duration: 10000,
+                                  rating: 10) }
 
   let(:item) { double('item', delegate: plex_delegate)}
 
@@ -17,6 +18,7 @@ describe TivoHMO::Adapters::Plex::Metadata do
       expect(md).to be_a TivoHMO::API::Metadata
       expect(md.duration).to eq(plex_delegate.duration / 1000)
       expect(md.description).to eq plex_delegate.summary
+      expect(md.star_rating).to eq({name: 4, value: 7})
     end
 
   end

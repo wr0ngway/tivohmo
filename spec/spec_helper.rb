@@ -109,6 +109,9 @@ def plex_stub(clazz, method_stubs={})
   default_stubs = {
     key: '/some/key',
     title: 'Title',
+    summary: 'Summary',
+    duration: 100,
+    rating: 1,
     updated_at: Time.now.to_i,
     added_at: Time.now.to_i,
     refresh: nil
