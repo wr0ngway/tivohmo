@@ -6,6 +6,21 @@ module TivoHMO
       extend ActiveSupport::Concern
       include GemLogger::LoggerSupport
 
+      MPAA_RATINGS = {
+          'G' => 1, 'PG' => 2, 'PG-13' => 3, 'PG13' => 3, 'R' => 4, 'X' => 5,
+          'NC-17' => 6, 'NC17' => 6, 'NR' => 8, 'UNRATED' => 8, 'G1' => 1,
+          'P2' => 2, 'P3' => 3, 'R4' => 4, 'X5' => 5, 'N6' => 6, 'N8' => 8
+      }
+
+      TV_RATINGS = {
+          'TV-Y7' => 1, 'TV-Y' => 2, 'TV-G' => 3, 'TV-PG' => 4, 'TV-14' => 5,
+          'TV-MA' => 6, 'TV-NR' => 7, 'TVY7' => 1, 'TVY' => 2, 'TVG' => 3,
+          'TVPG' => 4, 'TV14' => 5, 'TVMA' => 6, 'TVNR' => 7, 'Y7' => 1,
+          'Y' => 2, 'G' => 3, 'PG' => 4, '14' => 5, 'MA' => 6, 'NR' => 7,
+          'UNRATED' => 7, 'X1' => 1, 'X2' => 2, 'X3' => 3, 'X4' => 4, 'X5' => 5,
+          'X6' => 6, 'X7' => 7
+      }
+
       attr_accessor :item,
 
                     :title,
