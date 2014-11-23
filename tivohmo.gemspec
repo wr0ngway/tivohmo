@@ -39,7 +39,7 @@ Gem::Specification.new do |spec|
 
   # filesystem adapter dependencies, make optional?
   spec.add_dependency "listen"
-  spec.add_dependency "streamio-ffmpeg"
+  spec.add_dependency "tivohmo-streamio-ffmpeg"
 
   # plex adapter dependencies, make optional?
   spec.add_dependency "plex-ruby"

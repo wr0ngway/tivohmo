@@ -35,9 +35,9 @@ module TivoHMO
 
         def transcoder_options(format="video/x-tivo-mpeg")
           opts = {
-              video_max_bitrate: 30000,
+              video_max_bitrate: 30_000_000,
               buffer_size: 4096,
-              audio_bitrate: 448,
+              audio_bitrate: 448_000,
               format: format,
               custom: []
           }
@@ -47,6 +47,7 @@ module TivoHMO
           opts = select_video_codec(opts)
           opts = select_video_bitrate(opts)
           opts = select_audio_codec(opts)
+          opts = select_audio_bitrate(opts)
           opts = select_audio_sample_rate(opts)
           opts = select_container(opts)
 
@@ -96,6 +97,13 @@ module TivoHMO
           opts
         end
 
+        def select_audio_bitrate(opts)
+          # transcode assumes unit of Kbit, whilst video_info has unit of bit
+          opts[:audio_bitrate] = (opts[:audio_bitrate] / 1000).to_i
+
+          opts
+        end
+
         def select_audio_codec(opts)
           if video_info[:audio_codec]
             if AUDIO_CODECS.any? { |ac| video_info[:audio_codec] =~ /#{ac}/ }
@@ -111,18 +119,24 @@ module TivoHMO
         end
 
         def select_video_bitrate(opts)
-
           vbr = video_info[:video_bitrate]
+          default_vbr = 16_384_000
 
           if vbr && vbr > 0
             if vbr >= opts[:video_max_bitrate]
-              opts[:video_bitrate] = (video_info[:video_max_bitrate] * 0.95).to_i
-            else
+              opts[:video_bitrate] = (opts[:video_max_bitrate] * 0.95).to_i
+            elsif vbr > default_vbr
               opts[:video_bitrate] = vbr
+            else
+              opts[:video_bitrate] = default_vbr
             end
           end
 
-          opts[:video_bitrate] ||= 16384
+          opts[:video_bitrate] ||= default_vbr
+
+          # transcode assumes unit of Kbit, whilst video_info has unit of bit
+          opts[:video_bitrate] = (opts[:video_bitrate] / 1000).to_i
+          opts[:video_max_bitrate] = (opts[:video_max_bitrate] / 1000).to_i
 
           opts
         end
@@ -141,7 +155,6 @@ module TivoHMO
         end
 
         def select_video_dimensions(opts)
-          preserve_aspect = nil
           video_width = video_info[:width].to_i
           VIDEO_WIDTHS.each do |w|
             w = w.to_i
@@ -163,34 +176,37 @@ module TivoHMO
             end
           end
           video_height = VIDEO_HEIGHTS.last.to_i unless video_height
+
           opts[:resolution] = "#{video_width}x#{video_height}"
-          opts[:preserve_aspect_ratio] = :height unless opts[:preserve_aspect_ratio]
+          opts[:preserve_aspect_ratio] ||= :height
           opts
         end
 
         def select_video_frame_rate(opts)
 
-          frame_rate = video_info[:frame_rate].to_f
-          VIDEO_FRAME_RATES.each do |r|
-            if frame_rate >= r.to_f
-              opts[:frame_rate] = r
-              break
-            end
+          frame_rate = video_info[:frame_rate]
+          if frame_rate =~ /\A[0-9\.]+\Z/
+            frame_rate = frame_rate.to_f
+          elsif frame_rate =~ /\A\((\d+)\/(\d+)\)\Z/
+            frame_rate = $1.to_f / $2.to_f
           end
 
-          opts[:frame_rate] ||= 29.97
+          VIDEO_FRAME_RATES.each do |r|
+            opts[:frame_rate] = r
+            break if frame_rate >= r.to_f
+          end
 
           opts
         end
 
         def run_transcode(output_filename, format)
 
-          logger.debug "Movie Info: " +
+          logger.info "Movie Info: " +
                           video_info.collect {|k, v| "#{k}=#{v.inspect}"}.join(' ')
 
           opts = transcoder_options(format)
 
-          logger.debug "Transcoding options: " +
+          logger.info "Transcoding options: " +
                            opts.collect {|k, v| "#{k}='#{v}'"}.join(' ')
 
 
