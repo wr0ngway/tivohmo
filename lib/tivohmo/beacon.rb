@@ -23,7 +23,11 @@ module TivoHMO
         @running = true
         @broadcast_thread = Thread.new do
           while @running
-            broadcast
+            begin
+              broadcast
+            rescue => e
+              logger.log_exception(e, "Ignoring exception in beacon thread")
+            end
             sleep(@interval)
             @limit = @limit - 1
             break if @limit == 0
