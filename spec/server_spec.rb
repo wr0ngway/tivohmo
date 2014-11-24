@@ -288,6 +288,32 @@ describe TivoHMO::Server do
 
       end
 
+      describe "recursing" do
+
+        before(:each) do
+          other_container = container.add_child(TestAPI::Container.new("c2"))
+          other_container.add_child(TestAPI::Item.new("i2")) # dupe child
+          other_container.add_child(TestAPI::Item.new("i98")) # unique child
+
+          third_container = other_container.add_child(TestAPI::Container.new("c3"))
+          other_container.add_child(TestAPI::Item.new("i99")) # unique child
+          other_container.add_child(TestAPI::Item.new("i3")) # dupe child
+
+          3.times do |i|
+            container.add_child(TestAPI::Item.new("i#{i + 2}"))
+          end
+        end
+
+        it "recurses all items uniquely" do
+          get "/TiVoConnect?Command=QueryContainer&Container=/a1/c1&Recurse=Yes"
+          expect(last_response.status).to eq(200)
+          doc = Nokogiri::XML(last_response.body)
+          child_titles = doc.xpath("/TiVoContainer/Item/Details/Title").collect(&:content)
+          expect(child_titles).to eq(["i1", "i2", "i3", "i4", "i98", "i99"])
+        end
+
+      end
+
       describe "sorting" do
 
         before(:each) do

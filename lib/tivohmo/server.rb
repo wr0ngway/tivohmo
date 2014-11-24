@@ -61,6 +61,19 @@ module TivoHMO
         headers['TiVo_TCD_ID']
       end
 
+      def select_all_items(children)
+        just_items = []
+        all = children.dup
+        all.each do |child|
+          if child.is_a?(TivoHMO::API::Container)
+            all.concat(child.children)
+          else
+            just_items << child
+          end
+        end
+        children = just_items.uniq {|node| node.identifier }
+      end
+
       def sort(items, sort_order)
         sort_order = sort_order.split(/\s*,\s*/)
 
@@ -216,6 +229,9 @@ module TivoHMO
           halt 404, "No container found for #{container_path}" unless container
 
           children = container.children
+
+          children = select_all_items(children) if recurse
+
           children = sort(children, sort_order) if sort_order
 
           if anchor_item
