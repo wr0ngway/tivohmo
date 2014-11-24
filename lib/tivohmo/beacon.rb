@@ -7,7 +7,7 @@ module TivoHMO
   class Beacon
     include GemLogger::LoggerSupport
 
-    def initialize(service_port, limit: -1, interval: 60)
+    def initialize(service_port, limit: -1, interval: 10)
       @interval = interval
       @limit = limit
       @uid = SecureRandom.uuid

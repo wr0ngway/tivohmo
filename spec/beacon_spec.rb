@@ -9,7 +9,7 @@ describe TivoHMO::Beacon do
       beacon = described_class.new(1234)
       expect(beacon).to be_a described_class
       expect(beacon.instance_variable_get(:@limit)).to eq(-1)
-      expect(beacon.instance_variable_get(:@interval)).to eq(60)
+      expect(beacon.instance_variable_get(:@interval)).to eq(10)
       expect(beacon.instance_variable_get(:@services)).to eq(['TiVoMediaServer:1234/http'])
     end
 
