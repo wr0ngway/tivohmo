@@ -20,7 +20,7 @@ module TivoHMO
           self.category_qualifier = category_qualifier
           self.title = category_type.to_s.titleize
           self.modified_at = Time.at(delegate.updated_at.to_i)
-          self.created_at = Time.at(delegate.updated_at.to_i)
+          self.created_at = Time.now
         end
 
         def children
@@ -35,7 +35,12 @@ module TivoHMO
             end
 
             if super.blank?
-              Array(delegate.send(category_qualifier)).each do |category_value|
+              qualified = Array(delegate.send(category_qualifier))
+              # Sort by title descending so that creation times are
+              # correct for tivo sort of newest first (Time.now for
+              # created_at in Category)
+              qualified = qualified.sort_by{|c| c[:title] }.reverse
+              qualified.each do |category_value|
                 add_child(Category.new(delegate, category_type, category_value))
               end
             end

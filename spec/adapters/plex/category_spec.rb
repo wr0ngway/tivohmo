@@ -8,15 +8,19 @@ describe TivoHMO::Adapters::Plex::Category do
   describe "#initialize" do
 
     it "should instantiate" do
-      category = described_class.new(plex_delegate, :newest)
-      expect(category).to be_a described_class
-      expect(category).to be_a TivoHMO::API::Container
-      expect(category.category_type).to eq(:newest)
-      expect(category.category_value).to be_nil
-      expect(category.title).to eq('Newest')
-      expect(category.identifier).to eq(plex_delegate.key)
-      expect(category.modified_at).to eq(Time.at(plex_delegate.updated_at))
-      expect(category.created_at).to eq(Time.at(plex_delegate.added_at))
+      now = Time.now
+      Timecop.freeze(now) do
+        category = described_class.new(plex_delegate, :newest)
+        expect(category).to be_a described_class
+        expect(category).to be_a TivoHMO::API::Container
+        expect(category.category_type).to eq(:newest)
+        expect(category.category_value).to be_nil
+        expect(category.title).to eq('Newest')
+        expect(category.identifier).to eq(plex_delegate.key)
+        expect(category.modified_at).to eq(Time.at(plex_delegate.updated_at))
+        expect(category.created_at).to eq(now)
+      end
+
     end
 
     it "should use_category_value for title if present" do

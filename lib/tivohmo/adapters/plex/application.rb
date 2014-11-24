@@ -25,7 +25,12 @@ module TivoHMO
         def children
           synchronize do
             if super.blank?
-              Array(server.library.sections).each do |section|
+              sections = Array(server.library.sections)
+              # Sort by title descending so that creation times are
+              # correct for tivo sort of newest first (Time.now for
+              # created_at in Section)
+              sections = sections.sort_by{|s| s[:title] }.reverse
+              sections.each do |section|
                 add_child(Section.new(section))
               end
             end

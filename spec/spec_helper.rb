@@ -3,6 +3,8 @@ require 'rspec'
 RSpec.configure do |config|
 end
 
+require 'timecop'
+
 require 'coveralls'
 Coveralls.wear!
 

@@ -26,7 +26,7 @@ module TivoHMO
           end
 
           self.modified_at = Time.at(delegate.updated_at.to_i)
-          self.created_at = Time.at(delegate.updated_at.to_i)
+          self.created_at = Time.now
         end
 
         def children
