@@ -41,6 +41,10 @@ module TivoHMO
             # group tv shows under same name if we can extract a seriesId
             guid = delegate.guid
             if guid =~ /thetvdb:\/\/(\d+)/
+              # TODO: figure out how to get zap2it series IDs into plex
+              # If we had zap2it ids in plex metadata and extracted them
+              # here, tivo would show a relevant thumbnail image for the
+              # series in the My Shows UI.
               md.series_id = "SH#{$1}"
             end
 
