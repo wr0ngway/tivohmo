@@ -20,7 +20,7 @@ describe TivoHMO::Adapters::Plex::Episode do
       expect(episode.title).to eq(plex_delegate.title)
       expect(episode.identifier).to eq(plex_delegate.key)
       expect(episode.modified_at).to eq(Time.at(plex_delegate.updated_at))
-      expect(episode.created_at).to eq(Time.at(plex_delegate.added_at))
+      expect(episode.created_at).to eq(Time.parse(plex_delegate.originally_available_at))
     end
 
   end

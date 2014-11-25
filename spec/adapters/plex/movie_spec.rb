@@ -16,7 +16,7 @@ describe TivoHMO::Adapters::Plex::Movie do
       expect(movie.title).to eq(plex_delegate.title)
       expect(movie.identifier).to eq(plex_delegate.key)
       expect(movie.modified_at).to eq(Time.at(plex_delegate.updated_at))
-      expect(movie.created_at).to eq(Time.at(plex_delegate.added_at))
+      expect(movie.created_at).to eq(Time.parse(plex_delegate.originally_available_at))
     end
 
   end

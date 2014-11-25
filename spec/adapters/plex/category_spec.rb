@@ -36,7 +36,7 @@ describe TivoHMO::Adapters::Plex::Category do
   describe "#children" do
 
     it "should memoize" do
-      listing = [plex_stub(::Plex::Movie)]
+      listing = [plex_stub(::Plex::Movie, originally_available_at: "2013-01-02")]
       allow(plex_delegate).to receive(:newest).and_return(listing)
       section = described_class.new(plex_delegate, :newest)
       expect(section.children.object_id).to eq(section.children.object_id)
@@ -44,8 +44,8 @@ describe TivoHMO::Adapters::Plex::Category do
 
     it "should have children" do
       listing = [
-          plex_stub(::Plex::Movie),
-          plex_stub(::Plex::Episode),
+          plex_stub(::Plex::Movie, originally_available_at: "2013-01-02"),
+          plex_stub(::Plex::Episode, originally_available_at: "2013-01-02"),
           plex_stub(::Plex::Show)
       ]
       allow(plex_delegate).to receive(:newest).and_return(listing)
@@ -55,8 +55,8 @@ describe TivoHMO::Adapters::Plex::Category do
 
     it "should use category_value for children" do
       listing = [
-          plex_stub(::Plex::Movie),
-          plex_stub(::Plex::Episode),
+          plex_stub(::Plex::Movie, originally_available_at: "2013-01-02"),
+          plex_stub(::Plex::Episode, originally_available_at: "2013-01-02"),
           plex_stub(::Plex::Show)
       ]
       cval = {title: 'Title', key: 'key'}
