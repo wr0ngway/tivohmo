@@ -1,3 +1,15 @@
+0.2.2 (11/25/2014)
+------------------
+
+decrease default beacon interval to 10s <4fd10c6> [Matt Conway]
+disable recurse for now <c8f0100> [Matt Conway]
+fix sort <33bce77> [Matt Conway]
+handle recurse (no groups) <d2a0019> [Matt Conway]
+improve ordering/sorting <06adca5> [Matt Conway]
+try to prevent beacon thread from erroring out when network temporarily unavailable (e.g. laptop suspend/wake) <73e2ea4> [Matt Conway]
+use movie/episode airdates for sorting if possible <397c50d> [Matt Conway]
+zap2it comment <d5d176d> [Matt Conway]
+
 0.2.1 (11/23/2014)
 ------------------
 
