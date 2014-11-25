@@ -305,6 +305,7 @@ describe TivoHMO::Server do
         end
 
         it "recurses all items uniquely" do
+          skip "recurse disabled because tivo forces it on initially (no memory)"
           get "/TiVoConnect?Command=QueryContainer&Container=/a1/c1&Recurse=Yes"
           expect(last_response.status).to eq(200)
           doc = Nokogiri::XML(last_response.body)

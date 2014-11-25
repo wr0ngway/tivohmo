@@ -194,7 +194,8 @@ module TivoHMO
       item_count = (params['ItemCount'] || 8).to_i
 
       # Yes or No, default no
-      recurse = (params['Recurse'] == 'Yes')
+      # TODO: fix this when tivo side is fixed or config mechanism added to globally disable recurse
+      recurse = false #(params['Recurse'] == 'Yes')
 
       # csv of Type, Title, CreationDate, LastChangeDate, Random
       # reverse with preceding !
