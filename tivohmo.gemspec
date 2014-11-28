@@ -38,6 +38,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "sinatra"
   spec.add_dependency "builder"
   spec.add_dependency "puma"
+  spec.add_dependency "tvdbr"
 
   # filesystem adapter dependencies, make optional?
   spec.add_dependency "listen"

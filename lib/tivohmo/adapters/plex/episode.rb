@@ -1,3 +1,5 @@
+require 'tivohmo/tvdb_helper'
+
 module TivoHMO
   module Adapters
     module Plex
@@ -39,21 +41,37 @@ module TivoHMO
             md.episode_title = "%i - %s" % [md.episode_number, title]
             md.title = "%s - %s" % [delegate.grandparent_title, title]
 
-            # group tv shows under same name if we can extract a seriesId
-            guid = delegate.guid
-            if guid =~ /thetvdb:\/\/(\d+)/
-              # TODO: figure out how to get zap2it series IDs into plex
-              # If we had zap2it ids in plex metadata and extracted them
-              # here, tivo would show a relevant thumbnail image for the
-              # series in the My Shows UI.
-              md.series_id = "SH#{$1}"
-            end
+            md.series_id = lookup_series_id
 
           rescue => e
             logger.log_exception e, "Failed to read plex metadata for #{self}"
           end
 
           md
+        end
+
+        # groups tv shows under same name if we can extract a seriesId
+        def lookup_series_id
+          series_id = nil
+
+          guid = delegate.guid
+          if guid =~ /thetvdb:\/\/(\d+)/
+            # zap2it ids allow tivo to show a relevant thumbnail image for the
+            # series in the My Shows UI.
+            tvdb_series_id = $1
+            begin
+              tvdb_series = TVDBHelper.instance.find_by_id(tvdb_series_id)
+              series_id = tvdb_series.zap2it_id
+              series_id = series_id.sub(/^EP/, 'SH')
+              logger.debug "Using zap2it series id: #{series_id}"
+            rescue => e
+              logger.log_exception e, "Failed to get zap2it series id"
+            end
+
+            series_id ||= "SH#{tvdb_series_id}"
+          end
+
+          series_id
         end
 
       end
