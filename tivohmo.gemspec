@@ -30,6 +30,7 @@ Gem::Specification.new do |spec|
 
   # core dependencies
   spec.add_dependency "activesupport"
+  spec.add_dependency "iconv"
   spec.add_dependency "gem_logger"
   spec.add_dependency "logging"
   spec.add_dependency "sigdump"

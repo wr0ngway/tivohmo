@@ -3,6 +3,7 @@ require 'sinatra/base'
 require 'active_support/core_ext/string'
 require 'zlib'
 require 'time'
+require 'iconv'
 
 module TivoHMO
 
@@ -20,6 +21,16 @@ module TivoHMO
     before do
       logger.info "Request from #{request.ip} \"#{request.request_method} #{request.url}\""
       logger.debug "Headers: #{headers.inspect}"
+    end
+
+    after do
+      if ! response.body.is_a?(Sinatra::Helpers::Stream)
+        # Try and reduce invalid chars in browse UI (SD UI) by
+        # transliterating from full utf-8 to ascii equivalents
+        # The full utf-8 is still provided in tivo_header for
+        # display by the HD UI in My Shows
+        response.body = response.body.collect{|b| transliterate(b) }
+      end
     end
 
     after do
@@ -54,7 +65,7 @@ module TivoHMO
 
       def unsupported
         status 404
-        erb :unsupported, layout: true
+        builder :unsupported, layout: true
       end
 
       def tsn
@@ -179,6 +190,11 @@ module TivoHMO
         data
       end
 
+      def transliterate(s)
+        converter = Iconv.new 'ASCII', 'UTF-8'
+        converter.transliterate = true
+        converter.conv(s) rescue s
+      end
     end
 
     helpers do
@@ -187,6 +203,8 @@ module TivoHMO
 
     # Get the xml doc describing the active HME applications
     get '/TiVoConnect' do
+      response["Content-Type"] = 'application/xml'
+
       command = params['Command']
 
       # pagination
@@ -293,16 +311,13 @@ module TivoHMO
           builder :server_info, layout: true
 
         when 'QueryItem' then
-          status 200
-          body ""
+          builder(layout: true) {|xml| xml.QueryItem }
 
         when 'FlushServer' then
-          status 200
-          body ""
+          builder(layout: true) {|xml| xml.FlushServer }
 
         when 'ResetServer' then
-          status 200
-          body ""
+          builder(layout: true) {|xml| xml.ResetServer }
 
         else
           unsupported
