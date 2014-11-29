@@ -14,6 +14,29 @@ Logging.logger.root.level = :error
 require 'tivohmo'
 require 'open-uri'
 
+require 'webmock/rspec'
+WebMock.disable_net_connect!(allow: 'samples.mplayerhq.hu')
+
+# require 'vcr'
+# VCR.configure do |c|
+#   c.cassette_library_dir = File.expand_path('../fixtures/vcr', __FILE__)
+#   c.hook_into :webmock
+#   c.default_cassette_options = { :record => :none, :allow_playback_repeats => true }
+#   # Uncomment this line to see more information about VCR when running tests
+#   #c.debug_logger = $stderr
+# end
+#
+# def setup_vcr
+#   fixture_name = self.to_s.gsub(/[:#]+/, '-').gsub(/\s+/, '_').gsub(/^[_-]*/, '')
+#   fixture_location = __FILE__.gsub(/.*\/test\//, '').gsub(/\.[^\/]*/, '')
+#   @cassette_name = "#{fixture_location}/#{fixture_name}"
+#   VCR.insert_cassette(@cassette_name, :record => :once)
+# end
+#
+# def teardown_vcr
+#   VCR.eject_cassette(@cassette_name)
+# end
+
 def video_fixture(name)
   fixture_names = {
       tiny: 'MPEG4 by philips.mp4',
@@ -30,7 +53,7 @@ def video_fixture(name)
   video_file = "#{cache_dir}/#{file_name}"
 
   if ! File.exist?(video_file)
-    puts "Downloading video fixture #{name} from #{video_url}"
+    Logging.logger.root.info "Downloading video fixture #{name} from #{video_url}"
     FileUtils.mkdir_p(cache_dir)
     File.write(video_file, open(video_url).read)
   end
