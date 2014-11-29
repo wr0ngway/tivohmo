@@ -1,3 +1,14 @@
+0.2.3 (11/29/2014)
+------------------
+
+add webmock/vcr <98c0a61> [Matt Conway]
+fix transliteration fir ubuntu (replace iconv with unidecoder) <4aa988e> [Matt Conway]
+lookup zap2it series id to enable thumbnails in My Shows UI <b737600> [Matt Conway]
+transliterate for SD UI, xml cleanup <1a80126> [Matt Conway]
+try to fix travis <3efda2a> [Matt Conway]
+try to fix travis <a2c5d08> [Matt Conway]
+warn for expected exceptions <c5e0736> [Matt Conway]
+
 0.2.2 (11/25/2014)
 ------------------
 
