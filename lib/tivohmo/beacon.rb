@@ -26,7 +26,7 @@ module TivoHMO
             begin
               broadcast
             rescue => e
-              logger.log_exception(e, "Ignoring exception in beacon thread")
+              logger.log_exception(e, "Ignoring exception in beacon thread", level: :warn)
             end
             sleep(@interval)
             @limit = @limit - 1

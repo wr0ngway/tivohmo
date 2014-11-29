@@ -65,7 +65,7 @@ module TivoHMO
               series_id = series_id.sub(/^EP/, 'SH')
               logger.debug "Using zap2it series id: #{series_id}"
             rescue => e
-              logger.log_exception e, "Failed to get zap2it series id"
+              logger.log_exception e, "Failed to get zap2it series id", level: :warn
             end
 
             series_id ||= "SH#{tvdb_series_id}"
