@@ -123,7 +123,20 @@ describe TivoHMO::Server do
         expect(helpers).to receive(:builder).
                                with(:item_details, layout: true, locals: {item: item}).
                                and_return("<TvBusMarshalledStruct/>")
+
+        # should not translit for header as HD UI handles more utf8 chars
+        expect(helpers).to_not receive(:transliterate)
+
         expect(helpers.tivo_header(item, 'video/x-tivo-mpeg')).to include('TvBusMarshalledStruct')
+      end
+
+    end
+
+    describe "#transliterate" do
+
+      it "generates ascii safe string" do
+        expect(helpers.transliterate("\u2019")).to eq("'")
+        expect(helpers.transliterate("\u2026")).to eq("...")
       end
 
     end
@@ -207,6 +220,16 @@ describe TivoHMO::Server do
         doc = Nokogiri::XML(last_response.body)
         title = doc.at_xpath("/TiVoContainer/Details/Title").content
         expect(title).to eq(server.title)
+      end
+
+      it "should transliterate" do
+        server.title = "\u2026"
+        get "/TiVoConnect?Command=QueryContainer"
+        expect(last_response.status).to eq(200)
+        doc = Nokogiri::XML(last_response.body)
+        title = doc.at_xpath("/TiVoContainer/Details/Title").content
+        expect(title).to_not eq(server.title)
+        expect(title).to eq('...')
       end
 
       it "uses server as root" do

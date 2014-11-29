@@ -3,7 +3,7 @@ require 'sinatra/base'
 require 'active_support/core_ext/string'
 require 'zlib'
 require 'time'
-require 'iconv'
+require 'unidecoder'
 
 module TivoHMO
 
@@ -191,9 +191,8 @@ module TivoHMO
       end
 
       def transliterate(s)
-        converter = Iconv.new 'ASCII', 'UTF-8'
-        converter.transliterate = true
-        converter.conv(s) rescue s
+        # unidecoder gem
+        s.to_ascii rescue s
       end
     end
 
