@@ -5,3 +5,5 @@ gemspec
 
 # for code coverage during travis-ci test runs
 gem 'coveralls', :require => false
+gem 'webmock', require: false
+#gem 'vcr', require: false
