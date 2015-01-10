@@ -33,10 +33,14 @@ module TivoHMO
         def children
           synchronize do
 
-            delegate.refresh
-            new_modified_at = delegate.updated_at.to_i
+            # updated_at doesn't get updated for automatic updates, only
+            # for updating from within plex media server web ui
+            section_id = delegate.key.split('/').last
+            new_delegate = delegate.library.section!(section_id)
+            new_modified_at = new_delegate.updated_at.to_i
             if new_modified_at > modified_at.to_i
               logger.info "Plex section was updated, refreshing"
+              @delegate = new_delegate
               self.modified_at = Time.at(new_modified_at)
               super.clear
             end
