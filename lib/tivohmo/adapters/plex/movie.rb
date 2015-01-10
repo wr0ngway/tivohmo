@@ -6,15 +6,19 @@ module TivoHMO
         include TivoHMO::API::Item
         include GemLogger::LoggerSupport
 
-        attr_reader :delegate
+        attr_reader :delegate, :subtitle
 
-        def initialize(delegate)
+        def initialize(delegate, subtitle=nil)
           # delegate is a Plex::Movie
           @delegate = delegate
 
           super(delegate.key)
 
+          @subtitle = subtitle
+
           self.title = delegate.title
+          self.title << " [#{subtitle[:language]} subtitled]" if subtitle
+
           self.modified_at = Time.at(delegate.updated_at.to_i)
           self.created_at = Time.parse(delegate.originally_available_at) rescue nil
           self.created_at ||= Time.at(delegate.added_at.to_i)
@@ -27,7 +31,7 @@ module TivoHMO
 
             md.movie_year = Time.parse(delegate.originally_available_at).year rescue nil
 
-            rating_name = delegate.content_rating.upcase
+            rating_name = delegate.content_rating.upcase rescue nil
             rating_value = TivoHMO::API::Metadata::MPAA_RATINGS[rating_name]
             if rating_value
               md.mpaa_rating = {name: rating_name, value: rating_value}

@@ -56,8 +56,14 @@ module TivoHMO
               Array(listing).each do |media|
                 if media.is_a?(::Plex::Movie)
                   add_child(Movie.new(media))
+                  subtitles(media).each do |sub|
+                    add_child(Movie.new(media, sub))
+                  end
                 elsif media.is_a?(::Plex::Episode)
                   add_child(Episode.new(media))
+                  subtitles(media).each do |sub|
+                    add_child(Episode.new(media, sub))
+                  end
                 elsif media.is_a?(::Plex::Show)
                   add_child(Show.new(media))
                 else
@@ -68,6 +74,26 @@ module TivoHMO
           end
 
           super
+        end
+
+        def subtitles(item_delegate)
+          subs = []
+
+          item_delegate.medias.find do |media|
+            media.parts.find do |part|
+              part.streams.find do |stream|
+                if stream.respond_to?(:codec) && stream.codec == 'srt'
+                  if  stream.respond_to?(:language) && stream.respond_to?(:language_code)
+                    subs << {language: stream.language, language_code: stream.language_code}
+                  else
+                    logger.warn "Subtitles not in plex naming standard for #{item_delegate.title}"
+                  end
+                end
+              end
+            end
+          end
+
+          subs
         end
 
       end
