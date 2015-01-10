@@ -10,11 +10,12 @@ module TivoHMO
         attr_reader :delegate
         attr_accessor :category_type, :category_value
 
-        def initialize(delegate, category_type, category_value=nil)
+        def initialize(delegate, category_type, category_value=nil, presorted=false)
           # delegate is a Plex::Section
           @delegate = delegate
 
           super(delegate.key)
+          self.presorted = presorted
 
           self.category_type = category_type
           self.category_value = category_value

@@ -15,6 +15,7 @@ module TivoHMO
           @delegate = delegate
 
           super(delegate.key)
+          self.presorted = true
 
           self.category_type = category_type
           self.category_qualifier = category_qualifier

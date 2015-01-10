@@ -34,11 +34,11 @@ module TivoHMO
               add_child(QualifiedCategory.new(delegate, :by_first_character, :first_characters))
 
               #add_child(Category.new(delegate, :unwatched))
-              add_child(Category.new(delegate, :on_deck))
-              add_child(Category.new(delegate, :newest))
-              add_child(Category.new(delegate, :recently_viewed))
-              add_child(Category.new(delegate, :recently_added))
-              add_child(Category.new(delegate, :all))
+              add_child(Category.new(delegate, :on_deck, nil, true))
+              add_child(Category.new(delegate, :newest, nil, true))
+              add_child(Category.new(delegate, :recently_viewed, nil, true))
+              add_child(Category.new(delegate, :recently_added, nil, true))
+              add_child(Category.new(delegate, :all, nil, true))
             end
           end
 

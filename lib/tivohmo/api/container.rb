@@ -10,12 +10,13 @@ module TivoHMO
       include Node
       include GemLogger::LoggerSupport
 
-      attr_accessor :uuid
+      attr_accessor :uuid, :presorted
 
 
       def initialize(identifier)
         super(identifier)
         self.uuid = SecureRandom.uuid
+        self.presorted = false
 
         self.content_type = "x-tivo-container/tivo-videos"
         self.source_format = "x-tivo-container/folder"

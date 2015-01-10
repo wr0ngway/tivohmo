@@ -250,7 +250,7 @@ module TivoHMO
 
           children = select_all_items(children) if recurse
 
-          children = sort(children, sort_order) if sort_order
+          children = sort(children, sort_order) if sort_order && ! container.presorted
 
           if anchor_item
             anchor = server.find(anchor_item)
