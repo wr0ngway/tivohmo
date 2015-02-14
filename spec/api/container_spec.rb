@@ -13,6 +13,7 @@ describe TivoHMO::API::Container do
       expect(node).to be_a(TivoHMO::API::Node)
       expect(node.identifier).to eq('c')
       expect(node.uuid).to_not be_nil
+      expect(node.presorted).to eq(false)
       expect(node.content_type).to eq("x-tivo-container/tivo-videos")
       expect(node.source_format).to eq("x-tivo-container/folder")
     end

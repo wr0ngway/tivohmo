@@ -1,0 +1,250 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:32400/library/sections
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml;charset=utf-8
+      Connection:
+      - close
+      X-Plex-Protocol:
+      - '1.0'
+      X-Plex-Content-Original-Length:
+      - '2991'
+      X-Plex-Content-Compressed-Length:
+      - '805'
+      Content-Length:
+      - '805'
+      Cache-Control:
+      - no-cache
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <MediaContainer size="6" allowSync="0" identifier="com.plexapp.plugins.library" mediaTagPrefix="/system/bundle/media/flags/" mediaTagVersion="1420767545" title1="Plex Library">
+        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="1" type="movie" title="Adult Movies" composite="/library/sections/1/composite/1423777283" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="9113e43dc6c547eede809f9439c8e80498b4a610" updatedAt="1423777283" createdAt="1332713366">
+        <Location id="4" path="/Users/mconway/Movies/Adult Movies" />
+        </Directory>
+        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="2" type="show" title="Adult TV Shows" composite="/library/sections/2/composite/1423932892" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="af8295a272d545681d462eed8025113d09195007" updatedAt="1423932892" createdAt="1332713366">
+        <Location id="6" path="/Users/mconway/Movies/Adult TV Shows" />
+        </Directory>
+        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="5" type="movie" title="Kid Movies" composite="/library/sections/5/composite/1423777310" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="340479de-6015-4e6c-9ec0-c74f936f4013" updatedAt="1423777310" createdAt="1411071543">
+        <Location id="9" path="/Users/mconway/Movies/Kid Movies" />
+        </Directory>
+        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="4" type="show" title="Kid TV Shows" composite="/library/sections/4/composite/1423777311" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="fa1dde48-f6dd-44f7-91f3-9283160dc953" updatedAt="1423777311" createdAt="1411071497">
+        <Location id="8" path="/Users/mconway/Movies/Kid TV Shows" />
+        </Directory>
+        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="1" thumb="/:/resources/movie.png" key="6" type="movie" title="Test Movies" composite="/library/sections/6/composite/1423936036" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="fbc810b7-6b51-40ba-a3c5-9a2c391e5a3d" updatedAt="1423936036" createdAt="1423935251">
+        <Location id="10" path="/Users/mconway/Movies/TivoHMOTest/Movies" />
+        </Directory>
+        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="7" type="show" title="Test TV Shows" composite="/library/sections/7/composite/1423935290" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="4c37cd05-86d7-4a34-8d5b-aa2fb261a136" updatedAt="1423935290" createdAt="1423935290">
+        <Location id="11" path="/Users/mconway/Movies/TivoHMOTest/TV Shows" />
+        </Directory>
+        </MediaContainer>
+    http_version: 
+  recorded_at: Sat, 14 Feb 2015 17:47:37 GMT
+- request:
+    method: get
+    uri: http://localhost:32400/library/sections/7/all
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml;charset=utf-8
+      Connection:
+      - close
+      X-Plex-Protocol:
+      - '1.0'
+      X-Plex-Content-Original-Length:
+      - '1631'
+      X-Plex-Content-Compressed-Length:
+      - '901'
+      Content-Length:
+      - '901'
+      Cache-Control:
+      - no-cache
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <MediaContainer size="1" allowSync="1" art="/:/resources/show-fanart.jpg" identifier="com.plexapp.plugins.library" librarySectionID="7" librarySectionTitle="Test TV Shows" librarySectionUUID="4c37cd05-86d7-4a34-8d5b-aa2fb261a136" mediaTagPrefix="/system/bundle/media/flags/" mediaTagVersion="1420767545" nocache="1" thumb="/:/resources/show.png" title1="Test TV Shows" title2="All Shows" viewGroup="show" viewMode="65592">
+        <Directory ratingKey="1170" key="/library/metadata/1170/children" studio="NBC" type="show" title="Grimm" contentRating="TV-14" summary="Nick Burkhardt thought he prepared himself for the realities of working as a homicide detective until he started seeing things he couldn&apos;t explain. Nick&apos;s life turns upside down when his Aunt Marie reveals they are descendants of an elite group of hunters,  known as &quot;Grimms,&quot; who fight to keep humanity safe from supernatural creatures. As Nick digs deeper into her past, he realizes that he will have to shoulder the responsibility of his ancestors." index="1" rating="8.3999996185302699" year="2011" thumb="/library/metadata/1170/thumb/1423935406" art="/library/metadata/1170/art/1423935406" banner="/library/metadata/1170/banner/1423935406" theme="/library/metadata/1170/theme/1423935406" duration="3600000" originallyAvailableAt="2011-10-28" leafCount="1" viewedLeafCount="0" childCount="1" addedAt="1423935401" updatedAt="1423935406">
+        <Genre tag="Drama" />
+        <Genre tag="Fantasy" />
+        <Role tag="David Giuntoli" />
+        <Role tag="Silas Weir Mitchell" />
+        <Role tag="Bitsie Tulloch" />
+        </Directory>
+        </MediaContainer>
+    http_version: 
+  recorded_at: Sat, 14 Feb 2015 17:47:37 GMT
+- request:
+    method: get
+    uri: http://localhost:32400/library/metadata/1170
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml;charset=utf-8
+      Connection:
+      - close
+      X-Plex-Protocol:
+      - '1.0'
+      X-Plex-Content-Original-Length:
+      - '2330'
+      X-Plex-Content-Compressed-Length:
+      - '1197'
+      Content-Length:
+      - '1197'
+      Cache-Control:
+      - no-cache
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <MediaContainer size="1" allowSync="1" identifier="com.plexapp.plugins.library" librarySectionID="7" librarySectionTitle="Test TV Shows" librarySectionUUID="4c37cd05-86d7-4a34-8d5b-aa2fb261a136" mediaTagPrefix="/system/bundle/media/flags/" mediaTagVersion="1420767545">
+        <Directory ratingKey="1170" key="/library/metadata/1170/children" guid="com.plexapp.agents.thetvdb://248736?lang=en" studio="NBC" type="show" title="Grimm" contentRating="TV-14" summary="Nick Burkhardt thought he prepared himself for the realities of working as a homicide detective until he started seeing things he couldn&apos;t explain. Nick&apos;s life turns upside down when his Aunt Marie reveals they are descendants of an elite group of hunters,  known as &quot;Grimms,&quot; who fight to keep humanity safe from supernatural creatures. As Nick digs deeper into her past, he realizes that he will have to shoulder the responsibility of his ancestors." index="1" rating="8.3999996185302699" year="2011" thumb="/library/metadata/1170/thumb/1423935406" art="/library/metadata/1170/art/1423935406" banner="/library/metadata/1170/banner/1423935406" theme="/library/metadata/1170/theme/1423935406" duration="3600000" originallyAvailableAt="2011-10-28" leafCount="1" viewedLeafCount="0" childCount="1" addedAt="1423935401" updatedAt="1423935406">
+        <Genre id="88" tag="Drama" />
+        <Genre id="65" tag="Fantasy" />
+        <Genre id="1859" tag="Horror" />
+        <Role id="7617" tag="David Giuntoli" role="Det. Nick Burkhardt" />
+        <Role id="7618" tag="Silas Weir Mitchell" role="Eddie Monroe" />
+        <Role id="7619" tag="Bitsie Tulloch" role="Juliette Silverton" />
+        <Role id="2559" tag="Bree Turner" role="Rosalee Calvert" />
+        <Role id="7620" tag="Russell Hornsby" role="Lt. Hank Griffin" />
+        <Role id="7621" tag="Sasha Roiz" role="Captain Renard" />
+        <Role id="7622" tag="Claire Coffee" role="Adalind Schade" />
+        <Role id="7623" tag="Jacqueline Toboni" role="Theresa &quot;Trubel&quot; Rubel" />
+        <Role id="7624" tag="Mary Elizabeth Mastrantonio" role="Woman in Black / Kelly Burkhardt" />
+        <Role id="2924" tag="Reggie Lee" role="Sgt. Wu" />
+        <Role id="7625" tag="Kate Burton" role="Marie" />
+        <Role id="7626" tag="Elizabeth Rodriguez" role="Chavez" />
+        <Location path="/Users/mconway/Movies/TivoHMOTest/TV Shows/Grimm" />
+        </Directory>
+        </MediaContainer>
+    http_version: 
+  recorded_at: Sat, 14 Feb 2015 17:47:37 GMT
+- request:
+    method: get
+    uri: http://localhost:32400/library/metadata/1170/children/children
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml;charset=utf-8
+      Connection:
+      - close
+      X-Plex-Protocol:
+      - '1.0'
+      X-Plex-Content-Original-Length:
+      - '1466'
+      X-Plex-Content-Compressed-Length:
+      - '771'
+      Content-Length:
+      - '771'
+      Cache-Control:
+      - no-cache
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <MediaContainer size="1" allowSync="1" art="/library/metadata/1170/art/1423935406" banner="/library/metadata/1170/banner/1423935406" identifier="com.plexapp.plugins.library" key="1170" librarySectionID="7" librarySectionTitle="Test TV Shows" librarySectionUUID="4c37cd05-86d7-4a34-8d5b-aa2fb261a136" mediaTagPrefix="/system/bundle/media/flags/" mediaTagVersion="1420767545" nocache="1" parentIndex="1" parentTitle="Grimm" parentYear="2011" summary="Nick Burkhardt thought he prepared himself for the realities of working as a homicide detective until he started seeing things he couldn&apos;t explain. Nick&apos;s life turns upside down when his Aunt Marie reveals they are descendants of an elite group of hunters,  known as &quot;Grimms,&quot; who fight to keep humanity safe from supernatural creatures. As Nick digs deeper into her past, he realizes that he will have to shoulder the responsibility of his ancestors." theme="/library/metadata/1170/theme/1423935406" thumb="/library/metadata/1170/thumb/1423935406" title1="Test TV Shows" title2="Grimm" viewGroup="season" viewMode="65593">
+        <Directory ratingKey="1173" key="/library/metadata/1173/children" parentRatingKey="1170" type="season" title="Season 1" parentKey="/library/metadata/1170" summary="" index="1" thumb="/library/metadata/1173/thumb/1423935424" leafCount="1" viewedLeafCount="0" addedAt="1423935423" updatedAt="1423935424">
+        </Directory>
+        </MediaContainer>
+    http_version: 
+  recorded_at: Sat, 14 Feb 2015 17:47:37 GMT
+- request:
+    method: get
+    uri: http://localhost:32400/library/metadata/1173
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml;charset=utf-8
+      Connection:
+      - close
+      X-Plex-Protocol:
+      - '1.0'
+      X-Plex-Content-Original-Length:
+      - '884'
+      X-Plex-Content-Compressed-Length:
+      - '461'
+      Content-Length:
+      - '461'
+      Cache-Control:
+      - no-cache
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <MediaContainer size="1" allowSync="1" identifier="com.plexapp.plugins.library" librarySectionID="7" librarySectionTitle="Test TV Shows" librarySectionUUID="4c37cd05-86d7-4a34-8d5b-aa2fb261a136" mediaTagPrefix="/system/bundle/media/flags/" mediaTagVersion="1420767545">
+        <Directory ratingKey="1173" key="/library/metadata/1173/children" parentRatingKey="1170" guid="com.plexapp.agents.thetvdb://248736/1?lang=en" type="season" title="Season 1" parentKey="/library/metadata/1170" parentTitle="Grimm" summary="" index="1" parentIndex="1" thumb="/library/metadata/1173/thumb/1423935424" art="/library/metadata/1170/art/1423935406" parentThumb="/library/metadata/1170/thumb/1423935406" parentTheme="/library/metadata/1170/theme/1423935406" leafCount="1" viewedLeafCount="0" addedAt="1423935423" updatedAt="1423935424">
+        </Directory>
+        </MediaContainer>
+    http_version: 
+  recorded_at: Sat, 14 Feb 2015 17:47:37 GMT
+recorded_with: VCR 2.9.3

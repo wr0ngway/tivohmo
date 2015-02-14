@@ -1,0 +1,395 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:32400/library/sections
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml;charset=utf-8
+      Connection:
+      - close
+      X-Plex-Protocol:
+      - '1.0'
+      X-Plex-Content-Original-Length:
+      - '2991'
+      X-Plex-Content-Compressed-Length:
+      - '805'
+      Content-Length:
+      - '805'
+      Cache-Control:
+      - no-cache
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <MediaContainer size="6" allowSync="0" identifier="com.plexapp.plugins.library" mediaTagPrefix="/system/bundle/media/flags/" mediaTagVersion="1420767545" title1="Plex Library">
+        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="1" type="movie" title="Adult Movies" composite="/library/sections/1/composite/1423777283" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="9113e43dc6c547eede809f9439c8e80498b4a610" updatedAt="1423777283" createdAt="1332713366">
+        <Location id="4" path="/Users/mconway/Movies/Adult Movies" />
+        </Directory>
+        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="2" type="show" title="Adult TV Shows" composite="/library/sections/2/composite/1423932892" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="af8295a272d545681d462eed8025113d09195007" updatedAt="1423932892" createdAt="1332713366">
+        <Location id="6" path="/Users/mconway/Movies/Adult TV Shows" />
+        </Directory>
+        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="5" type="movie" title="Kid Movies" composite="/library/sections/5/composite/1423777310" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="340479de-6015-4e6c-9ec0-c74f936f4013" updatedAt="1423777310" createdAt="1411071543">
+        <Location id="9" path="/Users/mconway/Movies/Kid Movies" />
+        </Directory>
+        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="4" type="show" title="Kid TV Shows" composite="/library/sections/4/composite/1423777311" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="fa1dde48-f6dd-44f7-91f3-9283160dc953" updatedAt="1423777311" createdAt="1411071497">
+        <Location id="8" path="/Users/mconway/Movies/Kid TV Shows" />
+        </Directory>
+        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="1" thumb="/:/resources/movie.png" key="6" type="movie" title="Test Movies" composite="/library/sections/6/composite/1423936036" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="fbc810b7-6b51-40ba-a3c5-9a2c391e5a3d" updatedAt="1423936036" createdAt="1423935251">
+        <Location id="10" path="/Users/mconway/Movies/TivoHMOTest/Movies" />
+        </Directory>
+        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="7" type="show" title="Test TV Shows" composite="/library/sections/7/composite/1423935290" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="4c37cd05-86d7-4a34-8d5b-aa2fb261a136" updatedAt="1423935290" createdAt="1423935290">
+        <Location id="11" path="/Users/mconway/Movies/TivoHMOTest/TV Shows" />
+        </Directory>
+        </MediaContainer>
+    http_version: 
+  recorded_at: Sat, 14 Feb 2015 17:47:36 GMT
+- request:
+    method: get
+    uri: http://localhost:32400/library/sections/6/year
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml;charset=utf-8
+      Connection:
+      - close
+      X-Plex-Protocol:
+      - '1.0'
+      X-Plex-Content-Original-Length:
+      - '452'
+      X-Plex-Content-Compressed-Length:
+      - '303'
+      Content-Length:
+      - '303'
+      Cache-Control:
+      - no-cache
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <MediaContainer size="2" allowSync="0" art="/:/resources/movie-fanart.jpg" content="secondary" identifier="com.plexapp.plugins.library" mediaTagPrefix="/system/bundle/media/flags/" mediaTagVersion="1420767545" thumb="/:/resources/movie.png" title1="Test Movies" title2="By Year" viewGroup="secondary" viewMode="65592">
+        <Directory key="2015" title="2015" />
+        <Directory key="2009" title="2009" />
+        </MediaContainer>
+    http_version: 
+  recorded_at: Sat, 14 Feb 2015 17:47:36 GMT
+- request:
+    method: get
+    uri: http://localhost:32400/library/sections
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml;charset=utf-8
+      Connection:
+      - close
+      X-Plex-Protocol:
+      - '1.0'
+      X-Plex-Content-Original-Length:
+      - '2991'
+      X-Plex-Content-Compressed-Length:
+      - '805'
+      Content-Length:
+      - '805'
+      Cache-Control:
+      - no-cache
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <MediaContainer size="6" allowSync="0" identifier="com.plexapp.plugins.library" mediaTagPrefix="/system/bundle/media/flags/" mediaTagVersion="1420767545" title1="Plex Library">
+        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="1" type="movie" title="Adult Movies" composite="/library/sections/1/composite/1423777283" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="9113e43dc6c547eede809f9439c8e80498b4a610" updatedAt="1423777283" createdAt="1332713366">
+        <Location id="4" path="/Users/mconway/Movies/Adult Movies" />
+        </Directory>
+        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="2" type="show" title="Adult TV Shows" composite="/library/sections/2/composite/1423932892" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="af8295a272d545681d462eed8025113d09195007" updatedAt="1423932892" createdAt="1332713366">
+        <Location id="6" path="/Users/mconway/Movies/Adult TV Shows" />
+        </Directory>
+        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="5" type="movie" title="Kid Movies" composite="/library/sections/5/composite/1423777310" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="340479de-6015-4e6c-9ec0-c74f936f4013" updatedAt="1423777310" createdAt="1411071543">
+        <Location id="9" path="/Users/mconway/Movies/Kid Movies" />
+        </Directory>
+        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="4" type="show" title="Kid TV Shows" composite="/library/sections/4/composite/1423777311" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="fa1dde48-f6dd-44f7-91f3-9283160dc953" updatedAt="1423777311" createdAt="1411071497">
+        <Location id="8" path="/Users/mconway/Movies/Kid TV Shows" />
+        </Directory>
+        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="1" thumb="/:/resources/movie.png" key="6" type="movie" title="Test Movies" composite="/library/sections/6/composite/1423936036" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="fbc810b7-6b51-40ba-a3c5-9a2c391e5a3d" updatedAt="1423936036" createdAt="1423935251">
+        <Location id="10" path="/Users/mconway/Movies/TivoHMOTest/Movies" />
+        </Directory>
+        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="7" type="show" title="Test TV Shows" composite="/library/sections/7/composite/1423935290" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="4c37cd05-86d7-4a34-8d5b-aa2fb261a136" updatedAt="1423935290" createdAt="1423935290">
+        <Location id="11" path="/Users/mconway/Movies/TivoHMOTest/TV Shows" />
+        </Directory>
+        </MediaContainer>
+    http_version: 
+  recorded_at: Sat, 14 Feb 2015 17:47:36 GMT
+- request:
+    method: get
+    uri: http://localhost:32400/library/sections/6/year/2015
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml;charset=utf-8
+      Connection:
+      - close
+      X-Plex-Protocol:
+      - '1.0'
+      X-Plex-Content-Original-Length:
+      - '1947'
+      X-Plex-Content-Compressed-Length:
+      - '1053'
+      Content-Length:
+      - '1053'
+      Cache-Control:
+      - no-cache
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <MediaContainer size="1" allowSync="1" art="/:/resources/movie-fanart.jpg" identifier="com.plexapp.plugins.library" librarySectionID="6" librarySectionTitle="Test Movies" librarySectionUUID="fbc810b7-6b51-40ba-a3c5-9a2c391e5a3d" mediaTagPrefix="/system/bundle/media/flags/" mediaTagVersion="1420767545" thumb="/:/resources/movie.png" title1="Test Movies" title2="2015" viewGroup="movie" viewMode="65592">
+        <Video ratingKey="1175" key="/library/metadata/1175" studio="Guerilla Films" type="movie" title="Wyrmwood" summary="Barry is a talented mechanic and family man whose life is torn apart on the eve of a zombie apocalypse. His sister, Brooke, is kidnapped by a sinister team of gas-mask wearing soldiers &amp;amp; experimented on by a psychotic doctor. While Brooke plans her escape Barry goes out on the road to find her &amp;amp; teams up with Benny, a fellow survivor - together they must arm themselves and prepare to battle their way through hordes of flesh-eating monsters in a harsh Australian bushland." year="2015" thumb="/library/metadata/1175/thumb/1423936051" art="/library/metadata/1175/art/1423936051" duration="5914659" originallyAvailableAt="2015-02-13" addedAt="1423936036" updatedAt="1423936051">
+        <Media videoResolution="sd" id="1402" duration="5914659" bitrate="989" width="640" height="352" aspectRatio="1.85" audioChannels="2" audioCodec="mp3" videoCodec="mpeg4" container="avi" videoFrameRate="24p">
+        <Part id="1957" key="/library/parts/1957/file.avi" duration="5914659" file="/Users/mconway/Movies/TivoHMOTest/Movies/Wyrmwood (2014).avi" size="731033918" container="avi" />
+        </Media>
+        <Genre tag="Action" />
+        <Genre tag="Horror" />
+        <Writer tag="Kiah Roache-Turner" />
+        <Writer tag="Tristan Roache-Turner" />
+        <Director tag="Kiah Roache-Turner" />
+        <Country tag="Australia" />
+        <Role tag="Jay Gallagher" />
+        <Role tag="Bianca Bradey" />
+        <Role tag="Leon Burchill" />
+        </Video>
+        </MediaContainer>
+    http_version: 
+  recorded_at: Sat, 14 Feb 2015 17:47:36 GMT
+- request:
+    method: get
+    uri: http://localhost:32400/library/metadata/1175
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml;charset=utf-8
+      Connection:
+      - close
+      X-Plex-Protocol:
+      - '1.0'
+      X-Plex-Content-Original-Length:
+      - '3128'
+      X-Plex-Content-Compressed-Length:
+      - '1533'
+      Content-Length:
+      - '1533'
+      Cache-Control:
+      - no-cache
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <MediaContainer size="1" allowSync="1" identifier="com.plexapp.plugins.library" librarySectionID="6" librarySectionTitle="Test Movies" librarySectionUUID="fbc810b7-6b51-40ba-a3c5-9a2c391e5a3d" mediaTagPrefix="/system/bundle/media/flags/" mediaTagVersion="1420767545">
+        <Video ratingKey="1175" key="/library/metadata/1175" guid="com.plexapp.agents.imdb://tt2535470?lang=en" studio="Guerilla Films" type="movie" title="Wyrmwood" summary="Barry is a talented mechanic and family man whose life is torn apart on the eve of a zombie apocalypse. His sister, Brooke, is kidnapped by a sinister team of gas-mask wearing soldiers &amp;amp; experimented on by a psychotic doctor. While Brooke plans her escape Barry goes out on the road to find her &amp;amp; teams up with Benny, a fellow survivor - together they must arm themselves and prepare to battle their way through hordes of flesh-eating monsters in a harsh Australian bushland." year="2015" thumb="/library/metadata/1175/thumb/1423936051" art="/library/metadata/1175/art/1423936051" duration="5914659" originallyAvailableAt="2015-02-13" addedAt="1423936036" updatedAt="1423936051">
+        <Media videoResolution="sd" id="1402" duration="5914659" bitrate="989" width="640" height="352" aspectRatio="1.85" audioChannels="2" audioCodec="mp3" videoCodec="mpeg4" container="avi" videoFrameRate="24p">
+        <Part id="1957" key="/library/parts/1957/file.avi" duration="5914659" file="/Users/mconway/Movies/TivoHMOTest/Movies/Wyrmwood (2014).avi" size="731033918" container="avi">
+        <Stream id="5736" streamType="1" codec="mpeg4" index="0" bitrate="851" bitDepth="8" chromaSubsampling="4:2:0" codecID="XVID" colorSpace="yuv" duration="5914659" frameRate="23.976" gmc="0" height="352" level="5" profile="asp" qpel="0" scanType="progressive" title="" width="640" />
+        <Stream id="5737" streamType="2" selected="1" codec="mp3" index="1" channels="2" bitrate="128" bitrateMode="cbr" codecID="55" duration="5914659" samplingRate="48000" title="" />
+        </Part>
+        </Media>
+        <Genre id="89" tag="Action" />
+        <Genre id="1859" tag="Horror" />
+        <Genre id="251" tag="Science Fiction" />
+        <Writer id="7694" tag="Kiah Roache-Turner" />
+        <Writer id="7695" tag="Tristan Roache-Turner" />
+        <Director id="7693" tag="Kiah Roache-Turner" />
+        <Country id="1669" tag="Australia" />
+        <Role id="7696" tag="Jay Gallagher" role="Barry" />
+        <Role id="7697" tag="Bianca Bradey" role="Brooke" thumb="http://image.tmdb.org/t/p/original/1RxZYeFEcIOGI7A0yO0WUJcHCXZ.jpg" />
+        <Role id="7698" tag="Leon Burchill" role="Benny" />
+        <Role id="7699" tag="Luke McKenzie" role="The Captain" />
+        <Role id="7700" tag="Yure Covich" role="Chalker" />
+        <Role id="7701" tag="Catherine Terracini" role="Annie" />
+        <Role id="7702" tag="Keith Agius" role="Frank" />
+        <Role id="7703" tag="Berryn Schwerdt" role="The Doctor" />
+        <Role id="7704" tag="Cain Thompson" role="McGaughlin" />
+        <Role id="7705" tag="Beth Aubrey" role="Charlotte" />
+        <Role id="7706" tag="Sheridan Harbridge" role="Sherri" />
+        <Role id="7707" tag="Damian Dyke" role="Thompson" />
+        <Role id="7708" tag="John Michael Burdon" role="Zombie" />
+        </Video>
+        </MediaContainer>
+    http_version: 
+  recorded_at: Sat, 14 Feb 2015 17:47:36 GMT
+- request:
+    method: get
+    uri: http://localhost:32400/library/sections
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml;charset=utf-8
+      Connection:
+      - close
+      X-Plex-Protocol:
+      - '1.0'
+      X-Plex-Content-Original-Length:
+      - '2991'
+      X-Plex-Content-Compressed-Length:
+      - '805'
+      Content-Length:
+      - '805'
+      Cache-Control:
+      - no-cache
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <MediaContainer size="6" allowSync="0" identifier="com.plexapp.plugins.library" mediaTagPrefix="/system/bundle/media/flags/" mediaTagVersion="1420767545" title1="Plex Library">
+        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="1" type="movie" title="Adult Movies" composite="/library/sections/1/composite/1423777283" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="9113e43dc6c547eede809f9439c8e80498b4a610" updatedAt="1423777283" createdAt="1332713366">
+        <Location id="4" path="/Users/mconway/Movies/Adult Movies" />
+        </Directory>
+        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="2" type="show" title="Adult TV Shows" composite="/library/sections/2/composite/1423932892" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="af8295a272d545681d462eed8025113d09195007" updatedAt="1423932892" createdAt="1332713366">
+        <Location id="6" path="/Users/mconway/Movies/Adult TV Shows" />
+        </Directory>
+        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="5" type="movie" title="Kid Movies" composite="/library/sections/5/composite/1423777310" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="340479de-6015-4e6c-9ec0-c74f936f4013" updatedAt="1423777310" createdAt="1411071543">
+        <Location id="9" path="/Users/mconway/Movies/Kid Movies" />
+        </Directory>
+        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="4" type="show" title="Kid TV Shows" composite="/library/sections/4/composite/1423777311" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="fa1dde48-f6dd-44f7-91f3-9283160dc953" updatedAt="1423777311" createdAt="1411071497">
+        <Location id="8" path="/Users/mconway/Movies/Kid TV Shows" />
+        </Directory>
+        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="1" thumb="/:/resources/movie.png" key="6" type="movie" title="Test Movies" composite="/library/sections/6/composite/1423936036" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="fbc810b7-6b51-40ba-a3c5-9a2c391e5a3d" updatedAt="1423936036" createdAt="1423935251">
+        <Location id="10" path="/Users/mconway/Movies/TivoHMOTest/Movies" />
+        </Directory>
+        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="7" type="show" title="Test TV Shows" composite="/library/sections/7/composite/1423935290" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="4c37cd05-86d7-4a34-8d5b-aa2fb261a136" updatedAt="1423935290" createdAt="1423935290">
+        <Location id="11" path="/Users/mconway/Movies/TivoHMOTest/TV Shows" />
+        </Directory>
+        </MediaContainer>
+    http_version: 
+  recorded_at: Sat, 14 Feb 2015 17:47:36 GMT
+- request:
+    method: get
+    uri: http://localhost:32400/library/sections/6/year/2015
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml;charset=utf-8
+      Connection:
+      - close
+      X-Plex-Protocol:
+      - '1.0'
+      X-Plex-Content-Original-Length:
+      - '1947'
+      X-Plex-Content-Compressed-Length:
+      - '1053'
+      Content-Length:
+      - '1053'
+      Cache-Control:
+      - no-cache
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <MediaContainer size="1" allowSync="1" art="/:/resources/movie-fanart.jpg" identifier="com.plexapp.plugins.library" librarySectionID="6" librarySectionTitle="Test Movies" librarySectionUUID="fbc810b7-6b51-40ba-a3c5-9a2c391e5a3d" mediaTagPrefix="/system/bundle/media/flags/" mediaTagVersion="1420767545" thumb="/:/resources/movie.png" title1="Test Movies" title2="2015" viewGroup="movie" viewMode="65592">
+        <Video ratingKey="1175" key="/library/metadata/1175" studio="Guerilla Films" type="movie" title="Wyrmwood" summary="Barry is a talented mechanic and family man whose life is torn apart on the eve of a zombie apocalypse. His sister, Brooke, is kidnapped by a sinister team of gas-mask wearing soldiers &amp;amp; experimented on by a psychotic doctor. While Brooke plans her escape Barry goes out on the road to find her &amp;amp; teams up with Benny, a fellow survivor - together they must arm themselves and prepare to battle their way through hordes of flesh-eating monsters in a harsh Australian bushland." year="2015" thumb="/library/metadata/1175/thumb/1423936051" art="/library/metadata/1175/art/1423936051" duration="5914659" originallyAvailableAt="2015-02-13" addedAt="1423936036" updatedAt="1423936051">
+        <Media videoResolution="sd" id="1402" duration="5914659" bitrate="989" width="640" height="352" aspectRatio="1.85" audioChannels="2" audioCodec="mp3" videoCodec="mpeg4" container="avi" videoFrameRate="24p">
+        <Part id="1957" key="/library/parts/1957/file.avi" duration="5914659" file="/Users/mconway/Movies/TivoHMOTest/Movies/Wyrmwood (2014).avi" size="731033918" container="avi" />
+        </Media>
+        <Genre tag="Action" />
+        <Genre tag="Horror" />
+        <Writer tag="Kiah Roache-Turner" />
+        <Writer tag="Tristan Roache-Turner" />
+        <Director tag="Kiah Roache-Turner" />
+        <Country tag="Australia" />
+        <Role tag="Jay Gallagher" />
+        <Role tag="Bianca Bradey" />
+        <Role tag="Leon Burchill" />
+        </Video>
+        </MediaContainer>
+    http_version: 
+  recorded_at: Sat, 14 Feb 2015 17:47:36 GMT
+recorded_with: VCR 2.9.3

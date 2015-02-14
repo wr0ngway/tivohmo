@@ -1,5 +1,6 @@
 
 require 'rspec'
+
 RSpec.configure do |config|
 end
 
@@ -17,25 +18,15 @@ require 'open-uri'
 require 'webmock/rspec'
 WebMock.disable_net_connect!(allow: 'samples.mplayerhq.hu')
 
-# require 'vcr'
-# VCR.configure do |c|
-#   c.cassette_library_dir = File.expand_path('../fixtures/vcr', __FILE__)
-#   c.hook_into :webmock
-#   c.default_cassette_options = { :record => :none, :allow_playback_repeats => true }
-#   # Uncomment this line to see more information about VCR when running tests
-#   #c.debug_logger = $stderr
-# end
-#
-# def setup_vcr
-#   fixture_name = self.to_s.gsub(/[:#]+/, '-').gsub(/\s+/, '_').gsub(/^[_-]*/, '')
-#   fixture_location = __FILE__.gsub(/.*\/test\//, '').gsub(/\.[^\/]*/, '')
-#   @cassette_name = "#{fixture_location}/#{fixture_name}"
-#   VCR.insert_cassette(@cassette_name, :record => :once)
-# end
-#
-# def teardown_vcr
-#   VCR.eject_cassette(@cassette_name)
-# end
+require 'vcr'
+VCR.configure do |c|
+  c.cassette_library_dir = File.expand_path('../fixtures/vcr', __FILE__)
+  c.hook_into :webmock
+  c.configure_rspec_metadata!
+  c.default_cassette_options = { :record => :once }
+  # Uncomment this line to see more information about VCR when running tests
+  #c.debug_logger = $stderr
+end
 
 def video_fixture(name)
   fixture_names = {
@@ -130,22 +121,14 @@ def with_file_tree(*tree)
   end
 end
 
-def plex_stub(clazz, method_stubs={})
-  default_stubs = {
-    key: '/some/key',
-    title: 'Title',
-    summary: 'Summary',
-    duration: 100,
-    rating: 1,
-    updated_at: Time.now.to_i,
-    added_at: Time.now.to_i,
-    refresh: nil
-  }
-  d = double(clazz, default_stubs.merge(method_stubs))
+def plex_server
+  ::Plex::Server.new('localhost', 32400)
+end
 
-  allow(d).to receive(:is_a?) do |arg|
-    arg == clazz
-  end
+def plex_movie_section
+  plex_server.library.sections.find {|s| s.type == 'movie' && s.title == 'Test Movies'}
+end
 
-  d
+def plex_tv_section
+  plex_server.library.sections.find {|s| s.type == 'show' && s.title == 'Test TV Shows'}
 end

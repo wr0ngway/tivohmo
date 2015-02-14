@@ -27,6 +27,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rack-test"
   spec.add_development_dependency "nokogiri"
   spec.add_development_dependency "timecop"
+  spec.add_development_dependency "vcr"
 
   # core dependencies
   spec.add_dependency "activesupport"

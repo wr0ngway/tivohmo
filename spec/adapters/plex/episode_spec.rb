@@ -1,15 +1,14 @@
 require_relative "../../spec_helper"
 require 'tivohmo/adapters/plex'
 
-describe TivoHMO::Adapters::Plex::Episode do
+describe TivoHMO::Adapters::Plex::Episode, :vcr do
 
-  let(:plex_delegate) { plex_stub(::Plex::Episode,
-                                  content_rating: 'G',
-                                  index: 2,
-                                  parent_index: 1,
-                                  grandparent_title: 'ShowTitle',
-                                  guid: "com.plexapp.agents.thetvdb://269650/1/2?lang=en",
-                                  originally_available_at: "2014-06-04") }
+  let(:plex_delegate) {
+    section = plex_tv_section
+    show = section.all.first
+    season = show.seasons.first
+    season.episodes.first
+  }
 
   describe "#initialize" do
 
@@ -19,7 +18,7 @@ describe TivoHMO::Adapters::Plex::Episode do
       expect(episode).to be_a TivoHMO::API::Item
       expect(episode.title).to eq(plex_delegate.title)
       expect(episode.identifier).to eq(plex_delegate.key)
-      expect(episode.modified_at).to eq(Time.at(plex_delegate.updated_at))
+      expect(episode.modified_at).to eq(Time.at(plex_delegate.updated_at.to_i))
       expect(episode.created_at).to eq(Time.parse(plex_delegate.originally_available_at))
     end
 
@@ -32,13 +31,16 @@ describe TivoHMO::Adapters::Plex::Episode do
       episode.app = TivoHMO::Adapters::Plex::Application.new('localhost')
       md = episode.metadata
       expect(md.original_air_date).to eq(Time.parse(plex_delegate.originally_available_at))
-      expect(md.tv_rating).to eq({name: 'G', value: 3})
+      rating = plex_delegate.content_rating.upcase
+      expect(md.tv_rating).to eq({name: rating,
+                                  value: TivoHMO::API::Metadata::TV_RATINGS[rating]})
       expect(md.is_episode).to eq(true)
-      expect(md.episode_number).to eq("102")
-      expect(md.series_title).to eq("ShowTitle")
-      expect(md.episode_title).to eq("102 - Title")
-      expect(md.title).to eq("ShowTitle - Title")
-      expect(md.series_id).to eq("SH269650")
+      epnum = "%i%02i" % [plex_delegate.parent_index, plex_delegate.index]
+      expect(md.episode_number).to eq(epnum)
+      expect(md.series_title).to eq(plex_delegate.grandparent_title)
+      expect(md.episode_title).to eq("#{epnum} - #{plex_delegate.title}")
+      expect(md.title).to eq("#{plex_delegate.grandparent_title} - #{plex_delegate.title}")
+      expect(md.series_id).to match(/SH[0-9]+/)
     end
 
   end
