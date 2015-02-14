@@ -87,6 +87,7 @@ module TivoHMO
            "LIMIT:INTERVAL", "configure beacon limit and/or interval\n"
 
     def execute
+
       if version?
         puts "TivoHMO Version #{TivoHMO::VERSION}"
         return
@@ -96,12 +97,10 @@ module TivoHMO
 
       logger.info "TivoHMO #{TivoHMO::VERSION} starting up"
 
-      if configuration
-        config = YAML.load_file(configuration)
+      TivoHMO::Config.instance.setup(configuration || 'tivohmo.yml')
 
-        # allow cli option to override config file
-        set_if_default(:port, config['port'].to_i)
-      end
+      # allow cli option to override config file
+      set_if_default(:port, TivoHMO::Config.instance.get(:port).to_i)
 
       signal_usage_error "at least one application is required" unless application_list.present?
       signal_usage_error "an initializer is needed for each application" unless

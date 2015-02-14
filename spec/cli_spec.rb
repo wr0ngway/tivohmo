@@ -101,19 +101,19 @@ describe TivoHMO::CLI do
 
     it "sets log level to debug" do
       expect(YAML).to receive(:load_file).with('foo.yml').and_return({})
-      cli.run(argv(minimal_args.merge(configuration: 'foo.yml')))
+      cli.run(argv(minimal_args.merge(settings: 'foo.yml')))
     end
 
     it "can supply config" do
       expect(YAML).to receive(:load_file).with('foo.yml').and_return({'port' => 1234})
       expect(TivoHMO::Server).to receive(:start).with(api_server, 1234)
-      cli.run(argv(minimal_args.merge(configuration: 'foo.yml')))
+      cli.run(argv(minimal_args.merge(settings: 'foo.yml')))
     end
 
     it "supplies config that can be overriden from cli" do
       expect(YAML).to receive(:load_file).with('foo.yml').and_return({'port' => 1234})
       expect(TivoHMO::Server).to receive(:start).with(api_server, 4321)
-      cli.run(argv(minimal_args.merge(configuration: 'foo.yml', port: 4321)))
+      cli.run(argv(minimal_args.merge(settings: 'foo.yml', port: 4321)))
     end
 
   end

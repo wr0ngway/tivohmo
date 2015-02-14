@@ -7,8 +7,12 @@ module TivoHMO
       class Episode
         include TivoHMO::API::Item
         include GemLogger::LoggerSupport
+        include TivoHMO::Config::Mixin
 
         attr_reader :delegate, :subtitle
+
+        config_register(:group_with_zap2it, true,
+                        "Use zap2it ID for grouping episodes (Gives thumbnail in My Shows, but can cause problems)")
 
         def initialize(delegate, subtitle=nil)
           # delegate is a Plex::Episode
@@ -63,13 +67,16 @@ module TivoHMO
             # zap2it ids allow tivo to show a relevant thumbnail image for the
             # series in the My Shows UI.
             tvdb_series_id = $1
-            begin
-              tvdb_series = TVDBHelper.instance.find_by_id(tvdb_series_id)
-              series_id = tvdb_series.zap2it_id
-              series_id = series_id.sub(/^EP/, 'SH')
-              logger.debug "Using zap2it series id: #{series_id}"
-            rescue => e
-              logger.log_exception e, "Failed to get zap2it series id", level: :warn
+
+            if config_get(:group_with_zap2it)
+              begin
+                tvdb_series = TVDBHelper.instance.find_by_id(tvdb_series_id)
+                series_id = tvdb_series.zap2it_id
+                series_id = series_id.sub(/^EP/, 'SH')
+                logger.debug "Using zap2it series id: #{series_id}"
+              rescue => e
+                logger.log_exception e, "Failed to get zap2it series id", level: :warn
+              end
             end
 
             series_id ||= "SH#{tvdb_series_id}"

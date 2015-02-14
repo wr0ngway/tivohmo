@@ -12,6 +12,10 @@ module TivoHMO
   # tivo format
   class Server < Sinatra::Base
     include GemLogger::LoggerSupport
+    include TivoHMO::Config::Mixin
+
+    config_register(:force_grouping, true,
+                    "Force groups/folders regardless of parameters supplied by the tivo request")
 
     disable :logging
     set :root, File.expand_path("../server", __FILE__)
@@ -211,8 +215,7 @@ module TivoHMO
       item_count = (params['ItemCount'] || 8).to_i
 
       # Yes or No, default no
-      # TODO: fix this when tivo side is fixed or config mechanism added to globally disable recurse
-      recurse = false #(params['Recurse'] == 'Yes')
+      recurse = config_get(:force_grouping) ? false : (params['Recurse'] == 'Yes')
 
       # csv of Type, Title, CreationDate, LastChangeDate, Random
       # reverse with preceding !

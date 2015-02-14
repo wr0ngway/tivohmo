@@ -30,6 +30,7 @@ Gem::Specification.new do |spec|
 
   # core dependencies
   spec.add_dependency "activesupport"
+  spec.add_dependency "hashie"
   spec.add_dependency "unidecoder"
   spec.add_dependency "gem_logger"
   spec.add_dependency "logging"

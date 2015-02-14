@@ -6,9 +6,13 @@ module TivoHMO
         include TivoHMO::API::Container
         include GemLogger::LoggerSupport
         include MonitorMixin
+        include TivoHMO::Config::Mixin
 
         attr_reader :delegate
         attr_accessor :category_type, :category_value
+
+        config_register(:enable_subtitles, true,
+                        "Add additional items for transcoding with hardcoded subtitles when present")
 
         def initialize(delegate, category_type, category_value=nil, presorted=false)
           # delegate is a Plex::Section
@@ -78,6 +82,8 @@ module TivoHMO
 
         def subtitles(item_delegate)
           subs = []
+
+          return subs unless config_get(:enable_subtitles)
 
           item_delegate.medias.find do |media|
             media.parts.find do |part|
