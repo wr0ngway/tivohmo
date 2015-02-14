@@ -57,6 +57,21 @@ describe TivoHMO::Adapters::Plex::Category, :vcr do
       expect(keys).to include(*expected_keys)
     end
 
+    it "should have children with subtitles" do
+      section = described_class.new(plex_delegate, :newest)
+
+      withsub = section.children.find {|c| c.subtitle }
+      expect(withsub).to_not be_nil
+      expect(withsub.title).to match(/subtitled/)
+      expect(withsub.subtitle.language).to_not be_nil
+      expect(withsub.subtitle.language_code).to_not be_nil
+      expect(withsub.subtitle.file).to_not be_nil
+
+      p withoutsub = section.children.find {|c| c.identifier == withsub.identifier && c.subtitle.nil? }
+      expect(withoutsub).to_not be_nil
+
+    end
+
     it "should use category_value for children" do
       cval = plex_delegate.years.first
       section = described_class.new(plex_delegate, :by_year, cval)

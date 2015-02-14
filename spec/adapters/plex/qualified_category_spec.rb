@@ -16,6 +16,7 @@ describe TivoHMO::Adapters::Plex::QualifiedCategory, :vcr do
         expect(qcat).to be_a TivoHMO::API::Container
         expect(qcat.title).to eq("By Year")
         expect(qcat.category_qualifier).to eq('2000')
+        expect(qcat.presorted).to eq(true)
         expect(qcat.title).to eq("By Year")
         expect(qcat.identifier).to eq(plex_delegate.key)
         expect(qcat.modified_at).to eq(Time.at(plex_delegate.updated_at.to_i))

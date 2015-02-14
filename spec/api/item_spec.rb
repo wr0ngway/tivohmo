@@ -14,6 +14,8 @@ describe TivoHMO::API::Item do
       expect(node).to be_a(TivoHMO::API::Node)
       expect(node.identifier).to eq('i')
       expect(node.title).to eq('i')
+      expect(node.file).to eq('i')
+      expect(node.subtitle).to be_nil
       expect(node.content_type).to eq("video/x-tivo-mpeg")
       expect(node.source_format).to eq("video/x-tivo-mpeg")
     end

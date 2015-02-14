@@ -50,6 +50,7 @@ module TivoHMO
           opts = select_audio_bitrate(opts)
           opts = select_audio_sample_rate(opts)
           opts = select_container(opts)
+          opts = select_subtitle(opts)
 
           custom = opts.delete(:custom)
           opts[:custom] = custom.join(" ") if custom
@@ -61,7 +62,7 @@ module TivoHMO
         protected
 
         def movie
-          @movie ||= FFMPEG::Movie.new(source_filename)
+          @movie ||= FFMPEG::Movie.new(item.file)
         end
 
         def video_info
@@ -194,6 +195,16 @@ module TivoHMO
           VIDEO_FRAME_RATES.each do |r|
             opts[:frame_rate] = r
             break if frame_rate >= r.to_f
+          end
+
+          opts
+        end
+
+        def select_subtitle(opts)
+
+          if item.subtitle
+            logger.debug "Using subtitles present at: #{item.subtitle.file}"
+            opts[:custom] << "-vf subtitles=\"#{item.subtitle.file}\""
           end
 
           opts

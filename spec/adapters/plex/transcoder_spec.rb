@@ -14,7 +14,6 @@ describe TivoHMO::Adapters::Plex::Transcoder, :vcr do
       trans = described_class.new(item)
       expect(trans).to be_a described_class
       expect(trans).to be_a TivoHMO::API::Transcoder
-      expect(trans.source_filename).to eq plex_delegate.medias.first.parts.first.file
     end
 
   end

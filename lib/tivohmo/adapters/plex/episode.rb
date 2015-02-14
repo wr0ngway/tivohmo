@@ -16,7 +16,8 @@ module TivoHMO
 
           super(delegate.key)
 
-          @subtitle = subtitle
+          self.file = CGI.unescape(delegate.medias.first.parts.first.file)
+          self.subtitle = subtitle
 
           self.title = delegate.title
           self.title << " [#{subtitle[:language]} subtitled]" if subtitle

@@ -18,6 +18,8 @@ describe TivoHMO::Adapters::Plex::Episode, :vcr do
       expect(episode).to be_a TivoHMO::API::Item
       expect(episode.title).to eq(plex_delegate.title)
       expect(episode.identifier).to eq(plex_delegate.key)
+      expect(episode.file).to be_truthy
+      expect(episode.subtitle).to be_nil
       expect(episode.modified_at).to eq(Time.at(plex_delegate.updated_at.to_i))
       expect(episode.created_at).to eq(Time.parse(plex_delegate.originally_available_at))
     end

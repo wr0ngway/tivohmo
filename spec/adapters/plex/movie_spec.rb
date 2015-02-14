@@ -13,6 +13,8 @@ describe TivoHMO::Adapters::Plex::Movie, :vcr do
       expect(movie).to be_a TivoHMO::API::Item
       expect(movie.title).to eq(plex_delegate.title)
       expect(movie.identifier).to eq(plex_delegate.key)
+      expect(movie.file).to be_truthy
+      expect(movie.subtitle).to be_nil
       expect(movie.modified_at).to eq(Time.at(plex_delegate.updated_at.to_i))
       expect(movie.created_at).to eq(Time.parse(plex_delegate.originally_available_at))
     end

@@ -17,7 +17,6 @@ describe TivoHMO::API::Transcoder do
       trans = test_class.new(item)
       expect(trans).to be_a(TivoHMO::API::Transcoder)
       expect(trans.item).to eq(item)
-      expect(trans.source_filename).to eq('foo')
     end
 
   end

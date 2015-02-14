@@ -79,12 +79,33 @@ module TivoHMO
         def subtitles(item_delegate)
           subs = []
 
+          source_filename = CGI.unescape(item_delegate.medias.first.parts.first.file)
+
           item_delegate.medias.find do |media|
             media.parts.find do |part|
               part.streams.find do |stream|
                 if stream.respond_to?(:codec) && stream.codec == 'srt'
                   if  stream.respond_to?(:language) && stream.respond_to?(:language_code)
-                    subs << {language: stream.language, language_code: stream.language_code}
+                    lang = stream.language
+                    code = stream.language_code
+
+                    st = TivoHMO::API::Subtitle.new
+                    st.language = lang
+                    st.language_code = code
+
+                    sub_file_glob = source_filename.chomp(File.extname(source_filename)) + ".*.srt"
+                    sub_file = Dir[sub_file_glob].find do |f|
+                      file_code = f.split('.')[-2].downcase
+                      file_code == code || file_code.starts_with?(code) || code.starts_with?(file_code)
+                    end
+
+                    if sub_file
+                      logger.debug "Using subtitles present at: #{sub_file}"
+                      st.file = sub_file
+                      subs << st
+                    else
+                      logger.debug "Could not find subtitles for: #{item_delegate.title}"
+                    end
                   else
                     logger.warn "Subtitles not in plex naming standard for #{item_delegate.title}"
                   end

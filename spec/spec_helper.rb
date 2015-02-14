@@ -64,6 +64,10 @@ module TestAPI
 
   class Item
     include TivoHMO::API::Item
+    def initialize(file)
+      super(file)
+      self.file = file
+    end
   end
 
   class Metadata
