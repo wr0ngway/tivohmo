@@ -355,6 +355,17 @@ describe TivoHMO::Server do
           expect(child_titles).to eq(["i1", "i2", "i3", "i4"])
         end
 
+        it "honors presorted flag" do
+          container.presorted = true
+          container.children.reverse!
+          get "/TiVoConnect?Command=QueryContainer&Container=/a1/c1&SortOrder=Title"
+          expect(last_response.status).to eq(200)
+          doc = Nokogiri::XML(last_response.body)
+
+          child_titles = doc.xpath("/TiVoContainer/Item/Details/Title").collect(&:content)
+          expect(child_titles).to eq(["i4", "i3", "i2", "i1"])
+        end
+
         it "displays sorted by date" do
           server.find("/a1/c1/i4").created_at = 4.hours.ago
           server.find("/a1/c1/i3").created_at = 3.hours.ago

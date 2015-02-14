@@ -16,8 +16,8 @@ module TivoHMO
           super(delegate.key)
 
           self.title = delegate.title
-#          self.modified_at = Time.at(delegate.updated_at.to_i)
-#          self.created_at = Time.at(delegate.added_at.to_i)
+          self.modified_at = Time.at(delegate.updated_at.to_i) rescue nil
+          self.created_at = Time.at(delegate.added_at.to_i) rescue nil
         end
 
         def children

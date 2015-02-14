@@ -20,7 +20,7 @@ describe TivoHMO::Adapters::Filesystem::FileItem do
         file = __FILE__
         subject = described_class.new(file)
         expect(subject).to be_a described_class
-        expect(subject.full_path).to eq File.expand_path(file)
+        expect(subject.file).to eq File.expand_path(file)
         expect(subject.title).to eq File.basename(file)
         expect(subject.modified_at).to_not be_nil
         expect(subject.created_at).to_not be_nil

@@ -1,9 +1,9 @@
 require_relative "../../spec_helper"
 require 'tivohmo/adapters/plex'
 
-describe TivoHMO::Adapters::Plex::Category do
+describe TivoHMO::Adapters::Plex::Category, :vcr do
 
-  let(:plex_delegate) { plex_stub(::Plex::Section) }
+  let(:plex_delegate) { plex_movie_section }
 
   describe "#initialize" do
 
@@ -15,9 +15,10 @@ describe TivoHMO::Adapters::Plex::Category do
         expect(category).to be_a TivoHMO::API::Container
         expect(category.category_type).to eq(:newest)
         expect(category.category_value).to be_nil
+        expect(category.presorted).to eq(false)
         expect(category.title).to eq('Newest')
         expect(category.identifier).to eq(plex_delegate.key)
-        expect(category.modified_at).to eq(Time.at(plex_delegate.updated_at))
+        expect(category.modified_at).to eq(Time.at(plex_delegate.updated_at.to_i))
         expect(category.created_at).to eq(now)
       end
 
@@ -31,38 +32,55 @@ describe TivoHMO::Adapters::Plex::Category do
       expect(category.title).to eq('MyTitle')
     end
 
+    it "should set presorted if present" do
+      cval = {title: 'MyTitle', key: '/plex/key'}
+      category = described_class.new(plex_delegate, :by_year, nil, true)
+      expect(category.presorted).to eq(true)
+    end
+
   end
 
   describe "#children" do
 
     it "should memoize" do
-      listing = [plex_stub(::Plex::Movie, originally_available_at: "2013-01-02")]
-      allow(plex_delegate).to receive(:newest).and_return(listing)
       section = described_class.new(plex_delegate, :newest)
       expect(section.children.object_id).to eq(section.children.object_id)
     end
 
     it "should have children" do
-      listing = [
-          plex_stub(::Plex::Movie, originally_available_at: "2013-01-02"),
-          plex_stub(::Plex::Episode, originally_available_at: "2013-01-02"),
-          plex_stub(::Plex::Show)
-      ]
-      allow(plex_delegate).to receive(:newest).and_return(listing)
       section = described_class.new(plex_delegate, :newest)
-      expect(section.children.size).to eq(3)
+
+      expect(section.children.size).to_not be(0)
+
+      keys = section.children.collect(&:delegate).collect(&:key)
+      expected_keys = plex_delegate.newest.collect(&:key)
+      expect(keys).to include(*expected_keys)
+    end
+
+    it "should have children with subtitles" do
+      section = described_class.new(plex_delegate, :newest)
+
+      withsub = section.children.find {|c| c.subtitle }
+      expect(withsub).to_not be_nil
+      expect(withsub.title).to match(/subtitled/)
+      expect(withsub.subtitle.language).to_not be_nil
+      expect(withsub.subtitle.language_code).to_not be_nil
+      expect(withsub.subtitle.file).to_not be_nil
+
+      p withoutsub = section.children.find {|c| c.identifier == withsub.identifier && c.subtitle.nil? }
+      expect(withoutsub).to_not be_nil
+
     end
 
     it "should use category_value for children" do
-      listing = [
-          plex_stub(::Plex::Movie, originally_available_at: "2013-01-02"),
-          plex_stub(::Plex::Episode, originally_available_at: "2013-01-02"),
-          plex_stub(::Plex::Show)
-      ]
-      cval = {title: 'Title', key: 'key'}
-      allow(plex_delegate).to receive(:by_year).with('key').and_return(listing)
+      cval = plex_delegate.years.first
       section = described_class.new(plex_delegate, :by_year, cval)
-      expect(section.children.size).to eq(3)
+
+      expect(section.children.size).to_not be(0)
+
+      keys = section.children.collect(&:delegate).collect(&:key)
+      expected_keys = plex_delegate.by_year(cval[:key]).collect(&:key)
+      expect(keys).to include(*expected_keys)
     end
 
   end

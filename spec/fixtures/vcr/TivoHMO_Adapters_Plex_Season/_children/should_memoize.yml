@@ -1,0 +1,444 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:32400/library/sections
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml;charset=utf-8
+      Connection:
+      - close
+      X-Plex-Protocol:
+      - '1.0'
+      X-Plex-Content-Original-Length:
+      - '2991'
+      X-Plex-Content-Compressed-Length:
+      - '805'
+      Content-Length:
+      - '805'
+      Cache-Control:
+      - no-cache
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <MediaContainer size="6" allowSync="0" identifier="com.plexapp.plugins.library" mediaTagPrefix="/system/bundle/media/flags/" mediaTagVersion="1420767545" title1="Plex Library">
+        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="1" type="movie" title="Adult Movies" composite="/library/sections/1/composite/1423777283" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="9113e43dc6c547eede809f9439c8e80498b4a610" updatedAt="1423777283" createdAt="1332713366">
+        <Location id="4" path="/Users/mconway/Movies/Adult Movies" />
+        </Directory>
+        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="2" type="show" title="Adult TV Shows" composite="/library/sections/2/composite/1423932892" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="af8295a272d545681d462eed8025113d09195007" updatedAt="1423932892" createdAt="1332713366">
+        <Location id="6" path="/Users/mconway/Movies/Adult TV Shows" />
+        </Directory>
+        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="5" type="movie" title="Kid Movies" composite="/library/sections/5/composite/1423777310" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="340479de-6015-4e6c-9ec0-c74f936f4013" updatedAt="1423777310" createdAt="1411071543">
+        <Location id="9" path="/Users/mconway/Movies/Kid Movies" />
+        </Directory>
+        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="4" type="show" title="Kid TV Shows" composite="/library/sections/4/composite/1423777311" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="fa1dde48-f6dd-44f7-91f3-9283160dc953" updatedAt="1423777311" createdAt="1411071497">
+        <Location id="8" path="/Users/mconway/Movies/Kid TV Shows" />
+        </Directory>
+        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="1" thumb="/:/resources/movie.png" key="6" type="movie" title="Test Movies" composite="/library/sections/6/composite/1423936036" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="fbc810b7-6b51-40ba-a3c5-9a2c391e5a3d" updatedAt="1423936036" createdAt="1423935251">
+        <Location id="10" path="/Users/mconway/Movies/TivoHMOTest/Movies" />
+        </Directory>
+        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="7" type="show" title="Test TV Shows" composite="/library/sections/7/composite/1423935290" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="4c37cd05-86d7-4a34-8d5b-aa2fb261a136" updatedAt="1423935290" createdAt="1423935290">
+        <Location id="11" path="/Users/mconway/Movies/TivoHMOTest/TV Shows" />
+        </Directory>
+        </MediaContainer>
+    http_version: 
+  recorded_at: Sat, 14 Feb 2015 17:47:36 GMT
+- request:
+    method: get
+    uri: http://localhost:32400/library/sections/7/all
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml;charset=utf-8
+      Connection:
+      - close
+      X-Plex-Protocol:
+      - '1.0'
+      X-Plex-Content-Original-Length:
+      - '1631'
+      X-Plex-Content-Compressed-Length:
+      - '901'
+      Content-Length:
+      - '901'
+      Cache-Control:
+      - no-cache
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <MediaContainer size="1" allowSync="1" art="/:/resources/show-fanart.jpg" identifier="com.plexapp.plugins.library" librarySectionID="7" librarySectionTitle="Test TV Shows" librarySectionUUID="4c37cd05-86d7-4a34-8d5b-aa2fb261a136" mediaTagPrefix="/system/bundle/media/flags/" mediaTagVersion="1420767545" nocache="1" thumb="/:/resources/show.png" title1="Test TV Shows" title2="All Shows" viewGroup="show" viewMode="65592">
+        <Directory ratingKey="1170" key="/library/metadata/1170/children" studio="NBC" type="show" title="Grimm" contentRating="TV-14" summary="Nick Burkhardt thought he prepared himself for the realities of working as a homicide detective until he started seeing things he couldn&apos;t explain. Nick&apos;s life turns upside down when his Aunt Marie reveals they are descendants of an elite group of hunters,  known as &quot;Grimms,&quot; who fight to keep humanity safe from supernatural creatures. As Nick digs deeper into her past, he realizes that he will have to shoulder the responsibility of his ancestors." index="1" rating="8.3999996185302699" year="2011" thumb="/library/metadata/1170/thumb/1423935406" art="/library/metadata/1170/art/1423935406" banner="/library/metadata/1170/banner/1423935406" theme="/library/metadata/1170/theme/1423935406" duration="3600000" originallyAvailableAt="2011-10-28" leafCount="1" viewedLeafCount="0" childCount="1" addedAt="1423935401" updatedAt="1423935406">
+        <Genre tag="Drama" />
+        <Genre tag="Fantasy" />
+        <Role tag="David Giuntoli" />
+        <Role tag="Silas Weir Mitchell" />
+        <Role tag="Bitsie Tulloch" />
+        </Directory>
+        </MediaContainer>
+    http_version: 
+  recorded_at: Sat, 14 Feb 2015 17:47:36 GMT
+- request:
+    method: get
+    uri: http://localhost:32400/library/metadata/1170
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml;charset=utf-8
+      Connection:
+      - close
+      X-Plex-Protocol:
+      - '1.0'
+      X-Plex-Content-Original-Length:
+      - '2330'
+      X-Plex-Content-Compressed-Length:
+      - '1197'
+      Content-Length:
+      - '1197'
+      Cache-Control:
+      - no-cache
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <MediaContainer size="1" allowSync="1" identifier="com.plexapp.plugins.library" librarySectionID="7" librarySectionTitle="Test TV Shows" librarySectionUUID="4c37cd05-86d7-4a34-8d5b-aa2fb261a136" mediaTagPrefix="/system/bundle/media/flags/" mediaTagVersion="1420767545">
+        <Directory ratingKey="1170" key="/library/metadata/1170/children" guid="com.plexapp.agents.thetvdb://248736?lang=en" studio="NBC" type="show" title="Grimm" contentRating="TV-14" summary="Nick Burkhardt thought he prepared himself for the realities of working as a homicide detective until he started seeing things he couldn&apos;t explain. Nick&apos;s life turns upside down when his Aunt Marie reveals they are descendants of an elite group of hunters,  known as &quot;Grimms,&quot; who fight to keep humanity safe from supernatural creatures. As Nick digs deeper into her past, he realizes that he will have to shoulder the responsibility of his ancestors." index="1" rating="8.3999996185302699" year="2011" thumb="/library/metadata/1170/thumb/1423935406" art="/library/metadata/1170/art/1423935406" banner="/library/metadata/1170/banner/1423935406" theme="/library/metadata/1170/theme/1423935406" duration="3600000" originallyAvailableAt="2011-10-28" leafCount="1" viewedLeafCount="0" childCount="1" addedAt="1423935401" updatedAt="1423935406">
+        <Genre id="88" tag="Drama" />
+        <Genre id="65" tag="Fantasy" />
+        <Genre id="1859" tag="Horror" />
+        <Role id="7617" tag="David Giuntoli" role="Det. Nick Burkhardt" />
+        <Role id="7618" tag="Silas Weir Mitchell" role="Eddie Monroe" />
+        <Role id="7619" tag="Bitsie Tulloch" role="Juliette Silverton" />
+        <Role id="2559" tag="Bree Turner" role="Rosalee Calvert" />
+        <Role id="7620" tag="Russell Hornsby" role="Lt. Hank Griffin" />
+        <Role id="7621" tag="Sasha Roiz" role="Captain Renard" />
+        <Role id="7622" tag="Claire Coffee" role="Adalind Schade" />
+        <Role id="7623" tag="Jacqueline Toboni" role="Theresa &quot;Trubel&quot; Rubel" />
+        <Role id="7624" tag="Mary Elizabeth Mastrantonio" role="Woman in Black / Kelly Burkhardt" />
+        <Role id="2924" tag="Reggie Lee" role="Sgt. Wu" />
+        <Role id="7625" tag="Kate Burton" role="Marie" />
+        <Role id="7626" tag="Elizabeth Rodriguez" role="Chavez" />
+        <Location path="/Users/mconway/Movies/TivoHMOTest/TV Shows/Grimm" />
+        </Directory>
+        </MediaContainer>
+    http_version: 
+  recorded_at: Sat, 14 Feb 2015 17:47:36 GMT
+- request:
+    method: get
+    uri: http://localhost:32400/library/metadata/1170/children/children
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml;charset=utf-8
+      Connection:
+      - close
+      X-Plex-Protocol:
+      - '1.0'
+      X-Plex-Content-Original-Length:
+      - '1466'
+      X-Plex-Content-Compressed-Length:
+      - '771'
+      Content-Length:
+      - '771'
+      Cache-Control:
+      - no-cache
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <MediaContainer size="1" allowSync="1" art="/library/metadata/1170/art/1423935406" banner="/library/metadata/1170/banner/1423935406" identifier="com.plexapp.plugins.library" key="1170" librarySectionID="7" librarySectionTitle="Test TV Shows" librarySectionUUID="4c37cd05-86d7-4a34-8d5b-aa2fb261a136" mediaTagPrefix="/system/bundle/media/flags/" mediaTagVersion="1420767545" nocache="1" parentIndex="1" parentTitle="Grimm" parentYear="2011" summary="Nick Burkhardt thought he prepared himself for the realities of working as a homicide detective until he started seeing things he couldn&apos;t explain. Nick&apos;s life turns upside down when his Aunt Marie reveals they are descendants of an elite group of hunters,  known as &quot;Grimms,&quot; who fight to keep humanity safe from supernatural creatures. As Nick digs deeper into her past, he realizes that he will have to shoulder the responsibility of his ancestors." theme="/library/metadata/1170/theme/1423935406" thumb="/library/metadata/1170/thumb/1423935406" title1="Test TV Shows" title2="Grimm" viewGroup="season" viewMode="65593">
+        <Directory ratingKey="1173" key="/library/metadata/1173/children" parentRatingKey="1170" type="season" title="Season 1" parentKey="/library/metadata/1170" summary="" index="1" thumb="/library/metadata/1173/thumb/1423935424" leafCount="1" viewedLeafCount="0" addedAt="1423935423" updatedAt="1423935424">
+        </Directory>
+        </MediaContainer>
+    http_version: 
+  recorded_at: Sat, 14 Feb 2015 17:47:36 GMT
+- request:
+    method: get
+    uri: http://localhost:32400/library/metadata/1173
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml;charset=utf-8
+      Connection:
+      - close
+      X-Plex-Protocol:
+      - '1.0'
+      X-Plex-Content-Original-Length:
+      - '884'
+      X-Plex-Content-Compressed-Length:
+      - '461'
+      Content-Length:
+      - '461'
+      Cache-Control:
+      - no-cache
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <MediaContainer size="1" allowSync="1" identifier="com.plexapp.plugins.library" librarySectionID="7" librarySectionTitle="Test TV Shows" librarySectionUUID="4c37cd05-86d7-4a34-8d5b-aa2fb261a136" mediaTagPrefix="/system/bundle/media/flags/" mediaTagVersion="1420767545">
+        <Directory ratingKey="1173" key="/library/metadata/1173/children" parentRatingKey="1170" guid="com.plexapp.agents.thetvdb://248736/1?lang=en" type="season" title="Season 1" parentKey="/library/metadata/1170" parentTitle="Grimm" summary="" index="1" parentIndex="1" thumb="/library/metadata/1173/thumb/1423935424" art="/library/metadata/1170/art/1423935406" parentThumb="/library/metadata/1170/thumb/1423935406" parentTheme="/library/metadata/1170/theme/1423935406" leafCount="1" viewedLeafCount="0" addedAt="1423935423" updatedAt="1423935424">
+        </Directory>
+        </MediaContainer>
+    http_version: 
+  recorded_at: Sat, 14 Feb 2015 17:47:36 GMT
+- request:
+    method: get
+    uri: http://localhost:32400/library/metadata/1173/children/children
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml;charset=utf-8
+      Connection:
+      - close
+      X-Plex-Protocol:
+      - '1.0'
+      X-Plex-Content-Original-Length:
+      - '2389'
+      X-Plex-Content-Compressed-Length:
+      - '1216'
+      Content-Length:
+      - '1216'
+      Cache-Control:
+      - no-cache
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPE1lZGlh
+        Q29udGFpbmVyIHNpemU9IjEiIGFsbG93U3luYz0iMSIgYXJ0PSIvbGlicmFy
+        eS9tZXRhZGF0YS8xMTcwL2FydC8xNDIzOTM1NDA2IiBiYW5uZXI9Ii9saWJy
+        YXJ5L21ldGFkYXRhLzExNzAvYmFubmVyLzE0MjM5MzU0MDYiIGdyYW5kcGFy
+        ZW50Q29udGVudFJhdGluZz0iVFYtMTQiIGdyYW5kcGFyZW50U3R1ZGlvPSJO
+        QkMiIGdyYW5kcGFyZW50VGhlbWU9Ii9saWJyYXJ5L21ldGFkYXRhLzExNzAv
+        dGhlbWUvMTQyMzkzNTQwNiIgZ3JhbmRwYXJlbnRUaXRsZT0iR3JpbW0iIGlk
+        ZW50aWZpZXI9ImNvbS5wbGV4YXBwLnBsdWdpbnMubGlicmFyeSIga2V5PSIx
+        MTczIiBsaWJyYXJ5U2VjdGlvbklEPSI3IiBsaWJyYXJ5U2VjdGlvblRpdGxl
+        PSJUZXN0IFRWIFNob3dzIiBsaWJyYXJ5U2VjdGlvblVVSUQ9IjRjMzdjZDA1
+        LTg2ZDctNGEzNC04ZDViLWFhMmZiMjYxYTEzNiIgbWVkaWFUYWdQcmVmaXg9
+        Ii9zeXN0ZW0vYnVuZGxlL21lZGlhL2ZsYWdzLyIgbWVkaWFUYWdWZXJzaW9u
+        PSIxNDIwNzY3NTQ1IiBub2NhY2hlPSIxIiBwYXJlbnRJbmRleD0iMSIgcGFy
+        ZW50VGl0bGU9IiIgdGhlbWU9Ii9saWJyYXJ5L21ldGFkYXRhLzExNzAvdGhl
+        bWUvMTQyMzkzNTQwNiIgdGh1bWI9Ii9saWJyYXJ5L21ldGFkYXRhLzExNzMv
+        dGh1bWIvMTQyMzkzNTQyNCIgdGl0bGUxPSJHcmltbSIgdGl0bGUyPSJTZWFz
+        b24gMSIgdmlld0dyb3VwPSJlcGlzb2RlIiB2aWV3TW9kZT0iNjU1OTIiPgo8
+        VmlkZW8gcmF0aW5nS2V5PSIxMTc0IiBrZXk9Ii9saWJyYXJ5L21ldGFkYXRh
+        LzExNzQiIHBhcmVudFJhdGluZ0tleT0iMTE3MyIgdHlwZT0iZXBpc29kZSIg
+        dGl0bGU9IlBpbG90IiBwYXJlbnRLZXk9Ii9saWJyYXJ5L21ldGFkYXRhLzEx
+        NzMiIHN1bW1hcnk9IkFmdGVyIHRoZSBteXN0ZXJpb3VzIGJydXRhbCBhdHRh
+        Y2sgb2YgYSBsb2NhbCBjb2xsZWdlIGNvLWVkLCBQb3J0bGFuZCBob21pY2lk
+        ZSBEZXRlY3RpdmUgTmljayBCdXJraGFyZHQgZGlzY292ZXJzIGhlIGlzIGRl
+        c2NlbmRlZCBmcm9tIGFuIGVsaXRlIGxpbmUgb2YgY3JpbWluYWwgcHJvZmls
+        ZXJzIGtub3duIGFzICZxdW90O0dyaW1tcyZxdW90OywgY2hhcmdlZCB3aXRo
+        IGtlZXBpbmcgYmFsYW5jZSBiZXR3ZWVuIGh1bWFuaXR5IGFuZCB0aGUgbXl0
+        aG9sb2dpY2FsIGNyZWF0dXJlcyBvZiB0aGUgd29ybGQuIEFzIGhlIHRyaWVz
+        IHRvIGhpZGUgdGhlIGRhbmdlcnMgb2YgaGlzIG5ldyBmb3VuZCBjYWxsaW5n
+        IGZyb20gaGlzIGZpYW5jw6llLCBKdWxpZXR0ZSBTaWx2ZXJ0b24sIGFuZCBo
+        aXMgcGFydG5lciwgSGFuayBHcmlmZmluLCBoZSBiZWNvbWVzIGV2ZXIgbW9y
+        ZSBlbnRyZW5jaGVkIGluIHRoZSBhbmNpZW50IHJpdmFscmllcyBhbmQgYWxs
+        aWFuY2VzIG9mIHRoZSBHcmltbSB3b3JsZC4gV2l0aCBoZWxwIGZyb20gaGlz
+        IHJlbHVjdGFudCBjb25maWRhbnQsIE1vbnJvZSwgYSByZWZvcm1lZCBHcmlt
+        bSBjcmVhdHVyZSBoaW1zZWxmLCBOaWNrIG11c3QgbmF2aWdhdGUgdGhyb3Vn
+        aCB0aGUgZm9yY2VzIG9mIGEgbGFyZ2VyLXRoYW4tbGlmZSBteXRob2xvZ3ku
+        IiBpbmRleD0iMSIgcmF0aW5nPSI3LjU5OTk5OTkwNDYzMjU3MDEiIHllYXI9
+        IjIwMTEiIHRodW1iPSIvbGlicmFyeS9tZXRhZGF0YS8xMTc0L3RodW1iLzE0
+        MjM5MzU0MjQiIGR1cmF0aW9uPSIyNTExMzYwIiBvcmlnaW5hbGx5QXZhaWxh
+        YmxlQXQ9IjIwMTEtMTAtMjgiIGFkZGVkQXQ9IjE0MjM5MzU0MDEiIHVwZGF0
+        ZWRBdD0iMTQyMzkzNTQyNCI+CjxNZWRpYSB2aWRlb1Jlc29sdXRpb249IjQ4
+        MCIgaWQ9IjE0MDEiIGR1cmF0aW9uPSIyNTExMzYwIiBiaXRyYXRlPSI3Nzki
+        IHdpZHRoPSI3MjAiIGhlaWdodD0iNDA0IiBhc3BlY3RSYXRpbz0iMS43OCIg
+        YXVkaW9DaGFubmVscz0iMiIgYXVkaW9Db2RlYz0iYWFjIiB2aWRlb0NvZGVj
+        PSJoMjY0IiBjb250YWluZXI9Im1wNCIgdmlkZW9GcmFtZVJhdGU9IjI0cCIg
+        b3B0aW1pemVkRm9yU3RyZWFtaW5nPSIxIiBoYXM2NGJpdE9mZnNldHM9IjAi
+        Pgo8UGFydCBpZD0iMTk1NiIga2V5PSIvbGlicmFyeS9wYXJ0cy8xOTU2L2Zp
+        bGUubXA0IiBkdXJhdGlvbj0iMjUxMTM2MCIgZmlsZT0iL1VzZXJzL21jb253
+        YXkvTW92aWVzL1Rpdm9ITU9UZXN0L1RWIFNob3dzL0dyaW1tL1NlYXNvbiAx
+        L0dyaW1tIFMwMUUwMS5tcDQiIHNpemU9IjI0NDUyNDIxNyIgY29udGFpbmVy
+        PSJtcDQiIGhhczY0Yml0T2Zmc2V0cz0iMCIgb3B0aW1pemVkRm9yU3RyZWFt
+        aW5nPSIxIiAvPgo8L01lZGlhPgo8V3JpdGVyIHRhZz0iRGF2aWQgR3JlZW53
+        YWx0IiAvPgo8V3JpdGVyIHRhZz0iSmltIEtvdWYiIC8+CjxEaXJlY3RvciB0
+        YWc9Ik1hcmMgQnVja2xhbmQiIC8+CjwvVmlkZW8+CjwvTWVkaWFDb250YWlu
+        ZXI+Cg==
+    http_version: 
+  recorded_at: Sat, 14 Feb 2015 17:47:36 GMT
+- request:
+    method: get
+    uri: http://localhost:32400/library/metadata/1174
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml;charset=utf-8
+      Connection:
+      - close
+      X-Plex-Protocol:
+      - '1.0'
+      X-Plex-Content-Original-Length:
+      - '2938'
+      X-Plex-Content-Compressed-Length:
+      - '1431'
+      Content-Length:
+      - '1431'
+      Cache-Control:
+      - no-cache
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPE1lZGlh
+        Q29udGFpbmVyIHNpemU9IjEiIGFsbG93U3luYz0iMSIgaWRlbnRpZmllcj0i
+        Y29tLnBsZXhhcHAucGx1Z2lucy5saWJyYXJ5IiBsaWJyYXJ5U2VjdGlvbklE
+        PSI3IiBsaWJyYXJ5U2VjdGlvblRpdGxlPSJUZXN0IFRWIFNob3dzIiBsaWJy
+        YXJ5U2VjdGlvblVVSUQ9IjRjMzdjZDA1LTg2ZDctNGEzNC04ZDViLWFhMmZi
+        MjYxYTEzNiIgbWVkaWFUYWdQcmVmaXg9Ii9zeXN0ZW0vYnVuZGxlL21lZGlh
+        L2ZsYWdzLyIgbWVkaWFUYWdWZXJzaW9uPSIxNDIwNzY3NTQ1Ij4KPFZpZGVv
+        IHJhdGluZ0tleT0iMTE3NCIga2V5PSIvbGlicmFyeS9tZXRhZGF0YS8xMTc0
+        IiBwYXJlbnRSYXRpbmdLZXk9IjExNzMiIGdyYW5kcGFyZW50UmF0aW5nS2V5
+        PSIxMTcwIiBndWlkPSJjb20ucGxleGFwcC5hZ2VudHMudGhldHZkYjovLzI0
+        ODczNi8xLzE/bGFuZz1lbiIgdHlwZT0iZXBpc29kZSIgdGl0bGU9IlBpbG90
+        IiBncmFuZHBhcmVudEtleT0iL2xpYnJhcnkvbWV0YWRhdGEvMTE3MCIgcGFy
+        ZW50S2V5PSIvbGlicmFyeS9tZXRhZGF0YS8xMTczIiBncmFuZHBhcmVudFRp
+        dGxlPSJHcmltbSIgY29udGVudFJhdGluZz0iVFYtMTQiIHN1bW1hcnk9IkFm
+        dGVyIHRoZSBteXN0ZXJpb3VzIGJydXRhbCBhdHRhY2sgb2YgYSBsb2NhbCBj
+        b2xsZWdlIGNvLWVkLCBQb3J0bGFuZCBob21pY2lkZSBEZXRlY3RpdmUgTmlj
+        ayBCdXJraGFyZHQgZGlzY292ZXJzIGhlIGlzIGRlc2NlbmRlZCBmcm9tIGFu
+        IGVsaXRlIGxpbmUgb2YgY3JpbWluYWwgcHJvZmlsZXJzIGtub3duIGFzICZx
+        dW90O0dyaW1tcyZxdW90OywgY2hhcmdlZCB3aXRoIGtlZXBpbmcgYmFsYW5j
+        ZSBiZXR3ZWVuIGh1bWFuaXR5IGFuZCB0aGUgbXl0aG9sb2dpY2FsIGNyZWF0
+        dXJlcyBvZiB0aGUgd29ybGQuIEFzIGhlIHRyaWVzIHRvIGhpZGUgdGhlIGRh
+        bmdlcnMgb2YgaGlzIG5ldyBmb3VuZCBjYWxsaW5nIGZyb20gaGlzIGZpYW5j
+        w6llLCBKdWxpZXR0ZSBTaWx2ZXJ0b24sIGFuZCBoaXMgcGFydG5lciwgSGFu
+        ayBHcmlmZmluLCBoZSBiZWNvbWVzIGV2ZXIgbW9yZSBlbnRyZW5jaGVkIGlu
+        IHRoZSBhbmNpZW50IHJpdmFscmllcyBhbmQgYWxsaWFuY2VzIG9mIHRoZSBH
+        cmltbSB3b3JsZC4gV2l0aCBoZWxwIGZyb20gaGlzIHJlbHVjdGFudCBjb25m
+        aWRhbnQsIE1vbnJvZSwgYSByZWZvcm1lZCBHcmltbSBjcmVhdHVyZSBoaW1z
+        ZWxmLCBOaWNrIG11c3QgbmF2aWdhdGUgdGhyb3VnaCB0aGUgZm9yY2VzIG9m
+        IGEgbGFyZ2VyLXRoYW4tbGlmZSBteXRob2xvZ3kuIiBpbmRleD0iMSIgcGFy
+        ZW50SW5kZXg9IjEiIHJhdGluZz0iNy41OTk5OTk5MDQ2MzI1NzAxIiB5ZWFy
+        PSIyMDExIiB0aHVtYj0iL2xpYnJhcnkvbWV0YWRhdGEvMTE3NC90aHVtYi8x
+        NDIzOTM1NDI0IiBhcnQ9Ii9saWJyYXJ5L21ldGFkYXRhLzExNzAvYXJ0LzE0
+        MjM5MzU0MDYiIHBhcmVudFRodW1iPSIvbGlicmFyeS9tZXRhZGF0YS8xMTcz
+        L3RodW1iLzE0MjM5MzU0MjQiIGdyYW5kcGFyZW50VGh1bWI9Ii9saWJyYXJ5
+        L21ldGFkYXRhLzExNzAvdGh1bWIvMTQyMzkzNTQwNiIgZ3JhbmRwYXJlbnRU
+        aGVtZT0iL2xpYnJhcnkvbWV0YWRhdGEvMTE3MC90aGVtZS8xNDIzOTM1NDA2
+        IiBkdXJhdGlvbj0iMjUxMTM2MCIgb3JpZ2luYWxseUF2YWlsYWJsZUF0PSIy
+        MDExLTEwLTI4IiBhZGRlZEF0PSIxNDIzOTM1NDAxIiB1cGRhdGVkQXQ9IjE0
+        MjM5MzU0MjQiPgo8TWVkaWEgdmlkZW9SZXNvbHV0aW9uPSI0ODAiIGlkPSIx
+        NDAxIiBkdXJhdGlvbj0iMjUxMTM2MCIgYml0cmF0ZT0iNzc5IiB3aWR0aD0i
+        NzIwIiBoZWlnaHQ9IjQwNCIgYXNwZWN0UmF0aW89IjEuNzgiIGF1ZGlvQ2hh
+        bm5lbHM9IjIiIGF1ZGlvQ29kZWM9ImFhYyIgdmlkZW9Db2RlYz0iaDI2NCIg
+        Y29udGFpbmVyPSJtcDQiIHZpZGVvRnJhbWVSYXRlPSIyNHAiIG9wdGltaXpl
+        ZEZvclN0cmVhbWluZz0iMSIgaGFzNjRiaXRPZmZzZXRzPSIwIj4KPFBhcnQg
+        aWQ9IjE5NTYiIGtleT0iL2xpYnJhcnkvcGFydHMvMTk1Ni9maWxlLm1wNCIg
+        ZHVyYXRpb249IjI1MTEzNjAiIGZpbGU9Ii9Vc2Vycy9tY29ud2F5L01vdmll
+        cy9UaXZvSE1PVGVzdC9UViBTaG93cy9HcmltbS9TZWFzb24gMS9HcmltbSBT
+        MDFFMDEubXA0IiBzaXplPSIyNDQ1MjQyMTciIGNvbnRhaW5lcj0ibXA0IiBo
+        YXM2NGJpdE9mZnNldHM9IjAiIG9wdGltaXplZEZvclN0cmVhbWluZz0iMSI+
+        CjxTdHJlYW0gaWQ9IjU3MzQiIHN0cmVhbVR5cGU9IjEiIGNvZGVjPSJoMjY0
+        IiBpbmRleD0iMCIgYml0cmF0ZT0iNjU2IiBiaXREZXB0aD0iOCIgY2FiYWM9
+        IjEiIGNocm9tYVN1YnNhbXBsaW5nPSI0OjI6MCIgY29kZWNJRD0iYXZjMSIg
+        Y29sb3JTcGFjZT0ieXV2IiBkdXJhdGlvbj0iMjUxMTM0MiIgZnJhbWVSYXRl
+        PSIyMy45NzYiIGZyYW1lUmF0ZU1vZGU9ImNmciIgaGFzU2NhbGluZ01hdHJp
+        eD0iMCIgaGVpZ2h0PSI0MDQiIGxldmVsPSIzMSIgcHJvZmlsZT0iaGlnaCIg
+        cmVmRnJhbWVzPSI1IiBzY2FuVHlwZT0icHJvZ3Jlc3NpdmUiIHRpdGxlPSIi
+        IHdpZHRoPSI3MjAiIC8+CjxTdHJlYW0gaWQ9IjU3MzUiIHN0cmVhbVR5cGU9
+        IjIiIHNlbGVjdGVkPSIxIiBjb2RlYz0iYWFjIiBpbmRleD0iMSIgY2hhbm5l
+        bHM9IjIiIGJpdHJhdGU9IjExOSIgYml0cmF0ZU1vZGU9InZiciIgY29kZWNJ
+        RD0iNDAiIGR1cmF0aW9uPSIyNTExMzYwIiBwcm9maWxlPSJsYyIgc2FtcGxp
+        bmdSYXRlPSI0ODAwMCIgdGl0bGU9IiIgLz4KPC9QYXJ0Pgo8L01lZGlhPgo8
+        V3JpdGVyIGlkPSI3NjE0IiB0YWc9IkRhdmlkIEdyZWVud2FsdCIgLz4KPFdy
+        aXRlciBpZD0iNzYxNSIgdGFnPSJKaW0gS291ZiIgLz4KPFdyaXRlciBpZD0i
+        NzY5MSIgdGFnPSJTdGVwaGVuIENhcnBlbnRlciIgLz4KPERpcmVjdG9yIGlk
+        PSI3NjkyIiB0YWc9Ik1hcmMgQnVja2xhbmQiIC8+CjwvVmlkZW8+CjwvTWVk
+        aWFDb250YWluZXI+Cg==
+    http_version: 
+  recorded_at: Sat, 14 Feb 2015 17:47:36 GMT
+recorded_with: VCR 2.9.3
