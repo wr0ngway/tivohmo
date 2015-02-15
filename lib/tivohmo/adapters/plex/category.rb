@@ -59,15 +59,9 @@ module TivoHMO
 
               Array(listing).each do |media|
                 if media.is_a?(::Plex::Movie)
-                  add_child(Movie.new(media))
-                  subtitles(media).each do |sub|
-                    add_child(Movie.new(media, sub))
-                  end
+                  add_grouped(Movie, media)
                 elsif media.is_a?(::Plex::Episode)
-                  add_child(Episode.new(media))
-                  subtitles(media).each do |sub|
-                    add_child(Episode.new(media, sub))
-                  end
+                  add_grouped(Episode, media)
                 elsif media.is_a?(::Plex::Show)
                   add_child(Show.new(media))
                 else
@@ -80,9 +74,27 @@ module TivoHMO
           super
         end
 
-        def subtitles(item_delegate)
+        def add_grouped(item_class, item_delegate)
+          primary = item_class.new(item_delegate)
+
+          if config_get(:enable_subtitles)
+            subs = find_subtitles(item_delegate)
+
+            if subs.size > 0
+              group = Group.new(primary.identifier, primary.title)
+              add_child(group)
+              group.add_child(primary)
+              subs.each {|s| group.add_child(item_class.new(item_delegate, s)) }
+            else
+              add_child(primary)
+            end
+          else
+            add_child(primary)
+          end
+        end
+
+        def find_subtitles(item_delegate)
           subs = []
-          return subs unless config_get(:enable_subtitles)
 
           source_filename = CGI.unescape(item_delegate.medias.first.parts.first.file)
 

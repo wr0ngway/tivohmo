@@ -60,21 +60,25 @@ describe TivoHMO::Adapters::Plex::Category, :vcr do
     it "should have children with subtitles" do
       section = described_class.new(plex_delegate, :newest)
 
-      withsub = section.children.find {|c| c.subtitle }
-      expect(withsub).to_not be_nil
-      expect(withsub.title).to match(/subtitled/)
-      expect(withsub.subtitle.language).to_not be_nil
-      expect(withsub.subtitle.language_code).to_not be_nil
-      expect(withsub.subtitle.file).to_not be_nil
+      subgroup = section.children.find {|c| c.is_a?(TivoHMO::Adapters::Plex::Group) }
+      expect(subgroup).to_not be_nil
+      primary = subgroup.children[0]
+      sub = subgroup.children[1]
+      expect(primary.title).to_not match(/subtitled/)
+      expect(sub.title).to match(primary.title)
+      expect(sub.title).to match(/subtitled/)
+      expect(sub.subtitle.language).to_not be_nil
+      expect(sub.subtitle.language_code).to_not be_nil
+      expect(sub.subtitle.file).to_not be_nil
 
-      withoutsub = section.children.find {|c| c.identifier == withsub.identifier && c.subtitle.nil? }
+      withoutsub = section.children.find {|c| ! c.is_a?(TivoHMO::Adapters::Plex::Group) }
       expect(withoutsub).to_not be_nil
     end
 
     it "should allow disabling subtitles" do
       section = described_class.new(plex_delegate, :newest)
       described_class.config_set(:enable_subtitles, false)
-      withsub = section.children.find {|c| c.subtitle }
+      withsub = section.children.find {|c| c.is_a?(TivoHMO::Adapters::Plex::Group) }
       expect(withsub).to be_nil
     end
 
