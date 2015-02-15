@@ -67,9 +67,15 @@ describe TivoHMO::Adapters::Plex::Category, :vcr do
       expect(withsub.subtitle.language_code).to_not be_nil
       expect(withsub.subtitle.file).to_not be_nil
 
-      p withoutsub = section.children.find {|c| c.identifier == withsub.identifier && c.subtitle.nil? }
+      withoutsub = section.children.find {|c| c.identifier == withsub.identifier && c.subtitle.nil? }
       expect(withoutsub).to_not be_nil
+    end
 
+    it "should allow disabling subtitles" do
+      section = described_class.new(plex_delegate, :newest)
+      described_class.config_set(:enable_subtitles, false)
+      withsub = section.children.find {|c| c.subtitle }
+      expect(withsub).to be_nil
     end
 
     it "should use category_value for children" do

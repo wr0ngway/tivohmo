@@ -100,7 +100,7 @@ module TivoHMO
       TivoHMO::Config.instance.setup(configuration || 'tivohmo.yml')
 
       # allow cli option to override config file
-      set_if_default(:port, TivoHMO::Config.instance.get(:port).to_i)
+      set_if_default(:port, TivoHMO::Config.instance.get(:port).try(:to_i))
 
       signal_usage_error "at least one application is required" unless application_list.present?
       signal_usage_error "an initializer is needed for each application" unless
@@ -175,7 +175,7 @@ module TivoHMO
     end
 
     def set_if_default(attr, new_value)
-      self.send("#{attr}=", new_value) if self.send(attr) == self.send("default_#{attr}")
+      self.send("#{attr}=", new_value) if new_value && self.send(attr) == self.send("default_#{attr}")
     end
 
     def preload_containers(server)

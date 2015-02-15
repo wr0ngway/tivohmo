@@ -6,26 +6,37 @@ module TivoHMO
     include GemLogger::LoggerSupport
     include Singleton
 
+    def initialize
+      super
+      @primary_data = Data.new
+      @secondary_data = Data.new
+    end
+
+
     def setup(filename)
       @primary_file = File.expand_path(filename)
       @secondary_file = File.expand_path('.' + File.basename(filename), '~')
 
-      @primary_data = Hashie::Mash.new
-      @secondary_data = Hashie::Mash.new
+      @primary_data = Data.new
+      @secondary_data = Data.new
 
       if File.exist?(@primary_file)
-        @primary_data = Hashie::Mash.load(@primary_file)
-        @primary_data.extend Hashie::Extensions::DeepFetch
+        @primary_data = Data.load(@primary_file)
       else
         logger.info "No config at file #{@primary_file}"
       end
 
       if File.exist?(@secondary_file)
-        @secondary_data = Hashie::Mash.load(@secondary_file)
-        @secondary_data.extend Hashie::Extensions::DeepFetch
+        @secondary_data = Data.load(@secondary_file)
       else
         logger.info "No config at file #{@secondary_file}"
       end
+    end
+
+    def reset
+      @primary_file = @secondary_file = nil
+      @primary_data = @secondary_data = nil
+      @known_config = nil
     end
 
     def known_config
@@ -34,8 +45,13 @@ module TivoHMO
 
     def get(scoped_key)
       scoped_key = Array(scoped_key)
-      result = @secondary_data.deep_fetch(scoped_key)
-      result = @primary_data.deep_fetch(scoped_key) if result.nil?
+
+      begin
+        result = @secondary_data.deep_fetch(*scoped_key)
+      rescue Data::UndefinedPathError
+        result = @primary_data.deep_fetch(*scoped_key) rescue nil
+      end
+
       result
     end
 
@@ -47,8 +63,18 @@ module TivoHMO
         val_hash = {k => val_hash}
       end
 
-      @secondary_data = @secondary_data.deep_merge(new_hash)
-      File.write(@secondary_file, YAML.dump(@secondary_data)) if persist
+      @secondary_data = @secondary_data.deep_merge(val_hash)
+      File.write(@secondary_file, YAML.dump(@secondary_data)) if persist && @secondary_file
+    end
+
+    class Data < ::Hash
+      include Hashie::Extensions::IndifferentAccess
+      include Hashie::Extensions::DeepFetch
+
+      def self.load(filename)
+        h = Hashie::Extensions::Parsers::YamlErbParser.perform(filename)
+        new.replace(h)
+      end
     end
 
     module Mixin
@@ -78,13 +104,14 @@ module TivoHMO
           result = nil
 
           path = config_path
-          (path.size..1).to_a.reverse.each do |i|
+          (0..path.size).to_a.reverse.each do |i|
             scoped_key = path[0, i] << key
             result = Config.instance.get(scoped_key)
             break if ! result.nil?
           end
 
-          result = Config.instance.known_config[key][:default_value] if result.nil?
+          registered = Config.instance.known_config[key]
+          result = registered[:default_value] if result.nil? && registered
           result
         end
 

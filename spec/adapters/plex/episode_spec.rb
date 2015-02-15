@@ -45,6 +45,21 @@ describe TivoHMO::Adapters::Plex::Episode, :vcr do
       expect(md.series_id).to match(/SH[0-9]+/)
     end
 
+    it "should allow disabling series id in metadata" do
+      described_class.config_set(:group_with_zap2it, true)
+      episode = described_class.new(plex_delegate)
+      episode.app = TivoHMO::Adapters::Plex::Application.new('localhost')
+      md = episode.metadata
+      normal_series_id = md.series_id
+      expect(normal_series_id).to match(/SH[0-9]+/)
+
+      described_class.config_set(:group_with_zap2it, false)
+      md = episode.metadata
+      zap2it_series_id = md.series_id
+      expect(zap2it_series_id).to match(/SH[0-9]+/)
+      expect(zap2it_series_id).to_not eq(normal_series_id)
+    end
+
   end
 
 end

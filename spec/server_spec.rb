@@ -327,13 +327,20 @@ describe TivoHMO::Server do
           end
         end
 
-        it "recurses all items uniquely" do
-          skip "recurse disabled because tivo forces it on initially (no memory)"
+        it "recurses all items uniquely depending on force_grouping config" do
+          described_class.config_set(:force_grouping, false)
           get "/TiVoConnect?Command=QueryContainer&Container=/a1/c1&Recurse=Yes"
           expect(last_response.status).to eq(200)
           doc = Nokogiri::XML(last_response.body)
           child_titles = doc.xpath("/TiVoContainer/Item/Details/Title").collect(&:content)
           expect(child_titles).to eq(["i1", "i2", "i3", "i4", "i98", "i99"])
+
+          described_class.config_set(:force_grouping, true)
+          get "/TiVoConnect?Command=QueryContainer&Container=/a1/c1&Recurse=Yes"
+          expect(last_response.status).to eq(200)
+          doc = Nokogiri::XML(last_response.body)
+          child_titles = doc.xpath("/TiVoContainer/Item/Details/Title").collect(&:content)
+          expect(child_titles).to eq(["i1", "c2", "i2", "i3", "i4"])
         end
 
       end

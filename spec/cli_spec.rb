@@ -94,26 +94,30 @@ describe TivoHMO::CLI do
 
   describe "--configuration" do
 
-    it "defaults to not loading config" do
-      expect(YAML).to receive(:load_file).never
+    it "defaults to loading default config" do
+      expect(TivoHMO::Config.instance).to receive(:setup).with('tivohmo.yml')
       cli.run(argv(minimal_args))
     end
 
-    it "sets log level to debug" do
-      expect(YAML).to receive(:load_file).with('foo.yml').and_return({})
-      cli.run(argv(minimal_args.merge(settings: 'foo.yml')))
+    it "can supply a config file" do
+      expect(TivoHMO::Config.instance).to receive(:setup).with('foo.yml')
+      cli.run(argv(minimal_args.merge(configuration: 'foo.yml')))
     end
 
-    it "can supply config" do
-      expect(YAML).to receive(:load_file).with('foo.yml').and_return({'port' => 1234})
+    it "can supply config values" do
+      cf = Tempfile.new('cli_config').path
+      File.write(cf, YAML.dump({'port' => 1234}))
       expect(TivoHMO::Server).to receive(:start).with(api_server, 1234)
-      cli.run(argv(minimal_args.merge(settings: 'foo.yml')))
+      cli.run(argv(minimal_args.merge(configuration: cf)))
+      expect(TivoHMO::Config.instance.get(:port)).to eq(1234)
     end
 
     it "supplies config that can be overriden from cli" do
-      expect(YAML).to receive(:load_file).with('foo.yml').and_return({'port' => 1234})
+      cf = Tempfile.new('cli_config').path
+      File.write(cf, YAML.dump({'port' => 1234}))
       expect(TivoHMO::Server).to receive(:start).with(api_server, 4321)
-      cli.run(argv(minimal_args.merge(settings: 'foo.yml', port: 4321)))
+      cli.run(argv(minimal_args.merge(configuration: cf, port: 4321)))
+      expect(TivoHMO::Config.instance.get(:port)).to eq(1234)
     end
 
   end

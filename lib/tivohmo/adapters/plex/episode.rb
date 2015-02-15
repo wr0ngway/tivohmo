@@ -61,7 +61,7 @@ module TivoHMO
 
         # groups tv shows under same name if we can extract a seriesId
         def lookup_series_id
-          series_id = nil
+          series_id = "SH%08i" % delegate.season.show.key.scan(/\d+/).first.to_i
 
           guid = delegate.guid
           if guid =~ /thetvdb:\/\/(\d+)/
