@@ -52,6 +52,13 @@ module TivoHMO
 
             md.series_id = lookup_series_id
 
+            md.actors = delegate.roles.collect(&:tag) rescue nil
+            md.series_genres = delegate.genres.collect(&:tag) rescue nil
+
+            %w[writers directors producers].each do |md_name|
+              md.send("#{md_name}=", delegate.send(md_name).collect(&:tag)) rescue nil
+            end
+
           rescue => e
             logger.log_exception e, "Failed to read plex metadata for #{self}"
           end
