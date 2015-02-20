@@ -12,7 +12,7 @@ module TivoHMO
         attr_accessor :category_type, :category_value
 
         config_register(:enable_subtitles, true,
-                        "Add additional items for transcoding with hardcoded subtitles when present")
+                        "For items that have subtitles, adds entries that will transcode with those subtitles hardcoded")
 
         def initialize(delegate, category_type, category_value=nil, presorted=false)
           # delegate is a Plex::Section
@@ -32,6 +32,7 @@ module TivoHMO
 
           self.modified_at = Time.at(delegate.updated_at.to_i)
           self.created_at = Time.now
+          @subtitles = config_get(:enable_subtitles)
         end
 
         alias_method :super_children, :children
@@ -55,7 +56,9 @@ module TivoHMO
               super.clear
             end
 
-            if super.blank?
+            if super.blank? || @subtitles != config_get(:enable_subtitles)
+              super.clear
+              @subtitles = config_get(:enable_subtitles)
 
               if category_value
                 listing = delegate.send(category_type, category_value[:key])
@@ -104,35 +107,38 @@ module TivoHMO
 
           source_filename = CGI.unescape(item_delegate.medias.first.parts.first.file)
 
-          item_delegate.medias.find do |media|
-            media.parts.find do |part|
-              part.streams.find do |stream|
-                if stream.respond_to?(:codec) && stream.codec == 'srt'
-                  if  stream.respond_to?(:language) && stream.respond_to?(:language_code)
-                    lang = stream.language
-                    code = stream.language_code
+          item_delegate.medias.each do |media|
+            media.parts.each do |part|
+              prev_stream_count = 0
+              part.streams.each do |stream|
 
+                # stream.stream_type 3=subs, 1=video, 2=audio
+                # stream.key.present? means file based srt
+                # stream.index and no key, means embedded
+                if stream.stream_type.to_i == 3
+                  if %w[key language language_code].all? {|m| stream.respond_to?(m) && stream.send(m).present? }
                     st = TivoHMO::API::Subtitle.new
-                    st.language = lang
-                    st.language_code = code
-
-                    sub_file_glob = source_filename.chomp(File.extname(source_filename)) + ".*.srt"
-                    sub_file = Dir[sub_file_glob].find do |f|
-                      file_code = f.split('.')[-2].downcase
-                      file_code == code || file_code.starts_with?(code) || code.starts_with?(file_code)
-                    end
-
-                    if sub_file
-                      logger.debug "Using subtitles present at: #{sub_file}"
-                      st.file = sub_file
-                      subs << st
-                    else
-                      logger.debug "Could not find subtitles for: #{item_delegate.title}"
-                    end
+                    st.language = stream.language
+                    st.language_code = stream.language_code
+                    st.format = stream.codec
+                    st.type = :file
+                    st.location = source_filename.chomp(File.extname(source_filename))
+                    subs << st
+                  elsif stream.respond_to?(:index) && stream.index.present?
+                    st = TivoHMO::API::Subtitle.new
+                    st.language = stream.respond_to?(:language) && stream.language || "Embedded"
+                    st.language_code = stream.respond_to?(:language_code) && stream.language_code || "???"
+                    st.format = stream.codec
+                    st.type = :embedded
+                    # subtitle index should be the index amongst just the embedded subtitle streams
+                    st.location = stream.index.to_i - prev_stream_count
+                    subs << st
                   else
-                    logger.warn "Subtitles not in plex naming standard for #{item_delegate.title}"
+                    logger.warn "Unrecognized subtitle for #{item_delegate.title}"
                   end
                 end
+
+                prev_stream_count += 1
               end
             end
           end

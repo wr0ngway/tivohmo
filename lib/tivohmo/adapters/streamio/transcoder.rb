@@ -202,9 +202,36 @@ module TivoHMO
 
         def select_subtitle(opts)
 
-          if item.subtitle
-            logger.debug "Using subtitles present at: #{item.subtitle.file}"
-            opts[:custom] << "-vf subtitles=\"#{item.subtitle.file}\""
+          st = item.subtitle
+          if st
+            case st.type
+              when :file
+                code = st.language_code
+                file = st.location
+
+                # TODO: This is a little hacky
+                # we have a leaky abstraction here but the file globbing is a bad
+                # performance hit to UI when generating Containers on first view
+                file_glob = file + ".*.srt"
+                sub_file = Dir[file_glob].find do |f|
+                  file_code = f.split('.')[-2].downcase
+                  file_code == code || file_code.starts_with?(code) || code.starts_with?(file_code)
+                end
+
+                if sub_file
+                  logger.info "Using subtitles present at: #{sub_file}"
+                  opts[:custom] << "-vf subtitles=\"#{sub_file}\""
+                else
+                  logger.error "Subtitle doesn't exist at: #{file_glob}"
+                end
+              when :embedded
+                file = item.file
+                idx = st.location
+                logger.info "Using embedded subtitles [#{idx}] present at: #{file}"
+                opts[:custom] << "-vf subtitles=\"#{file}\":si=#{idx}"
+              else
+                logger.error "Unknown subtitle type: #{st.type}"
+            end
           end
 
           opts

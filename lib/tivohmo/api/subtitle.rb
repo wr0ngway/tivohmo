@@ -5,7 +5,7 @@ module TivoHMO
     class Subtitle
       include GemLogger::LoggerSupport
 
-      attr_accessor :language, :language_code, :file
+      attr_accessor :language, :language_code, :format, :type, :location
 
     end
 
