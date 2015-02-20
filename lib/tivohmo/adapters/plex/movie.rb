@@ -18,7 +18,7 @@ module TivoHMO
           self.subtitle = subtitle
 
           self.title = delegate.title
-          self.title << " [#{subtitle.language} subtitled]" if subtitle
+          self.title = "[#{subtitle.language_code} sub] #{self.title}" if subtitle
 
           self.modified_at = Time.at(delegate.updated_at.to_i)
           self.created_at = Time.parse(delegate.originally_available_at) rescue nil
