@@ -24,6 +24,12 @@ module TivoHMO
           self.created_at = Time.now
         end
 
+        alias_method :super_children, :children
+
+        def child_count
+          super_children.size
+        end
+
         def children
           synchronize do
 

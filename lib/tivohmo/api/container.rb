@@ -26,6 +26,9 @@ module TivoHMO
         self.children = []
       end
 
+      def child_count
+        children.size
+      end
     end
 
   end

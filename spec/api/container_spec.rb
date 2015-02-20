@@ -32,4 +32,15 @@ describe TivoHMO::API::Container do
 
   end
 
+  describe "#child_count" do
+
+    it "should count children" do
+      node = test_class.new('c')
+      expect(node.child_count).to eq(0)
+      node2 = node.add_child(test_class.new('c2'))
+      expect(node.child_count).to eq(1)
+    end
+
+  end
+
 end

@@ -57,6 +57,15 @@ describe TivoHMO::Adapters::Plex::Category, :vcr do
       expect(keys).to include(*expected_keys)
     end
 
+    it "should display non-zero child_count once children fetched" do
+      section = described_class.new(plex_delegate, :newest)
+
+      expect(section.child_count).to be(0)
+      section.children
+      expect(section.child_count).to_not be(0)
+      expect(section.child_count).to eq(section.children.size)
+    end
+
     it "should have children with subtitles" do
       section = described_class.new(plex_delegate, :newest)
 

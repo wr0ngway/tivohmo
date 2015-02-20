@@ -5,7 +5,7 @@ xml.Item do
     xml.ContentType container.content_type
     xml.SourceFormat container.source_format
     xml.UniqueId format_uuid(container.uuid)
-    xml.TotalItems container.children.size
+    xml.TotalItems container.child_count
     xml.LastCaptureDate format_date(container.created_at) if container.created_at
   end
 
