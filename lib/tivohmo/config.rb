@@ -13,23 +13,25 @@ module TivoHMO
     end
 
 
-    def setup(filename)
-      @primary_file = File.expand_path(filename)
-      @secondary_file = File.expand_path('.' + File.basename(filename), '~')
+    def setup(primary_filename, secondary_filename=nil)
+      @primary_file = primary_filename
+      @secondary_file = secondary_filename
 
       @primary_data = Data.new
       @secondary_data = Data.new
 
-      if File.exist?(@primary_file)
+      if File.exist?(@primary_file.to_s)
+        logger.info "Loading primary config from: '#{@secondary_file}'"
         @primary_data = Data.load(@primary_file)
       else
-        logger.info "No config at file #{@primary_file}"
+        logger.info "No primary config at file: '#{@primary_file}'"
       end
 
-      if File.exist?(@secondary_file)
+      if File.exist?(@secondary_file.to_s)
+        logger.info "Loading secondary config from: '#{@secondary_file}'"
         @secondary_data = Data.load(@secondary_file)
       else
-        logger.info "No config at file #{@secondary_file}"
+        logger.info "No secondary config at file: '#{@secondary_file}'"
       end
     end
 
@@ -45,11 +47,28 @@ module TivoHMO
 
     def get(scoped_key)
       scoped_key = Array(scoped_key)
+      result = nil
 
-      begin
-        result = @secondary_data.deep_fetch(*scoped_key)
-      rescue Data::UndefinedPathError
-        result = @primary_data.deep_fetch(*scoped_key) rescue nil
+      key = scoped_key.pop
+      path = scoped_key
+      (0..path.size).to_a.reverse.each do |i|
+        partial = path[0, i] << key
+
+        begin
+          result = @secondary_data.deep_fetch(*partial)
+        rescue Data::UndefinedPathError
+          begin
+            result = @primary_data.deep_fetch(*partial)
+          rescue Data::UndefinedPathError
+          end
+        end
+
+        break if ! result.nil?
+      end
+
+      if result.nil?
+        registered = known_config[key]
+        result = registered[:default_value] if registered
       end
 
       result
@@ -57,14 +76,20 @@ module TivoHMO
 
     def set(scoped_key, value, persist=true)
       scoped_key = Array(scoped_key)
+      key = scoped_key.pop
 
-      val_hash = {scoped_key.pop => value}
+      val_hash = {key => value}
       scoped_key.reverse.each do |k|
         val_hash = {k => val_hash}
       end
 
       @secondary_data = @secondary_data.deep_merge(val_hash)
       File.write(@secondary_file, YAML.dump(@secondary_data)) if persist && @secondary_file
+
+      registered = known_config[key]
+      if registered && registered[:on_change]
+        registered[:on_change].call
+      end
     end
 
     class Data < ::Hash
@@ -90,28 +115,20 @@ module TivoHMO
 
       module ClassMethods
 
-        def config_register(key, default_value, description)
+        def config_register(key, default_value, description, &on_change_block)
           raise ArgumentError, "Config '#{key}' already registered" if Config.instance.known_config[key]
 
           Config.instance.known_config[key] = {
               default_value: default_value,
               description: description,
-              source_path: config_path
+              source_path: config_path,
+              on_change: on_change_block
           }
         end
 
         def config_get(key)
-          result = nil
-
-          path = config_path
-          (0..path.size).to_a.reverse.each do |i|
-            scoped_key = path[0, i] << key
-            result = Config.instance.get(scoped_key)
-            break if ! result.nil?
-          end
-
-          registered = Config.instance.known_config[key]
-          result = registered[:default_value] if result.nil? && registered
+          scoped_key = config_path << key
+          result = Config.instance.get(scoped_key)
           result
         end
 
