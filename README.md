@@ -21,20 +21,18 @@ Install the gem:
 
     $ gem install tivohmo
 
-Or to use this gem in your own ruby project, add this line to your application's Gemfile:
+then install as a daemon with default configuration:
 
-    gem 'tivohmo'
+    $ tivohmo --install
 
-And then execute:
-
-    $ bundle
-
+Optionally edit the installed configuration file mentioned when the install command executes, and restart the daemon.
 
 ## Usage
 
 Run the 'tivohmo' binary for usage:
 
     tivohmo --help
+
 
 ## Developing
 
