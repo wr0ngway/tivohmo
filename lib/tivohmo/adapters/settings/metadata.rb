@@ -7,8 +7,16 @@ module TivoHMO
         include TivoHMO::API::Metadata
         include GemLogger::LoggerSupport
 
+        attr_accessor :item_detail_callback
+
         def initialize(item)
           super(item)
+        end
+
+        # hack - star_rating only gets called when viewing item_detail
+        def star_rating
+          item_detail_callback.try(:call, self)
+          return nil
         end
 
       end

@@ -8,21 +8,21 @@ module TivoHMO
         include GemLogger::LoggerSupport
         include MonitorMixin
 
-        attr_reader :spec
-
-        def initialize(key, spec)
+        def initialize(key)
           super(key)
-          @spec = spec
           self.presorted = true
         end
 
         def children
           synchronize do
-            super.clear
-            add_child(DisplayItem.new('Description', spec[:description]))
-            val = Config.instance.get(identifier)
-            add_child(DisplayItem.new("Current Value: #{!!val}", ""))
-            add_child(SetValueItem.new(identifier, !val))
+            if super.blank?
+              spec = Config.instance.known_config[identifier]
+              add_child(DisplayItem.new("Help", spec[:description]))
+              add_child(DisplayItem.new("Default Value: #{spec[:default_value]}"))
+              val = Config.instance.get(identifier)
+              add_child(DisplayItem.new("Current Value: #{!!val}"))
+              add_child(SetValueItem.new(identifier, !val))
+            end
           end
 
           super

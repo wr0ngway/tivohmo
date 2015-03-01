@@ -11,16 +11,20 @@ module TivoHMO
         include GemLogger::LoggerSupport
         include MonitorMixin
 
-        attr_reader :spec, :metadata
-
-        def initialize(name, description)
+        def initialize(name, description=nil)
           super(name)
           @description = description
         end
 
         def metadata
           md = super
-          md.description = @description
+
+          if @description.nil?
+            md.description = "Nothing to do here, hit back to return"
+          else
+            md.description = @description + ".  Nothing to do here, hit back to return"
+          end
+
           md
         end
 

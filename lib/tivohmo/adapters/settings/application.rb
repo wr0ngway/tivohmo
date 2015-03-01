@@ -8,7 +8,6 @@ module TivoHMO
         include GemLogger::LoggerSupport
         include MonitorMixin
 
-
         def initialize(identifier)
           super("Settings")
 
@@ -20,9 +19,10 @@ module TivoHMO
 
         def children
           synchronize do
-            super.clear
-            Config.instance.known_config.sort.each do |k, v|
-              add_child(KeyContainer.new(k, v))
+            if super.blank?
+              Config.instance.known_config.keys.sort.each do |k|
+                add_child(KeyContainer.new(k))
+              end
             end
           end
 
