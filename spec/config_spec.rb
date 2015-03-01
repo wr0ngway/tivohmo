@@ -13,13 +13,13 @@ describe TivoHMO::Config do
   end
 
   let(:secondary) do
-    File.expand_path "~/.#{File.basename primary}"
+    Tempfile.new('secondary').path
   end
 
   describe ".setup" do
 
     it "looks for primary and secondary" do
-      described_class.instance.setup(primary)
+      described_class.instance.setup(primary, secondary)
       expect(described_class.instance.instance_variable_get(:@primary_file)).to eq(primary)
       expect(described_class.instance.instance_variable_get(:@secondary_file)).to eq(secondary)
       expect(described_class.instance.instance_variable_get(:@primary_data)).to eq({})
@@ -29,9 +29,27 @@ describe TivoHMO::Config do
     it "loads in primary and secondary" do
       File.write(primary, {'foo' => 'bar'}.to_yaml)
       File.write(secondary, {'baz' => 'boo'}.to_yaml)
-      described_class.instance.setup(primary)
+      described_class.instance.setup(primary, secondary)
       expect(described_class.instance.instance_variable_get(:@primary_data)).to eq({'foo' => 'bar'})
       expect(described_class.instance.instance_variable_get(:@secondary_data)).to eq({'baz' => 'boo'})
+    end
+
+    it "uses primary to find secondary" do
+      File.write(primary, {'settings' => secondary}.to_yaml)
+      File.write(secondary, {'baz' => 'boo'}.to_yaml)
+      described_class.instance.setup(primary, nil)
+      expect(described_class.instance.instance_variable_get(:@primary_data)).to eq({'settings' => secondary})
+      expect(described_class.instance.instance_variable_get(:@secondary_data)).to eq({'baz' => 'boo'})
+    end
+
+    it "uses passed in secondary over settings in primary" do
+      other_secondary = Tempfile.new('other_secondary').path
+      File.write(primary, {'settings' => secondary}.to_yaml)
+      File.write(secondary, {'baz' => 'boo'}.to_yaml)
+      File.write(other_secondary, {'hum' => 'dum'}.to_yaml)
+      described_class.instance.setup(primary, other_secondary)
+      expect(described_class.instance.instance_variable_get(:@primary_data)).to eq({'settings' => secondary})
+      expect(described_class.instance.instance_variable_get(:@secondary_data)).to eq({'hum' => 'dum'})
     end
 
   end
@@ -41,7 +59,7 @@ describe TivoHMO::Config do
     before(:each) do
       File.write(primary, {'p1' => 'p1', 'p2' => 'p2', 'p3' => {'p4' => 'p4', 'p5' => 'p5'}}.to_yaml)
       File.write(secondary, {'s1' => 's1', 'p2' => 's2', 'p3' => {'s4' => 's4', 'p5' => 's5'}}.to_yaml)
-      described_class.instance.setup(primary)
+      described_class.instance.setup(primary, secondary)
     end
 
     it "returns nil for miss" do
@@ -79,7 +97,7 @@ describe TivoHMO::Config do
     before(:each) do
       File.write(primary, {'p1' => 'p1', 'p2' => 'p2', 'p3' => {'p4' => 'p4', 'p5' => 'p5'}}.to_yaml)
       File.write(secondary, {'s1' => 's1', 'p2' => 's2', 'p3' => {'s4' => 's4', 'p5' => 's5'}}.to_yaml)
-      described_class.instance.setup(primary)
+      described_class.instance.setup(primary, secondary)
     end
 
     it "sets a value" do
@@ -87,7 +105,7 @@ describe TivoHMO::Config do
       expect(described_class.instance.get(:s1)).to eq('set1')
 
       described_class.instance.reset
-      described_class.instance.setup(primary)
+      described_class.instance.setup(primary, secondary)
       expect(described_class.instance.get(:s1)).to eq('set1')
     end
 
@@ -96,7 +114,7 @@ describe TivoHMO::Config do
       expect(described_class.instance.get(:s1)).to eq('set1')
 
       described_class.instance.reset
-      described_class.instance.setup(primary)
+      described_class.instance.setup(primary, secondary)
       expect(described_class.instance.get(:s1)).to_not eq('set1')
     end
 
@@ -105,7 +123,7 @@ describe TivoHMO::Config do
       expect(described_class.instance.get([:p3, :p5])).to eq('set5')
 
       described_class.instance.reset
-      described_class.instance.setup(primary)
+      described_class.instance.setup(primary, secondary)
       expect(described_class.instance.get([:p3, :p5])).to eq('set5')
     end
 
@@ -124,7 +142,7 @@ describe TivoHMO::Config do
     before(:each) do
       File.write(primary, {'p1' => 'p1', 'p2' => 'p2', 'p3' => {'p4' => 'p4', 'p5' => 'p5'}}.to_yaml)
       File.write(secondary, {'s1' => 's1', 'p2' => 's2', 'p3' => {'s4' => 's4', 'p5' => 's5'}}.to_yaml)
-      TivoHMO::Config.instance.setup(primary)
+      TivoHMO::Config.instance.setup(primary, secondary)
     end
 
     describe "config_register" do
@@ -132,15 +150,27 @@ describe TivoHMO::Config do
       it "allows registering a config once" do
         expect(TivoHMO::Config.instance.known_config[:foo]).to be_nil
         TestMixin.config_register(:foo, 3, "this is foo")
-        expect(TivoHMO::Config.instance.known_config[:foo]).to eq({
-                                                                      default_value: 3,
-                                                                      description: "this is foo",
-                                                                      source_path: ["test_mixin"]
-                                                         })
+        conf = TivoHMO::Config.instance.known_config[:foo]
+        expect(conf[:default_value]).to eq(3)
+        expect(conf[:description]).to eq("this is foo")
+        expect(conf[:source_path]).to eq(["test_mixin"])
+        expect(conf[:on_change]).to be_nil
 
         expect {
           TestMixin.config_register(:foo, 3, "this is foo")
         }.to raise_error(ArgumentError, /already registered/)
+      end
+
+      it "calls change handler on change" do
+        called = 0
+        TestMixin.config_register(:foo, 3, "this is foo") do
+          called += 1
+        end
+        conf = TivoHMO::Config.instance.known_config[:foo]
+        expect(conf[:on_change]).to_not be_nil
+        TestMixin.config_set(:foo, 4)
+        expect(TestMixin.config_get(:foo)).to be (4)
+        expect(called).to be (1)
       end
 
     end

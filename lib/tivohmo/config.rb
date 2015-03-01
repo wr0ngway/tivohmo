@@ -21,11 +21,15 @@ module TivoHMO
       @secondary_data = Data.new
 
       if File.exist?(@primary_file.to_s)
-        logger.info "Loading primary config from: '#{@secondary_file}'"
+        logger.info "Loading primary config from: '#{@primary_file}'"
         @primary_data = Data.load(@primary_file)
       else
         logger.info "No primary config at file: '#{@primary_file}'"
       end
+
+      # get secondary config from primary if present and not set explictly
+      secondary = get(:settings)
+      @secondary_file ||= File.expand_path(secondary) if secondary
 
       if File.exist?(@secondary_file.to_s)
         logger.info "Loading secondary config from: '#{@secondary_file}'"
