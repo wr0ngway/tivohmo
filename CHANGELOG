@@ -1,3 +1,33 @@
+0.3.0 (03/01/2015)
+------------------
+
+Use a group for subtitles+original <a552478> [Matt Conway]
+add ability to optionally hardcode subtitles when present <df079f8> [Matt Conway]
+add ability to skip sorting by setting presorted flag <5148bcf> [Matt Conway]
+add reset to defaults <71f12ce> [Matt Conway]
+add settings mechanism and app to control it from tivo ui <8fce56c> [Matt Conway]
+add todo <e7b0f6b> [Matt Conway]
+allow implementations to not have to load children to show a count <40464c6> [Matt Conway]
+allow reading cli config from file <f208616> [Matt Conway]
+allow video fixture with vcr <09a792e> [Matt Conway]
+app for changing runtime settings <4f1cd05> [Matt Conway]
+beacon seems to work better on linux if I create a new socket for each broadcast <879573a> [Matt Conway]
+better title for subs <1755a82> [Matt Conway]
+change ffmpeg ppa <11c96c0> [Matt Conway]
+cli install templates <e9ec91f> [Matt Conway]
+config tests <0c3b23e> [Matt Conway]
+config working <57f7fc8> [Matt Conway]
+fix performance issue with subtitles, allow for embedded subtitles (e.g. mkv) <6da6aa3> [Matt Conway]
+fix plex cache updating <5f45b69> [Matt Conway]
+more metadata <8608b5c> [Matt Conway]
+move webmock to gemfile to prevent auto require <3f19631> [Matt Conway]
+new vcr fixtures <1dfa166> [Matt Conway]
+partial <951dada> [Matt Conway]
+redo plex tests with vcr <5da4030> [Matt Conway]
+refactor to make item have a file, refactor subtitles and transcoding, misc tests <70a8f37> [Matt Conway]
+update readme <2338cff> [Matt Conway]
+work with rvm <ecff585> [Matt Conway]
+
 0.2.3 (11/29/2014)
 ------------------
 
