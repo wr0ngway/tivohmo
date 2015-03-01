@@ -3,10 +3,12 @@ require "tivohmo/cli"
 
 describe TivoHMO::CLI do
 
+  let(:app_title) { 'app_title' }
   let(:app_name) { TestAPI::Application.name }
   let(:app_ident) { 'app_ident' }
   let(:minimal_args) do
     {
+        title: app_title,
         application: app_name,
         identifier: app_ident
     }
@@ -94,13 +96,13 @@ describe TivoHMO::CLI do
 
   describe "--configuration" do
 
-    it "defaults to loading default config" do
-      expect(TivoHMO::Config.instance).to receive(:setup).with('tivohmo.yml')
+    it "defaults to calling setup with nil" do
+      expect(TivoHMO::Config.instance).to receive(:setup).with(nil, nil)
       cli.run(argv(minimal_args))
     end
 
     it "can supply a config file" do
-      expect(TivoHMO::Config.instance).to receive(:setup).with('foo.yml')
+      expect(TivoHMO::Config.instance).to receive(:setup).with(/foo.yml$/, nil)
       cli.run(argv(minimal_args.merge(configuration: 'foo.yml')))
     end
 
@@ -119,6 +121,45 @@ describe TivoHMO::CLI do
       cli.run(argv(minimal_args.merge(configuration: cf, port: 4321)))
       expect(TivoHMO::Config.instance.get(:port)).to eq(1234)
     end
+
+    it "merges/overrides app config from file with config from cli" do
+      cf = Tempfile.new('cli_config').path
+      OtherApp1 = Class.new(TestAPI::Application)
+      OtherApp2 = Class.new(TestAPI::Application)
+      File.write(cf,
+                 YAML.dump({
+                                   'applications' => {
+                                       "App1" => {
+                                           "application" => TestAPI::Application.name,
+                                           "identifier" => 'app_ident1'
+                                       },
+                                       "App2" => {
+                                           "application" => TestAPI::Application.name,
+                                           "identifier" => 'app_ident2'
+                                       }
+                                   }
+                           }))
+      cli.run(argv(%W[
+                       configuration #{cf}
+                       title App1
+                       application #{OtherApp1.name}
+                       identifier other_ident1
+                       title App2
+                       application #{OtherApp2.name}
+                       identifier other_ident2
+                   ]))
+
+      expect(api_server.children.size).to eq(2)
+      app1 = api_server.children[0]
+      app2 = api_server.children[1]
+      expect(app1.title).to eq('App1')
+      expect(app1.class).to eq(OtherApp1)
+      expect(app1.identifier).to eq('other_ident1')
+      expect(app2.title).to eq('App2')
+      expect(app2.class).to eq(OtherApp2)
+      expect(app2.identifier).to eq('other_ident2')
+    end
+
 
   end
 
@@ -171,7 +212,7 @@ describe TivoHMO::CLI do
 
     it "requires one init per app" do
       expect {
-        described_class.new("").run(["-a", "foo"])
+        described_class.new("").run(["-t", "app", "-a", "foo"])
       }.to raise_error(Clamp::UsageError,
                        'an initializer is needed for each application')
     end
@@ -187,21 +228,14 @@ describe TivoHMO::CLI do
     it "requires the adapter for the application" do
       require 'tivohmo/adapters/filesystem'
       expect(cli).to receive(:require).with('tivohmo/adapters/filesystem')
-      cli.run(%w[-a TivoHMO::Adapters::Filesystem::Application -i .])
+      cli.run(%w[-t App -a TivoHMO::Adapters::Filesystem::Application -i .])
     end
 
     it "starts a server for the app" do
       cli.run(argv(minimal_args))
       expect(api_server.children.size).to eq(1)
       expect(api_server.children.first.class).to eq(TestAPI::Application)
-      expect(api_server.children.first.title).to eq("#{app_ident} on #{api_server.title}")
-    end
-
-    it "starts a server with title" do
-      cli.run(argv(minimal_args.merge(title: 'Foo')))
-      expect(api_server.children.size).to eq(1)
-      expect(api_server.children.first.class).to eq(TestAPI::Application)
-      expect(api_server.children.first.title).to eq("Foo")
+      expect(api_server.children.first.title).to eq(app_title)
     end
 
     it "starts a server with alternate transcoder/metadata" do
