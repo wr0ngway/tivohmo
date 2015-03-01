@@ -2,7 +2,7 @@ module TivoHMO
   module Adapters
     module Settings
 
-      # A Container based on a filesystem folder
+      # A Container for config keys
       class KeyContainer
         include TivoHMO::API::Container
         include GemLogger::LoggerSupport

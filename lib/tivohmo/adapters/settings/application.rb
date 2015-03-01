@@ -23,6 +23,7 @@ module TivoHMO
               Config.instance.known_config.keys.sort.each do |k|
                 add_child(KeyContainer.new(k))
               end
+              add_child(ResetDefaultsItem.new)
             end
           end
 

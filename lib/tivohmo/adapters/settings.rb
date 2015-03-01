@@ -1,5 +1,6 @@
 require_relative 'settings/transcoder'
 require_relative 'settings/metadata'
+require_relative 'settings/reset_defaults_item'
 require_relative 'settings/set_value_item'
 require_relative 'settings/display_item'
 require_relative 'settings/key_container'
