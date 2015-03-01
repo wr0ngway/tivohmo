@@ -1,0 +1,60 @@
+# The network port to listen to tivo requests on
+port: 9033
+
+# Run with debug logging enabled
+debug: false
+
+# Walk the application trees to preload all data for quicker browsing at
+# the expense of slower startup
+preload: false
+
+# The file to record tivohmo logs in
+logfile: <%= config[:logfile] %>
+
+# The runtime settings file for saving config changes made using the
+# Settings app.  Must be writable by the tivohmo process
+settings: <%= config[:settings] %>
+
+# The limit:interval for broadcasting beacon signals to the network
+# -1 as the limit means infinite
+beacon: "-1:10"
+
+# The applications to enable
+applications:
+  # The Settings app for editing runtime changeable settings
+  TivoHMO Settings:
+    application: TivoHMO::Adapters::Settings::Application
+    identifier: settings
+  # The Plex app for sharing video from a plex media server.  This currently
+  # only works if the plex server is running on the same host as tivohmo
+  TivoHMO Plex Videos:
+    application: TivoHMO::Adapters::Plex::Application
+    identifier: localhost
+# # The filesystem app for sharing video from a directory
+# TivoHMO Filesystem Videos:
+#    application: TivoHMO::Adapters::Filesystem::Application
+#    identifier: /My/Video
+
+
+# BEGIN RUNTIME EDITABLE SETTINGS
+#
+
+# These settings are all editable from the TivoHMO Settings app, and will
+# get saved to the file specified in the 'settings' config above, thereby
+# overriding any settings configured below.
+
+# Detect subtitles for videos and include them as a choice when browsing
+# Runtime editable from Settings app
+enable_subtitles: true
+
+# Force groups/folders regardless of parameters supplied by the tivo request
+# Runtime editable from Settings app
+force_grouping: true
+
+# Use zap2it ID for grouping episodes (Gives thumbnail in My Shows, but can
+# cause problems)
+# Runtime editable from Settings app
+group_with_zap2it: true
+
+#
+# END RUNTIME EDITABLE SETTINGS

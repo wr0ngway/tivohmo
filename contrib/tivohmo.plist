@@ -16,7 +16,7 @@ Then to start the server, run: launchctl load ~/Library/LaunchAgents/tivohmo.pli
                 <string>bash</string>
                 <string>-l</string>
                 <string>-c</string>
-                <string>tivohmo -p 9033 -l ~/Library/Logs/tivohmo.log -a TivoHMO::Adapters::Plex::Application -i localhost -t 'Plex Videos'</string>
+                <string>tivohmo --configuration <%= File.expand_path(config[:configuration]) %></string>
         </array>
         <key>RunAtLoad</key>
         <true/>
