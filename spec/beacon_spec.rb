@@ -77,7 +77,9 @@ describe TivoHMO::Beacon do
     it "sends a packet on the socket" do
       beacon = described_class.new(1234)
       expect(beacon).to receive(:beacon_data).with('broadcast').and_return('packet')
-      socket = beacon.instance_variable_get(:@socket)
+      socket = instance_double("Socket")
+      expect(UDPSocket).to receive(:new).with(Socket::AF_INET).and_return(socket)
+      expect(socket).to receive(:setsockopt).with(Socket::SOL_SOCKET, Socket::SO_BROADCAST, true)
       expect(socket).to receive(:send).with('packet', 0, '<broadcast>', 2190)
       beacon.broadcast
     end

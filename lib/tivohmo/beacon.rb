@@ -11,8 +11,6 @@ module TivoHMO
       @interval = interval
       @limit = limit
       @uid = SecureRandom.uuid
-      @socket = UDPSocket.new(Socket::AF_INET)
-      @socket.setsockopt(Socket::SOL_SOCKET, Socket::SO_BROADCAST, true)
       @services = ['TiVoMediaServer:%s/http' % service_port]
       @running = false
     end
@@ -66,7 +64,9 @@ module TivoHMO
       bcast_port = 2190
       packet = beacon_data('broadcast')
       logger.debug "Sending beacon packet: #{packet}"
-      @socket.send(packet, 0, bcast_ip, bcast_port)
+      socket = UDPSocket.new(Socket::AF_INET)
+      socket.setsockopt(Socket::SOL_SOCKET, Socket::SO_BROADCAST, true)
+      socket.send(packet, 0, bcast_ip, bcast_port)
     end
 
   end
