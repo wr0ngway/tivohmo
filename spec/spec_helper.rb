@@ -24,6 +24,7 @@ VCR.configure do |c|
   c.hook_into :webmock
   c.configure_rspec_metadata!
   c.default_cassette_options = { :record => :once }
+  c.ignore_hosts 'samples.mplayerhq.hu'
   # Uncomment this line to see more information about VCR when running tests
   #c.debug_logger = $stderr
 end
