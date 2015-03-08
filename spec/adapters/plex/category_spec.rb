@@ -42,6 +42,14 @@ describe TivoHMO::Adapters::Plex::Category, :vcr do
 
   describe "#children" do
 
+    before(:each) do
+      if ENV['CI']
+        stub_subtitles("/Users/mconway/Movies/TivoHMOTest/Movies/3 Idiots (2009).avi")
+        stub_subtitles("/Users/mconway/Movies/TivoHMOTest/Movies/Wyrmwood (2014).avi", language_code: nil)
+        stub_subtitles("/Users/mconway/Movies/TivoHMOTest/Movies/Rurouni Kenshin Kyoto Inferno (2014).mkv", language_code: nil)
+      end
+    end
+
     it "should memoize" do
       section = described_class.new(plex_delegate, :newest)
       expect(section.children.object_id).to eq(section.children.object_id)

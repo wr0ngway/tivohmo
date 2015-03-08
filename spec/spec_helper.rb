@@ -139,3 +139,22 @@ end
 def plex_tv_section
   plex_server.library.sections.find {|s| s.type == 'show' && s.title == 'Test TV Shows'}
 end
+
+def stub_subtitles(media_path, language_code: 'en', type: :file, format: 'srt')
+  require 'iso-639'
+
+  allow(TivoHMO::SubtitlesUtil.instance).to receive(:subtitles_for_media_file).with(media_path) do |path|
+    subs = []
+    if language_code
+      st = TivoHMO::API::Subtitle.new
+      st.type = type
+      st.format = format
+      st.language_code = language_code
+      st.language = ISO_639.find_by_code(language_code.downcase).english_name
+      st.location = "#{path.chomp(File.extname(path))}.en.srt"
+      subs << st
+    end
+    subs
+  end
+
+end
