@@ -1,3 +1,8 @@
+0.3.1 (03/08/2015)
+------------------
+
+refactored subtitles support, add subtitles to filesystem app, refactor change listeners in filesystem app <9820722> [Matt Conway]
+
 0.3.0 (03/01/2015)
 ------------------
 
