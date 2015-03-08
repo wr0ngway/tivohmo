@@ -27,7 +27,7 @@ describe TivoHMO::SubtitlesUtil do
 
         subs = subject.subtitles_for_media_file("#{dir}/3.avi")
         expect(subs.size).to eq(2)
-        expect(subs.collect(&:language_code)).to eq(['en', 'fr'])
+        expect(subs.collect(&:language_code)).to match_array(['en', 'fr'])
       end
     end
 
