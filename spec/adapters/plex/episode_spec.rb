@@ -24,6 +24,17 @@ describe TivoHMO::Adapters::Plex::Episode, :vcr do
       expect(episode.created_at).to eq(Time.parse(plex_delegate.originally_available_at))
     end
 
+    it "should instantiate with subtitle" do
+      st = TivoHMO::API::Subtitle.new()
+      st.language_code = 'en'
+      st.language = 'English'
+      st.type = :file
+      episode = described_class.new(plex_delegate, st)
+      expect(episode).to be_a described_class
+      expect(episode.subtitle).to eq(st)
+      expect(episode.title).to eq "[en file sub] #{plex_delegate.title}"
+    end
+
   end
 
   describe "#metadata" do

@@ -4,6 +4,8 @@ require 'rspec'
 RSpec.configure do |config|
 end
 
+require 'awesome_print'
+
 require 'timecop'
 
 require 'coveralls'

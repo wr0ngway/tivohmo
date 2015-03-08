@@ -9,6 +9,7 @@ module TivoHMO
       extend ActiveSupport::Concern
       include Node
       include GemLogger::LoggerSupport
+      include MonitorMixin
 
       attr_accessor :uuid, :presorted
 
@@ -23,7 +24,9 @@ module TivoHMO
       end
 
       def refresh
-        self.children = []
+        synchronize do
+          self.children.clear
+        end
       end
 
       def child_count

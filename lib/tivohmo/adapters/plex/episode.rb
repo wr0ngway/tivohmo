@@ -9,7 +9,7 @@ module TivoHMO
         include GemLogger::LoggerSupport
         include TivoHMO::Config::Mixin
 
-        attr_reader :delegate, :subtitle
+        attr_reader :delegate
 
         config_register(:group_with_zap2it, true,
                         "Use zap2it ID for grouping episodes (Gives thumbnail in My Shows, but can cause problems)")
@@ -24,7 +24,7 @@ module TivoHMO
           self.subtitle = subtitle
 
           self.title = delegate.title
-          self.title = "[#{subtitle.language_code} sub] #{self.title}" if subtitle
+          self.title = "[#{subtitle.language_code} #{subtitle.type} sub] #{self.title}" if subtitle
 
           self.modified_at = Time.at(delegate.updated_at.to_i)
           self.created_at = Time.parse(delegate.originally_available_at) rescue nil

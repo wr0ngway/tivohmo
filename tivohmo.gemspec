@@ -41,6 +41,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "builder"
   spec.add_dependency "puma"
   spec.add_dependency "tvdbr"
+  spec.add_dependency "iso-639"
 
   # filesystem adapter dependencies, make optional?
   spec.add_dependency "listen"

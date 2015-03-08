@@ -6,7 +6,7 @@ module TivoHMO
         include TivoHMO::API::Item
         include GemLogger::LoggerSupport
 
-        attr_reader :delegate, :subtitle
+        attr_reader :delegate
 
         def initialize(delegate, subtitle=nil)
           # delegate is a Plex::Movie
@@ -18,7 +18,7 @@ module TivoHMO
           self.subtitle = subtitle
 
           self.title = delegate.title
-          self.title = "[#{subtitle.language_code} sub] #{self.title}" if subtitle
+          self.title = "[#{subtitle.language_code} #{subtitle.type} sub] #{self.title}" if subtitle
 
           self.modified_at = Time.at(delegate.updated_at.to_i)
           self.created_at = Time.parse(delegate.originally_available_at) rescue nil

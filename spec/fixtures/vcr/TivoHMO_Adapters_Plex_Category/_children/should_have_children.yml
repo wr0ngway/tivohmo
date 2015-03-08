@@ -25,11 +25,11 @@ http_interactions:
       X-Plex-Protocol:
       - '1.0'
       X-Plex-Content-Original-Length:
-      - '2991'
+      - '2988'
       X-Plex-Content-Compressed-Length:
-      - '805'
+      - '788'
       Content-Length:
-      - '805'
+      - '788'
       Cache-Control:
       - no-cache
     body:
@@ -37,27 +37,27 @@ http_interactions:
       string: |
         <?xml version="1.0" encoding="UTF-8"?>
         <MediaContainer size="6" allowSync="0" identifier="com.plexapp.plugins.library" mediaTagPrefix="/system/bundle/media/flags/" mediaTagVersion="1420767545" title1="Plex Library">
-        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="1" type="movie" title="Adult Movies" composite="/library/sections/1/composite/1423777283" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="9113e43dc6c547eede809f9439c8e80498b4a610" updatedAt="1423777283" createdAt="1332713366">
-        <Location id="4" path="/Users/mconway/Movies/Adult Movies" />
+        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="8" type="movie" title="Adult Movies" composite="/library/sections/8/composite/1425683728" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="608ca2bb-e5f2-49ab-b040-dbb95ac5631e" updatedAt="1425683728" createdAt="1424196765">
+        <Location id="12" path="/Users/mconway/Movies/Adult Movies" />
         </Directory>
-        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="2" type="show" title="Adult TV Shows" composite="/library/sections/2/composite/1423932892" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="af8295a272d545681d462eed8025113d09195007" updatedAt="1423932892" createdAt="1332713366">
+        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="2" type="show" title="Adult TV Shows" composite="/library/sections/2/composite/1425683755" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="af8295a272d545681d462eed8025113d09195007" updatedAt="1425683755" createdAt="1332713366">
         <Location id="6" path="/Users/mconway/Movies/Adult TV Shows" />
         </Directory>
-        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="5" type="movie" title="Kid Movies" composite="/library/sections/5/composite/1423777310" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="340479de-6015-4e6c-9ec0-c74f936f4013" updatedAt="1423777310" createdAt="1411071543">
+        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="5" type="movie" title="Kid Movies" composite="/library/sections/5/composite/1425683756" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="340479de-6015-4e6c-9ec0-c74f936f4013" updatedAt="1425683756" createdAt="1411071543">
         <Location id="9" path="/Users/mconway/Movies/Kid Movies" />
         </Directory>
-        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="4" type="show" title="Kid TV Shows" composite="/library/sections/4/composite/1423777311" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="fa1dde48-f6dd-44f7-91f3-9283160dc953" updatedAt="1423777311" createdAt="1411071497">
+        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="4" type="show" title="Kid TV Shows" composite="/library/sections/4/composite/1425683757" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="fa1dde48-f6dd-44f7-91f3-9283160dc953" updatedAt="1425683757" createdAt="1411071497">
         <Location id="8" path="/Users/mconway/Movies/Kid TV Shows" />
         </Directory>
-        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="1" thumb="/:/resources/movie.png" key="6" type="movie" title="Test Movies" composite="/library/sections/6/composite/1423936036" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="fbc810b7-6b51-40ba-a3c5-9a2c391e5a3d" updatedAt="1423936036" createdAt="1423935251">
+        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="6" type="movie" title="Test Movies" composite="/library/sections/6/composite/1425683758" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="fbc810b7-6b51-40ba-a3c5-9a2c391e5a3d" updatedAt="1425683758" createdAt="1423935251">
         <Location id="10" path="/Users/mconway/Movies/TivoHMOTest/Movies" />
         </Directory>
-        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="7" type="show" title="Test TV Shows" composite="/library/sections/7/composite/1423935290" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="4c37cd05-86d7-4a34-8d5b-aa2fb261a136" updatedAt="1423935290" createdAt="1423935290">
+        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="7" type="show" title="Test TV Shows" composite="/library/sections/7/composite/1425683759" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="4c37cd05-86d7-4a34-8d5b-aa2fb261a136" updatedAt="1425683759" createdAt="1423935290">
         <Location id="11" path="/Users/mconway/Movies/TivoHMOTest/TV Shows" />
         </Directory>
         </MediaContainer>
     http_version: 
-  recorded_at: Sat, 14 Feb 2015 17:47:35 GMT
+  recorded_at: Sun, 08 Mar 2015 14:55:19 GMT
 - request:
     method: get
     uri: http://localhost:32400/library/sections
@@ -83,11 +83,11 @@ http_interactions:
       X-Plex-Protocol:
       - '1.0'
       X-Plex-Content-Original-Length:
-      - '2991'
+      - '2988'
       X-Plex-Content-Compressed-Length:
-      - '805'
+      - '788'
       Content-Length:
-      - '805'
+      - '788'
       Cache-Control:
       - no-cache
     body:
@@ -95,27 +95,27 @@ http_interactions:
       string: |
         <?xml version="1.0" encoding="UTF-8"?>
         <MediaContainer size="6" allowSync="0" identifier="com.plexapp.plugins.library" mediaTagPrefix="/system/bundle/media/flags/" mediaTagVersion="1420767545" title1="Plex Library">
-        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="1" type="movie" title="Adult Movies" composite="/library/sections/1/composite/1423777283" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="9113e43dc6c547eede809f9439c8e80498b4a610" updatedAt="1423777283" createdAt="1332713366">
-        <Location id="4" path="/Users/mconway/Movies/Adult Movies" />
+        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="8" type="movie" title="Adult Movies" composite="/library/sections/8/composite/1425683728" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="608ca2bb-e5f2-49ab-b040-dbb95ac5631e" updatedAt="1425683728" createdAt="1424196765">
+        <Location id="12" path="/Users/mconway/Movies/Adult Movies" />
         </Directory>
-        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="2" type="show" title="Adult TV Shows" composite="/library/sections/2/composite/1423932892" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="af8295a272d545681d462eed8025113d09195007" updatedAt="1423932892" createdAt="1332713366">
+        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="2" type="show" title="Adult TV Shows" composite="/library/sections/2/composite/1425683755" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="af8295a272d545681d462eed8025113d09195007" updatedAt="1425683755" createdAt="1332713366">
         <Location id="6" path="/Users/mconway/Movies/Adult TV Shows" />
         </Directory>
-        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="5" type="movie" title="Kid Movies" composite="/library/sections/5/composite/1423777310" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="340479de-6015-4e6c-9ec0-c74f936f4013" updatedAt="1423777310" createdAt="1411071543">
+        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="5" type="movie" title="Kid Movies" composite="/library/sections/5/composite/1425683756" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="340479de-6015-4e6c-9ec0-c74f936f4013" updatedAt="1425683756" createdAt="1411071543">
         <Location id="9" path="/Users/mconway/Movies/Kid Movies" />
         </Directory>
-        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="4" type="show" title="Kid TV Shows" composite="/library/sections/4/composite/1423777311" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="fa1dde48-f6dd-44f7-91f3-9283160dc953" updatedAt="1423777311" createdAt="1411071497">
+        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="4" type="show" title="Kid TV Shows" composite="/library/sections/4/composite/1425683757" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="fa1dde48-f6dd-44f7-91f3-9283160dc953" updatedAt="1425683757" createdAt="1411071497">
         <Location id="8" path="/Users/mconway/Movies/Kid TV Shows" />
         </Directory>
-        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="1" thumb="/:/resources/movie.png" key="6" type="movie" title="Test Movies" composite="/library/sections/6/composite/1423936036" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="fbc810b7-6b51-40ba-a3c5-9a2c391e5a3d" updatedAt="1423936036" createdAt="1423935251">
+        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="6" type="movie" title="Test Movies" composite="/library/sections/6/composite/1425683758" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="fbc810b7-6b51-40ba-a3c5-9a2c391e5a3d" updatedAt="1425683758" createdAt="1423935251">
         <Location id="10" path="/Users/mconway/Movies/TivoHMOTest/Movies" />
         </Directory>
-        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="7" type="show" title="Test TV Shows" composite="/library/sections/7/composite/1423935290" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="4c37cd05-86d7-4a34-8d5b-aa2fb261a136" updatedAt="1423935290" createdAt="1423935290">
+        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="7" type="show" title="Test TV Shows" composite="/library/sections/7/composite/1425683759" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="4c37cd05-86d7-4a34-8d5b-aa2fb261a136" updatedAt="1425683759" createdAt="1423935290">
         <Location id="11" path="/Users/mconway/Movies/TivoHMOTest/TV Shows" />
         </Directory>
         </MediaContainer>
     http_version: 
-  recorded_at: Sat, 14 Feb 2015 17:47:35 GMT
+  recorded_at: Sun, 08 Mar 2015 14:55:19 GMT
 - request:
     method: get
     uri: http://localhost:32400/library/sections/6/newest
@@ -141,18 +141,18 @@ http_interactions:
       X-Plex-Protocol:
       - '1.0'
       X-Plex-Content-Original-Length:
-      - '3653'
+      - '5274'
       X-Plex-Content-Compressed-Length:
-      - '1728'
+      - '2313'
       Content-Length:
-      - '1728'
+      - '2313'
       Cache-Control:
       - no-cache
     body:
       encoding: ASCII-8BIT
       string: !binary |-
         PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPE1lZGlh
-        Q29udGFpbmVyIHNpemU9IjIiIGFsbG93U3luYz0iMSIgYXJ0PSIvOi9yZXNv
+        Q29udGFpbmVyIHNpemU9IjMiIGFsbG93U3luYz0iMSIgYXJ0PSIvOi9yZXNv
         dXJjZXMvbW92aWUtZmFuYXJ0LmpwZyIgaWRlbnRpZmllcj0iY29tLnBsZXhh
         cHAucGx1Z2lucy5saWJyYXJ5IiBsaWJyYXJ5U2VjdGlvbklEPSI2IiBsaWJy
         YXJ5U2VjdGlvblRpdGxlPSJUZXN0IE1vdmllcyIgbGlicmFyeVNlY3Rpb25V
@@ -175,11 +175,11 @@ http_interactions:
         IGFybSB0aGVtc2VsdmVzIGFuZCBwcmVwYXJlIHRvIGJhdHRsZSB0aGVpciB3
         YXkgdGhyb3VnaCBob3JkZXMgb2YgZmxlc2gtZWF0aW5nIG1vbnN0ZXJzIGlu
         IGEgaGFyc2ggQXVzdHJhbGlhbiBidXNobGFuZC4iIHllYXI9IjIwMTUiIHRo
-        dW1iPSIvbGlicmFyeS9tZXRhZGF0YS8xMTc1L3RodW1iLzE0MjM5MzYwNTEi
-        IGFydD0iL2xpYnJhcnkvbWV0YWRhdGEvMTE3NS9hcnQvMTQyMzkzNjA1MSIg
+        dW1iPSIvbGlicmFyeS9tZXRhZGF0YS8xMTc1L3RodW1iLzE0MjQ0NjQ4NDYi
+        IGFydD0iL2xpYnJhcnkvbWV0YWRhdGEvMTE3NS9hcnQvMTQyNDQ2NDg0NiIg
         ZHVyYXRpb249IjU5MTQ2NTkiIG9yaWdpbmFsbHlBdmFpbGFibGVBdD0iMjAx
-        NS0wMi0xMyIgYWRkZWRBdD0iMTQyMzkzNjAzNiIgdXBkYXRlZEF0PSIxNDIz
-        OTM2MDUxIj4KPE1lZGlhIHZpZGVvUmVzb2x1dGlvbj0ic2QiIGlkPSIxNDAy
+        NS0wMi0xMyIgYWRkZWRBdD0iMTQyMzkzNjAzNiIgdXBkYXRlZEF0PSIxNDI0
+        NDY0ODQ2Ij4KPE1lZGlhIHZpZGVvUmVzb2x1dGlvbj0ic2QiIGlkPSIxNDAy
         IiBkdXJhdGlvbj0iNTkxNDY1OSIgYml0cmF0ZT0iOTg5IiB3aWR0aD0iNjQw
         IiBoZWlnaHQ9IjM1MiIgYXNwZWN0UmF0aW89IjEuODUiIGF1ZGlvQ2hhbm5l
         bHM9IjIiIGF1ZGlvQ29kZWM9Im1wMyIgdmlkZW9Db2RlYz0ibXBlZzQiIGNv
@@ -194,47 +194,83 @@ http_interactions:
         Um9hY2hlLVR1cm5lciIgLz4KPENvdW50cnkgdGFnPSJBdXN0cmFsaWEiIC8+
         CjxSb2xlIHRhZz0iSmF5IEdhbGxhZ2hlciIgLz4KPFJvbGUgdGFnPSJCaWFu
         Y2EgQnJhZGV5IiAvPgo8Um9sZSB0YWc9Ikxlb24gQnVyY2hpbGwiIC8+Cjwv
-        VmlkZW8+CjxWaWRlbyByYXRpbmdLZXk9IjExNjkiIGtleT0iL2xpYnJhcnkv
-        bWV0YWRhdGEvMTE2OSIgc3R1ZGlvPSJWaWRodSBWaW5vZCBDaG9wcmEgUHJv
-        ZHVjdGlvbnMiIHR5cGU9Im1vdmllIiB0aXRsZT0iMyBJZGlvdHMiIGNvbnRl
-        bnRSYXRpbmc9IlBHIiBzdW1tYXJ5PSJJbiB0aGUgdHJhZGl0aW9uIG9mIOKA
-        nEZlcnJpcyBCdWVsbGVy4oCZcyBEYXkgT2Zm4oCdIGNvbWVzIHRoaXMgcmVm
-        cmVzaGluZyBjb21lZHkgYWJvdXQgYSByZWJlbGxpb3VzIHByYW5rc3RlciB3
-        aXRoIGEgY3JhZnR5IG1pbmQgYW5kIGEgaGVhcnQgb2YgZ29sZC4gUmFzY2Fs
-        LiBKb2tlci4gRHJlYW1lci4gR2VuaXVzLi4uIFlvdSZhcG9zO3ZlIG5ldmVy
-        IG1ldCBhIGNvbGxlZ2Ugc3R1ZGVudCBxdWl0ZSBsaWtlICZxdW90O1JhbmNo
-        by4mcXVvdDsgRnJvbSB0aGUgbW9tZW50IGhlIGFycml2ZXMgYXQgSW5kaWEm
-        YXBvcztzIG1vc3QgcHJlc3RpZ2lvdXMgdW5pdmVyc2l0eSwgUmFuY2hvJmFw
-        b3M7cyBvdXRsYW5kaXNoIHNjaGVtZXMgdHVybiB0aGUgY2FtcHVzIHVwc2lk
-        ZSBkb3du4oCUYWxvbmcgd2l0aCB0aGUgbGl2ZXMgb2YgaGlzIHR3byBuZXdm
-        b3VuZCBiZXN0IGZyaWVuZHMuIFRvZ2V0aGVyLCB0aGV5IG1ha2UgbGlmZSBt
-        aXNlcmFibGUgZm9yICZxdW90O1ZpcnVzLCZxdW90OyB0aGUgc2Nob29s4oCZ
-        cyB1cHRpZ2h0IGFuZCBoZWFydGxlc3MgZGVhbi4gQnV0IHdoZW4gUmFuY2hv
-        IGNhdGNoZXMgdGhlIGV5ZSBvZiB0aGUgZGVhbiZhcG9zO3Mgc2V4eSBkYXVn
-        aHRlciwgVmlydXMgc2V0cyBoaXMgc2lnaHRzIG9uIGZsdW5raW5nIG91dCB0
-        aGUgJnF1b3Q7MyBpZGlvdHMmcXVvdDsgb25jZSBhbmQgZm9yIGFsbC4iIHJh
-        dGluZz0iNy42OTk5OTk4MDkyNjUxNDAzIiB5ZWFyPSIyMDA5IiB0aHVtYj0i
-        L2xpYnJhcnkvbWV0YWRhdGEvMTE2OS90aHVtYi8xNDIzOTM2MDU1IiBhcnQ9
-        Ii9saWJyYXJ5L21ldGFkYXRhLzExNjkvYXJ0LzE0MjM5MzYwNTUiIGR1cmF0
-        aW9uPSI5ODU1NDQwIiBvcmlnaW5hbGx5QXZhaWxhYmxlQXQ9IjIwMDktMTIt
-        MjUiIGFkZGVkQXQ9IjE0MjM5MzUzNTIiIHVwZGF0ZWRBdD0iMTQyMzkzNjA1
-        NSI+CjxNZWRpYSB2aWRlb1Jlc29sdXRpb249InNkIiBpZD0iMTM5OSIgZHVy
-        YXRpb249Ijk4NTU0NDAiIGJpdHJhdGU9IjgwOCIgd2lkdGg9IjY0MCIgaGVp
-        Z2h0PSIyNzIiIGFzcGVjdFJhdGlvPSIyLjM1IiBhdWRpb0NoYW5uZWxzPSI2
-        IiBhdWRpb0NvZGVjPSJhYzMiIHZpZGVvQ29kZWM9Im1wZWc0IiBjb250YWlu
-        ZXI9ImF2aSIgdmlkZW9GcmFtZVJhdGU9IlBBTCI+CjxQYXJ0IGlkPSIxOTU0
-        IiBrZXk9Ii9saWJyYXJ5L3BhcnRzLzE5NTQvZmlsZS5hdmkiIGR1cmF0aW9u
-        PSI5ODU1NDQwIiBmaWxlPSIvVXNlcnMvbWNvbndheS9Nb3ZpZXMvVGl2b0hN
-        T1Rlc3QvTW92aWVzLzMgSWRpb3RzICgyMDA5KS5hdmkiIHNpemU9Ijk5NTQ0
-        Mzc4NCIgY29udGFpbmVyPSJhdmkiIC8+CjwvTWVkaWE+CjxHZW5yZSB0YWc9
-        IkNvbWVkeSIgLz4KPEdlbnJlIHRhZz0iRHJhbWEiIC8+CjxXcml0ZXIgdGFn
-        PSJSYWprdW1hciBIaXJhbmkiIC8+CjxEaXJlY3RvciB0YWc9IlJhamt1bWFy
-        IEhpcmFuaSIgLz4KPENvdW50cnkgdGFnPSJJbmRpYSIgLz4KPFJvbGUgdGFn
-        PSJBYW1pciBLaGFuIiAvPgo8Um9sZSB0YWc9IkthcmVlbmEgS2Fwb29yIiAv
-        Pgo8Um9sZSB0YWc9Ik1hZGhhdmFuIiAvPgo8L1ZpZGVvPgo8L01lZGlhQ29u
-        dGFpbmVyPgo=
+        VmlkZW8+CjxWaWRlbyByYXRpbmdLZXk9IjEyMDEiIGtleT0iL2xpYnJhcnkv
+        bWV0YWRhdGEvMTIwMSIgc3R1ZGlvPSJXYXJuZXIgQnJvcy4iIHR5cGU9Im1v
+        dmllIiB0aXRsZT0iUnVyb3VuaSBLZW5zaGluOiBLeW90byBJbmZlcm5vIiBv
+        cmlnaW5hbFRpdGxlPSJSdXJvdW5pIEtlbnNoaW4gMiA6IEt5b3RvIEluZmVy
+        bm8g4Lij4Li54LmC4Lij4LiZ4Li04LiZIOC5gOC4hOC4meC4iuC4tOC4mSDg
+        uYDguIHguLXguKLguKfguYLguJXguJfguLDguYDguKUiIGNvbnRlbnRSYXRp
+        bmc9IlBHLTEzIiBzdW1tYXJ5PSJLZW5zaGluIGhhcyBzZXR0bGVkIGludG8g
+        aGlzIG5ldyBsaWZlIHdpdGggS2FvcnUgYW5kIGhpcyBvdGhlciBmcmllbmRz
+        IHdoZW4gaGUgaXMgYXBwcm9hY2hlZCB3aXRoIGEgcmVxdWVzdCBmcm9tIHRo
+        ZSBNZWlqaSBnb3Zlcm5tZW50LiBNYWtvdG8gU2hpc2hpbywgYSBmb3JtZXIg
+        YXNzYXNzaW4gbGlrZSBLZW5zaGluLCB3YXMgYmV0cmF5ZWQsIHNldCBvbiBm
+        aXJlIGFuZCBsZWZ0IGZvciBkZWFkLiBIZSBzdXJ2aXZlZCwgYW5kIGlzIG5v
+        dyBpbiBLeW90bywgcGxvdHRpbmcgd2l0aCBoaXMgZ2F0aGVyZWQgd2Fycmlv
+        cnMgdG8gb3ZlcnRocm93IHRoZSBuZXcgZ292ZXJubWVudC4gQWdhaW5zdCBL
+        YW9ydSZhcG9zO3Mgd2lzaGVzLCBLZW5zaGluIHJlbHVjdGFudGx5IGFncmVl
+        cyB0byBnbyB0byBLeW90byBhbmQgaGVscCBrZWVwIGhpcyBjb3VudHJ5IGZy
+        b20gZmFsbGluZyBiYWNrIGludG8gY2l2aWwgd2FyLiIgcmF0aW5nPSI3LjY5
+        OTk5OTgwOTI2NTE0MDMiIHllYXI9IjIwMTQiIHRhZ2xpbmU9IkZhdGUgSGFu
+        Z3MgT24gSGlzIFN3b3JkIiB0aHVtYj0iL2xpYnJhcnkvbWV0YWRhdGEvMTIw
+        MS90aHVtYi8xNDI0NDY0NDgzIiBhcnQ9Ii9saWJyYXJ5L21ldGFkYXRhLzEy
+        MDEvYXJ0LzE0MjQ0NjQ0ODMiIGR1cmF0aW9uPSI4MzIxMzM1IiBvcmlnaW5h
+        bGx5QXZhaWxhYmxlQXQ9IjIwMTQtMDgtMDEiIGFkZGVkQXQ9IjE0MjQ0NjQ0
+        NzUiIHVwZGF0ZWRBdD0iMTQyNDQ2NDQ4MyI+CjxNZWRpYSB2aWRlb1Jlc29s
+        dXRpb249IjcyMCIgaWQ9IjE0MjYiIGR1cmF0aW9uPSI4MzIxMzM1IiBiaXRy
+        YXRlPSIxMTA5IiB3aWR0aD0iMTI4MCIgaGVpZ2h0PSI1MzYiIGFzcGVjdFJh
+        dGlvPSIyLjM1IiBhdWRpb0NoYW5uZWxzPSIyIiBhdWRpb0NvZGVjPSJhYWMi
+        IHZpZGVvQ29kZWM9ImgyNjQiIGNvbnRhaW5lcj0ibWt2IiB2aWRlb0ZyYW1l
+        UmF0ZT0iMjRwIj4KPFBhcnQgaWQ9IjE5ODEiIGtleT0iL2xpYnJhcnkvcGFy
+        dHMvMTk4MS9maWxlLm1rdiIgZHVyYXRpb249IjgzMjEzMzUiIGZpbGU9Ii9V
+        c2Vycy9tY29ud2F5L01vdmllcy9UaXZvSE1PVGVzdC9Nb3ZpZXMvUnVyb3Vu
+        aSBLZW5zaGluIEt5b3RvIEluZmVybm8gKDIwMTQpLm1rdiIgc2l6ZT0iMTE1
+        MzgzMzEzOSIgY29udGFpbmVyPSJta3YiIC8+CjwvTWVkaWE+CjxHZW5yZSB0
+        YWc9IkFjdGlvbiIgLz4KPEdlbnJlIHRhZz0iQWR2ZW50dXJlIiAvPgo8RGly
+        ZWN0b3IgdGFnPSJLZWlzaGkgT2h0b21vIiAvPgo8Q291bnRyeSB0YWc9Ikph
+        cGFuIiAvPgo8Um9sZSB0YWc9IlRha2VydSBTYXRvIiAvPgo8Um9sZSB0YWc9
+        Ill1IEFvaSIgLz4KPFJvbGUgdGFnPSJUYXRzdXlhIEZ1aml3YXJhIiAvPgo8
+        L1ZpZGVvPgo8VmlkZW8gcmF0aW5nS2V5PSIxMTY5IiBrZXk9Ii9saWJyYXJ5
+        L21ldGFkYXRhLzExNjkiIHN0dWRpbz0iVmlkaHUgVmlub2QgQ2hvcHJhIFBy
+        b2R1Y3Rpb25zIiB0eXBlPSJtb3ZpZSIgdGl0bGU9IjMgSWRpb3RzIiBjb250
+        ZW50UmF0aW5nPSJQRyIgc3VtbWFyeT0iSW4gdGhlIHRyYWRpdGlvbiBvZiDi
+        gJxGZXJyaXMgQnVlbGxlcuKAmXMgRGF5IE9mZuKAnSBjb21lcyB0aGlzIHJl
+        ZnJlc2hpbmcgY29tZWR5IGFib3V0IGEgcmViZWxsaW91cyBwcmFua3N0ZXIg
+        d2l0aCBhIGNyYWZ0eSBtaW5kIGFuZCBhIGhlYXJ0IG9mIGdvbGQuIFJhc2Nh
+        bC4gSm9rZXIuIERyZWFtZXIuIEdlbml1cy4uLiBZb3UmYXBvczt2ZSBuZXZl
+        ciBtZXQgYSBjb2xsZWdlIHN0dWRlbnQgcXVpdGUgbGlrZSAmcXVvdDtSYW5j
+        aG8uJnF1b3Q7IEZyb20gdGhlIG1vbWVudCBoZSBhcnJpdmVzIGF0IEluZGlh
+        JmFwb3M7cyBtb3N0IHByZXN0aWdpb3VzIHVuaXZlcnNpdHksIFJhbmNobyZh
+        cG9zO3Mgb3V0bGFuZGlzaCBzY2hlbWVzIHR1cm4gdGhlIGNhbXB1cyB1cHNp
+        ZGUgZG93buKAlGFsb25nIHdpdGggdGhlIGxpdmVzIG9mIGhpcyB0d28gbmV3
+        Zm91bmQgYmVzdCBmcmllbmRzLiBUb2dldGhlciwgdGhleSBtYWtlIGxpZmUg
+        bWlzZXJhYmxlIGZvciAmcXVvdDtWaXJ1cywmcXVvdDsgdGhlIHNjaG9vbOKA
+        mXMgdXB0aWdodCBhbmQgaGVhcnRsZXNzIGRlYW4uIEJ1dCB3aGVuIFJhbmNo
+        byBjYXRjaGVzIHRoZSBleWUgb2YgdGhlIGRlYW4mYXBvcztzIHNleHkgZGF1
+        Z2h0ZXIsIFZpcnVzIHNldHMgaGlzIHNpZ2h0cyBvbiBmbHVua2luZyBvdXQg
+        dGhlICZxdW90OzMgaWRpb3RzJnF1b3Q7IG9uY2UgYW5kIGZvciBhbGwuIiBy
+        YXRpbmc9IjcuNjk5OTk5ODA5MjY1MTQwMyIgeWVhcj0iMjAwOSIgdGh1bWI9
+        Ii9saWJyYXJ5L21ldGFkYXRhLzExNjkvdGh1bWIvMTQyNDQ2NDg0NiIgYXJ0
+        PSIvbGlicmFyeS9tZXRhZGF0YS8xMTY5L2FydC8xNDI0NDY0ODQ2IiBkdXJh
+        dGlvbj0iOTg1NTQ0MCIgb3JpZ2luYWxseUF2YWlsYWJsZUF0PSIyMDA5LTEy
+        LTI1IiBhZGRlZEF0PSIxNDIzOTM1MzUyIiB1cGRhdGVkQXQ9IjE0MjQ0NjQ4
+        NDYiPgo8TWVkaWEgdmlkZW9SZXNvbHV0aW9uPSJzZCIgaWQ9IjEzOTkiIGR1
+        cmF0aW9uPSI5ODU1NDQwIiBiaXRyYXRlPSI4MDgiIHdpZHRoPSI2NDAiIGhl
+        aWdodD0iMjcyIiBhc3BlY3RSYXRpbz0iMi4zNSIgYXVkaW9DaGFubmVscz0i
+        NiIgYXVkaW9Db2RlYz0iYWMzIiB2aWRlb0NvZGVjPSJtcGVnNCIgY29udGFp
+        bmVyPSJhdmkiIHZpZGVvRnJhbWVSYXRlPSJQQUwiPgo8UGFydCBpZD0iMTk1
+        NCIga2V5PSIvbGlicmFyeS9wYXJ0cy8xOTU0L2ZpbGUuYXZpIiBkdXJhdGlv
+        bj0iOTg1NTQ0MCIgZmlsZT0iL1VzZXJzL21jb253YXkvTW92aWVzL1Rpdm9I
+        TU9UZXN0L01vdmllcy8zIElkaW90cyAoMjAwOSkuYXZpIiBzaXplPSI5OTU0
+        NDM3ODQiIGNvbnRhaW5lcj0iYXZpIiAvPgo8L01lZGlhPgo8R2VucmUgdGFn
+        PSJDb21lZHkiIC8+CjxHZW5yZSB0YWc9IkRyYW1hIiAvPgo8V3JpdGVyIHRh
+        Zz0iUmFqa3VtYXIgSGlyYW5pIiAvPgo8RGlyZWN0b3IgdGFnPSJSYWprdW1h
+        ciBIaXJhbmkiIC8+CjxDb3VudHJ5IHRhZz0iSW5kaWEiIC8+CjxSb2xlIHRh
+        Zz0iQWFtaXIgS2hhbiIgLz4KPFJvbGUgdGFnPSJLYXJlZW5hIEthcG9vciIg
+        Lz4KPFJvbGUgdGFnPSJNYWRoYXZhbiIgLz4KPC9WaWRlbz4KPC9NZWRpYUNv
+        bnRhaW5lcj4K
     http_version: 
-  recorded_at: Sat, 14 Feb 2015 17:47:35 GMT
+  recorded_at: Sun, 08 Mar 2015 14:55:19 GMT
 - request:
     method: get
     uri: http://localhost:32400/library/metadata/1175
@@ -262,9 +298,9 @@ http_interactions:
       X-Plex-Content-Original-Length:
       - '3128'
       X-Plex-Content-Compressed-Length:
-      - '1533'
+      - '1536'
       Content-Length:
-      - '1533'
+      - '1536'
       Cache-Control:
       - no-cache
     body:
@@ -272,7 +308,7 @@ http_interactions:
       string: |
         <?xml version="1.0" encoding="UTF-8"?>
         <MediaContainer size="1" allowSync="1" identifier="com.plexapp.plugins.library" librarySectionID="6" librarySectionTitle="Test Movies" librarySectionUUID="fbc810b7-6b51-40ba-a3c5-9a2c391e5a3d" mediaTagPrefix="/system/bundle/media/flags/" mediaTagVersion="1420767545">
-        <Video ratingKey="1175" key="/library/metadata/1175" guid="com.plexapp.agents.imdb://tt2535470?lang=en" studio="Guerilla Films" type="movie" title="Wyrmwood" summary="Barry is a talented mechanic and family man whose life is torn apart on the eve of a zombie apocalypse. His sister, Brooke, is kidnapped by a sinister team of gas-mask wearing soldiers &amp;amp; experimented on by a psychotic doctor. While Brooke plans her escape Barry goes out on the road to find her &amp;amp; teams up with Benny, a fellow survivor - together they must arm themselves and prepare to battle their way through hordes of flesh-eating monsters in a harsh Australian bushland." year="2015" thumb="/library/metadata/1175/thumb/1423936051" art="/library/metadata/1175/art/1423936051" duration="5914659" originallyAvailableAt="2015-02-13" addedAt="1423936036" updatedAt="1423936051">
+        <Video ratingKey="1175" key="/library/metadata/1175" guid="com.plexapp.agents.imdb://tt2535470?lang=en" studio="Guerilla Films" type="movie" title="Wyrmwood" summary="Barry is a talented mechanic and family man whose life is torn apart on the eve of a zombie apocalypse. His sister, Brooke, is kidnapped by a sinister team of gas-mask wearing soldiers &amp;amp; experimented on by a psychotic doctor. While Brooke plans her escape Barry goes out on the road to find her &amp;amp; teams up with Benny, a fellow survivor - together they must arm themselves and prepare to battle their way through hordes of flesh-eating monsters in a harsh Australian bushland." year="2015" thumb="/library/metadata/1175/thumb/1424464846" art="/library/metadata/1175/art/1424464846" duration="5914659" originallyAvailableAt="2015-02-13" addedAt="1423936036" updatedAt="1424464846">
         <Media videoResolution="sd" id="1402" duration="5914659" bitrate="989" width="640" height="352" aspectRatio="1.85" audioChannels="2" audioCodec="mp3" videoCodec="mpeg4" container="avi" videoFrameRate="24p">
         <Part id="1957" key="/library/parts/1957/file.avi" duration="5914659" file="/Users/mconway/Movies/TivoHMOTest/Movies/Wyrmwood (2014).avi" size="731033918" container="avi">
         <Stream id="5736" streamType="1" codec="mpeg4" index="0" bitrate="851" bitDepth="8" chromaSubsampling="4:2:0" codecID="XVID" colorSpace="yuv" duration="5914659" frameRate="23.976" gmc="0" height="352" level="5" profile="asp" qpel="0" scanType="progressive" title="" width="640" />
@@ -302,7 +338,142 @@ http_interactions:
         </Video>
         </MediaContainer>
     http_version: 
-  recorded_at: Sat, 14 Feb 2015 17:47:35 GMT
+  recorded_at: Sun, 08 Mar 2015 14:55:19 GMT
+- request:
+    method: get
+    uri: http://localhost:32400/library/metadata/1201
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml;charset=utf-8
+      Connection:
+      - close
+      X-Plex-Protocol:
+      - '1.0'
+      X-Plex-Content-Original-Length:
+      - '4371'
+      X-Plex-Content-Compressed-Length:
+      - '2072'
+      Content-Length:
+      - '2072'
+      Cache-Control:
+      - no-cache
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPE1lZGlh
+        Q29udGFpbmVyIHNpemU9IjEiIGFsbG93U3luYz0iMSIgaWRlbnRpZmllcj0i
+        Y29tLnBsZXhhcHAucGx1Z2lucy5saWJyYXJ5IiBsaWJyYXJ5U2VjdGlvbklE
+        PSI2IiBsaWJyYXJ5U2VjdGlvblRpdGxlPSJUZXN0IE1vdmllcyIgbGlicmFy
+        eVNlY3Rpb25VVUlEPSJmYmM4MTBiNy02YjUxLTQwYmEtYTNjNS05YTJjMzkx
+        ZTVhM2QiIG1lZGlhVGFnUHJlZml4PSIvc3lzdGVtL2J1bmRsZS9tZWRpYS9m
+        bGFncy8iIG1lZGlhVGFnVmVyc2lvbj0iMTQyMDc2NzU0NSI+CjxWaWRlbyBy
+        YXRpbmdLZXk9IjEyMDEiIGtleT0iL2xpYnJhcnkvbWV0YWRhdGEvMTIwMSIg
+        Z3VpZD0iY29tLnBsZXhhcHAuYWdlbnRzLmltZGI6Ly90dDMwMjk1NTg/bGFu
+        Zz1lbiIgc3R1ZGlvPSJXYXJuZXIgQnJvcy4iIHR5cGU9Im1vdmllIiB0aXRs
+        ZT0iUnVyb3VuaSBLZW5zaGluOiBLeW90byBJbmZlcm5vIiBvcmlnaW5hbFRp
+        dGxlPSJSdXJvdW5pIEtlbnNoaW4gMiA6IEt5b3RvIEluZmVybm8g4Lij4Li5
+        4LmC4Lij4LiZ4Li04LiZIOC5gOC4hOC4meC4iuC4tOC4mSDguYDguIHguLXg
+        uKLguKfguYLguJXguJfguLDguYDguKUiIGNvbnRlbnRSYXRpbmc9IlBHLTEz
+        IiBzdW1tYXJ5PSJLZW5zaGluIGhhcyBzZXR0bGVkIGludG8gaGlzIG5ldyBs
+        aWZlIHdpdGggS2FvcnUgYW5kIGhpcyBvdGhlciBmcmllbmRzIHdoZW4gaGUg
+        aXMgYXBwcm9hY2hlZCB3aXRoIGEgcmVxdWVzdCBmcm9tIHRoZSBNZWlqaSBn
+        b3Zlcm5tZW50LiBNYWtvdG8gU2hpc2hpbywgYSBmb3JtZXIgYXNzYXNzaW4g
+        bGlrZSBLZW5zaGluLCB3YXMgYmV0cmF5ZWQsIHNldCBvbiBmaXJlIGFuZCBs
+        ZWZ0IGZvciBkZWFkLiBIZSBzdXJ2aXZlZCwgYW5kIGlzIG5vdyBpbiBLeW90
+        bywgcGxvdHRpbmcgd2l0aCBoaXMgZ2F0aGVyZWQgd2FycmlvcnMgdG8gb3Zl
+        cnRocm93IHRoZSBuZXcgZ292ZXJubWVudC4gQWdhaW5zdCBLYW9ydSZhcG9z
+        O3Mgd2lzaGVzLCBLZW5zaGluIHJlbHVjdGFudGx5IGFncmVlcyB0byBnbyB0
+        byBLeW90byBhbmQgaGVscCBrZWVwIGhpcyBjb3VudHJ5IGZyb20gZmFsbGlu
+        ZyBiYWNrIGludG8gY2l2aWwgd2FyLiIgcmF0aW5nPSI3LjY5OTk5OTgwOTI2
+        NTE0MDMiIHllYXI9IjIwMTQiIHRhZ2xpbmU9IkZhdGUgSGFuZ3MgT24gSGlz
+        IFN3b3JkIiB0aHVtYj0iL2xpYnJhcnkvbWV0YWRhdGEvMTIwMS90aHVtYi8x
+        NDI0NDY0NDgzIiBhcnQ9Ii9saWJyYXJ5L21ldGFkYXRhLzEyMDEvYXJ0LzE0
+        MjQ0NjQ0ODMiIGR1cmF0aW9uPSI4MzIxMzM1IiBvcmlnaW5hbGx5QXZhaWxh
+        YmxlQXQ9IjIwMTQtMDgtMDEiIGFkZGVkQXQ9IjE0MjQ0NjQ0NzUiIHVwZGF0
+        ZWRBdD0iMTQyNDQ2NDQ4MyI+CjxNZWRpYSB2aWRlb1Jlc29sdXRpb249Ijcy
+        MCIgaWQ9IjE0MjYiIGR1cmF0aW9uPSI4MzIxMzM1IiBiaXRyYXRlPSIxMTA5
+        IiB3aWR0aD0iMTI4MCIgaGVpZ2h0PSI1MzYiIGFzcGVjdFJhdGlvPSIyLjM1
+        IiBhdWRpb0NoYW5uZWxzPSIyIiBhdWRpb0NvZGVjPSJhYWMiIHZpZGVvQ29k
+        ZWM9ImgyNjQiIGNvbnRhaW5lcj0ibWt2IiB2aWRlb0ZyYW1lUmF0ZT0iMjRw
+        Ij4KPFBhcnQgaWQ9IjE5ODEiIGtleT0iL2xpYnJhcnkvcGFydHMvMTk4MS9m
+        aWxlLm1rdiIgZHVyYXRpb249IjgzMjEzMzUiIGZpbGU9Ii9Vc2Vycy9tY29u
+        d2F5L01vdmllcy9UaXZvSE1PVGVzdC9Nb3ZpZXMvUnVyb3VuaSBLZW5zaGlu
+        IEt5b3RvIEluZmVybm8gKDIwMTQpLm1rdiIgc2l6ZT0iMTE1MzgzMzEzOSIg
+        Y29udGFpbmVyPSJta3YiPgo8U3RyZWFtIGlkPSI1ODI1IiBzdHJlYW1UeXBl
+        PSIxIiBjb2RlYz0iaDI2NCIgaW5kZXg9IjAiIGJpdHJhdGU9IjExMDkiIGJp
+        dERlcHRoPSI4IiBjYWJhYz0iMSIgY2hyb21hU3Vic2FtcGxpbmc9IjQ6Mjow
+        IiBjb2RlY0lEPSJWX01QRUc0L0lTTy9BVkMiIGNvbG9yU3BhY2U9Inl1diIg
+        ZHVyYXRpb249IjgzMjEzMjEiIGZyYW1lUmF0ZT0iMjMuOTc2IiBmcmFtZVJh
+        dGVNb2RlPSJjZnIiIGhhc1NjYWxpbmdNYXRyaXg9IjAiIGhlaWdodD0iNTM2
+        IiBsZXZlbD0iMzEiIHByb2ZpbGU9ImhpZ2giIHJlZkZyYW1lcz0iNCIgc2Nh
+        blR5cGU9InByb2dyZXNzaXZlIiB0aXRsZT0iIiB3aWR0aD0iMTI4MCIgLz4K
+        PFN0cmVhbSBpZD0iNTgyNiIgc3RyZWFtVHlwZT0iMiIgc2VsZWN0ZWQ9IjEi
+        IGNvZGVjPSJhYWMiIGluZGV4PSIxIiBjaGFubmVscz0iMiIgbGFuZ3VhZ2U9
+        IuaXpeacrOiqniIgbGFuZ3VhZ2VDb2RlPSJqcG4iIGNvZGVjSUQ9IkFfQUFD
+        IiBkdXJhdGlvbj0iODMyMTMzNSIgcHJvZmlsZT0ibGMiIHNhbXBsaW5nUmF0
+        ZT0iNDgwMDAiIHRpdGxlPSIiIC8+CjxTdHJlYW0gaWQ9IjU4MjciIHN0cmVh
+        bVR5cGU9IjMiIGRlZmF1bHQ9IjEiIGNvZGVjPSJzcnQiIGluZGV4PSIyIiBj
+        b2RlY0lEPSJTX1RFWFQvVVRGOCIgZm9ybWF0PSJzcnQiIHRpdGxlPSIiIC8+
+        CjwvUGFydD4KPC9NZWRpYT4KPEdlbnJlIGlkPSI4OSIgdGFnPSJBY3Rpb24i
+        IC8+CjxHZW5yZSBpZD0iMTM2IiB0YWc9IkFkdmVudHVyZSIgLz4KPEdlbnJl
+        IGlkPSIxMDMiIHRhZz0iQW5pbWF0aW9uIiAvPgo8R2VucmUgaWQ9Ijg4IiB0
+        YWc9IkRyYW1hIiAvPgo8RGlyZWN0b3IgaWQ9IjcwNDYiIHRhZz0iS2Vpc2hp
+        IE9odG9tbyIgLz4KPENvdW50cnkgaWQ9IjE5ODgiIHRhZz0iSmFwYW4iIC8+
+        CjxSb2xlIGlkPSI3NTM4IiB0YWc9IlRha2VydSBTYXRvIiByb2xlPSJLZW5z
+        aGluIEhpbXVyYSIgdGh1bWI9Imh0dHA6Ly9pbWFnZS50bWRiLm9yZy90L3Av
+        b3JpZ2luYWwvOEdKODQ5R1E5ZUhDTGZzUmowMjZKVVZhcUpDLmpwZyIgLz4K
+        PFJvbGUgaWQ9Ijc1NDAiIHRhZz0iWXUgQW9pIiByb2xlPSJNZWd1bWkgVGFr
+        YW5pIiB0aHVtYj0iaHR0cDovL2ltYWdlLnRtZGIub3JnL3QvcC9vcmlnaW5h
+        bC9zWGd2VUs4dVdKNHhDeEE5T2tsYXBtMDhEUEouanBnIiAvPgo8Um9sZSBp
+        ZD0iNzA1MyIgdGFnPSJUYXRzdXlhIEZ1aml3YXJhIiByb2xlPSJNYWtvdG8g
+        U2hpc2hpbyIgdGh1bWI9Imh0dHA6Ly9pbWFnZS50bWRiLm9yZy90L3Avb3Jp
+        Z2luYWwveFBGWUdlZzF0RTRlMjFBblFHdXdiYkhOWGdCLmpwZyIgLz4KPFJv
+        bGUgaWQ9Ijc1NDIiIHRhZz0iWcO7c3VrZSBJc2V5YSIgcm9sZT0iQW9zaGkg
+        U2hpbm9tb3JpIiB0aHVtYj0iaHR0cDovL2ltYWdlLnRtZGIub3JnL3QvcC9v
+        cmlnaW5hbC81R2hjTFFMaWNMZTh4ZEpsblY3aWM3RHRqcjUuanBnIiAvPgo8
+        Um9sZSBpZD0iNzA0OCIgdGFnPSJFbWkgVGFrZWkiIHJvbGU9Ikthb3J1IEth
+        bWl5YSIgdGh1bWI9Imh0dHA6Ly9pbWFnZS50bWRiLm9yZy90L3Avb3JpZ2lu
+        YWwvOWtIRGlrQVlGdDIzNEFZbFNaemQ0ZWJVM3laLmpwZyIgLz4KPFJvbGUg
+        aWQ9IjcwNTEiIHRhZz0iWcWNc3VrZSBFZ3VjaGkiIHJvbGU9IkhhamltZSBT
+        YWl0byIgdGh1bWI9Imh0dHA6Ly9pbWFnZS50bWRiLm9yZy90L3Avb3JpZ2lu
+        YWwvd3ROanZLVDVHcVRZS1hucVlhOEM4dkw3QkV4LmpwZyIgLz4KPFJvbGUg
+        aWQ9IjcwNjAiIHRhZz0iTXVuZXRha2EgQW9raSIgcm9sZT0iU2Fub3N1a2Ug
+        U2FnYXJhIiB0aHVtYj0iaHR0cDovL2ltYWdlLnRtZGIub3JnL3QvcC9vcmln
+        aW5hbC8xNElBdWVqalB0T0F5Rkhoa29QckJ2U29rUWsuanBnIiAvPgo8Um9s
+        ZSBpZD0iNzA1OCIgdGFnPSJSeXVub3N1a2UgS2FtaWtpIiByb2xlPSJTb2pp
+        cm8gU2V0YSIgdGh1bWI9Imh0dHA6Ly9pbWFnZS50bWRiLm9yZy90L3Avb3Jp
+        Z2luYWwvNFl0QmR4SjduVHY2Q3VNdnhJQTZza2ZxY3puLmpwZyIgLz4KPFJv
+        bGUgaWQ9IjcwNTIiIHRhZz0iVGFvIFRzdWNoaXlhIiByb2xlPSJNYWtpbWFj
+        aGkgTWlzYW8iIHRodW1iPSJodHRwOi8vaW1hZ2UudG1kYi5vcmcvdC9wL29y
+        aWdpbmFsL2tUOE16YUdBTTBoUUZqYWZKUlF2MzZCemRCUi5qcGciIC8+CjxS
+        b2xlIGlkPSI3MDU2IiB0YWc9Ik1pbiBUYW5ha2EiIHJvbGU9Ikthc2hpd2F6
+        YWtpIE5lbmppIiB0aHVtYj0iaHR0cDovL2ltYWdlLnRtZGIub3JnL3QvcC9v
+        cmlnaW5hbC9wcEtLaldwRUp4YUNHcW9SZHBaVjNveEttbWMuanBnIiAvPgo8
+        Um9sZSBpZD0iNzU0MyIgdGFnPSJLYXp1ZnVtaSBNaXlhemF3YSIgcm9sZT0i
+        VG9zaGltaWNoaSBPb2t1Ym8iIC8+CjxSb2xlIGlkPSI3NTQ0IiB0YWc9Ill1
+        a2l5b3NoaSBPemF3YSIgcm9sZT0iSXRvIEhpcm9idW1pIiB0aHVtYj0iaHR0
+        cDovL2ltYWdlLnRtZGIub3JnL3QvcC9vcmlnaW5hbC9mNVhDeTRnRHRBVlRz
+        MXI3S3pnZWJUeXZOUlQuanBnIiAvPgo8Um9sZSBpZD0iNzU0NSIgdGFnPSJL
+        ZW5pY2hpIFRha2l0byIgcm9sZT0iU2Fkb2ppbWEgSG9qaSIgdGh1bWI9Imh0
+        dHA6Ly9pbWFnZS50bWRiLm9yZy90L3Avb3JpZ2luYWwvZ0FCeDNROWVJS1hY
+        VmJqa2NCb3NUVE84em9LLmpwZyIgLz4KPC9WaWRlbz4KPC9NZWRpYUNvbnRh
+        aW5lcj4K
+    http_version: 
+  recorded_at: Sun, 08 Mar 2015 14:55:19 GMT
 - request:
     method: get
     uri: http://localhost:32400/library/metadata/1169
@@ -328,11 +499,11 @@ http_interactions:
       X-Plex-Protocol:
       - '1.0'
       X-Plex-Content-Original-Length:
-      - '3512'
+      - '3639'
       X-Plex-Content-Compressed-Length:
-      - '1751'
+      - '1800'
       Content-Length:
-      - '1751'
+      - '1800'
       Cache-Control:
       - no-cache
     body:
@@ -366,10 +537,10 @@ http_interactions:
         dXMgc2V0cyBoaXMgc2lnaHRzIG9uIGZsdW5raW5nIG91dCB0aGUgJnF1b3Q7
         MyBpZGlvdHMmcXVvdDsgb25jZSBhbmQgZm9yIGFsbC4iIHJhdGluZz0iNy42
         OTk5OTk4MDkyNjUxNDAzIiB5ZWFyPSIyMDA5IiB0aHVtYj0iL2xpYnJhcnkv
-        bWV0YWRhdGEvMTE2OS90aHVtYi8xNDIzOTM2MDU1IiBhcnQ9Ii9saWJyYXJ5
-        L21ldGFkYXRhLzExNjkvYXJ0LzE0MjM5MzYwNTUiIGR1cmF0aW9uPSI5ODU1
+        bWV0YWRhdGEvMTE2OS90aHVtYi8xNDI0NDY0ODQ2IiBhcnQ9Ii9saWJyYXJ5
+        L21ldGFkYXRhLzExNjkvYXJ0LzE0MjQ0NjQ4NDYiIGR1cmF0aW9uPSI5ODU1
         NDQwIiBvcmlnaW5hbGx5QXZhaWxhYmxlQXQ9IjIwMDktMTItMjUiIGFkZGVk
-        QXQ9IjE0MjM5MzUzNTIiIHVwZGF0ZWRBdD0iMTQyMzkzNjA1NSI+CjxNZWRp
+        QXQ9IjE0MjM5MzUzNTIiIHVwZGF0ZWRBdD0iMTQyNDQ2NDg0NiI+CjxNZWRp
         YSB2aWRlb1Jlc29sdXRpb249InNkIiBpZD0iMTM5OSIgZHVyYXRpb249Ijk4
         NTU0NDAiIGJpdHJhdGU9IjgwOCIgd2lkdGg9IjY0MCIgaGVpZ2h0PSIyNzIi
         IGFzcGVjdFJhdGlvPSIyLjM1IiBhdWRpb0NoYW5uZWxzPSI2IiBhdWRpb0Nv
@@ -389,36 +560,38 @@ http_interactions:
         MSIgY2hhbm5lbHM9IjYiIGJpdHJhdGU9IjE5MiIgYml0RGVwdGg9IjE2IiBi
         aXRyYXRlTW9kZT0iY2JyIiBjb2RlY0lEPSIyMDAwIiBkaWFsb2dOb3JtPSIt
         MzEiIGR1cmF0aW9uPSI5ODU1MzYwIiBzYW1wbGluZ1JhdGU9IjQ4MDAwIiB0
-        aXRsZT0iIiAvPgo8L1BhcnQ+CjwvTWVkaWE+CjxHZW5yZSBpZD0iNDQiIHRh
-        Zz0iQ29tZWR5IiAvPgo8R2VucmUgaWQ9Ijg4IiB0YWc9IkRyYW1hIiAvPgo8
-        R2VucmUgaWQ9IjM2ODEiIHRhZz0iUm9tYW5jZSIgLz4KPFdyaXRlciBpZD0i
-        NjkwNSIgdGFnPSJSYWprdW1hciBIaXJhbmkiIC8+CjxEaXJlY3RvciBpZD0i
-        NjkwMiIgdGFnPSJSYWprdW1hciBIaXJhbmkiIC8+CjxQcm9kdWNlciBpZD0i
-        NjkyOSIgdGFnPSJWaWRodSBWaW5vZCBDaG9wcmEiIC8+CjxDb3VudHJ5IGlk
-        PSI2MDkiIHRhZz0iSW5kaWEiIC8+CjxSb2xlIGlkPSI2OTEzIiB0YWc9IkFh
-        bWlyIEtoYW4iIHJvbGU9IlJhbmNobyIgdGh1bWI9Imh0dHA6Ly9pbWFnZS50
-        bWRiLm9yZy90L3Avb3JpZ2luYWwvallvaGxVVmtMUEZkbkRyeVo4VjFIWmtK
-        ekR0LmpwZyIgLz4KPFJvbGUgaWQ9IjcyNDciIHRhZz0iS2FyZWVuYSBLYXBv
-        b3IiIHJvbGU9IlBpYSIgdGh1bWI9Imh0dHA6Ly9pbWFnZS50bWRiLm9yZy90
-        L3Avb3JpZ2luYWwva0RZZUJFTlhjVktmSEpqU0hsY2lOQ0xtdHJHLmpwZyIg
-        Lz4KPFJvbGUgaWQ9IjcyNDgiIHRhZz0iTWFkaGF2YW4iIHJvbGU9IkZhcmhh
-        biIgdGh1bWI9Imh0dHA6Ly9pbWFnZS50bWRiLm9yZy90L3Avb3JpZ2luYWwv
-        anhxRXg0SWk5YVl4N2tra3oxTXg3RldyakN0LmpwZyIgLz4KPFJvbGUgaWQ9
-        IjY5MTUiIHRhZz0iU2hhcm1hbiBKb3NoaSIgcm9sZT0iUmFqdSIgdGh1bWI9
-        Imh0dHA6Ly9pbWFnZS50bWRiLm9yZy90L3Avb3JpZ2luYWwvbGFzbWVpMVNv
-        V2tTWnhXUXROaDJiSTEwVDJILmpwZyIgLz4KPFJvbGUgaWQ9IjY5MTQiIHRh
-        Zz0iQm9tYW4gSXJhbmkiIHJvbGU9IlZpcnUgU2FoYXN0cmFidWRoaGUiIHRo
-        dW1iPSJodHRwOi8vaW1hZ2UudG1kYi5vcmcvdC9wL29yaWdpbmFsL3liaEZh
-        bThhZFVwV3ozUmU0OVQ4dURtOERjVC5qcGciIC8+CjxSb2xlIGlkPSI2OTA4
-        IiB0YWc9Ik1vbmEgU2luZ2giIHJvbGU9Ik1vbmEiIHRodW1iPSJodHRwOi8v
-        aW1hZ2UudG1kYi5vcmcvdC9wL29yaWdpbmFsLzdUd0VOSElNaktaTzZ3WVRW
-        R3k5bnFoVllMWi5qcGciIC8+CjxSb2xlIGlkPSI2OTE3IiB0YWc9Ik9taSBW
-        YWlkeWEiIHJvbGU9IkNoYXR1ciBSYW1hbGluZ2FtIiB0aHVtYj0iaHR0cDov
-        L2ltYWdlLnRtZGIub3JnL3QvcC9vcmlnaW5hbC9qTXNIcWxyejQxWnBEN1JF
-        eXM3OFphQ1RNM1UuanBnIiAvPgo8L1ZpZGVvPgo8L01lZGlhQ29udGFpbmVy
-        Pgo=
+        aXRsZT0iIiAvPgo8U3RyZWFtIGlkPSI1NzM4IiBrZXk9Ii9saWJyYXJ5L3N0
+        cmVhbXMvNTczOCIgc3RyZWFtVHlwZT0iMyIgY29kZWM9InNydCIgbGFuZ3Vh
+        Z2U9IkVuZ2xpc2giIGxhbmd1YWdlQ29kZT0iZW5nIiBmb3JtYXQ9InNydCIg
+        Lz4KPC9QYXJ0Pgo8L01lZGlhPgo8R2VucmUgaWQ9IjQ0IiB0YWc9IkNvbWVk
+        eSIgLz4KPEdlbnJlIGlkPSI4OCIgdGFnPSJEcmFtYSIgLz4KPEdlbnJlIGlk
+        PSIzNjgxIiB0YWc9IlJvbWFuY2UiIC8+CjxXcml0ZXIgaWQ9IjY5MDUiIHRh
+        Zz0iUmFqa3VtYXIgSGlyYW5pIiAvPgo8RGlyZWN0b3IgaWQ9IjY5MDIiIHRh
+        Zz0iUmFqa3VtYXIgSGlyYW5pIiAvPgo8UHJvZHVjZXIgaWQ9IjY5MjkiIHRh
+        Zz0iVmlkaHUgVmlub2QgQ2hvcHJhIiAvPgo8Q291bnRyeSBpZD0iNjA5IiB0
+        YWc9IkluZGlhIiAvPgo8Um9sZSBpZD0iNjkxMyIgdGFnPSJBYW1pciBLaGFu
+        IiByb2xlPSJSYW5jaG8iIHRodW1iPSJodHRwOi8vaW1hZ2UudG1kYi5vcmcv
+        dC9wL29yaWdpbmFsL2pZb2hsVVZrTFBGZG5EcnlaOFYxSFprSnpEdC5qcGci
+        IC8+CjxSb2xlIGlkPSI3MjQ3IiB0YWc9IkthcmVlbmEgS2Fwb29yIiByb2xl
+        PSJQaWEiIHRodW1iPSJodHRwOi8vaW1hZ2UudG1kYi5vcmcvdC9wL29yaWdp
+        bmFsL2tEWWVCRU5YY1ZLZkhKalNIbGNpTkNMbXRyRy5qcGciIC8+CjxSb2xl
+        IGlkPSI3MjQ4IiB0YWc9Ik1hZGhhdmFuIiByb2xlPSJGYXJoYW4iIHRodW1i
+        PSJodHRwOi8vaW1hZ2UudG1kYi5vcmcvdC9wL29yaWdpbmFsL2p4cUV4NElp
+        OWFZeDdra2t6MU14N0ZXcmpDdC5qcGciIC8+CjxSb2xlIGlkPSI2OTE1IiB0
+        YWc9IlNoYXJtYW4gSm9zaGkiIHJvbGU9IlJhanUiIHRodW1iPSJodHRwOi8v
+        aW1hZ2UudG1kYi5vcmcvdC9wL29yaWdpbmFsL2xhc21laTFTb1drU1p4V1F0
+        TmgyYkkxMFQySC5qcGciIC8+CjxSb2xlIGlkPSI2OTE0IiB0YWc9IkJvbWFu
+        IElyYW5pIiByb2xlPSJWaXJ1IFNhaGFzdHJhYnVkaGhlIiB0aHVtYj0iaHR0
+        cDovL2ltYWdlLnRtZGIub3JnL3QvcC9vcmlnaW5hbC95YmhGYW04YWRVcFd6
+        M1JlNDlUOHVEbThEY1QuanBnIiAvPgo8Um9sZSBpZD0iNjkwOCIgdGFnPSJN
+        b25hIFNpbmdoIiByb2xlPSJNb25hIiB0aHVtYj0iaHR0cDovL2ltYWdlLnRt
+        ZGIub3JnL3QvcC9vcmlnaW5hbC83VHdFTkhJTWpLWk82d1lUVkd5OW5xaFZZ
+        TFouanBnIiAvPgo8Um9sZSBpZD0iNjkxNyIgdGFnPSJPbWkgVmFpZHlhIiBy
+        b2xlPSJDaGF0dXIgUmFtYWxpbmdhbSIgdGh1bWI9Imh0dHA6Ly9pbWFnZS50
+        bWRiLm9yZy90L3Avb3JpZ2luYWwvak1zSHFscno0MVpwRDdSRXlzNzhaYUNU
+        TTNVLmpwZyIgLz4KPC9WaWRlbz4KPC9NZWRpYUNvbnRhaW5lcj4K
     http_version: 
-  recorded_at: Sat, 14 Feb 2015 17:47:35 GMT
+  recorded_at: Sun, 08 Mar 2015 14:55:19 GMT
 - request:
     method: get
     uri: http://localhost:32400/library/sections
@@ -444,11 +617,11 @@ http_interactions:
       X-Plex-Protocol:
       - '1.0'
       X-Plex-Content-Original-Length:
-      - '2991'
+      - '2988'
       X-Plex-Content-Compressed-Length:
-      - '805'
+      - '788'
       Content-Length:
-      - '805'
+      - '788'
       Cache-Control:
       - no-cache
     body:
@@ -456,27 +629,27 @@ http_interactions:
       string: |
         <?xml version="1.0" encoding="UTF-8"?>
         <MediaContainer size="6" allowSync="0" identifier="com.plexapp.plugins.library" mediaTagPrefix="/system/bundle/media/flags/" mediaTagVersion="1420767545" title1="Plex Library">
-        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="1" type="movie" title="Adult Movies" composite="/library/sections/1/composite/1423777283" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="9113e43dc6c547eede809f9439c8e80498b4a610" updatedAt="1423777283" createdAt="1332713366">
-        <Location id="4" path="/Users/mconway/Movies/Adult Movies" />
+        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="8" type="movie" title="Adult Movies" composite="/library/sections/8/composite/1425683728" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="608ca2bb-e5f2-49ab-b040-dbb95ac5631e" updatedAt="1425683728" createdAt="1424196765">
+        <Location id="12" path="/Users/mconway/Movies/Adult Movies" />
         </Directory>
-        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="2" type="show" title="Adult TV Shows" composite="/library/sections/2/composite/1423932892" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="af8295a272d545681d462eed8025113d09195007" updatedAt="1423932892" createdAt="1332713366">
+        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="2" type="show" title="Adult TV Shows" composite="/library/sections/2/composite/1425683755" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="af8295a272d545681d462eed8025113d09195007" updatedAt="1425683755" createdAt="1332713366">
         <Location id="6" path="/Users/mconway/Movies/Adult TV Shows" />
         </Directory>
-        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="5" type="movie" title="Kid Movies" composite="/library/sections/5/composite/1423777310" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="340479de-6015-4e6c-9ec0-c74f936f4013" updatedAt="1423777310" createdAt="1411071543">
+        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="5" type="movie" title="Kid Movies" composite="/library/sections/5/composite/1425683756" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="340479de-6015-4e6c-9ec0-c74f936f4013" updatedAt="1425683756" createdAt="1411071543">
         <Location id="9" path="/Users/mconway/Movies/Kid Movies" />
         </Directory>
-        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="4" type="show" title="Kid TV Shows" composite="/library/sections/4/composite/1423777311" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="fa1dde48-f6dd-44f7-91f3-9283160dc953" updatedAt="1423777311" createdAt="1411071497">
+        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="4" type="show" title="Kid TV Shows" composite="/library/sections/4/composite/1425683757" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="fa1dde48-f6dd-44f7-91f3-9283160dc953" updatedAt="1425683757" createdAt="1411071497">
         <Location id="8" path="/Users/mconway/Movies/Kid TV Shows" />
         </Directory>
-        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="1" thumb="/:/resources/movie.png" key="6" type="movie" title="Test Movies" composite="/library/sections/6/composite/1423936036" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="fbc810b7-6b51-40ba-a3c5-9a2c391e5a3d" updatedAt="1423936036" createdAt="1423935251">
+        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="6" type="movie" title="Test Movies" composite="/library/sections/6/composite/1425683758" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="fbc810b7-6b51-40ba-a3c5-9a2c391e5a3d" updatedAt="1425683758" createdAt="1423935251">
         <Location id="10" path="/Users/mconway/Movies/TivoHMOTest/Movies" />
         </Directory>
-        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="7" type="show" title="Test TV Shows" composite="/library/sections/7/composite/1423935290" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="4c37cd05-86d7-4a34-8d5b-aa2fb261a136" updatedAt="1423935290" createdAt="1423935290">
+        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="7" type="show" title="Test TV Shows" composite="/library/sections/7/composite/1425683759" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="4c37cd05-86d7-4a34-8d5b-aa2fb261a136" updatedAt="1425683759" createdAt="1423935290">
         <Location id="11" path="/Users/mconway/Movies/TivoHMOTest/TV Shows" />
         </Directory>
         </MediaContainer>
     http_version: 
-  recorded_at: Sat, 14 Feb 2015 17:47:35 GMT
+  recorded_at: Sun, 08 Mar 2015 14:55:19 GMT
 - request:
     method: get
     uri: http://localhost:32400/library/sections/6/newest
@@ -502,18 +675,18 @@ http_interactions:
       X-Plex-Protocol:
       - '1.0'
       X-Plex-Content-Original-Length:
-      - '3653'
+      - '5274'
       X-Plex-Content-Compressed-Length:
-      - '1728'
+      - '2313'
       Content-Length:
-      - '1728'
+      - '2313'
       Cache-Control:
       - no-cache
     body:
       encoding: ASCII-8BIT
       string: !binary |-
         PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPE1lZGlh
-        Q29udGFpbmVyIHNpemU9IjIiIGFsbG93U3luYz0iMSIgYXJ0PSIvOi9yZXNv
+        Q29udGFpbmVyIHNpemU9IjMiIGFsbG93U3luYz0iMSIgYXJ0PSIvOi9yZXNv
         dXJjZXMvbW92aWUtZmFuYXJ0LmpwZyIgaWRlbnRpZmllcj0iY29tLnBsZXhh
         cHAucGx1Z2lucy5saWJyYXJ5IiBsaWJyYXJ5U2VjdGlvbklEPSI2IiBsaWJy
         YXJ5U2VjdGlvblRpdGxlPSJUZXN0IE1vdmllcyIgbGlicmFyeVNlY3Rpb25V
@@ -536,11 +709,11 @@ http_interactions:
         IGFybSB0aGVtc2VsdmVzIGFuZCBwcmVwYXJlIHRvIGJhdHRsZSB0aGVpciB3
         YXkgdGhyb3VnaCBob3JkZXMgb2YgZmxlc2gtZWF0aW5nIG1vbnN0ZXJzIGlu
         IGEgaGFyc2ggQXVzdHJhbGlhbiBidXNobGFuZC4iIHllYXI9IjIwMTUiIHRo
-        dW1iPSIvbGlicmFyeS9tZXRhZGF0YS8xMTc1L3RodW1iLzE0MjM5MzYwNTEi
-        IGFydD0iL2xpYnJhcnkvbWV0YWRhdGEvMTE3NS9hcnQvMTQyMzkzNjA1MSIg
+        dW1iPSIvbGlicmFyeS9tZXRhZGF0YS8xMTc1L3RodW1iLzE0MjQ0NjQ4NDYi
+        IGFydD0iL2xpYnJhcnkvbWV0YWRhdGEvMTE3NS9hcnQvMTQyNDQ2NDg0NiIg
         ZHVyYXRpb249IjU5MTQ2NTkiIG9yaWdpbmFsbHlBdmFpbGFibGVBdD0iMjAx
-        NS0wMi0xMyIgYWRkZWRBdD0iMTQyMzkzNjAzNiIgdXBkYXRlZEF0PSIxNDIz
-        OTM2MDUxIj4KPE1lZGlhIHZpZGVvUmVzb2x1dGlvbj0ic2QiIGlkPSIxNDAy
+        NS0wMi0xMyIgYWRkZWRBdD0iMTQyMzkzNjAzNiIgdXBkYXRlZEF0PSIxNDI0
+        NDY0ODQ2Ij4KPE1lZGlhIHZpZGVvUmVzb2x1dGlvbj0ic2QiIGlkPSIxNDAy
         IiBkdXJhdGlvbj0iNTkxNDY1OSIgYml0cmF0ZT0iOTg5IiB3aWR0aD0iNjQw
         IiBoZWlnaHQ9IjM1MiIgYXNwZWN0UmF0aW89IjEuODUiIGF1ZGlvQ2hhbm5l
         bHM9IjIiIGF1ZGlvQ29kZWM9Im1wMyIgdmlkZW9Db2RlYz0ibXBlZzQiIGNv
@@ -555,45 +728,402 @@ http_interactions:
         Um9hY2hlLVR1cm5lciIgLz4KPENvdW50cnkgdGFnPSJBdXN0cmFsaWEiIC8+
         CjxSb2xlIHRhZz0iSmF5IEdhbGxhZ2hlciIgLz4KPFJvbGUgdGFnPSJCaWFu
         Y2EgQnJhZGV5IiAvPgo8Um9sZSB0YWc9Ikxlb24gQnVyY2hpbGwiIC8+Cjwv
-        VmlkZW8+CjxWaWRlbyByYXRpbmdLZXk9IjExNjkiIGtleT0iL2xpYnJhcnkv
-        bWV0YWRhdGEvMTE2OSIgc3R1ZGlvPSJWaWRodSBWaW5vZCBDaG9wcmEgUHJv
-        ZHVjdGlvbnMiIHR5cGU9Im1vdmllIiB0aXRsZT0iMyBJZGlvdHMiIGNvbnRl
-        bnRSYXRpbmc9IlBHIiBzdW1tYXJ5PSJJbiB0aGUgdHJhZGl0aW9uIG9mIOKA
-        nEZlcnJpcyBCdWVsbGVy4oCZcyBEYXkgT2Zm4oCdIGNvbWVzIHRoaXMgcmVm
-        cmVzaGluZyBjb21lZHkgYWJvdXQgYSByZWJlbGxpb3VzIHByYW5rc3RlciB3
-        aXRoIGEgY3JhZnR5IG1pbmQgYW5kIGEgaGVhcnQgb2YgZ29sZC4gUmFzY2Fs
-        LiBKb2tlci4gRHJlYW1lci4gR2VuaXVzLi4uIFlvdSZhcG9zO3ZlIG5ldmVy
-        IG1ldCBhIGNvbGxlZ2Ugc3R1ZGVudCBxdWl0ZSBsaWtlICZxdW90O1JhbmNo
-        by4mcXVvdDsgRnJvbSB0aGUgbW9tZW50IGhlIGFycml2ZXMgYXQgSW5kaWEm
-        YXBvcztzIG1vc3QgcHJlc3RpZ2lvdXMgdW5pdmVyc2l0eSwgUmFuY2hvJmFw
-        b3M7cyBvdXRsYW5kaXNoIHNjaGVtZXMgdHVybiB0aGUgY2FtcHVzIHVwc2lk
-        ZSBkb3du4oCUYWxvbmcgd2l0aCB0aGUgbGl2ZXMgb2YgaGlzIHR3byBuZXdm
-        b3VuZCBiZXN0IGZyaWVuZHMuIFRvZ2V0aGVyLCB0aGV5IG1ha2UgbGlmZSBt
-        aXNlcmFibGUgZm9yICZxdW90O1ZpcnVzLCZxdW90OyB0aGUgc2Nob29s4oCZ
-        cyB1cHRpZ2h0IGFuZCBoZWFydGxlc3MgZGVhbi4gQnV0IHdoZW4gUmFuY2hv
-        IGNhdGNoZXMgdGhlIGV5ZSBvZiB0aGUgZGVhbiZhcG9zO3Mgc2V4eSBkYXVn
-        aHRlciwgVmlydXMgc2V0cyBoaXMgc2lnaHRzIG9uIGZsdW5raW5nIG91dCB0
-        aGUgJnF1b3Q7MyBpZGlvdHMmcXVvdDsgb25jZSBhbmQgZm9yIGFsbC4iIHJh
-        dGluZz0iNy42OTk5OTk4MDkyNjUxNDAzIiB5ZWFyPSIyMDA5IiB0aHVtYj0i
-        L2xpYnJhcnkvbWV0YWRhdGEvMTE2OS90aHVtYi8xNDIzOTM2MDU1IiBhcnQ9
-        Ii9saWJyYXJ5L21ldGFkYXRhLzExNjkvYXJ0LzE0MjM5MzYwNTUiIGR1cmF0
-        aW9uPSI5ODU1NDQwIiBvcmlnaW5hbGx5QXZhaWxhYmxlQXQ9IjIwMDktMTIt
-        MjUiIGFkZGVkQXQ9IjE0MjM5MzUzNTIiIHVwZGF0ZWRBdD0iMTQyMzkzNjA1
-        NSI+CjxNZWRpYSB2aWRlb1Jlc29sdXRpb249InNkIiBpZD0iMTM5OSIgZHVy
-        YXRpb249Ijk4NTU0NDAiIGJpdHJhdGU9IjgwOCIgd2lkdGg9IjY0MCIgaGVp
-        Z2h0PSIyNzIiIGFzcGVjdFJhdGlvPSIyLjM1IiBhdWRpb0NoYW5uZWxzPSI2
-        IiBhdWRpb0NvZGVjPSJhYzMiIHZpZGVvQ29kZWM9Im1wZWc0IiBjb250YWlu
-        ZXI9ImF2aSIgdmlkZW9GcmFtZVJhdGU9IlBBTCI+CjxQYXJ0IGlkPSIxOTU0
-        IiBrZXk9Ii9saWJyYXJ5L3BhcnRzLzE5NTQvZmlsZS5hdmkiIGR1cmF0aW9u
-        PSI5ODU1NDQwIiBmaWxlPSIvVXNlcnMvbWNvbndheS9Nb3ZpZXMvVGl2b0hN
-        T1Rlc3QvTW92aWVzLzMgSWRpb3RzICgyMDA5KS5hdmkiIHNpemU9Ijk5NTQ0
-        Mzc4NCIgY29udGFpbmVyPSJhdmkiIC8+CjwvTWVkaWE+CjxHZW5yZSB0YWc9
-        IkNvbWVkeSIgLz4KPEdlbnJlIHRhZz0iRHJhbWEiIC8+CjxXcml0ZXIgdGFn
-        PSJSYWprdW1hciBIaXJhbmkiIC8+CjxEaXJlY3RvciB0YWc9IlJhamt1bWFy
-        IEhpcmFuaSIgLz4KPENvdW50cnkgdGFnPSJJbmRpYSIgLz4KPFJvbGUgdGFn
-        PSJBYW1pciBLaGFuIiAvPgo8Um9sZSB0YWc9IkthcmVlbmEgS2Fwb29yIiAv
-        Pgo8Um9sZSB0YWc9Ik1hZGhhdmFuIiAvPgo8L1ZpZGVvPgo8L01lZGlhQ29u
-        dGFpbmVyPgo=
+        VmlkZW8+CjxWaWRlbyByYXRpbmdLZXk9IjEyMDEiIGtleT0iL2xpYnJhcnkv
+        bWV0YWRhdGEvMTIwMSIgc3R1ZGlvPSJXYXJuZXIgQnJvcy4iIHR5cGU9Im1v
+        dmllIiB0aXRsZT0iUnVyb3VuaSBLZW5zaGluOiBLeW90byBJbmZlcm5vIiBv
+        cmlnaW5hbFRpdGxlPSJSdXJvdW5pIEtlbnNoaW4gMiA6IEt5b3RvIEluZmVy
+        bm8g4Lij4Li54LmC4Lij4LiZ4Li04LiZIOC5gOC4hOC4meC4iuC4tOC4mSDg
+        uYDguIHguLXguKLguKfguYLguJXguJfguLDguYDguKUiIGNvbnRlbnRSYXRp
+        bmc9IlBHLTEzIiBzdW1tYXJ5PSJLZW5zaGluIGhhcyBzZXR0bGVkIGludG8g
+        aGlzIG5ldyBsaWZlIHdpdGggS2FvcnUgYW5kIGhpcyBvdGhlciBmcmllbmRz
+        IHdoZW4gaGUgaXMgYXBwcm9hY2hlZCB3aXRoIGEgcmVxdWVzdCBmcm9tIHRo
+        ZSBNZWlqaSBnb3Zlcm5tZW50LiBNYWtvdG8gU2hpc2hpbywgYSBmb3JtZXIg
+        YXNzYXNzaW4gbGlrZSBLZW5zaGluLCB3YXMgYmV0cmF5ZWQsIHNldCBvbiBm
+        aXJlIGFuZCBsZWZ0IGZvciBkZWFkLiBIZSBzdXJ2aXZlZCwgYW5kIGlzIG5v
+        dyBpbiBLeW90bywgcGxvdHRpbmcgd2l0aCBoaXMgZ2F0aGVyZWQgd2Fycmlv
+        cnMgdG8gb3ZlcnRocm93IHRoZSBuZXcgZ292ZXJubWVudC4gQWdhaW5zdCBL
+        YW9ydSZhcG9zO3Mgd2lzaGVzLCBLZW5zaGluIHJlbHVjdGFudGx5IGFncmVl
+        cyB0byBnbyB0byBLeW90byBhbmQgaGVscCBrZWVwIGhpcyBjb3VudHJ5IGZy
+        b20gZmFsbGluZyBiYWNrIGludG8gY2l2aWwgd2FyLiIgcmF0aW5nPSI3LjY5
+        OTk5OTgwOTI2NTE0MDMiIHllYXI9IjIwMTQiIHRhZ2xpbmU9IkZhdGUgSGFu
+        Z3MgT24gSGlzIFN3b3JkIiB0aHVtYj0iL2xpYnJhcnkvbWV0YWRhdGEvMTIw
+        MS90aHVtYi8xNDI0NDY0NDgzIiBhcnQ9Ii9saWJyYXJ5L21ldGFkYXRhLzEy
+        MDEvYXJ0LzE0MjQ0NjQ0ODMiIGR1cmF0aW9uPSI4MzIxMzM1IiBvcmlnaW5h
+        bGx5QXZhaWxhYmxlQXQ9IjIwMTQtMDgtMDEiIGFkZGVkQXQ9IjE0MjQ0NjQ0
+        NzUiIHVwZGF0ZWRBdD0iMTQyNDQ2NDQ4MyI+CjxNZWRpYSB2aWRlb1Jlc29s
+        dXRpb249IjcyMCIgaWQ9IjE0MjYiIGR1cmF0aW9uPSI4MzIxMzM1IiBiaXRy
+        YXRlPSIxMTA5IiB3aWR0aD0iMTI4MCIgaGVpZ2h0PSI1MzYiIGFzcGVjdFJh
+        dGlvPSIyLjM1IiBhdWRpb0NoYW5uZWxzPSIyIiBhdWRpb0NvZGVjPSJhYWMi
+        IHZpZGVvQ29kZWM9ImgyNjQiIGNvbnRhaW5lcj0ibWt2IiB2aWRlb0ZyYW1l
+        UmF0ZT0iMjRwIj4KPFBhcnQgaWQ9IjE5ODEiIGtleT0iL2xpYnJhcnkvcGFy
+        dHMvMTk4MS9maWxlLm1rdiIgZHVyYXRpb249IjgzMjEzMzUiIGZpbGU9Ii9V
+        c2Vycy9tY29ud2F5L01vdmllcy9UaXZvSE1PVGVzdC9Nb3ZpZXMvUnVyb3Vu
+        aSBLZW5zaGluIEt5b3RvIEluZmVybm8gKDIwMTQpLm1rdiIgc2l6ZT0iMTE1
+        MzgzMzEzOSIgY29udGFpbmVyPSJta3YiIC8+CjwvTWVkaWE+CjxHZW5yZSB0
+        YWc9IkFjdGlvbiIgLz4KPEdlbnJlIHRhZz0iQWR2ZW50dXJlIiAvPgo8RGly
+        ZWN0b3IgdGFnPSJLZWlzaGkgT2h0b21vIiAvPgo8Q291bnRyeSB0YWc9Ikph
+        cGFuIiAvPgo8Um9sZSB0YWc9IlRha2VydSBTYXRvIiAvPgo8Um9sZSB0YWc9
+        Ill1IEFvaSIgLz4KPFJvbGUgdGFnPSJUYXRzdXlhIEZ1aml3YXJhIiAvPgo8
+        L1ZpZGVvPgo8VmlkZW8gcmF0aW5nS2V5PSIxMTY5IiBrZXk9Ii9saWJyYXJ5
+        L21ldGFkYXRhLzExNjkiIHN0dWRpbz0iVmlkaHUgVmlub2QgQ2hvcHJhIFBy
+        b2R1Y3Rpb25zIiB0eXBlPSJtb3ZpZSIgdGl0bGU9IjMgSWRpb3RzIiBjb250
+        ZW50UmF0aW5nPSJQRyIgc3VtbWFyeT0iSW4gdGhlIHRyYWRpdGlvbiBvZiDi
+        gJxGZXJyaXMgQnVlbGxlcuKAmXMgRGF5IE9mZuKAnSBjb21lcyB0aGlzIHJl
+        ZnJlc2hpbmcgY29tZWR5IGFib3V0IGEgcmViZWxsaW91cyBwcmFua3N0ZXIg
+        d2l0aCBhIGNyYWZ0eSBtaW5kIGFuZCBhIGhlYXJ0IG9mIGdvbGQuIFJhc2Nh
+        bC4gSm9rZXIuIERyZWFtZXIuIEdlbml1cy4uLiBZb3UmYXBvczt2ZSBuZXZl
+        ciBtZXQgYSBjb2xsZWdlIHN0dWRlbnQgcXVpdGUgbGlrZSAmcXVvdDtSYW5j
+        aG8uJnF1b3Q7IEZyb20gdGhlIG1vbWVudCBoZSBhcnJpdmVzIGF0IEluZGlh
+        JmFwb3M7cyBtb3N0IHByZXN0aWdpb3VzIHVuaXZlcnNpdHksIFJhbmNobyZh
+        cG9zO3Mgb3V0bGFuZGlzaCBzY2hlbWVzIHR1cm4gdGhlIGNhbXB1cyB1cHNp
+        ZGUgZG93buKAlGFsb25nIHdpdGggdGhlIGxpdmVzIG9mIGhpcyB0d28gbmV3
+        Zm91bmQgYmVzdCBmcmllbmRzLiBUb2dldGhlciwgdGhleSBtYWtlIGxpZmUg
+        bWlzZXJhYmxlIGZvciAmcXVvdDtWaXJ1cywmcXVvdDsgdGhlIHNjaG9vbOKA
+        mXMgdXB0aWdodCBhbmQgaGVhcnRsZXNzIGRlYW4uIEJ1dCB3aGVuIFJhbmNo
+        byBjYXRjaGVzIHRoZSBleWUgb2YgdGhlIGRlYW4mYXBvcztzIHNleHkgZGF1
+        Z2h0ZXIsIFZpcnVzIHNldHMgaGlzIHNpZ2h0cyBvbiBmbHVua2luZyBvdXQg
+        dGhlICZxdW90OzMgaWRpb3RzJnF1b3Q7IG9uY2UgYW5kIGZvciBhbGwuIiBy
+        YXRpbmc9IjcuNjk5OTk5ODA5MjY1MTQwMyIgeWVhcj0iMjAwOSIgdGh1bWI9
+        Ii9saWJyYXJ5L21ldGFkYXRhLzExNjkvdGh1bWIvMTQyNDQ2NDg0NiIgYXJ0
+        PSIvbGlicmFyeS9tZXRhZGF0YS8xMTY5L2FydC8xNDI0NDY0ODQ2IiBkdXJh
+        dGlvbj0iOTg1NTQ0MCIgb3JpZ2luYWxseUF2YWlsYWJsZUF0PSIyMDA5LTEy
+        LTI1IiBhZGRlZEF0PSIxNDIzOTM1MzUyIiB1cGRhdGVkQXQ9IjE0MjQ0NjQ4
+        NDYiPgo8TWVkaWEgdmlkZW9SZXNvbHV0aW9uPSJzZCIgaWQ9IjEzOTkiIGR1
+        cmF0aW9uPSI5ODU1NDQwIiBiaXRyYXRlPSI4MDgiIHdpZHRoPSI2NDAiIGhl
+        aWdodD0iMjcyIiBhc3BlY3RSYXRpbz0iMi4zNSIgYXVkaW9DaGFubmVscz0i
+        NiIgYXVkaW9Db2RlYz0iYWMzIiB2aWRlb0NvZGVjPSJtcGVnNCIgY29udGFp
+        bmVyPSJhdmkiIHZpZGVvRnJhbWVSYXRlPSJQQUwiPgo8UGFydCBpZD0iMTk1
+        NCIga2V5PSIvbGlicmFyeS9wYXJ0cy8xOTU0L2ZpbGUuYXZpIiBkdXJhdGlv
+        bj0iOTg1NTQ0MCIgZmlsZT0iL1VzZXJzL21jb253YXkvTW92aWVzL1Rpdm9I
+        TU9UZXN0L01vdmllcy8zIElkaW90cyAoMjAwOSkuYXZpIiBzaXplPSI5OTU0
+        NDM3ODQiIGNvbnRhaW5lcj0iYXZpIiAvPgo8L01lZGlhPgo8R2VucmUgdGFn
+        PSJDb21lZHkiIC8+CjxHZW5yZSB0YWc9IkRyYW1hIiAvPgo8V3JpdGVyIHRh
+        Zz0iUmFqa3VtYXIgSGlyYW5pIiAvPgo8RGlyZWN0b3IgdGFnPSJSYWprdW1h
+        ciBIaXJhbmkiIC8+CjxDb3VudHJ5IHRhZz0iSW5kaWEiIC8+CjxSb2xlIHRh
+        Zz0iQWFtaXIgS2hhbiIgLz4KPFJvbGUgdGFnPSJLYXJlZW5hIEthcG9vciIg
+        Lz4KPFJvbGUgdGFnPSJNYWRoYXZhbiIgLz4KPC9WaWRlbz4KPC9NZWRpYUNv
+        bnRhaW5lcj4K
     http_version: 
-  recorded_at: Sat, 14 Feb 2015 17:47:36 GMT
+  recorded_at: Sun, 08 Mar 2015 14:55:19 GMT
+- request:
+    method: get
+    uri: http://localhost:32400/library/metadata/1175
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml;charset=utf-8
+      Connection:
+      - close
+      X-Plex-Protocol:
+      - '1.0'
+      X-Plex-Content-Original-Length:
+      - '3128'
+      X-Plex-Content-Compressed-Length:
+      - '1536'
+      Content-Length:
+      - '1536'
+      Cache-Control:
+      - no-cache
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <MediaContainer size="1" allowSync="1" identifier="com.plexapp.plugins.library" librarySectionID="6" librarySectionTitle="Test Movies" librarySectionUUID="fbc810b7-6b51-40ba-a3c5-9a2c391e5a3d" mediaTagPrefix="/system/bundle/media/flags/" mediaTagVersion="1420767545">
+        <Video ratingKey="1175" key="/library/metadata/1175" guid="com.plexapp.agents.imdb://tt2535470?lang=en" studio="Guerilla Films" type="movie" title="Wyrmwood" summary="Barry is a talented mechanic and family man whose life is torn apart on the eve of a zombie apocalypse. His sister, Brooke, is kidnapped by a sinister team of gas-mask wearing soldiers &amp;amp; experimented on by a psychotic doctor. While Brooke plans her escape Barry goes out on the road to find her &amp;amp; teams up with Benny, a fellow survivor - together they must arm themselves and prepare to battle their way through hordes of flesh-eating monsters in a harsh Australian bushland." year="2015" thumb="/library/metadata/1175/thumb/1424464846" art="/library/metadata/1175/art/1424464846" duration="5914659" originallyAvailableAt="2015-02-13" addedAt="1423936036" updatedAt="1424464846">
+        <Media videoResolution="sd" id="1402" duration="5914659" bitrate="989" width="640" height="352" aspectRatio="1.85" audioChannels="2" audioCodec="mp3" videoCodec="mpeg4" container="avi" videoFrameRate="24p">
+        <Part id="1957" key="/library/parts/1957/file.avi" duration="5914659" file="/Users/mconway/Movies/TivoHMOTest/Movies/Wyrmwood (2014).avi" size="731033918" container="avi">
+        <Stream id="5736" streamType="1" codec="mpeg4" index="0" bitrate="851" bitDepth="8" chromaSubsampling="4:2:0" codecID="XVID" colorSpace="yuv" duration="5914659" frameRate="23.976" gmc="0" height="352" level="5" profile="asp" qpel="0" scanType="progressive" title="" width="640" />
+        <Stream id="5737" streamType="2" selected="1" codec="mp3" index="1" channels="2" bitrate="128" bitrateMode="cbr" codecID="55" duration="5914659" samplingRate="48000" title="" />
+        </Part>
+        </Media>
+        <Genre id="89" tag="Action" />
+        <Genre id="1859" tag="Horror" />
+        <Genre id="251" tag="Science Fiction" />
+        <Writer id="7694" tag="Kiah Roache-Turner" />
+        <Writer id="7695" tag="Tristan Roache-Turner" />
+        <Director id="7693" tag="Kiah Roache-Turner" />
+        <Country id="1669" tag="Australia" />
+        <Role id="7696" tag="Jay Gallagher" role="Barry" />
+        <Role id="7697" tag="Bianca Bradey" role="Brooke" thumb="http://image.tmdb.org/t/p/original/1RxZYeFEcIOGI7A0yO0WUJcHCXZ.jpg" />
+        <Role id="7698" tag="Leon Burchill" role="Benny" />
+        <Role id="7699" tag="Luke McKenzie" role="The Captain" />
+        <Role id="7700" tag="Yure Covich" role="Chalker" />
+        <Role id="7701" tag="Catherine Terracini" role="Annie" />
+        <Role id="7702" tag="Keith Agius" role="Frank" />
+        <Role id="7703" tag="Berryn Schwerdt" role="The Doctor" />
+        <Role id="7704" tag="Cain Thompson" role="McGaughlin" />
+        <Role id="7705" tag="Beth Aubrey" role="Charlotte" />
+        <Role id="7706" tag="Sheridan Harbridge" role="Sherri" />
+        <Role id="7707" tag="Damian Dyke" role="Thompson" />
+        <Role id="7708" tag="John Michael Burdon" role="Zombie" />
+        </Video>
+        </MediaContainer>
+    http_version: 
+  recorded_at: Sun, 08 Mar 2015 14:55:19 GMT
+- request:
+    method: get
+    uri: http://localhost:32400/library/metadata/1201
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml;charset=utf-8
+      Connection:
+      - close
+      X-Plex-Protocol:
+      - '1.0'
+      X-Plex-Content-Original-Length:
+      - '4371'
+      X-Plex-Content-Compressed-Length:
+      - '2072'
+      Content-Length:
+      - '2072'
+      Cache-Control:
+      - no-cache
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPE1lZGlh
+        Q29udGFpbmVyIHNpemU9IjEiIGFsbG93U3luYz0iMSIgaWRlbnRpZmllcj0i
+        Y29tLnBsZXhhcHAucGx1Z2lucy5saWJyYXJ5IiBsaWJyYXJ5U2VjdGlvbklE
+        PSI2IiBsaWJyYXJ5U2VjdGlvblRpdGxlPSJUZXN0IE1vdmllcyIgbGlicmFy
+        eVNlY3Rpb25VVUlEPSJmYmM4MTBiNy02YjUxLTQwYmEtYTNjNS05YTJjMzkx
+        ZTVhM2QiIG1lZGlhVGFnUHJlZml4PSIvc3lzdGVtL2J1bmRsZS9tZWRpYS9m
+        bGFncy8iIG1lZGlhVGFnVmVyc2lvbj0iMTQyMDc2NzU0NSI+CjxWaWRlbyBy
+        YXRpbmdLZXk9IjEyMDEiIGtleT0iL2xpYnJhcnkvbWV0YWRhdGEvMTIwMSIg
+        Z3VpZD0iY29tLnBsZXhhcHAuYWdlbnRzLmltZGI6Ly90dDMwMjk1NTg/bGFu
+        Zz1lbiIgc3R1ZGlvPSJXYXJuZXIgQnJvcy4iIHR5cGU9Im1vdmllIiB0aXRs
+        ZT0iUnVyb3VuaSBLZW5zaGluOiBLeW90byBJbmZlcm5vIiBvcmlnaW5hbFRp
+        dGxlPSJSdXJvdW5pIEtlbnNoaW4gMiA6IEt5b3RvIEluZmVybm8g4Lij4Li5
+        4LmC4Lij4LiZ4Li04LiZIOC5gOC4hOC4meC4iuC4tOC4mSDguYDguIHguLXg
+        uKLguKfguYLguJXguJfguLDguYDguKUiIGNvbnRlbnRSYXRpbmc9IlBHLTEz
+        IiBzdW1tYXJ5PSJLZW5zaGluIGhhcyBzZXR0bGVkIGludG8gaGlzIG5ldyBs
+        aWZlIHdpdGggS2FvcnUgYW5kIGhpcyBvdGhlciBmcmllbmRzIHdoZW4gaGUg
+        aXMgYXBwcm9hY2hlZCB3aXRoIGEgcmVxdWVzdCBmcm9tIHRoZSBNZWlqaSBn
+        b3Zlcm5tZW50LiBNYWtvdG8gU2hpc2hpbywgYSBmb3JtZXIgYXNzYXNzaW4g
+        bGlrZSBLZW5zaGluLCB3YXMgYmV0cmF5ZWQsIHNldCBvbiBmaXJlIGFuZCBs
+        ZWZ0IGZvciBkZWFkLiBIZSBzdXJ2aXZlZCwgYW5kIGlzIG5vdyBpbiBLeW90
+        bywgcGxvdHRpbmcgd2l0aCBoaXMgZ2F0aGVyZWQgd2FycmlvcnMgdG8gb3Zl
+        cnRocm93IHRoZSBuZXcgZ292ZXJubWVudC4gQWdhaW5zdCBLYW9ydSZhcG9z
+        O3Mgd2lzaGVzLCBLZW5zaGluIHJlbHVjdGFudGx5IGFncmVlcyB0byBnbyB0
+        byBLeW90byBhbmQgaGVscCBrZWVwIGhpcyBjb3VudHJ5IGZyb20gZmFsbGlu
+        ZyBiYWNrIGludG8gY2l2aWwgd2FyLiIgcmF0aW5nPSI3LjY5OTk5OTgwOTI2
+        NTE0MDMiIHllYXI9IjIwMTQiIHRhZ2xpbmU9IkZhdGUgSGFuZ3MgT24gSGlz
+        IFN3b3JkIiB0aHVtYj0iL2xpYnJhcnkvbWV0YWRhdGEvMTIwMS90aHVtYi8x
+        NDI0NDY0NDgzIiBhcnQ9Ii9saWJyYXJ5L21ldGFkYXRhLzEyMDEvYXJ0LzE0
+        MjQ0NjQ0ODMiIGR1cmF0aW9uPSI4MzIxMzM1IiBvcmlnaW5hbGx5QXZhaWxh
+        YmxlQXQ9IjIwMTQtMDgtMDEiIGFkZGVkQXQ9IjE0MjQ0NjQ0NzUiIHVwZGF0
+        ZWRBdD0iMTQyNDQ2NDQ4MyI+CjxNZWRpYSB2aWRlb1Jlc29sdXRpb249Ijcy
+        MCIgaWQ9IjE0MjYiIGR1cmF0aW9uPSI4MzIxMzM1IiBiaXRyYXRlPSIxMTA5
+        IiB3aWR0aD0iMTI4MCIgaGVpZ2h0PSI1MzYiIGFzcGVjdFJhdGlvPSIyLjM1
+        IiBhdWRpb0NoYW5uZWxzPSIyIiBhdWRpb0NvZGVjPSJhYWMiIHZpZGVvQ29k
+        ZWM9ImgyNjQiIGNvbnRhaW5lcj0ibWt2IiB2aWRlb0ZyYW1lUmF0ZT0iMjRw
+        Ij4KPFBhcnQgaWQ9IjE5ODEiIGtleT0iL2xpYnJhcnkvcGFydHMvMTk4MS9m
+        aWxlLm1rdiIgZHVyYXRpb249IjgzMjEzMzUiIGZpbGU9Ii9Vc2Vycy9tY29u
+        d2F5L01vdmllcy9UaXZvSE1PVGVzdC9Nb3ZpZXMvUnVyb3VuaSBLZW5zaGlu
+        IEt5b3RvIEluZmVybm8gKDIwMTQpLm1rdiIgc2l6ZT0iMTE1MzgzMzEzOSIg
+        Y29udGFpbmVyPSJta3YiPgo8U3RyZWFtIGlkPSI1ODI1IiBzdHJlYW1UeXBl
+        PSIxIiBjb2RlYz0iaDI2NCIgaW5kZXg9IjAiIGJpdHJhdGU9IjExMDkiIGJp
+        dERlcHRoPSI4IiBjYWJhYz0iMSIgY2hyb21hU3Vic2FtcGxpbmc9IjQ6Mjow
+        IiBjb2RlY0lEPSJWX01QRUc0L0lTTy9BVkMiIGNvbG9yU3BhY2U9Inl1diIg
+        ZHVyYXRpb249IjgzMjEzMjEiIGZyYW1lUmF0ZT0iMjMuOTc2IiBmcmFtZVJh
+        dGVNb2RlPSJjZnIiIGhhc1NjYWxpbmdNYXRyaXg9IjAiIGhlaWdodD0iNTM2
+        IiBsZXZlbD0iMzEiIHByb2ZpbGU9ImhpZ2giIHJlZkZyYW1lcz0iNCIgc2Nh
+        blR5cGU9InByb2dyZXNzaXZlIiB0aXRsZT0iIiB3aWR0aD0iMTI4MCIgLz4K
+        PFN0cmVhbSBpZD0iNTgyNiIgc3RyZWFtVHlwZT0iMiIgc2VsZWN0ZWQ9IjEi
+        IGNvZGVjPSJhYWMiIGluZGV4PSIxIiBjaGFubmVscz0iMiIgbGFuZ3VhZ2U9
+        IuaXpeacrOiqniIgbGFuZ3VhZ2VDb2RlPSJqcG4iIGNvZGVjSUQ9IkFfQUFD
+        IiBkdXJhdGlvbj0iODMyMTMzNSIgcHJvZmlsZT0ibGMiIHNhbXBsaW5nUmF0
+        ZT0iNDgwMDAiIHRpdGxlPSIiIC8+CjxTdHJlYW0gaWQ9IjU4MjciIHN0cmVh
+        bVR5cGU9IjMiIGRlZmF1bHQ9IjEiIGNvZGVjPSJzcnQiIGluZGV4PSIyIiBj
+        b2RlY0lEPSJTX1RFWFQvVVRGOCIgZm9ybWF0PSJzcnQiIHRpdGxlPSIiIC8+
+        CjwvUGFydD4KPC9NZWRpYT4KPEdlbnJlIGlkPSI4OSIgdGFnPSJBY3Rpb24i
+        IC8+CjxHZW5yZSBpZD0iMTM2IiB0YWc9IkFkdmVudHVyZSIgLz4KPEdlbnJl
+        IGlkPSIxMDMiIHRhZz0iQW5pbWF0aW9uIiAvPgo8R2VucmUgaWQ9Ijg4IiB0
+        YWc9IkRyYW1hIiAvPgo8RGlyZWN0b3IgaWQ9IjcwNDYiIHRhZz0iS2Vpc2hp
+        IE9odG9tbyIgLz4KPENvdW50cnkgaWQ9IjE5ODgiIHRhZz0iSmFwYW4iIC8+
+        CjxSb2xlIGlkPSI3NTM4IiB0YWc9IlRha2VydSBTYXRvIiByb2xlPSJLZW5z
+        aGluIEhpbXVyYSIgdGh1bWI9Imh0dHA6Ly9pbWFnZS50bWRiLm9yZy90L3Av
+        b3JpZ2luYWwvOEdKODQ5R1E5ZUhDTGZzUmowMjZKVVZhcUpDLmpwZyIgLz4K
+        PFJvbGUgaWQ9Ijc1NDAiIHRhZz0iWXUgQW9pIiByb2xlPSJNZWd1bWkgVGFr
+        YW5pIiB0aHVtYj0iaHR0cDovL2ltYWdlLnRtZGIub3JnL3QvcC9vcmlnaW5h
+        bC9zWGd2VUs4dVdKNHhDeEE5T2tsYXBtMDhEUEouanBnIiAvPgo8Um9sZSBp
+        ZD0iNzA1MyIgdGFnPSJUYXRzdXlhIEZ1aml3YXJhIiByb2xlPSJNYWtvdG8g
+        U2hpc2hpbyIgdGh1bWI9Imh0dHA6Ly9pbWFnZS50bWRiLm9yZy90L3Avb3Jp
+        Z2luYWwveFBGWUdlZzF0RTRlMjFBblFHdXdiYkhOWGdCLmpwZyIgLz4KPFJv
+        bGUgaWQ9Ijc1NDIiIHRhZz0iWcO7c3VrZSBJc2V5YSIgcm9sZT0iQW9zaGkg
+        U2hpbm9tb3JpIiB0aHVtYj0iaHR0cDovL2ltYWdlLnRtZGIub3JnL3QvcC9v
+        cmlnaW5hbC81R2hjTFFMaWNMZTh4ZEpsblY3aWM3RHRqcjUuanBnIiAvPgo8
+        Um9sZSBpZD0iNzA0OCIgdGFnPSJFbWkgVGFrZWkiIHJvbGU9Ikthb3J1IEth
+        bWl5YSIgdGh1bWI9Imh0dHA6Ly9pbWFnZS50bWRiLm9yZy90L3Avb3JpZ2lu
+        YWwvOWtIRGlrQVlGdDIzNEFZbFNaemQ0ZWJVM3laLmpwZyIgLz4KPFJvbGUg
+        aWQ9IjcwNTEiIHRhZz0iWcWNc3VrZSBFZ3VjaGkiIHJvbGU9IkhhamltZSBT
+        YWl0byIgdGh1bWI9Imh0dHA6Ly9pbWFnZS50bWRiLm9yZy90L3Avb3JpZ2lu
+        YWwvd3ROanZLVDVHcVRZS1hucVlhOEM4dkw3QkV4LmpwZyIgLz4KPFJvbGUg
+        aWQ9IjcwNjAiIHRhZz0iTXVuZXRha2EgQW9raSIgcm9sZT0iU2Fub3N1a2Ug
+        U2FnYXJhIiB0aHVtYj0iaHR0cDovL2ltYWdlLnRtZGIub3JnL3QvcC9vcmln
+        aW5hbC8xNElBdWVqalB0T0F5Rkhoa29QckJ2U29rUWsuanBnIiAvPgo8Um9s
+        ZSBpZD0iNzA1OCIgdGFnPSJSeXVub3N1a2UgS2FtaWtpIiByb2xlPSJTb2pp
+        cm8gU2V0YSIgdGh1bWI9Imh0dHA6Ly9pbWFnZS50bWRiLm9yZy90L3Avb3Jp
+        Z2luYWwvNFl0QmR4SjduVHY2Q3VNdnhJQTZza2ZxY3puLmpwZyIgLz4KPFJv
+        bGUgaWQ9IjcwNTIiIHRhZz0iVGFvIFRzdWNoaXlhIiByb2xlPSJNYWtpbWFj
+        aGkgTWlzYW8iIHRodW1iPSJodHRwOi8vaW1hZ2UudG1kYi5vcmcvdC9wL29y
+        aWdpbmFsL2tUOE16YUdBTTBoUUZqYWZKUlF2MzZCemRCUi5qcGciIC8+CjxS
+        b2xlIGlkPSI3MDU2IiB0YWc9Ik1pbiBUYW5ha2EiIHJvbGU9Ikthc2hpd2F6
+        YWtpIE5lbmppIiB0aHVtYj0iaHR0cDovL2ltYWdlLnRtZGIub3JnL3QvcC9v
+        cmlnaW5hbC9wcEtLaldwRUp4YUNHcW9SZHBaVjNveEttbWMuanBnIiAvPgo8
+        Um9sZSBpZD0iNzU0MyIgdGFnPSJLYXp1ZnVtaSBNaXlhemF3YSIgcm9sZT0i
+        VG9zaGltaWNoaSBPb2t1Ym8iIC8+CjxSb2xlIGlkPSI3NTQ0IiB0YWc9Ill1
+        a2l5b3NoaSBPemF3YSIgcm9sZT0iSXRvIEhpcm9idW1pIiB0aHVtYj0iaHR0
+        cDovL2ltYWdlLnRtZGIub3JnL3QvcC9vcmlnaW5hbC9mNVhDeTRnRHRBVlRz
+        MXI3S3pnZWJUeXZOUlQuanBnIiAvPgo8Um9sZSBpZD0iNzU0NSIgdGFnPSJL
+        ZW5pY2hpIFRha2l0byIgcm9sZT0iU2Fkb2ppbWEgSG9qaSIgdGh1bWI9Imh0
+        dHA6Ly9pbWFnZS50bWRiLm9yZy90L3Avb3JpZ2luYWwvZ0FCeDNROWVJS1hY
+        VmJqa2NCb3NUVE84em9LLmpwZyIgLz4KPC9WaWRlbz4KPC9NZWRpYUNvbnRh
+        aW5lcj4K
+    http_version: 
+  recorded_at: Sun, 08 Mar 2015 14:55:19 GMT
+- request:
+    method: get
+    uri: http://localhost:32400/library/metadata/1169
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml;charset=utf-8
+      Connection:
+      - close
+      X-Plex-Protocol:
+      - '1.0'
+      X-Plex-Content-Original-Length:
+      - '3639'
+      X-Plex-Content-Compressed-Length:
+      - '1800'
+      Content-Length:
+      - '1800'
+      Cache-Control:
+      - no-cache
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPE1lZGlh
+        Q29udGFpbmVyIHNpemU9IjEiIGFsbG93U3luYz0iMSIgaWRlbnRpZmllcj0i
+        Y29tLnBsZXhhcHAucGx1Z2lucy5saWJyYXJ5IiBsaWJyYXJ5U2VjdGlvbklE
+        PSI2IiBsaWJyYXJ5U2VjdGlvblRpdGxlPSJUZXN0IE1vdmllcyIgbGlicmFy
+        eVNlY3Rpb25VVUlEPSJmYmM4MTBiNy02YjUxLTQwYmEtYTNjNS05YTJjMzkx
+        ZTVhM2QiIG1lZGlhVGFnUHJlZml4PSIvc3lzdGVtL2J1bmRsZS9tZWRpYS9m
+        bGFncy8iIG1lZGlhVGFnVmVyc2lvbj0iMTQyMDc2NzU0NSI+CjxWaWRlbyBy
+        YXRpbmdLZXk9IjExNjkiIGtleT0iL2xpYnJhcnkvbWV0YWRhdGEvMTE2OSIg
+        Z3VpZD0iY29tLnBsZXhhcHAuYWdlbnRzLmltZGI6Ly90dDExODcwNDM/bGFu
+        Zz1lbiIgc3R1ZGlvPSJWaWRodSBWaW5vZCBDaG9wcmEgUHJvZHVjdGlvbnMi
+        IHR5cGU9Im1vdmllIiB0aXRsZT0iMyBJZGlvdHMiIGNvbnRlbnRSYXRpbmc9
+        IlBHIiBzdW1tYXJ5PSJJbiB0aGUgdHJhZGl0aW9uIG9mIOKAnEZlcnJpcyBC
+        dWVsbGVy4oCZcyBEYXkgT2Zm4oCdIGNvbWVzIHRoaXMgcmVmcmVzaGluZyBj
+        b21lZHkgYWJvdXQgYSByZWJlbGxpb3VzIHByYW5rc3RlciB3aXRoIGEgY3Jh
+        ZnR5IG1pbmQgYW5kIGEgaGVhcnQgb2YgZ29sZC4gUmFzY2FsLiBKb2tlci4g
+        RHJlYW1lci4gR2VuaXVzLi4uIFlvdSZhcG9zO3ZlIG5ldmVyIG1ldCBhIGNv
+        bGxlZ2Ugc3R1ZGVudCBxdWl0ZSBsaWtlICZxdW90O1JhbmNoby4mcXVvdDsg
+        RnJvbSB0aGUgbW9tZW50IGhlIGFycml2ZXMgYXQgSW5kaWEmYXBvcztzIG1v
+        c3QgcHJlc3RpZ2lvdXMgdW5pdmVyc2l0eSwgUmFuY2hvJmFwb3M7cyBvdXRs
+        YW5kaXNoIHNjaGVtZXMgdHVybiB0aGUgY2FtcHVzIHVwc2lkZSBkb3du4oCU
+        YWxvbmcgd2l0aCB0aGUgbGl2ZXMgb2YgaGlzIHR3byBuZXdmb3VuZCBiZXN0
+        IGZyaWVuZHMuIFRvZ2V0aGVyLCB0aGV5IG1ha2UgbGlmZSBtaXNlcmFibGUg
+        Zm9yICZxdW90O1ZpcnVzLCZxdW90OyB0aGUgc2Nob29s4oCZcyB1cHRpZ2h0
+        IGFuZCBoZWFydGxlc3MgZGVhbi4gQnV0IHdoZW4gUmFuY2hvIGNhdGNoZXMg
+        dGhlIGV5ZSBvZiB0aGUgZGVhbiZhcG9zO3Mgc2V4eSBkYXVnaHRlciwgVmly
+        dXMgc2V0cyBoaXMgc2lnaHRzIG9uIGZsdW5raW5nIG91dCB0aGUgJnF1b3Q7
+        MyBpZGlvdHMmcXVvdDsgb25jZSBhbmQgZm9yIGFsbC4iIHJhdGluZz0iNy42
+        OTk5OTk4MDkyNjUxNDAzIiB5ZWFyPSIyMDA5IiB0aHVtYj0iL2xpYnJhcnkv
+        bWV0YWRhdGEvMTE2OS90aHVtYi8xNDI0NDY0ODQ2IiBhcnQ9Ii9saWJyYXJ5
+        L21ldGFkYXRhLzExNjkvYXJ0LzE0MjQ0NjQ4NDYiIGR1cmF0aW9uPSI5ODU1
+        NDQwIiBvcmlnaW5hbGx5QXZhaWxhYmxlQXQ9IjIwMDktMTItMjUiIGFkZGVk
+        QXQ9IjE0MjM5MzUzNTIiIHVwZGF0ZWRBdD0iMTQyNDQ2NDg0NiI+CjxNZWRp
+        YSB2aWRlb1Jlc29sdXRpb249InNkIiBpZD0iMTM5OSIgZHVyYXRpb249Ijk4
+        NTU0NDAiIGJpdHJhdGU9IjgwOCIgd2lkdGg9IjY0MCIgaGVpZ2h0PSIyNzIi
+        IGFzcGVjdFJhdGlvPSIyLjM1IiBhdWRpb0NoYW5uZWxzPSI2IiBhdWRpb0Nv
+        ZGVjPSJhYzMiIHZpZGVvQ29kZWM9Im1wZWc0IiBjb250YWluZXI9ImF2aSIg
+        dmlkZW9GcmFtZVJhdGU9IlBBTCI+CjxQYXJ0IGlkPSIxOTU0IiBrZXk9Ii9s
+        aWJyYXJ5L3BhcnRzLzE5NTQvZmlsZS5hdmkiIGR1cmF0aW9uPSI5ODU1NDQw
+        IiBmaWxlPSIvVXNlcnMvbWNvbndheS9Nb3ZpZXMvVGl2b0hNT1Rlc3QvTW92
+        aWVzLzMgSWRpb3RzICgyMDA5KS5hdmkiIHNpemU9Ijk5NTQ0Mzc4NCIgY29u
+        dGFpbmVyPSJhdmkiPgo8U3RyZWFtIGlkPSI1NzMyIiBzdHJlYW1UeXBlPSIx
+        IiBjb2RlYz0ibXBlZzQiIGluZGV4PSIwIiBiaXRyYXRlPSI2MTEiIGJpdERl
+        cHRoPSI4IiBjaHJvbWFTdWJzYW1wbGluZz0iNDoyOjAiIGNvZGVjSUQ9IlhW
+        SUQiIGNvbG9yU3BhY2U9Inl1diIgZHVyYXRpb249Ijk4NTU0NDAiIGZyYW1l
+        UmF0ZT0iMjUuMDAwIiBnbWM9IjAiIGhlaWdodD0iMjcyIiBsZXZlbD0iNSIg
+        cHJvZmlsZT0iYXNwIiBxcGVsPSIwIiBzY2FuVHlwZT0icHJvZ3Jlc3NpdmUi
+        IHRpdGxlPSIiIHdpZHRoPSI2NDAiIC8+CjxTdHJlYW0gaWQ9IjU3MzMiIHN0
+        cmVhbVR5cGU9IjIiIHNlbGVjdGVkPSIxIiBjb2RlYz0iYWMzIiBpbmRleD0i
+        MSIgY2hhbm5lbHM9IjYiIGJpdHJhdGU9IjE5MiIgYml0RGVwdGg9IjE2IiBi
+        aXRyYXRlTW9kZT0iY2JyIiBjb2RlY0lEPSIyMDAwIiBkaWFsb2dOb3JtPSIt
+        MzEiIGR1cmF0aW9uPSI5ODU1MzYwIiBzYW1wbGluZ1JhdGU9IjQ4MDAwIiB0
+        aXRsZT0iIiAvPgo8U3RyZWFtIGlkPSI1NzM4IiBrZXk9Ii9saWJyYXJ5L3N0
+        cmVhbXMvNTczOCIgc3RyZWFtVHlwZT0iMyIgY29kZWM9InNydCIgbGFuZ3Vh
+        Z2U9IkVuZ2xpc2giIGxhbmd1YWdlQ29kZT0iZW5nIiBmb3JtYXQ9InNydCIg
+        Lz4KPC9QYXJ0Pgo8L01lZGlhPgo8R2VucmUgaWQ9IjQ0IiB0YWc9IkNvbWVk
+        eSIgLz4KPEdlbnJlIGlkPSI4OCIgdGFnPSJEcmFtYSIgLz4KPEdlbnJlIGlk
+        PSIzNjgxIiB0YWc9IlJvbWFuY2UiIC8+CjxXcml0ZXIgaWQ9IjY5MDUiIHRh
+        Zz0iUmFqa3VtYXIgSGlyYW5pIiAvPgo8RGlyZWN0b3IgaWQ9IjY5MDIiIHRh
+        Zz0iUmFqa3VtYXIgSGlyYW5pIiAvPgo8UHJvZHVjZXIgaWQ9IjY5MjkiIHRh
+        Zz0iVmlkaHUgVmlub2QgQ2hvcHJhIiAvPgo8Q291bnRyeSBpZD0iNjA5IiB0
+        YWc9IkluZGlhIiAvPgo8Um9sZSBpZD0iNjkxMyIgdGFnPSJBYW1pciBLaGFu
+        IiByb2xlPSJSYW5jaG8iIHRodW1iPSJodHRwOi8vaW1hZ2UudG1kYi5vcmcv
+        dC9wL29yaWdpbmFsL2pZb2hsVVZrTFBGZG5EcnlaOFYxSFprSnpEdC5qcGci
+        IC8+CjxSb2xlIGlkPSI3MjQ3IiB0YWc9IkthcmVlbmEgS2Fwb29yIiByb2xl
+        PSJQaWEiIHRodW1iPSJodHRwOi8vaW1hZ2UudG1kYi5vcmcvdC9wL29yaWdp
+        bmFsL2tEWWVCRU5YY1ZLZkhKalNIbGNpTkNMbXRyRy5qcGciIC8+CjxSb2xl
+        IGlkPSI3MjQ4IiB0YWc9Ik1hZGhhdmFuIiByb2xlPSJGYXJoYW4iIHRodW1i
+        PSJodHRwOi8vaW1hZ2UudG1kYi5vcmcvdC9wL29yaWdpbmFsL2p4cUV4NElp
+        OWFZeDdra2t6MU14N0ZXcmpDdC5qcGciIC8+CjxSb2xlIGlkPSI2OTE1IiB0
+        YWc9IlNoYXJtYW4gSm9zaGkiIHJvbGU9IlJhanUiIHRodW1iPSJodHRwOi8v
+        aW1hZ2UudG1kYi5vcmcvdC9wL29yaWdpbmFsL2xhc21laTFTb1drU1p4V1F0
+        TmgyYkkxMFQySC5qcGciIC8+CjxSb2xlIGlkPSI2OTE0IiB0YWc9IkJvbWFu
+        IElyYW5pIiByb2xlPSJWaXJ1IFNhaGFzdHJhYnVkaGhlIiB0aHVtYj0iaHR0
+        cDovL2ltYWdlLnRtZGIub3JnL3QvcC9vcmlnaW5hbC95YmhGYW04YWRVcFd6
+        M1JlNDlUOHVEbThEY1QuanBnIiAvPgo8Um9sZSBpZD0iNjkwOCIgdGFnPSJN
+        b25hIFNpbmdoIiByb2xlPSJNb25hIiB0aHVtYj0iaHR0cDovL2ltYWdlLnRt
+        ZGIub3JnL3QvcC9vcmlnaW5hbC83VHdFTkhJTWpLWk82d1lUVkd5OW5xaFZZ
+        TFouanBnIiAvPgo8Um9sZSBpZD0iNjkxNyIgdGFnPSJPbWkgVmFpZHlhIiBy
+        b2xlPSJDaGF0dXIgUmFtYWxpbmdhbSIgdGh1bWI9Imh0dHA6Ly9pbWFnZS50
+        bWRiLm9yZy90L3Avb3JpZ2luYWwvak1zSHFscno0MVpwRDdSRXlzNzhaYUNU
+        TTNVLmpwZyIgLz4KPC9WaWRlbz4KPC9NZWRpYUNvbnRhaW5lcj4K
+    http_version: 
+  recorded_at: Sun, 08 Mar 2015 14:55:19 GMT
 recorded_with: VCR 2.9.3

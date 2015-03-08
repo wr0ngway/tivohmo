@@ -26,6 +26,18 @@ describe TivoHMO::Adapters::Filesystem::FileItem do
         expect(subject.created_at).to_not be_nil
       end
 
+      it "should instantiate with subtitle" do
+        file = __FILE__
+        st = TivoHMO::API::Subtitle.new()
+        st.language_code = 'en'
+        st.language = 'English'
+        st.type = :file
+        subject = described_class.new(file, st)
+        expect(subject).to be_a described_class
+        expect(subject.subtitle).to eq(st)
+        expect(subject.title).to eq "[en file sub] #{File.basename(file)}"
+      end
+
     end
 
   end

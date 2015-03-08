@@ -1,5 +1,5 @@
 require 'active_support/core_ext/string/inflections'
-require 'listen'
+require 'tivohmo/subtitles_util'
 
 module TivoHMO
   module Adapters
@@ -10,6 +10,7 @@ module TivoHMO
         include TivoHMO::API::Container
         include GemLogger::LoggerSupport
         include MonitorMixin
+        include TivoHMO::Config::Mixin
 
         VIDEO_EXTENSIONS = %w[
           tivo mpg avi wmv mov flv f4v vob mp4 m4v mkv
@@ -40,26 +41,29 @@ module TivoHMO
           self.modified_at = File.mtime(self.identifier)
           self.created_at = File.ctime(self.identifier)
 
-          setup_change_listener
+          @subtitles = config_get(:enable_subtitles)
         end
 
         def children
           synchronize do
-            if super.blank?
-              folders = []
-              files = []
+            if super.blank? || @subtitles != config_get(:enable_subtitles)
+              super.clear
+              @subtitles = config_get(:enable_subtitles)
 
-              Dir["#{self.full_path}/*"].each do |path|
+              items = Dir["#{self.full_path}/*"].group_by do |path|
                 if allowed_container?(path)
-                  folders << FolderContainer.new(path)
+                  :dir
                 elsif allowed_item?(path)
-                  files << FileItem.new(path)
+                  :file
                 else
-                  logger.debug "Ignoring: #{path}"
+                  :skipped
                 end
               end
 
-              (folders + files).each {|c| add_child(c) }
+              Array(items[:dir]).each {|path| add_child(FolderContainer.new(path)) }
+              Array(items[:file]).each {|path| add_grouped(path) }
+              Array(items[:skipped]).each {|path| logger.debug "Ignoring: #{path}" } if logger.debug?
+
             end
           end
 
@@ -67,25 +71,6 @@ module TivoHMO
         end
 
         protected
-
-        def setup_change_listener
-          logger.debug "Setting up change listener on #{identifier}"
-          @listener = Listen.to(identifier, ignore: /\//) do |modified, added, removed|
-            logger.debug "Detected filesystem change on #{identifier}"
-            logger.debug "modified: #{modified}"
-            logger.debug "added: #{added}"
-            logger.debug "removed: #{removed}"
-
-            # TODO: be more intelligent instead of just wiping children to cause the refresh
-            self.refresh
-
-            # cleanup - not strictly correct as this listener won't necessarily get triggered
-            # if self is removed from the parent
-            @listener.stop unless root.find(title_path)
-            logger.debug "Completed filesystem refresh on #{identifier}"
-          end
-          @listener.start
-        end
 
         def allowed_container?(path)
           File.directory?(path) && allowed_item_types.include?(:dir)
@@ -96,6 +81,25 @@ module TivoHMO
           File.file?(path) &&
               allowed_item_types.include?(:file) &&
               allowed_item_extensions.include?(ext)
+        end
+
+        def add_grouped(path)
+          primary = FileItem.new(path)
+
+          if @subtitles
+            subs = SubtitlesUtil.instance.subtitles_for_media_file(path)
+
+            if subs.size > 0
+              group = Group.new(primary.identifier, primary.title)
+              add_child(group)
+              group.add_child(primary)
+              subs.each {|s| group.add_child(FileItem.new(path, s)) }
+            else
+              add_child(primary)
+            end
+          else
+            add_child(primary)
+          end
         end
 
       end

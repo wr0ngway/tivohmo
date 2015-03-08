@@ -1,3 +1,6 @@
+require 'tivohmo/subtitles_util'
+require 'iso-639'
+
 module TivoHMO
   module Adapters
     module Plex
@@ -107,6 +110,10 @@ module TivoHMO
 
           source_filename = CGI.unescape(item_delegate.medias.first.parts.first.file)
 
+          # add in the file based subtitles
+          subs.concat(SubtitlesUtil.instance.subtitles_for_media_file(source_filename))
+
+          # add in the embedded subtitles
           item_delegate.medias.each do |media|
             media.parts.each do |part|
               prev_stream_count = 0
@@ -116,25 +123,25 @@ module TivoHMO
                 # stream.key.present? means file based srt
                 # stream.index and no key, means embedded
                 if stream.stream_type.to_i == 3
-                  if %w[key language language_code].all? {|m| stream.respond_to?(m) && stream.send(m).present? }
+                  if stream.respond_to?(:index) && stream.index.present?
                     st = TivoHMO::API::Subtitle.new
-                    st.language = stream.language
-                    st.language_code = stream.language_code
-                    st.format = stream.codec
-                    st.type = :file
-                    st.location = source_filename.chomp(File.extname(source_filename))
-                    subs << st
-                  elsif stream.respond_to?(:index) && stream.index.present?
-                    st = TivoHMO::API::Subtitle.new
-                    st.language = stream.respond_to?(:language) && stream.language || "Embedded"
-                    st.language_code = stream.respond_to?(:language_code) && stream.language_code || "???"
+
+                    lang_code = stream.respond_to?(:language_code) && stream.language_code || "??"
+                    st.language_code = lang_code
+
+                    iso_entry = ISO_639.find_by_code(lang_code.downcase)
+                    if iso_entry
+                      st.language = iso_entry.english_name
+                    else
+                      logger.warn "Subtitle stream has unknown language code: #{lang_code}"
+                      st.language = "Unknown"
+                    end
+
                     st.format = stream.codec
                     st.type = :embedded
                     # subtitle index should be the index amongst just the embedded subtitle streams
                     st.location = stream.index.to_i - prev_stream_count
                     subs << st
-                  else
-                    logger.warn "Unrecognized subtitle for #{item_delegate.title}"
                   end
                 end
 

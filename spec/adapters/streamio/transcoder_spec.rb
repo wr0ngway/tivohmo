@@ -24,6 +24,30 @@ describe TivoHMO::Adapters::StreamIO::Transcoder do
       expect(opts).to be_instance_of(Hash)
     end
 
+    it "handles file subtitles" do
+      st = TivoHMO::API::Subtitle.new()
+      st.language_code = 'en'
+      st.language = 'English'
+      st.type = :file
+      st.location = Tempfile.new(['subtitle', '.en.srt']).path
+      item.subtitle = st
+
+      opts = subject.transcoder_options
+      expect(opts[:custom]).to match("-vf subtitles=\"#{st.location}\"")
+    end
+
+    it "handles embedded subtitles" do
+      st = TivoHMO::API::Subtitle.new()
+      st.language_code = 'en'
+      st.language = 'English'
+      st.type = :embedded
+      st.location = 3
+      item.subtitle = st
+
+      opts = subject.transcoder_options
+      expect(opts[:custom]).to match("-vf subtitles=\"#{item.file}\":si=#{st.location}")
+    end
+
   end
 
   describe "#transcode" do

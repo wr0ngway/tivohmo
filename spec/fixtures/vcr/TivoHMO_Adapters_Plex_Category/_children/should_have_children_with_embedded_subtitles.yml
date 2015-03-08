@@ -27,9 +27,9 @@ http_interactions:
       X-Plex-Content-Original-Length:
       - '2988'
       X-Plex-Content-Compressed-Length:
-      - '802'
+      - '788'
       Content-Length:
-      - '802'
+      - '788'
       Cache-Control:
       - no-cache
     body:
@@ -37,27 +37,27 @@ http_interactions:
       string: |
         <?xml version="1.0" encoding="UTF-8"?>
         <MediaContainer size="6" allowSync="0" identifier="com.plexapp.plugins.library" mediaTagPrefix="/system/bundle/media/flags/" mediaTagVersion="1420767545" title1="Plex Library">
-        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="8" type="movie" title="Adult Movies" composite="/library/sections/8/composite/1424899706" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="608ca2bb-e5f2-49ab-b040-dbb95ac5631e" updatedAt="1424899706" createdAt="1424196765">
+        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="8" type="movie" title="Adult Movies" composite="/library/sections/8/composite/1425683728" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="608ca2bb-e5f2-49ab-b040-dbb95ac5631e" updatedAt="1425683728" createdAt="1424196765">
         <Location id="12" path="/Users/mconway/Movies/Adult Movies" />
         </Directory>
-        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="2" type="show" title="Adult TV Shows" composite="/library/sections/2/composite/1424990701" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="af8295a272d545681d462eed8025113d09195007" updatedAt="1424990701" createdAt="1332713366">
+        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="2" type="show" title="Adult TV Shows" composite="/library/sections/2/composite/1425683755" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="af8295a272d545681d462eed8025113d09195007" updatedAt="1425683755" createdAt="1332713366">
         <Location id="6" path="/Users/mconway/Movies/Adult TV Shows" />
         </Directory>
-        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="5" type="movie" title="Kid Movies" composite="/library/sections/5/composite/1425073806" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="340479de-6015-4e6c-9ec0-c74f936f4013" updatedAt="1425073806" createdAt="1411071543">
+        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="5" type="movie" title="Kid Movies" composite="/library/sections/5/composite/1425683756" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="340479de-6015-4e6c-9ec0-c74f936f4013" updatedAt="1425683756" createdAt="1411071543">
         <Location id="9" path="/Users/mconway/Movies/Kid Movies" />
         </Directory>
-        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="4" type="show" title="Kid TV Shows" composite="/library/sections/4/composite/1424464474" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="fa1dde48-f6dd-44f7-91f3-9283160dc953" updatedAt="1424464474" createdAt="1411071497">
+        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="4" type="show" title="Kid TV Shows" composite="/library/sections/4/composite/1425683757" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="fa1dde48-f6dd-44f7-91f3-9283160dc953" updatedAt="1425683757" createdAt="1411071497">
         <Location id="8" path="/Users/mconway/Movies/Kid TV Shows" />
         </Directory>
-        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="6" type="movie" title="Test Movies" composite="/library/sections/6/composite/1424464475" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="fbc810b7-6b51-40ba-a3c5-9a2c391e5a3d" updatedAt="1424464475" createdAt="1423935251">
+        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="6" type="movie" title="Test Movies" composite="/library/sections/6/composite/1425683758" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="fbc810b7-6b51-40ba-a3c5-9a2c391e5a3d" updatedAt="1425683758" createdAt="1423935251">
         <Location id="10" path="/Users/mconway/Movies/TivoHMOTest/Movies" />
         </Directory>
-        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="7" type="show" title="Test TV Shows" composite="/library/sections/7/composite/1424464497" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="4c37cd05-86d7-4a34-8d5b-aa2fb261a136" updatedAt="1424464497" createdAt="1423935290">
+        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="7" type="show" title="Test TV Shows" composite="/library/sections/7/composite/1425683759" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="4c37cd05-86d7-4a34-8d5b-aa2fb261a136" updatedAt="1425683759" createdAt="1423935290">
         <Location id="11" path="/Users/mconway/Movies/TivoHMOTest/TV Shows" />
         </Directory>
         </MediaContainer>
     http_version: 
-  recorded_at: Sun, 01 Mar 2015 18:52:57 GMT
+  recorded_at: Sun, 08 Mar 2015 14:55:20 GMT
 - request:
     method: get
     uri: http://localhost:32400/library/sections
@@ -85,9 +85,9 @@ http_interactions:
       X-Plex-Content-Original-Length:
       - '2988'
       X-Plex-Content-Compressed-Length:
-      - '802'
+      - '788'
       Content-Length:
-      - '802'
+      - '788'
       Cache-Control:
       - no-cache
     body:
@@ -95,27 +95,27 @@ http_interactions:
       string: |
         <?xml version="1.0" encoding="UTF-8"?>
         <MediaContainer size="6" allowSync="0" identifier="com.plexapp.plugins.library" mediaTagPrefix="/system/bundle/media/flags/" mediaTagVersion="1420767545" title1="Plex Library">
-        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="8" type="movie" title="Adult Movies" composite="/library/sections/8/composite/1424899706" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="608ca2bb-e5f2-49ab-b040-dbb95ac5631e" updatedAt="1424899706" createdAt="1424196765">
+        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="8" type="movie" title="Adult Movies" composite="/library/sections/8/composite/1425683728" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="608ca2bb-e5f2-49ab-b040-dbb95ac5631e" updatedAt="1425683728" createdAt="1424196765">
         <Location id="12" path="/Users/mconway/Movies/Adult Movies" />
         </Directory>
-        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="2" type="show" title="Adult TV Shows" composite="/library/sections/2/composite/1424990701" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="af8295a272d545681d462eed8025113d09195007" updatedAt="1424990701" createdAt="1332713366">
+        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="2" type="show" title="Adult TV Shows" composite="/library/sections/2/composite/1425683755" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="af8295a272d545681d462eed8025113d09195007" updatedAt="1425683755" createdAt="1332713366">
         <Location id="6" path="/Users/mconway/Movies/Adult TV Shows" />
         </Directory>
-        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="5" type="movie" title="Kid Movies" composite="/library/sections/5/composite/1425073806" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="340479de-6015-4e6c-9ec0-c74f936f4013" updatedAt="1425073806" createdAt="1411071543">
+        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="5" type="movie" title="Kid Movies" composite="/library/sections/5/composite/1425683756" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="340479de-6015-4e6c-9ec0-c74f936f4013" updatedAt="1425683756" createdAt="1411071543">
         <Location id="9" path="/Users/mconway/Movies/Kid Movies" />
         </Directory>
-        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="4" type="show" title="Kid TV Shows" composite="/library/sections/4/composite/1424464474" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="fa1dde48-f6dd-44f7-91f3-9283160dc953" updatedAt="1424464474" createdAt="1411071497">
+        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="4" type="show" title="Kid TV Shows" composite="/library/sections/4/composite/1425683757" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="fa1dde48-f6dd-44f7-91f3-9283160dc953" updatedAt="1425683757" createdAt="1411071497">
         <Location id="8" path="/Users/mconway/Movies/Kid TV Shows" />
         </Directory>
-        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="6" type="movie" title="Test Movies" composite="/library/sections/6/composite/1424464475" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="fbc810b7-6b51-40ba-a3c5-9a2c391e5a3d" updatedAt="1424464475" createdAt="1423935251">
+        <Directory allowSync="0" art="/:/resources/movie-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/movie.png" key="6" type="movie" title="Test Movies" composite="/library/sections/6/composite/1425683758" agent="com.plexapp.agents.imdb" scanner="Plex Movie Scanner" language="en" uuid="fbc810b7-6b51-40ba-a3c5-9a2c391e5a3d" updatedAt="1425683758" createdAt="1423935251">
         <Location id="10" path="/Users/mconway/Movies/TivoHMOTest/Movies" />
         </Directory>
-        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="7" type="show" title="Test TV Shows" composite="/library/sections/7/composite/1424464497" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="4c37cd05-86d7-4a34-8d5b-aa2fb261a136" updatedAt="1424464497" createdAt="1423935290">
+        <Directory allowSync="0" art="/:/resources/show-fanart.jpg" filters="1" refreshing="0" thumb="/:/resources/show.png" key="7" type="show" title="Test TV Shows" composite="/library/sections/7/composite/1425683759" agent="com.plexapp.agents.thetvdb" scanner="Plex Series Scanner" language="en" uuid="4c37cd05-86d7-4a34-8d5b-aa2fb261a136" updatedAt="1425683759" createdAt="1423935290">
         <Location id="11" path="/Users/mconway/Movies/TivoHMOTest/TV Shows" />
         </Directory>
         </MediaContainer>
     http_version: 
-  recorded_at: Sun, 01 Mar 2015 18:52:57 GMT
+  recorded_at: Sun, 08 Mar 2015 14:55:20 GMT
 - request:
     method: get
     uri: http://localhost:32400/library/sections/6/newest
@@ -270,7 +270,7 @@ http_interactions:
         Lz4KPFJvbGUgdGFnPSJNYWRoYXZhbiIgLz4KPC9WaWRlbz4KPC9NZWRpYUNv
         bnRhaW5lcj4K
     http_version: 
-  recorded_at: Sun, 01 Mar 2015 18:52:57 GMT
+  recorded_at: Sun, 08 Mar 2015 14:55:20 GMT
 - request:
     method: get
     uri: http://localhost:32400/library/metadata/1175
@@ -338,7 +338,7 @@ http_interactions:
         </Video>
         </MediaContainer>
     http_version: 
-  recorded_at: Sun, 01 Mar 2015 18:52:57 GMT
+  recorded_at: Sun, 08 Mar 2015 14:55:20 GMT
 - request:
     method: get
     uri: http://localhost:32400/library/metadata/1201
@@ -473,7 +473,7 @@ http_interactions:
         VmJqa2NCb3NUVE84em9LLmpwZyIgLz4KPC9WaWRlbz4KPC9NZWRpYUNvbnRh
         aW5lcj4K
     http_version: 
-  recorded_at: Sun, 01 Mar 2015 18:52:57 GMT
+  recorded_at: Sun, 08 Mar 2015 14:55:20 GMT
 - request:
     method: get
     uri: http://localhost:32400/library/metadata/1169
@@ -591,5 +591,5 @@ http_interactions:
         bWRiLm9yZy90L3Avb3JpZ2luYWwvak1zSHFscno0MVpwRDdSRXlzNzhaYUNU
         TTNVLmpwZyIgLz4KPC9WaWRlbz4KPC9NZWRpYUNvbnRhaW5lcj4K
     http_version: 
-  recorded_at: Sun, 01 Mar 2015 18:52:57 GMT
+  recorded_at: Sun, 08 Mar 2015 14:55:20 GMT
 recorded_with: VCR 2.9.3

@@ -52,9 +52,9 @@ describe TivoHMO::Adapters::Plex::Category, :vcr do
 
       expect(section.children.size).to_not be(0)
 
-      keys = section.children.collect(&:delegate).collect(&:key)
-      expected_keys = plex_delegate.newest.collect(&:key)
-      expect(keys).to include(*expected_keys)
+      titles = section.children.collect(&:title)
+      expected_titles = plex_delegate.newest.collect(&:title)
+      expect(titles).to include(*expected_titles)
     end
 
     it "should display non-zero child_count once children fetched" do
@@ -67,6 +67,7 @@ describe TivoHMO::Adapters::Plex::Category, :vcr do
     end
 
     it "should have children with subtitles" do
+      described_class.config_set(:enable_subtitles, true)
       section = described_class.new(plex_delegate, :newest)
 
       subgroup = section.children.find {|c| c.is_a?(TivoHMO::Adapters::Plex::Group) }
@@ -85,11 +86,12 @@ describe TivoHMO::Adapters::Plex::Category, :vcr do
     end
 
     it "should have children with embedded subtitles" do
+      described_class.config_set(:enable_subtitles, true)
       section = described_class.new(plex_delegate, :newest)
 
       subgroup = section.children.find {|c|
         c.is_a?(TivoHMO::Adapters::Plex::Group) &&
-            c.children.any? {|m| m.subtitle && m.subtitle.language == 'Embedded' }
+            c.children.any? {|m| m.subtitle && m.subtitle.type == :embedded }
       }
       expect(subgroup).to_not be_nil
       primary = subgroup.children[0]
@@ -97,7 +99,7 @@ describe TivoHMO::Adapters::Plex::Category, :vcr do
       expect(primary.title).to_not match(/sub\]/)
       expect(sub.title).to match(primary.title)
       expect(sub.title).to match(/sub\]/)
-      expect(sub.subtitle.language).to eq('Embedded')
+      expect(sub.subtitle.language).to_not be_nil
       expect(sub.subtitle.language_code).to_not be_nil
       expect(sub.subtitle.location).to eq(0)
     end

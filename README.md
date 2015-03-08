@@ -15,6 +15,14 @@ A Plex adapter is also available with similar functionality.  The transcoding on
 
 This project only supports serving of video resources (for now) as that fills my need.
 
+## Noteworthy features
+
+ * Full control of runtime from command line or config file
+ * Application for changing runtime settings of the server from the Tivo UI
+ * Application to serve video to the Tivo from the Filesystem
+ * Application to serve video to the Tivo from a Plex Media Server
+ * Can serve video with on-the-fly hardcoded subtitles from srt files (embedded subs are also supported in plex app)
+
 ## Installation
 
 Install the gem:

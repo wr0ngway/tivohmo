@@ -80,33 +80,35 @@ describe TivoHMO::Adapters::Filesystem::FolderContainer do
       expect(subject.children.object_id).to eq subject.children.object_id
     end
 
-    it "watches for filesystem addition" do
-      with_file_tree('1.avi', foo: ['2.avi']) do |dir|
+    it "should have children with subtitles" do
+      with_file_tree('1.avi', '1.en.srt', '2.avi') do |dir|
+        described_class.config_set(:enable_subtitles, true)
         subject = described_class.new(dir)
-        expect(subject.children.collect(&:title)).to match_array ['1.avi', 'Foo']
-        FileUtils.touch "#{dir}/3.avi"
-        sleep 0.5
-        expect(subject.children.collect(&:title)).to match_array ['3.avi','1.avi', 'Foo']
+
+        expect(subject.children.collect(&:title)).to match_array ['1.avi', '2.avi']
+
+        subgroup = subject.children.find {|c| c.is_a?(TivoHMO::Adapters::Filesystem::Group) }
+        expect(subgroup).to_not be_nil
+        primary = subgroup.children[0]
+        sub = subgroup.children[1]
+        expect(primary.title).to_not match(/sub\]/)
+        expect(sub.title).to match(primary.title)
+        expect(sub.title).to match(/sub\]/)
+        expect(sub.subtitle.language).to_not be_nil
+        expect(sub.subtitle.language_code).to_not be_nil
+        expect(sub.subtitle.location).to_not be_nil
+
+        withoutsub = subject.children.find {|c| ! c.is_a?(TivoHMO::Adapters::Filesystem::Group) }
+        expect(withoutsub).to_not be_nil
       end
     end
 
-    it "watches for filesystem removal" do
-      with_file_tree('1.avi', foo: ['2.avi']) do |dir|
+    it "should allow disabling subtitles" do
+      with_file_tree('1.avi', '1.en.srt', '2.avi') do |dir|
+        described_class.config_set(:enable_subtitles, false)
         subject = described_class.new(dir)
-        expect(subject.children.collect(&:title)).to match_array ['1.avi', 'Foo']
-        FileUtils.rm "#{dir}/1.avi"
-        sleep 0.5
-        expect(subject.children.collect(&:title)).to match_array ['Foo']
-      end
-    end
-
-    it "doesn't watch children" do
-      with_file_tree('1.avi', foo: ['2.avi']) do |dir|
-        subject = described_class.new(dir)
-        oldid = subject.children.object_id
-        FileUtils.touch "#{dir}/foo/3.avi"
-        sleep 0.5
-        expect(subject.children.object_id).to eq oldid
+        withsub = subject.children.find {|c| c.is_a?(TivoHMO::Adapters::Filesystem::Group) }
+        expect(withsub).to be_nil
       end
     end
 
