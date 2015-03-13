@@ -248,7 +248,7 @@ module TivoHMO
             begin
               logger.info "Starting transcode of '#{movie.path}' to '#{output_filename}'"
               transcoded_movie = movie.transcode(output_filename, opts, t_opts) do |progress|
-                logger.info ("[%3i%%] Transcoding #{File.basename(movie.path)}" % (progress * 100).to_i)
+                logger.debug ("[%3i%%] Transcoding #{File.basename(movie.path)}" % (progress * 100).to_i)
                 raise "Halted" if Thread.current[:halt]
               end
               logger.info "Transcoding completed, transcoded file size: #{File.size(output_filename)}"
