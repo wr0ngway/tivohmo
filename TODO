@@ -1,4 +1,3 @@
-fix back after watching movie (anchor)
 add audio track support similar to embedded subtitles
 add embedded subtitles to filesystem app
 figure out how to stream/transcode from plex rather than hack to use local files

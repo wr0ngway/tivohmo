@@ -516,17 +516,24 @@ describe TivoHMO::Server do
           child_titles = doc.xpath("/TiVoContainer/Item/Details/Title").collect(&:content)
           expect(child_titles).to match_array(["i1", "i2", "i3", "i4", "i5", "i6", "i7", "i8"])
         end
-        
-# [2014-12-07 21:23:00] INFO  TivoHMO::Server Request from 192.168.1.12 "GET http:
-# //192.168.1.188:9033/TiVoConnect?Command=QueryContainer&Container=%2FMatts%20Lap
-# top%20(Plex)&Recurse=Yes&SortOrder=Title&ItemCount=8&AnchorItem=%2FMatts%20Lapto
-# p%20(Plex)%2FAdult%20TV%20Shows%2FAll%2FMarvel's%20Agents%20of%20S.H.I.E.L.D.%2F
-# Season%201%2FEye%20Spy&AnchorOffset=-5&Filter=x-tivo-container%2Ftivo-videos,x-t
-# ivo-container%2Ffolder,video%2Fx-tivo-mpeg,video%2F*&SerialNum=848000190292CC9"
-# [2014-12-07 21:23:00] DEBUG TivoHMO::Server Headers: {"Content-Type"=>nil}
-# [2014-12-07 21:23:00] WARN  TivoHMO::Server Anchor not in container: <TivoHMO::Adapters::Plex::Application: Plex[localhost:32400]>, /Matts Laptop (Plex)/Adult TV Shows/All/Marvel's Agents of S.H.I.E.L.D./Season 1/Eye Spy
-# [2014-12-07 21:23:00] INFO  TivoHMO::Server Response to 192.168.1.12 for "GET http://192.168.1.188:9033/TiVoConnect?Command=QueryContainer&Container=%2FMatts%20Laptop%20(Plex)&Recurse=Yes&SortOrder=Title&ItemCount=8&AnchorItem=%2FMatts%20Laptop%20(Plex)%2FAdult%20TV%20Shows%2FAll%2FMarvel's%20Agents%20of%20S.H.I.E.L.D.%2FSeason%201%2FEye%20Spy&AnchorOffset=-5&Filter=x-tivo-container%2Ftivo-videos,x-tivo-container%2Ffolder,video%2Fx-tivo-mpeg,video%2F*&SerialNum=848000190292CC9" [200]
 
+        it "overrides container with the one from anchor" do
+          get "/TiVoConnect?Command=QueryContainer&Container=/a1&AnchorItem=/a1/c1/i8&AnchorOffset=-1"
+          expect(last_response.status).to eq(200)
+          doc = Nokogiri::XML(last_response.body)
+
+          expect(doc.at_xpath("/TiVoContainer/Details/Title").content).to eq("/a1/c1")
+
+          expect(doc.at_xpath("/TiVoContainer/ItemStart").content).to eq("7")
+          expect(doc.at_xpath("/TiVoContainer/ItemCount").content).to eq("8")
+
+          expect(doc.at_xpath("/TiVoContainer/Details/TotalItems").content).to eq("20")
+
+          expect(doc.xpath("/TiVoContainer/Item").size).to eq (8)
+
+          child_titles = doc.xpath("/TiVoContainer/Item/Details/Title").collect(&:content)
+          expect(child_titles).to match_array(["i8", "i9", "i10", "i11", "i12", "i13", "i14", "i15"])
+        end
 
       end
 

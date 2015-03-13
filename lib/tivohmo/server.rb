@@ -249,34 +249,39 @@ module TivoHMO
           container = server.find(container_path)
           halt 404, "No container found for #{container_path}" unless container
 
+          if anchor_item
+            anchor = server.find(anchor_item)
+            if anchor
+              container = anchor.parent
+            else
+              logger.warn "Anchor not found: #{anchor_item}"
+            end
+          end
+
           children = container.children
 
           children = select_all_items(children) if recurse
 
           children = sort(children, sort_order) if sort_order && ! container.presorted
 
-          if anchor_item
-            anchor = server.find(anchor_item)
-            if anchor
-              idx = children.index(anchor)
-              if idx
-                # -1 means show starting at the anchor item
-                # ItemStart should be the index of the anchor
-                anchor_offset = anchor_offset + 1 if anchor_offset < 0
-                item_start = idx + anchor_offset
-                item_start = 0 if item_start < 0
-                locals[:item_start] = item_start
-              else
-                logger.warn "Anchor not in container: #{container}, #{anchor_item}"
-              end
+          if anchor
+            idx = children.index(anchor)
+            if idx
+              # negative anchor means start N items before the anchor
+              # positive means start N items after the anchor
+              # ItemStart should be the index of the anchor with offset applied
+              anchor_offset = anchor_offset + 1 if anchor_offset < 0
+              item_start = idx + anchor_offset
+              item_start = 0 if item_start < 0
+              locals[:item_start] = item_start
             else
-              logger.warn "Anchor not found: #{anchor_item}"
+              logger.warn "Anchor not in container: #{container}, #{anchor_item}"
             end
-          else
-            if item_count < 0
-              locals[:item_start] = children.size + item_count
-              locals[:item_count] = - item_count
-            end
+          end
+
+          if item_count < 0
+            locals[:item_start] = children.size + item_count
+            locals[:item_count] = - item_count
           end
 
           if container.root?
