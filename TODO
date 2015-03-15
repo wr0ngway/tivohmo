@@ -2,3 +2,6 @@ add audio track support similar to embedded subtitles
 add embedded subtitles to filesystem app
 figure out how to stream/transcode from plex rather than hack to use local files
 figure out a way to embed subtitles in mpeg2 stream for live toggling from tivo ui (EIA-608/CEA-708/line 21)
+Add push capability
+Add html rendering of heirarchy for browsing/pushing
+Add a plex plugin that allows one to trigger a push from plex ui (e.g. mobile plex client)
