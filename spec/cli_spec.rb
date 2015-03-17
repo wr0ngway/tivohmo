@@ -180,7 +180,7 @@ describe TivoHMO::CLI do
   describe "--beacon" do
 
     it "works with defaults" do
-      expect(TivoHMO::Beacon).to receive(:new).with(9032, **{})
+      expect(TivoHMO::Beacon).to receive(:new).with(9032, {})
       cli.run(argv(minimal_args))
     end
 
