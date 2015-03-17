@@ -342,6 +342,7 @@ module TivoHMO
       response["Content-Type"] = format
 
       stream do |out|
+        # Pulling h.264 ts fails if we include tivo_header, so it seems header is only needed for mpeg2 ts
         out << tivo_header(item, format)
         item.transcoder.transcode(out, format)
       end
