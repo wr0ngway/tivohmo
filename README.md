@@ -25,6 +25,11 @@ This project only supports serving of video resources (for now) as that fills my
 
 ## Installation
 
+Install ffmpeg 2.x:
+
+    # On Mac OS X, use homebrew: http://brew.sh/
+    brew install ffmpeg
+
 Install the gem:
 
     $ gem install tivohmo
