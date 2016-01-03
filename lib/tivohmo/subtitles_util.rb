@@ -79,7 +79,7 @@ module TivoHMO
       logger.debug "Setting up change listener on #{dir}"
 
       listener = Listen.to(dir) do |modified, added, removed|
-        logger.debug "Detected filesystem change on #{dir}"
+        logger.debug "Detected filesystem change (#{added.size}/#{removed.size}) on #{dir}"
 
         dirs = (added + removed).flatten.collect do |path|
           logger.debug "Inspecting filesystem change: #{path}"

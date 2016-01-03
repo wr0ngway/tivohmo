@@ -41,6 +41,7 @@ describe TivoHMO::SubtitlesUtil do
         subs = subject.subtitles_for_media_file("#{dir}/1.avi")
         expect(subs.size).to eq(0)
 
+        sleep 0.1
         FileUtils.touch("#{dir}/1.en.srt")
         sleep 0.5
 
@@ -55,6 +56,7 @@ describe TivoHMO::SubtitlesUtil do
         subs = subject.subtitles_for_media_file("#{dir}/1.avi")
         expect(subs.size).to eq(1)
 
+        sleep 0.1
         FileUtils.rm("#{dir}/1.en.srt")
         sleep 0.5
 
