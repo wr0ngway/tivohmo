@@ -162,7 +162,8 @@ describe TivoHMO::Server do
 
     it "should have a stub response for QueryItem" do
       get '/TiVoConnect?Command=QueryItem'
-      expect(last_response.status).to eq(200)
+      # but make this 404 (like pyTivo) instead of 200
+      expect(last_response.status).to eq(404)
     end
 
     it "should have a response for QueryServer" do

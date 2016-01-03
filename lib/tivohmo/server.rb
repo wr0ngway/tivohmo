@@ -318,7 +318,9 @@ module TivoHMO
           builder :server_info, layout: true
 
         when 'QueryItem' then
-          builder(layout: true) {|xml| xml.QueryItem }
+	  # pyTivo returns 404 when we try this (and doesn't crash the TiVo)
+          # builder(layout: true) {|xml| xml.QueryItem }
+	  unsupported
 
         when 'FlushServer' then
           builder(layout: true) {|xml| xml.FlushServer }
