@@ -284,8 +284,8 @@ module TivoHMO
                 break unless data.size > 0
                 writeable_io << data
                 bytes_copied += data.size
-                end
               end
+            end
 
             logger.info "Stream copy completed, #{bytes_copied} bytes copied"
           rescue => e
