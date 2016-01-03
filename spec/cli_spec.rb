@@ -163,6 +163,17 @@ describe TivoHMO::CLI do
 
   end
 
+  describe "--configitem" do
+
+    it "sets a config item" do
+      expect(TivoHMO::Server).to receive(:start)
+      cli.run(argv(minimal_args.merge(configitem: "adapters.plex.auth_token=abc123")))
+      expect(TivoHMO::Config.instance.get("adapters.plex.auth_token")).to eq('abc123')
+    end
+
+  end
+
+
   describe "--port" do
 
     it "has a default port" do

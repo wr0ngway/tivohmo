@@ -70,6 +70,10 @@ module TivoHMO
     option ["-f", "--configuration"],
            "FILE", "load configuration from given filename\n"
 
+    option ["-c", "--configitem"],
+           "ITEM", "set configuration from given key=value item\n",
+            multivalued: true
+
     option ["-s", "--settings"],
            "FILE", "a writable file for storing runtime settings\n"
 
@@ -116,6 +120,12 @@ module TivoHMO
       setup_logging
 
       logger.info "TivoHMO #{TivoHMO::VERSION} starting up"
+
+      # set any config items passed in on cli
+      configitem_list.each do |item|
+        key, value = item.split('=')
+        Config.instance.set(key, value)
+      end
 
       # allow cli option to override config file
       set_if_default(:port, TivoHMO::Config.instance.get(:port).try(:to_i))
