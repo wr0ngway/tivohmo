@@ -1,4 +1,10 @@
 require 'plex-ruby'
+Plex.configure do |config|
+  # TODO: figure out a way to make this instance specific rather than global for all plex apps
+  token = TivoHMO::Config.instance.get(["adapters", "plex", "auth_token"])
+  config.auth_token = token if token.present?
+end
+
 require_relative 'plex/movie'
 require_relative 'plex/episode'
 require_relative 'plex/group'
