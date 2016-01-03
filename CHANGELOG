@@ -1,3 +1,13 @@
+0.3.2 (01/03/2016)
+------------------
+
+1.9.3 not supported <a2bd4bc> [Matt Conway]
+TiVo Series 3 support: <486fa2e> [Scott Bailey]
+add cli for setting arbitrary config <6171acb> [Matt Conway]
+allow setting plex auth token <abc307a> [Matt Conway]
+fix back after watching movie (anchor) <2737823> [Matt Conway]
+use debug for transcode progress <4aae8d1> [Matt Conway]
+
 0.3.1 (03/08/2015)
 ------------------
 
